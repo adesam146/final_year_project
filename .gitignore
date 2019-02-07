@@ -1,4 +1,6 @@
 myvenv/
+venv_tf_old/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
