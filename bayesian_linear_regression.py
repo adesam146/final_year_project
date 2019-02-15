@@ -116,8 +116,7 @@ def train_ratio_estimator(betas, ratio_estimator, model_simulator, approx_simula
         )
     )
 
-    ratio_loss = torch.mean(-F.logsigmoid(model_estimates)) + \
-        torch.mean(-torch.log(1-torch.sigmoid(approx_estimates)))
+    ratio_loss = F.binary_cross_entropy_with_logits(model_estimates, torch.ones_like(model_estimates)) + F.binary_cross_entropy_with_logits(approx_estimates, torch.zeros_like(approx_estimates))
 
     ratio_loss.backward()
 
@@ -156,7 +155,7 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
             )
         )
 
-    loss = expec_est_1 + sum_of_expec_est_2
+    loss = expec_est_1 - sum_of_expec_est_2
 
     loss.backward()
 
