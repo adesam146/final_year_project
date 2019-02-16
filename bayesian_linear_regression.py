@@ -53,14 +53,14 @@ class NormalLikelihoodSimulator():
     def __init__(self, noise_std):
         self.noise_std = noise_std
 
-    def simulate(self, betas, X):
+    def simulate(self, beta, X):
         """
         TODO: using batching
         X should be of the form (N, 1)
-        beta is of the form (N, 1)
+        beta is of the form (1, 1)
         output has shape (N, 1)
         """
-        mean = X * betas
+        mean = X * beta
 
         return mean + self.noise_std * torch.randn(X.shape[0], 1)
 
@@ -72,23 +72,23 @@ class RatioEstimator(nn.Module):
         self.in_features = in_features
 
         self.linear1 = nn.Linear(
-            in_features=in_features, out_features=64, bias=True)
+            in_features=in_features, out_features=64, bias=False)
 
-        self.linear2 = nn.Linear(in_features=64, out_features=1, bias=True)
+        self.linear2 = nn.Linear(in_features=64, out_features=1, bias=False)
 
     def forward(self, inputs):
         h = self.linear1(inputs.view(-1, self.in_features))
         return self.linear2(F.relu(h))
 
 
-def train_ratio_estimator(betas, ratio_estimator, model_simulator, approx_simulator, data, ratio_optimizer):
+def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulator, data, ratio_optimizer):
     """
     Returns the ratio loss
     """
     X, Y = data
 
     # model_samples have shape (N, 1)
-    model_samples = model_simulator.simulate(betas, X)
+    model_samples = model_simulator.simulate(beta, X)
 
     if not approx_simulator:
         # This is for the trival case in which our approximate likelihood
@@ -104,62 +104,48 @@ def train_ratio_estimator(betas, ratio_estimator, model_simulator, approx_simula
     # Calculate ratio loss
     model_estimates = ratio_estimator(
         torch.cat(
-            (betas, model_samples),
+            (beta * torch.ones((X.shape[0], 1)), model_samples),
             dim=1
         )
     )
 
     approx_estimates = ratio_estimator(
         torch.cat(
-            (betas, approx_samples),
+            (beta * torch.ones((X.shape[0], 1)), approx_samples),
             dim=1
         )
     )
 
-    ratio_loss = F.binary_cross_entropy_with_logits(model_estimates, torch.ones_like(model_estimates)) + F.binary_cross_entropy_with_logits(approx_estimates, torch.zeros_like(approx_estimates))
-
-    ratio_loss.backward()
-
-    ratio_optimizer.step()
+    ratio_loss = F.binary_cross_entropy_with_logits(model_estimates, torch.ones_like(
+        model_estimates)) + F.binary_cross_entropy_with_logits(approx_estimates, torch.zeros_like(approx_estimates))
 
     return ratio_loss
 
 
-def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, posterior_optimizer):
+def train_approx_posterior(beta_sample, prior, approx_posterior, ratio_estimator, data, posterior_optimizer):
     """
     Returns the posterior loss
     """
-    beta_batch_size = 100
     approx_posterior.train()
     posterior_optimizer.zero_grad()
 
     # Putting ration estimator in evaluation mode
     ratio_estimator.eval()
-    expec_est_1 = 0
 
     # TODO: Make better use of batching
-    for beta_sample in approx_posterior.sample(beta_batch_size):
-        expec_est_1 += approx_posterior.log_prob(beta_sample) - \
-            prior.log_prob(beta_sample)
+    expec_est_1 = approx_posterior.log_prob(beta_sample) - \
+        prior.log_prob(beta_sample)
 
-    expec_est_1 *= 1/beta_batch_size
-
-    sum_of_expec_est_2 = 0
-    X, Y = data
-    for beta_sample in approx_posterior.sample(beta_batch_size):
-        sum_of_expec_est_2 += torch.mean(
-            ratio_estimator(
-                torch.cat(
-                    (beta_sample * torch.ones(X.shape[0], 1), Y),
-                    dim=1)
-            )
+    _, Y = data
+    sum_of_expec_est_2 = torch.sum(
+        ratio_estimator(
+            torch.cat(
+                (beta_sample * torch.ones(Y.shape[0], 1), Y),
+                dim=1)
         )
+    )
 
     loss = expec_est_1 - sum_of_expec_est_2
-
-    loss.backward()
-
-    posterior_optimizer.step()
 
     return loss
 
@@ -168,46 +154,54 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
     # The input features are beta, y, x
     ratio_estimator = RatioEstimator(in_features=2)
     ratio_optimizer = optim.SGD(
-        ratio_estimator.parameters(), lr=0.1, momentum=0.9, weight_decay=1)
+        ratio_estimator.parameters(), lr=0.0001)
 
-    posterior_optimizer = optim.SGD(
-        approx_posterior.parameters(), lr=0.01, momentum=0.9)
+    posterior_optimizer = optim.Adam(
+        approx_posterior.parameters(), lr=0.001)
     for epoch in range(epochs):
         for batch in data_loader:
 
-            X, _ = batch
-            batch_size = X.shape[0]
-
+            beta_sample = approx_posterior.sample()
             ratio_loss = train_ratio_estimator(
-                approx_posterior.sample(batch_size), ratio_estimator, model_simulator, approx_simulator, batch, ratio_optimizer)
+                beta_sample, ratio_estimator, model_simulator, approx_simulator, batch, ratio_optimizer)
 
-            posterior_loss = train_approx_posterior(
-                prior, approx_posterior, ratio_estimator, batch, posterior_optimizer)
+            ratio_loss.backward()
+            ratio_optimizer.step()
+
+            posterior_loss = train_approx_posterior(beta_sample,
+                                                    prior, approx_posterior, ratio_estimator, batch, posterior_optimizer)
+
+            posterior_loss.backward()
+            posterior_optimizer.step()
 
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
               "post_loss:", posterior_loss)
-        print("post mean", approx_posterior.mean, "post std_div", torch.exp(approx_posterior.ln_sigma))
+        print("post mean", approx_posterior.mean, "post std_div",
+              torch.exp(approx_posterior.ln_sigma))
 
+
+torch.manual_seed(0)
 
 # DATA
 beta_true = np.array([5])
-N_train = 100
+N_train = 500
 X_train, Y_train = linear_dataset(beta_true, N_train)
 
-data_loader_train = DataLoader(TensorDataset(
-    torch.from_numpy(X_train).float(), torch.from_numpy(Y_train).float()), batch_size=N_train)
+train_dataset = TensorDataset(torch.from_numpy(
+    X_train).float(), torch.from_numpy(Y_train).float())
+data_loader_train = DataLoader(train_dataset, batch_size=N_train, shuffle=True)
 
 
 # Model
 prior = trd.Normal(0, 10)
-model_simulator = NormalLikelihoodSimulator(noise_std=0.01)
+model_simulator = NormalLikelihoodSimulator(noise_std=1)
 
 # Approximation
-approx_posterior = TrainableNormal(init_mean=3)
+approx_posterior = TrainableNormal()
 approx_simulator = None
 
 inference(prior, approx_posterior, data_loader_train,
-          model_simulator, approx_simulator, epochs=1000)
+          model_simulator, approx_simulator, epochs=5000)
 
 approx_posterior.eval()
 print("Learnt mean", approx_posterior.mean)
