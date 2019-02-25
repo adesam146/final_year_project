@@ -12,44 +12,46 @@ train_dataset = TensorDataset(torch.from_numpy(
 BATCH_SIZE = 50
 data_loader_train = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 
-ratio_estimator = RatioEstimator(in_features=2)
-ratio_optimizer = optim.Adam(ratio_estimator.parameters(), lr=0.1)
-ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
-    ratio_optimizer, (0.9)**(1/100))
+def estimate_log_qs(beta_distn, epochs=1000):
+  ratio_estimator = RatioEstimator(in_features=2)
+  ratio_optimizer = optim.Adam(ratio_estimator.parameters(), lr=0.1)
+  ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
+      ratio_optimizer, (0.9)**(1/100))
 
+  noise_std = 1
+  model_simulator = NormalLikelihoodSimulator(noise_std)
 
-noise_std = 1
-model_simulator = NormalLikelihoodSimulator(noise_std)
+  # To see stability of ratio estimator
+  log_qs = []
 
-beta_distn = trd.Normal(1, 1)
+  for epoch in range(epochs):
+      ratio_lr_sch.step()
 
-# To see stability of ratio estimator
-log_qs = []
+      for batch in data_loader_train:
+          beta_sample = beta_distn.sample()
+          ratio_loss = train_ratio_estimator(
+              beta_sample, ratio_estimator, model_simulator, None, batch, ratio_optimizer)
 
-EPOCHS = 1000
-for epoch in range(EPOCHS):
-    ratio_lr_sch.step()
+          ratio_loss.backward()
+          ratio_optimizer.step()
 
-    for batch in data_loader_train:
-        beta_sample = beta_distn.sample()
-        ratio_loss = train_ratio_estimator(
-            beta_sample, ratio_estimator, model_simulator, None, batch, ratio_optimizer)
+      print("Epoch: ", epoch, "ratio_loss:", ratio_loss.detach().item())
 
-        ratio_loss.backward()
-        ratio_optimizer.step()
+      ratio_estimator.eval()
+      with torch.no_grad():
+          beta_sample = beta_distn.sample().double().item()
 
-    print("Epoch: ", epoch, "ratio_loss:", ratio_loss.detach().item())
+          estimate_log_q = model_simulator.log_prob(Y
+          [0], beta_sample, X[0]) - ratio_estimator(torch.tensor([beta_sample, Y[0]], dtype=torch.float).unsqueeze(0)).item()
 
-    ratio_estimator.eval()
-    with torch.no_grad():
-        beta_sample = beta_distn.sample().double().item()
+          log_qs.append(estimate_log_q)
+  return log_qs
 
-        estimate_log_q = model_simulator.log_prob(Y
-        [0], beta_sample, X[0]) - ratio_estimator(torch.tensor([beta_sample, Y[0]], dtype=torch.float).unsqueeze(0)).item()
+# beta_distn_1 = trd.Normal(1, 1)
+# beta_distn_2 = trd.Normal(5, 1)
 
-        log_qs.append(estimate_log_q)
-
-plt.plot(log_qs)
+# plt.plot(estimate_log_qs(beta_distn_1))
+# plt.plot(estimate_log_qs(beta_distn_2))
 
 # plt.show()
 
@@ -57,17 +59,18 @@ ratio_estimator = RatioEstimator(in_features=2)
 ratio_optimizer = optim.Adam(ratio_estimator.parameters(), lr=0.1)
 ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
     ratio_optimizer, (0.9)**(1/100))
-beta_distn = trd.Normal(5, 1)
+
+noise_std = 1
+model_simulator = NormalLikelihoodSimulator(noise_std)
 
 # To see stability of ratio estimator
 log_qs = []
 
-EPOCHS = 1000
-for epoch in range(EPOCHS):
+beta_sample = 5
+for epoch in range(1000):
     ratio_lr_sch.step()
 
     for batch in data_loader_train:
-        beta_sample = beta_distn.sample()
         ratio_loss = train_ratio_estimator(
             beta_sample, ratio_estimator, model_simulator, None, batch, ratio_optimizer)
 
@@ -78,13 +81,12 @@ for epoch in range(EPOCHS):
 
     ratio_estimator.eval()
     with torch.no_grad():
-        beta_sample = beta_distn.sample().double().item()
-
         estimate_log_q = model_simulator.log_prob(Y
         [0], beta_sample, X[0]) - ratio_estimator(torch.tensor([beta_sample, Y[0]], dtype=torch.float).unsqueeze(0)).item()
 
         log_qs.append(estimate_log_q)
 
 plt.plot(log_qs)
-
 plt.show()
+
+
