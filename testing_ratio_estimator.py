@@ -3,15 +3,6 @@ from matplotlib import pyplot as plt
 
 # THE AIM OF THIS FILE IS TO CROSS CHECK IF THE RATIO ESTIMATOR IS WORKING WELL
 
-N = 500
-X, Y = linear_dataset(beta_true=5, N=N, noise_std=0.1)
-
-train_dataset = TensorDataset(torch.from_numpy(
-    X).float(), torch.from_numpy(Y).float())
-
-BATCH_SIZE = 50
-data_loader_train = DataLoader(train_dataset, batch_size=BATCH_SIZE)
-
 def estimate_log_qs(beta_distn, epochs=1000):
   ratio_estimator = RatioEstimator(in_features=2)
   ratio_optimizer = optim.Adam(ratio_estimator.parameters(), lr=0.1)
@@ -32,10 +23,7 @@ def estimate_log_qs(beta_distn, epochs=1000):
           ratio_loss = train_ratio_estimator(
               beta_sample, ratio_estimator, model_simulator, None, batch, ratio_optimizer)
 
-          ratio_loss.backward()
-          ratio_optimizer.step()
-
-      print("Epoch: ", epoch, "ratio_loss:", ratio_loss.detach().item())
+      print("Epoch: ", epoch, "ratio_loss:", ratio_loss)
 
       ratio_estimator.eval()
       with torch.no_grad():
@@ -46,6 +34,16 @@ def estimate_log_qs(beta_distn, epochs=1000):
 
           log_qs.append(estimate_log_q)
   return log_qs
+
+N = 500
+beta_true = 10
+X, Y = linear_dataset(beta_true, N=N, noise_std=0.1)
+
+train_dataset = TensorDataset(torch.from_numpy(
+    X).float(), torch.from_numpy(Y).float())
+
+BATCH_SIZE = N
+data_loader_train = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 
 # beta_distn_1 = trd.Normal(1, 1)
 # beta_distn_2 = trd.Normal(5, 1)
@@ -66,7 +64,7 @@ model_simulator = NormalLikelihoodSimulator(noise_std)
 # To see stability of ratio estimator
 log_qs = []
 
-beta_sample = 5
+beta_sample = beta_true
 for epoch in range(1000):
     ratio_lr_sch.step()
 
@@ -74,10 +72,7 @@ for epoch in range(1000):
         ratio_loss = train_ratio_estimator(
             beta_sample, ratio_estimator, model_simulator, None, batch, ratio_optimizer)
 
-        ratio_loss.backward()
-        ratio_optimizer.step()
-
-    print("Epoch: ", epoch, "ratio_loss:", ratio_loss.detach().item())
+    print("Epoch: ", epoch, "ratio_loss:", ratio_loss)
 
     ratio_estimator.eval()
     with torch.no_grad():
