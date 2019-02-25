@@ -33,11 +33,10 @@ class TrainableNormal:
         return -0.5 * np.log(2*math.pi) - 0.5 * torch.log(sigma2) - 0.5 * (1/sigma2) * (x - self.mean)**2
 
     def sample(self, sample_size=1):
-        with torch.no_grad():
-            output = self.mean + \
-                torch.exp(self.ln_sigma) * torch.randn(sample_size)
+        output = self.mean + \
+            torch.exp(self.ln_sigma) * torch.randn(sample_size)
 
-            return output.view(-1, 1)
+        return output.view(-1, 1)
 
     def parameters(self):
         return [self.mean, self.ln_sigma]
@@ -65,7 +64,7 @@ class NormalLikelihoodSimulator():
         return mean + self.noise_std * torch.randn(X.shape[0], 1)
     
     def log_prob(self, y, beta, x):
-        return -0.5 * np.log(2*math.pi) - 0.5 * np.log(self.noise_std ** 2) - 0.5 * (1/(self.noise_std ** 2)) * (y - x * beta)**2
+        return -0.5 * np.log(2*math.pi) - 0.5 * np.log(self.noise_std ** 2) - 0.5 * (1/(self.noise_std ** 2)) * ((y - x * beta)**2)
 
 
 class RatioEstimator(nn.Module):
@@ -75,9 +74,9 @@ class RatioEstimator(nn.Module):
         self.in_features = in_features
 
         self.linear1 = nn.Linear(
-            in_features=in_features, out_features=64, bias=False)
+            in_features=in_features, out_features=64, bias=True)
 
-        self.linear2 = nn.Linear(in_features=64, out_features=1, bias=False)
+        self.linear2 = nn.Linear(in_features=64, out_features=1, bias=True)
 
     def forward(self, inputs):
         h = self.linear1(inputs.view(-1, self.in_features))
@@ -182,7 +181,7 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
                 ratio_loss = train_ratio_estimator(
                     beta_sample, ratio_estimator, model_simulator, approx_simulator, batch, ratio_optimizer)
 
-            posterior_loss = train_approx_posterior(beta_sample,
+            posterior_loss = train_approx_posterior(approx_posterior.sample(),
                                                     prior, approx_posterior, ratio_estimator, batch, posterior_optimizer)
 
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
@@ -195,7 +194,7 @@ if __name__ == "__main__":
     np.random.seed(0)
 
     # DATA
-    beta_true = np.array([10])
+    beta_true = np.array([5])
     N_train = 500
     X_train, Y_train = linear_dataset(beta_true, N_train)
 
@@ -206,7 +205,7 @@ if __name__ == "__main__":
 
     # Model
     m0 = 0
-    S0 = 1 ** 2
+    S0 = 10 ** 2
     prior = trd.Normal(m0, np.sqrt(S0))
     noise_std = 1
     model_simulator = NormalLikelihoodSimulator(noise_std)
@@ -216,7 +215,7 @@ if __name__ == "__main__":
     approx_simulator = None
 
     inference(prior, approx_posterior, data_loader_train,
-            model_simulator, approx_simulator, epochs=10000)
+            model_simulator, approx_simulator, epochs=1000)
 
     approx_posterior.eval()
     print("Learnt mean", approx_posterior.mean)
