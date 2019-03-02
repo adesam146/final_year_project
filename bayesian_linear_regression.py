@@ -6,6 +6,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 import torch.distributions as trd
+from torch.distributions import transform_to
 
 
 def linear_dataset(beta_true, N, noise_std=0.1):
@@ -28,15 +29,13 @@ class TrainableNormal:
             np.log(init_std_dev), requires_grad=True, dtype=torch.float)
 
     def log_prob(self, x):
-        sigma2 = torch.exp(2 * self.ln_sigma)
+        return trd.Normal(loc=self.mean, scale=torch.exp(self.ln_sigma)).log_prob(x)
 
-        return -0.5 * np.log(2*math.pi) - 0.5 * torch.log(sigma2) - 0.5 * (1/sigma2) * (x - self.mean)**2
+    def rsample(self, sample_size=1):
+        return trd.Normal(loc=self.mean, scale=torch.exp(self.ln_sigma)).rsample((sample_size, 1))
 
     def sample(self, sample_size=1):
-        output = self.mean + \
-            torch.exp(self.ln_sigma) * torch.randn(sample_size)
-
-        return output.view(-1, 1)
+        return trd.Normal(loc=self.mean, scale=torch.exp(self.ln_sigma)).sample((sample_size, 1))
 
     def parameters(self):
         return [self.mean, self.ln_sigma]
@@ -87,6 +86,10 @@ def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulat
     """
     Returns the ratio loss
     """
+    ratio_estimator.train()
+    # Prevent accumulation of grad for variables
+    ratio_optimizer.zero_grad()
+
     X, Y = data
 
     # model_samples have shape (N, 1)
@@ -95,13 +98,7 @@ def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulat
     if not approx_simulator:
         # This is for the trival case in which our approximate likelihood
         # is given by the emprical distribution
-
         approx_samples = Y
-
-    ratio_estimator.train()
-
-    # Prevent accumulation of grad for variables
-    ratio_optimizer.zero_grad()
 
     # Calculate ratio loss
     model_estimates = ratio_estimator(
@@ -127,7 +124,7 @@ def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulat
     return ratio_loss.detach().item()
 
 
-def train_approx_posterior(beta_sample, prior, approx_posterior, ratio_estimator, data, posterior_optimizer):
+def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, posterior_optimizer):
     """
     Returns the posterior loss
     """
@@ -136,6 +133,8 @@ def train_approx_posterior(beta_sample, prior, approx_posterior, ratio_estimator
 
     # Putting ration estimator in evaluation mode
     ratio_estimator.eval()
+
+    beta_sample = approx_posterior.rsample()
 
     # TODO: Make better use of batching
     expec_est_1 = approx_posterior.log_prob(beta_sample) - \
@@ -181,8 +180,8 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
                 ratio_loss = train_ratio_estimator(
                     beta_sample, ratio_estimator, model_simulator, approx_simulator, batch, ratio_optimizer)
 
-            posterior_loss = train_approx_posterior(approx_posterior.sample(),
-                                                    prior, approx_posterior, ratio_estimator, batch, posterior_optimizer)
+            posterior_loss = train_approx_posterior(
+                prior, approx_posterior, ratio_estimator, batch, posterior_optimizer)
 
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
               "post_loss:", posterior_loss)
