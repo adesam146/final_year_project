@@ -59,7 +59,7 @@ class RatioEstimator(nn.Module):
         B = y.shape[0]
         D = beta.shape[0]
         inputs = torch.cat(
-            (y, beta.view(1, D).expand(B, D)),
+            (y.view(-1, 1), beta.view(1, D).expand(B, D)),
             dim=1)
         h = self.linear1(inputs.view(-1, self.in_features))
         return self.linear2(F.relu(h))
@@ -101,10 +101,9 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
     """
     Returns the posterior loss
     """
-    approx_posterior.train()
     posterior_optimizer.zero_grad()
 
-    # Putting ration estimator in evaluation mode
+    # Putting ration estimator in evaluation mode if needed
     ratio_estimator.eval()
 
     beta_sample = approx_posterior.rsample()
@@ -124,9 +123,7 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
     return loss.detach().item()
 
 
-def inference(prior, approx_posterior, data_loader, model_simulator, approx_simulator, epochs=10):
-    # The input features are y, beta
-    ratio_estimator = RatioEstimator(in_features=2)
+def inference(ratio_estimator, prior, approx_posterior, data_loader, model_simulator, approx_simulator, epochs=10):
     ratio_optimizer = optim.Adam(
         ratio_estimator.parameters(), lr=0.1)
 
@@ -152,8 +149,8 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
 
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
               "post_loss:", posterior_loss)
-        print("post mean", approx_posterior.mean, "post std_div",
-              torch.exp(approx_posterior.ln_sigma))
+        # print("post mean", approx_posterior.mean, "post std_div",
+        #       torch.exp(approx_posterior.ln_sigma))
 
 
 if __name__ == "__main__":
@@ -180,10 +177,11 @@ if __name__ == "__main__":
     approx_posterior = TrainableNormal(init_mean=1)
     approx_simulator = None
 
-    inference(prior, approx_posterior, data_loader_train,
-              model_simulator, approx_simulator, epochs=5000)
+    # The input features are y, beta
+    ratio_estimator = RatioEstimator(in_features=2)
 
-    approx_posterior.eval()
+    inference(ratio_estimator, prior, approx_posterior, data_loader_train,
+              model_simulator, approx_simulator, epochs=5000)
 
     # The learnt std_dev tends to be larger than the expected and this
     # is also the case for the implementation in Edward (original)
