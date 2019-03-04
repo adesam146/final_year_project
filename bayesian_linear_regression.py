@@ -35,7 +35,7 @@ class NormalLikelihoodSimulator():
         mean = X * beta
 
         return mean + self.noise_std * torch.randn(X.shape[0], 1)
-    
+
     def log_prob(self, y, beta, x):
         return -0.5 * np.log(2*math.pi) - 0.5 * np.log(self.noise_std ** 2) - 0.5 * (1/(self.noise_std ** 2)) * ((y - x * beta)**2)
 
@@ -77,16 +77,15 @@ def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulat
     # Calculate ratio loss
     model_estimates = ratio_estimator(
         torch.cat(
-            (beta * torch.ones((X.shape[0], 1)), model_samples),
-            dim=1
-        )
+            (model_samples, beta * torch.ones((Y.shape[0], 1))),
+            dim=1)
     )
 
     approx_estimates = ratio_estimator(
         torch.cat(
-            (beta * torch.ones((X.shape[0], 1)), approx_samples),
-            dim=1
-        )
+            (approx_samples, beta * torch.ones((Y.shape[0], 1))),
+            dim=1)
+
     )
 
     ratio_loss = F.binary_cross_entropy_with_logits(model_estimates, torch.ones_like(
@@ -117,9 +116,8 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
     _, Y = data
     sum_of_expec_est_2 = torch.sum(
         ratio_estimator(
-            torch.cat(
-                (beta_sample * torch.ones(Y.shape[0], 1), Y),
-                dim=1)
+            torch.cat((Y, beta_sample * torch.ones((Y.shape[0], 1))),
+                      dim=1)
         )
     )
 
@@ -130,8 +128,9 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
 
     return loss.detach().item()
 
+
 def inference(prior, approx_posterior, data_loader, model_simulator, approx_simulator, epochs=10):
-    # The input features are beta, y
+    # The input features are y, beta
     ratio_estimator = RatioEstimator(in_features=2)
     ratio_optimizer = optim.Adam(
         ratio_estimator.parameters(), lr=0.1)
@@ -161,6 +160,7 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
         print("post mean", approx_posterior.mean, "post std_div",
               torch.exp(approx_posterior.ln_sigma))
 
+
 if __name__ == "__main__":
     torch.manual_seed(0)
     np.random.seed(0)
@@ -174,7 +174,6 @@ if __name__ == "__main__":
         X_train).float(), torch.from_numpy(Y_train).float())
     data_loader_train = DataLoader(train_dataset, batch_size=N_train)
 
-
     # Model
     m0 = 0
     S0 = 10 ** 2
@@ -187,7 +186,7 @@ if __name__ == "__main__":
     approx_simulator = None
 
     inference(prior, approx_posterior, data_loader_train,
-            model_simulator, approx_simulator, epochs=1000)
+              model_simulator, approx_simulator, epochs=1000)
 
     approx_posterior.eval()
     print("Learnt mean", approx_posterior.mean)
@@ -197,4 +196,3 @@ if __name__ == "__main__":
     mN = SN * (1/S0 * m0 + 1/(noise_std**2) * np.dot(X_train.T, Y_train))
     print("Expected mean", mN)
     print("Expected std_div", np.sqrt(SN))
-
