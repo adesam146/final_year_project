@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 import torch.distributions as trd
-from trainable import TrainableNormal
+from trainable import TrainableNormal, TrainableMultivariateNormal
 
 
 def linear_dataset(beta_true, N, noise_std=0.1):
@@ -149,8 +149,8 @@ def inference(ratio_estimator, prior, approx_posterior, data_loader, model_simul
 
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
               "post_loss:", posterior_loss)
-        # print("post mean", approx_posterior.mean, "post std_div",
-        #       torch.exp(approx_posterior.ln_sigma))
+        print("post mean", approx_posterior.mean, "post std_div",
+              approx_posterior.cov())
 
 
 if __name__ == "__main__":
@@ -167,14 +167,15 @@ if __name__ == "__main__":
     data_loader_train = DataLoader(train_dataset, batch_size=N_train)
 
     # Model
-    m0 = 0
-    S0 = 10 ** 2
-    prior = trd.Normal(m0, np.sqrt(S0))
+    D = X_train.shape[1]
+    m0 = torch.zeros(D)
+    S0 = 5 * torch.eye(D)
+    prior = trd.MultivariateNormal(loc=m0, covariance_matrix=S0)
     noise_std = 1
     model_simulator = NormalLikelihoodSimulator(noise_std)
 
     # Approximation
-    approx_posterior = TrainableNormal(init_mean=1)
+    approx_posterior = TrainableMultivariateNormal(mean=torch.ones(D), cov=torch.eye(D))
     approx_simulator = None
 
     # The input features are y, beta
@@ -189,9 +190,9 @@ if __name__ == "__main__":
     # iteration the learnt mean goes above the expected with more than
     # a decimal place difference
     print("Learnt mean", approx_posterior.mean)
-    print("Learnt std_dev", torch.exp(approx_posterior.ln_sigma))
+    print("Learnt std_dev", approx_posterior.cov())
 
-    SN = 1/(1/S0 + 1/(noise_std**2) * np.dot(X_train.T, X_train))
-    mN = SN * (1/S0 * m0 + 1/(noise_std**2) * np.dot(X_train.T, Y_train))
-    print("Expected mean", mN)
-    print("Expected std_div", np.sqrt(SN))
+    # SN = 1/(1/S0 + 1/(noise_std**2) * np.dot(X_train.T, X_train))
+    # mN = SN * (1/S0 * m0 + 1/(noise_std**2) * np.dot(X_train.T, Y_train))
+    # print("Expected mean", mN)
+    # print("Expected std_div", np.sqrt(SN))
