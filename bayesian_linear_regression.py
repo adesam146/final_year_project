@@ -133,14 +133,14 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
     posterior_optimizer = optim.Adam(
         approx_posterior.parameters(), lr=0.1)
 
-    # ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
+    ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
         ratio_optimizer, (0.9)**(1/100))
     posterior_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
         posterior_optimizer, (0.9)**(1/100))
 
     for epoch in range(epochs):
-        # ratio_lr_sch.step()
-        # posterior_lr_sch.step()
+        ratio_lr_sch.step()
+        posterior_lr_sch.step()
         for batch in data_loader:
             for _ in range(5):
                 beta_sample = approx_posterior.sample()
@@ -181,9 +181,15 @@ if __name__ == "__main__":
     approx_simulator = None
 
     inference(prior, approx_posterior, data_loader_train,
-              model_simulator, approx_simulator, epochs=1000)
+              model_simulator, approx_simulator, epochs=5000)
 
     approx_posterior.eval()
+
+    # The learnt std_dev tends to be larger than the expected and this
+    # is also the case for the implementation in Edward (original)
+    # Furthermore both in this and the original after more than 1000
+    # iteration the learnt mean goes above the expected with more than
+    # a decimal place difference
     print("Learnt mean", approx_posterior.mean)
     print("Learnt std_dev", torch.exp(approx_posterior.ln_sigma))
 
