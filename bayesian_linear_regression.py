@@ -51,7 +51,16 @@ class RatioEstimator(nn.Module):
 
         self.linear2 = nn.Linear(in_features=64, out_features=1, bias=True)
 
-    def forward(self, inputs):
+    def forward(self, y, beta):
+        """
+        y has shape (batch_size, 1)
+        beta has shape (D, 1)
+        """
+        B = y.shape[0]
+        D = beta.shape[0]
+        inputs = torch.cat(
+            (y, beta.view(1, D).expand(B, D)),
+            dim=1)
         h = self.linear1(inputs.view(-1, self.in_features))
         return self.linear2(F.relu(h))
 
@@ -75,18 +84,9 @@ def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulat
         approx_samples = Y
 
     # Calculate ratio loss
-    model_estimates = ratio_estimator(
-        torch.cat(
-            (model_samples, beta * torch.ones((Y.shape[0], 1))),
-            dim=1)
-    )
+    model_estimates = ratio_estimator(model_samples, beta)
 
-    approx_estimates = ratio_estimator(
-        torch.cat(
-            (approx_samples, beta * torch.ones((Y.shape[0], 1))),
-            dim=1)
-
-    )
+    approx_estimates = ratio_estimator(approx_samples, beta)
 
     ratio_loss = F.binary_cross_entropy_with_logits(model_estimates, torch.ones_like(
         model_estimates)) + F.binary_cross_entropy_with_logits(approx_estimates, torch.zeros_like(approx_estimates))
@@ -114,12 +114,7 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
         prior.log_prob(beta_sample)
 
     _, Y = data
-    sum_of_expec_est_2 = torch.sum(
-        ratio_estimator(
-            torch.cat((Y, beta_sample * torch.ones((Y.shape[0], 1))),
-                      dim=1)
-        )
-    )
+    sum_of_expec_est_2 = torch.sum(ratio_estimator(Y, beta_sample))
 
     loss = expec_est_1 - sum_of_expec_est_2
 
@@ -138,14 +133,14 @@ def inference(prior, approx_posterior, data_loader, model_simulator, approx_simu
     posterior_optimizer = optim.Adam(
         approx_posterior.parameters(), lr=0.1)
 
-    ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
+    # ratio_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
         ratio_optimizer, (0.9)**(1/100))
     posterior_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
         posterior_optimizer, (0.9)**(1/100))
 
     for epoch in range(epochs):
-        ratio_lr_sch.step()
-        posterior_lr_sch.step()
+        # ratio_lr_sch.step()
+        # posterior_lr_sch.step()
         for batch in data_loader:
             for _ in range(5):
                 beta_sample = approx_posterior.sample()
