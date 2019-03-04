@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 import torch.distributions as trd
-from torch.distributions import transform_to
+from trainable import TrainableNormal
 
 
 def linear_dataset(beta_true, N, noise_std=0.1):
@@ -19,32 +19,6 @@ def linear_dataset(beta_true, N, noise_std=0.1):
     Y = beta_true * X + noise
 
     return X, Y
-
-
-class TrainableNormal:
-    def __init__(self, init_mean=0, init_std_dev=1):
-        self.mean = torch.tensor(
-            init_mean, requires_grad=True, dtype=torch.float)
-        self.ln_sigma = torch.tensor(
-            np.log(init_std_dev), requires_grad=True, dtype=torch.float)
-
-    def log_prob(self, x):
-        return trd.Normal(loc=self.mean, scale=torch.exp(self.ln_sigma)).log_prob(x)
-
-    def rsample(self, sample_size=1):
-        return trd.Normal(loc=self.mean, scale=torch.exp(self.ln_sigma)).rsample((sample_size, 1))
-
-    def sample(self, sample_size=1):
-        return trd.Normal(loc=self.mean, scale=torch.exp(self.ln_sigma)).sample((sample_size, 1))
-
-    def parameters(self):
-        return [self.mean, self.ln_sigma]
-
-    def eval(self):
-        self.mean.requires_grad = self.ln_sigma.requires_grad = False
-
-    def train(self):
-        self.mean.requires_grad = self.ln_sigma.requires_grad = True
 
 
 class NormalLikelihoodSimulator():
@@ -155,7 +129,6 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
     posterior_optimizer.step()
 
     return loss.detach().item()
-
 
 def inference(prior, approx_posterior, data_loader, model_simulator, approx_simulator, epochs=10):
     # The input features are beta, y, x
