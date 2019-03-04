@@ -131,7 +131,7 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
     return loss.detach().item()
 
 def inference(prior, approx_posterior, data_loader, model_simulator, approx_simulator, epochs=10):
-    # The input features are beta, y, x
+    # The input features are beta, y
     ratio_estimator = RatioEstimator(in_features=2)
     ratio_optimizer = optim.Adam(
         ratio_estimator.parameters(), lr=0.1)
