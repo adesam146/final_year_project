@@ -28,15 +28,16 @@ class NormalLikelihoodSimulator():
     def simulate(self, beta, X):
         """
         TODO: using batching
-        X should be of the form (N, 1)
-        beta is of the form (1, 1)
+        X should be of the form (N, D)
+        beta is of the form (D, 1)
         output has shape (N, 1)
         """
-        mean = X * beta
+        mean = torch.matmul(X, beta.view(-1,1))
 
         return mean + self.noise_std * torch.randn(X.shape[0], 1)
 
     def log_prob(self, y, beta, x):
+        # TODO: update to work with multi-dimensional beta
         return -0.5 * np.log(2*math.pi) - 0.5 * np.log(self.noise_std ** 2) - 0.5 * (1/(self.noise_std ** 2)) * ((y - x * beta)**2)
 
 
