@@ -18,11 +18,12 @@ def get_expert_trajectories(N, end=100, T=10, std_div=1):
 
     distn = trd.MultivariateNormal(loc, covariance_matrix=cov)
 
-    return distn.sample((N,))
+    return distn.sample((N,)).view(-1, 1)
 
 
 fig, ax = plt.subplots()
 
+# trajectories is a N x 1 tensor
 trajectories = get_expert_trajectories(10)
 for t in trajectories:
     t_ = t.numpy()

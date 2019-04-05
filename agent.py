@@ -5,31 +5,51 @@ from matplotlib import pyplot as plt
 
 
 class Agent:
-    def __init__(self, T, dyn_std, start=0):
+    def __init__(self, policy, T, dyn_std, start=0):
         """
         T is the maximum time, i.e. a trajectory would be list of T+1 positions
         """
+        self.policy = policy
         self.T = T
         self.std = dyn_std
-        self.curr = start + self.std * np.random.randn()
-        self.trajectory = [self.curr]
+        self.trajectory = start + self.std * torch.randn(1)
 
     def _step(self):
-        #TODO: Mock
-        action = 1
-        self.curr += action + self.std * np.random.randn()
-        self.trajectory.append(self.curr)
+        curr = self.trajectory[-1]
+        action = self.policy.action(curr)
+        # Note it is important here not to use += so that a new
+        # object is created for self.curr each time
+        curr = curr + action + self.std * torch.randn(1)
+        self.trajectory = torch.cat((self.trajectory, curr))
 
     def act(self):
         for _ in range(self.T):
             self._step()
 
     def get_trajectory(self):
-        return torch.tensor(self.trajectory)
+        """
+        output: N x 1 tensor, where in this case 1 is the dim of the 
+        states "x_t"
+        """
+        return self.trajectory.view(-1, 1)
 
 
-agent = Agent(10, 0.01)
+class SimplePolicy:
+    def __init__(self):
+        self.theta = torch.randn(1, requires_grad=True)
+
+    def action(self, x):
+        return self.theta
+
+    def parameters(self):
+        return [self.theta]
+
+
+policy = SimplePolicy()
+agent = Agent(policy, 10, 0.01)
 
 agent.act()
 
 print(agent.get_trajectory())
+
+agent.get_trajectory()[0].backward()
