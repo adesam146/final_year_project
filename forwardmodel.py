@@ -37,6 +37,31 @@ class ForwardModel:
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
         return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample((1,)).squeeze()
 
+    def train(self):
+        # Find optimal model hyperparameters
+        self.model.train()
+        self.likelihood.train()
+
+        # Use the adam optimizer
+        optimizer = torch.optim.Adam([
+            {'params': self.model.parameters()},  # Includes GaussianLikelihood parameters
+        ], lr=0.1)
+
+        # "Loss" for GPs - the marginal log likelihood
+        mll = gpytorch.mlls.ExactMarginalLogLikelihood(self.likelihood, self.model)
+
+        training_iter = 50
+        for i in range(training_iter):
+            # Zero gradients from previous iteration
+            optimizer.zero_grad()
+            # Output from model
+            output = self.model(self.train_x)
+            # Calc loss and backprop gradients
+            loss = -mll(output, self.train_y).sum()
+            loss.backward()
+            print('Iter %d/%d - Loss: %.3f' % (i + 1, training_iter, loss.item()))
+            optimizer.step()
+
 
 class GPModel(gpytorch.models.ExactGP):
     def __init__(self, train_x, train_y, likelihood):
