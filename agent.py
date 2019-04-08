@@ -12,26 +12,35 @@ class Agent:
         self.policy = policy
         self.T = T
         self.std = dyn_std
-        self.trajectory = start + self.std * torch.randn(1)
+        self.state_dim = 1
+        self.curr = start + self.std * torch.randn(self.state_dim)
+        # Would be a T X D tensor
+        self.state_action_pairs = None
+
 
     def _step(self):
-        curr = self.trajectory[-1]
-        action = self.policy.action(curr)
+        action = self.policy.action(self.curr)
+
+        state_action = torch.cat((self.curr, action)).view(1, -1)
+        if self.state_action_pairs is not None:
+            self.state_action_pairs = torch.cat(
+                (self.state_action_pairs, state_action))
+        else:
+            self.state_action_pairs = state_action
+
         # Note it is important here not to use += so that a new
         # object is created for self.curr each time
-        curr = curr + action + self.std * torch.randn(1)
-        self.trajectory = torch.cat((self.trajectory, curr))
+        self.curr = self.curr + action + self.std * torch.randn(1)
 
     def act(self):
         for _ in range(self.T):
             self._step()
 
-    def get_trajectory(self):
+    def get_state_action_pairs(self):
         """
-        output: N x 1 tensor, where in this case 1 is the dim of the 
-        states "x_t"
+        Returns a T x D tensor
         """
-        return self.trajectory.view(-1, 1)
+        return self.state_action_pairs
 
 
 class SimplePolicy:
@@ -46,10 +55,10 @@ class SimplePolicy:
 
 
 policy = SimplePolicy()
-agent = Agent(policy, 10, 0.01)
+agent = Agent(policy, T=10, dyn_std=0.01)
 
-agent.act()
+with torch.no_grad():
+    # Only when generating samples from GP posterior do we need the grad wrt policy parameter
+    agent.act()
 
-print(agent.get_trajectory())
-
-agent.get_trajectory()[0].backward()
+print(agent.get_state_action_pairs())
