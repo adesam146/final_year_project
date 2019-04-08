@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 import gpytorch
+import torch.distributions as trd
 
 # Planning to use gpytorch since it integrates well
 # with pytorch, is modular (so should be quite flexible) and
@@ -8,7 +9,33 @@ import gpytorch
 
 
 class ForwardModel:
-    pass
+    def __init__(self, init_x, init_y):
+        """
+        This model assumes the states and actions have already been paired
+        to form the input into the GP
+        init_x: N x D
+        init_y: N x S
+        """
+        S = init_y.shape[1]
+        # train_x is now S x N x D which is what the GP expects
+        self.train_x = init_x.unsqueeze(0).repeat(S)
+        # train_y is now S x N
+        self.train_y = torch.t(init_y)
+
+        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=S)
+        self.model = GPModel(self.train_x, self.train_y, self.likelihood)
+
+    def rsample(self, x):
+        """
+        x: (Tst) x D
+        output: S
+        """
+        self.model.eval()
+        self.likelihood.eval()
+
+        # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
+        # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
+        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample((1,)).squeeze()
 
 
 class GPModel(gpytorch.models.ExactGP):
@@ -17,7 +44,7 @@ class GPModel(gpytorch.models.ExactGP):
         Let S be the dimension of the functions output,
         D the dimension of the input and N the number of data.
         We would model the actual function with S separate/independant GPs 
-        train_y: S x N x 1
+        train_y: S x N
         train_x: S x N x D
         """
         super(GPModel, self).__init__(train_x, train_y, likelihood)
