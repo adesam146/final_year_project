@@ -18,7 +18,7 @@ class ForwardModel:
         """
         S = init_y.shape[1]
         # train_x is now S x N x D which is what the GP expects
-        self.train_x = init_x.unsqueeze(0).repeat(S)
+        self.train_x = init_x.unsqueeze(0).repeat(S, 1, 1)
         # train_y is now S x N
         self.train_y = torch.t(init_y)
 
@@ -35,7 +35,20 @@ class ForwardModel:
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
-        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample((1,)).squeeze()
+        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample().squeeze()
+
+    def mean(self, x):
+        """
+        x: (Tst) x D
+        output: S
+        """
+        self.model.eval()
+        self.likelihood.eval()
+
+        # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
+        # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
+        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).mean.squeeze()
+
 
     def train(self):
         # Find optimal model hyperparameters

@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import torch.distributions as trd
 from matplotlib import pyplot as plt
+import matplotlib.colorbar as cbar
 
 
 class Agent:
@@ -55,10 +56,56 @@ class SimplePolicy:
 
 
 policy = SimplePolicy()
-agent = Agent(policy, T=10, dyn_std=0.01)
+T=2
+agent = Agent(policy, T=2, dyn_std=0.01)
 
 with torch.no_grad():
     # Only when generating samples from GP posterior do we need the grad wrt policy parameter
     agent.act()
 
-print(agent.get_state_action_pairs())
+raw_pairs = agent.get_state_action_pairs() 
+init_x = raw_pairs[:-1]
+init_y = raw_pairs[1:, 0].reshape(-1, 1)
+print(init_x)
+print(init_y)
+
+from forwardmodel import ForwardModel
+
+fm = ForwardModel(init_x, init_y)
+
+fm.train()
+
+nx = 100
+X = np.linspace(-(T+1), T+1, nx)
+U = np.linspace(-2, 2, nx)
+
+# Note number of test point is nx*nx Tst
+
+Y = np.zeros((nx, nx))
+for i, x in enumerate(X):
+    for j, u in enumerate(U):
+        Y[i,j] = fm.mean(torch.tensor([x, u])).item()
+
+# Converting to mesh form
+X, U = np.meshgrid(X, U)
+
+# PLOTTING 3D CURVE
+# from mpl_toolkits.mplot3d import Axes3D
+# fig = plt.figure()
+# ax = fig.gca(projection='3d')
+
+# from matplotlib import cm
+# # Plot the surface.
+# surf = ax.plot_surface(X, U, Y, cmap=cm.coolwarm,
+#                        linewidth=0, antialiased=False)
+
+fig, ax = plt.subplots()
+CS = ax.contour(X, U, Y)
+fig.colorbar(CS, ax=ax)
+
+plt.show()
+
+
+
+
+
