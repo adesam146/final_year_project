@@ -56,8 +56,8 @@ class SimplePolicy:
 
 
 policy = SimplePolicy()
-T=2
-agent = Agent(policy, T=2, dyn_std=0.01)
+T=10
+agent = Agent(policy, T, dyn_std=0.01)
 
 with torch.no_grad():
     # Only when generating samples from GP posterior do we need the grad wrt policy parameter
@@ -75,7 +75,7 @@ fm = ForwardModel(init_x, init_y)
 
 fm.train()
 
-nx = 100
+nx = 10
 X = np.linspace(-(T+1), T+1, nx)
 U = np.linspace(-2, 2, nx)
 
@@ -90,18 +90,23 @@ for i, x in enumerate(X):
 X, U = np.meshgrid(X, U)
 
 # PLOTTING 3D CURVE
-# from mpl_toolkits.mplot3d import Axes3D
-# fig = plt.figure()
-# ax = fig.gca(projection='3d')
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.gca(projection='3d')
 
-# from matplotlib import cm
+from matplotlib import cm
 # # Plot the surface.
-# surf = ax.plot_surface(X, U, Y, cmap=cm.coolwarm,
-#                        linewidth=0, antialiased=False)
+ax.scatter(init_x[:,0].numpy(), init_x[:,1].numpy(), init_y.numpy(), label="Data")
+surf = ax.plot_surface(X, U, Y, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False)
+ax.set_xlabel("x_t")
+ax.set_ylabel("u")
+ax.set_zlabel("x_t+1")
+ax.legend()
 
-fig, ax = plt.subplots()
-CS = ax.contour(X, U, Y)
-fig.colorbar(CS, ax=ax)
+# fig, ax = plt.subplots()
+# CS = ax.contour(X, U, Y)
+# fig.colorbar(CS, ax=ax)
 
 plt.show()
 
