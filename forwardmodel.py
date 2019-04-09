@@ -2,6 +2,8 @@ import numpy as np
 import torch
 import gpytorch
 import torch.distributions as trd
+from matplotlib import pyplot as plt
+import matplotlib.colorbar as cbar
 
 # Planning to use gpytorch since it integrates well
 # with pytorch, is modular (so should be quite flexible) and
@@ -25,7 +27,7 @@ class ForwardModel:
         self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=S)
         self.model = GPModel(self.train_x, self.train_y, self.likelihood)
 
-    def rsample(self, x):
+    def predict(self, x):
         """
         x: (Tst) x D
         output: S
@@ -35,9 +37,9 @@ class ForwardModel:
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
-        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample().squeeze()
+        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample().view(1)
 
-    def mean(self, x):
+    def __mean(self, x):
         """
         x: (Tst) x D
         output: S
@@ -47,7 +49,7 @@ class ForwardModel:
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
-        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).mean.squeeze()
+        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).mean.view(1)
 
 
     def train(self):
@@ -74,6 +76,42 @@ class ForwardModel:
             loss.backward()
             print('Iter %d/%d - Loss: %.3f' % (i + 1, training_iter, loss.item()))
             optimizer.step()
+
+    def plot_fm_mean(self, T=10):
+        nx = 10
+        X = np.linspace(-(T+1), T+1, nx)
+        U = np.linspace(-2, 2, nx)
+
+        # Note number of test point is nx*nx Tst
+
+        Y = np.zeros((nx, nx))
+        for i, x in enumerate(X):
+            for j, u in enumerate(U):
+                Y[i,j] = self.__mean(torch.tensor([x, u])).item()
+
+        # Converting to mesh form
+        X, U = np.meshgrid(X, U)
+
+        # PLOTTING 3D CURVE
+        from mpl_toolkits.mplot3d import Axes3D
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
+
+        from matplotlib import cm
+        # # Plot the surface.
+        ax.scatter(self.train_x[0,:,0].numpy(), self.train_x[0,:,1].numpy(), self.train_y[0].numpy(), label="Data")
+        surf = ax.plot_surface(X, U, Y, cmap=cm.coolwarm,
+                            linewidth=0, antialiased=False)
+        ax.set_xlabel("x_t")
+        ax.set_ylabel("u")
+        ax.set_zlabel("x_t+1")
+        ax.legend()
+
+        # fig, ax = plt.subplots()
+        # CS = ax.contour(X, U, Y)
+        # fig.colorbar(CS, ax=ax)
+
+        plt.show()
 
 
 class GPModel(gpytorch.models.ExactGP):
