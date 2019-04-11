@@ -34,10 +34,15 @@ class ForwardModel:
         """
         self.model.eval()
         self.likelihood.eval()
+        self.model.freeze_parameters()
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
-        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample().view(1)
+        output = self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample().view(1)
+
+        self.model.unfreeze_parameters()
+
+        return output
 
     def __mean(self, x):
         """
@@ -52,7 +57,7 @@ class ForwardModel:
         return self.likelihood(self.model(x.view(-1, x.shape[-1]))).mean.view(1)
 
 
-    def train(self):
+    def learn(self):
         # Find optimal model hyperparameters
         self.model.train()
         self.likelihood.train()
@@ -134,3 +139,17 @@ class GPModel(gpytorch.models.ExactGP):
         covar_x = self.covar_module(x)
 
         return gpytorch.distributions.MultivariateNormal(mean_x, covar_x)
+
+    def freeze_parameters(self):
+        """
+        This would also prevent grads from the likelihood parameters
+        """
+        for param in self.parameters():
+            param.requires_grad = False
+
+    def unfreeze_parameters(self):
+        """
+        This would also allow grads from the likelihood parameters
+        """
+        for param in self.parameters():
+            param.requires_grad = True
