@@ -40,7 +40,7 @@ def plot_trajectories(trajectories):
 
 # This is the number of observed samples from the expert
 expert_N = 5
-T = 10
+T = 5
 expert_trajectories = get_expert_trajectories(expert_N, T=T)
 
 # plot_trajectories(expert_trajectories)
