@@ -13,10 +13,7 @@ class Agent:
         self.std = dyn_std
         self.start = start
         self.state_dim = 1
-        self.curr = start + self.std * torch.randn(self.state_dim)
-        # Would be a T+1 X D tensor
-        self.state_action_pairs = None
-
+        self.go_to_beginning()
 
     def _step(self):
         action = self.policy.action(self.curr)
@@ -51,6 +48,12 @@ class Agent:
         assert self.state_action_pairs is not None
 
         return torch.cat((self.state_action_pairs[:, 0], self.curr))
+
+    def go_to_beginning(self):
+        self.curr = self.start + self.std * torch.randn(self.state_dim)
+        # Would be a T+1 X D tensor
+        self.state_action_pairs = None
+
 
 
 class SimplePolicy:

@@ -18,31 +18,31 @@ class ForwardModel:
         init_x: N x D
         init_y: N x S
         """
-        S = init_y.shape[1]
-        # train_x is now S x N x D which is what the GP expects
-        self.train_x = init_x.unsqueeze(0).repeat(S, 1, 1)
-        # train_y is now S x N
-        self.train_y = torch.t(init_y)
+        self.S = init_y.shape[1]
 
-        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=S)
-        self.model = GPModel(self.train_x, self.train_y, self.likelihood)
+        self.train_x, self.train_y = self.__process_inputs(init_x, init_y)
+
+        # See if this can be uncommented, I ideally want the same likelhood module throughout as I feel it allows reuse info?? Thereby, making finding optimal hyper-param easier
+        # self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=S)
+        self.likelihood = None
+        self.model = None
 
     def predict(self, x):
         """
         x: (Tst) x D
         output: S
         """
-        self.model.eval()
-        self.likelihood.eval()
-        self.model.freeze_parameters()
+        assert self.model is not None
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
-        output = self.likelihood(self.model(x.view(-1, x.shape[-1]))).rsample().view(1)
-
-        self.model.unfreeze_parameters()
+        output = self.likelihood(self.model(
+            self.__adjust_shape(x))).rsample().view(1)
 
         return output
+
+    def __adjust_shape(self, x):
+        return x.view(1, -1, x.shape[-1]).repeat(self.S, 1, 1)
 
     def __mean(self, x):
         """
@@ -54,21 +54,24 @@ class ForwardModel:
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
-        return self.likelihood(self.model(x.view(-1, x.shape[-1]))).mean.view(1)
-
+        return self.likelihood(self.model(self.__adjust_shape(x))).mean.view(1)
 
     def learn(self):
+        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=self.S)
+        self.model = GPModel(self.train_x, self.train_y, self.likelihood)
         # Find optimal model hyperparameters
         self.model.train()
         self.likelihood.train()
 
         # Use the adam optimizer
         optimizer = torch.optim.Adam([
-            {'params': self.model.parameters()},  # Includes GaussianLikelihood parameters
+            # Includes GaussianLikelihood parameters
+            {'params': self.model.parameters()},
         ], lr=0.1)
 
         # "Loss" for GPs - the marginal log likelihood
-        mll = gpytorch.mlls.ExactMarginalLogLikelihood(self.likelihood, self.model)
+        mll = gpytorch.mlls.ExactMarginalLogLikelihood(
+            self.likelihood, self.model)
 
         training_iter = 50
         for i in range(training_iter):
@@ -79,8 +82,44 @@ class ForwardModel:
             # Calc loss and backprop gradients
             loss = -mll(output, self.train_y).sum()
             loss.backward()
-            print('Iter %d/%d - Loss: %.3f' % (i + 1, training_iter, loss.item()))
+            print('Iter %d/%d - Loss: %.3f' %
+                  (i + 1, training_iter, loss.item()))
             optimizer.step()
+
+        self.model.freeze_parameters()
+        self.model.eval()
+        self.likelihood.eval()
+
+        # Random computation for force the kernel to be evaluated
+        # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
+        self.predict(torch.tensor([2.0, 2]))
+
+    def update_data(self, new_x, new_y):
+        """
+        new_x: N x D
+        new_y: N x S
+        """
+        new_x, new_y = self.__process_inputs(new_x, new_y)
+
+        self.train_x = torch.cat((self.train_x, new_x), dim=1)
+        self.train_y = torch.cat((self.train_y, new_y), dim=1)
+
+    def __process_inputs(self, x, y):
+        """
+        Puts inputs in batch form for the Batch GP
+        x: N x D
+        y: N x S
+        output[0]: S x N x D
+        output[1]: S x N
+        """
+        S = y.shape[1]
+        # X is now S x N x D which is what the GP expects
+        x = x.unsqueeze(0).repeat(S, 1, 1)
+        # y is now S x N
+        y = torch.t(y)
+
+        return x, y
+
 
     def plot_fm_mean(self, T=10):
         nx = 10
@@ -92,7 +131,7 @@ class ForwardModel:
         Y = np.zeros((nx, nx))
         for i, x in enumerate(X):
             for j, u in enumerate(U):
-                Y[i,j] = self.__mean(torch.tensor([x, u])).item()
+                Y[i, j] = self.__mean(torch.tensor([x, u])).item()
 
         # Converting to mesh form
         X, U = np.meshgrid(X, U)
@@ -104,7 +143,8 @@ class ForwardModel:
 
         from matplotlib import cm
         # # Plot the surface.
-        ax.scatter(self.train_x[0,:,0].numpy(), self.train_x[0,:,1].numpy(), self.train_y[0].numpy(), label="Data")
+        ax.scatter(self.train_x[0, :, 0].numpy(), self.train_x[0, :, 1].numpy(
+        ), self.train_y[0].numpy(), label="Data")
         surf = ax.plot_surface(X, U, Y, cmap=cm.coolwarm,
                             linewidth=0, antialiased=False)
         ax.set_xlabel("x_t")
