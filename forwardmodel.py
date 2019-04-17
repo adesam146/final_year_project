@@ -11,7 +11,7 @@ import matplotlib.colorbar as cbar
 
 
 class ForwardModel:
-    def __init__(self, init_x, init_y):
+    def __init__(self, init_x, init_y, device):
         """
         This model assumes the states and actions have already been paired
         to form the input into the GP
@@ -19,6 +19,7 @@ class ForwardModel:
         init_y: N x S
         """
         self.S = init_y.shape[1]
+        self.device = device
 
         self.train_x, self.train_y = self.__process_inputs(init_x, init_y)
 
@@ -30,14 +31,14 @@ class ForwardModel:
     def predict(self, x):
         """
         x: (Tst) x D
-        output: S
+        output: (Tst) x S
         """
         assert self.model is not None
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
-        # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
+        # Output from sample is (n x ) S x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
         output = self.likelihood(self.model(
-            self.__adjust_shape(x))).rsample().view(1)
+            self.__adjust_shape(x))).rsample().view(-1, self.S)
 
         return output
 
@@ -57,8 +58,14 @@ class ForwardModel:
         return self.likelihood(self.model(self.__adjust_shape(x))).mean.view(1)
 
     def learn(self):
-        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=self.S)
-        self.model = GPModel(self.train_x, self.train_y, self.likelihood)
+        if self.model is not None:
+            # Consider how model can be set in constructor and reused
+            # i.e. the fantasy model thing
+            self.model.cpu()
+            self.likelihood.cpu()
+
+        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=self.S).to(self.device)
+        self.model = GPModel(self.train_x, self.train_y, self.likelihood).to(self.device)
         # Find optimal model hyperparameters
         self.model.train()
         self.likelihood.train()
@@ -92,7 +99,7 @@ class ForwardModel:
 
         # Random computation for force the kernel to be evaluated
         # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
-        self.predict(torch.tensor([2.0, 2]))
+        self.predict(torch.tensor([2.0, 2], device=self.device))
 
     def update_data(self, new_x, new_y):
         """
