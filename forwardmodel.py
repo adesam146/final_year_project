@@ -15,46 +15,50 @@ class ForwardModel:
         """
         This model assumes the states and actions have already been paired
         to form the input into the GP
-        init_x: N x D
-        init_y: N x S
+        init_x: N x D+F
+        init_y: N x D
         """
-        self.S = init_y.shape[1]
+        self.D = init_y.shape[1]
         self.device = device
 
         self.train_x, self.train_y = self.__process_inputs(init_x, init_y)
 
         # See if this can be uncommented, I ideally want the same likelhood module throughout as I feel it allows reuse info?? Thereby, making finding optimal hyper-param easier
-        # self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=S)
+        # self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=D)
         self.likelihood = None
         self.model = None
 
     def predict(self, x):
         """
-        x: (Tst) x D
-        output: (Tst) x S
+        x: Tst x D+F
+        output: Tst x D
         """
         assert self.model is not None
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
-        # Output from sample is (n x ) S x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
+        # Output from sample is (n x ) D x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
         output = self.likelihood(self.model(
-            self.__adjust_shape(x))).rsample().view(-1, self.S)
+            self.__adjust_shape(x))).rsample().view(-1, self.D)
 
         return output
 
     def __adjust_shape(self, x):
-        return x.view(1, -1, x.shape[-1]).repeat(self.S, 1, 1)
+        """
+        x: Tst x D+F
+        output: D x Tst x D+F
+        """
+        return x.view(1, -1, x.shape[-1]).repeat(self.D, 1, 1)
 
     def __mean(self, x):
         """
-        x: (Tst) x D
-        output: S
+        x: (Tst) x D+F
+        output: D
         """
         self.model.eval()
         self.likelihood.eval()
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
-        # We squeeze since output without would be: n x S x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
+        # We squeeze since output without would be: n x D x Tst = 1 x 1 x 1 in this case. Where n is number of sample and Tst is number of test points
         return self.likelihood(self.model(self.__adjust_shape(x))).mean.view(1)
 
     def learn(self):
@@ -64,8 +68,10 @@ class ForwardModel:
             self.model.cpu()
             self.likelihood.cpu()
 
-        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(batch_size=self.S).to(self.device)
-        self.model = GPModel(self.train_x, self.train_y, self.likelihood).to(self.device)
+        self.likelihood = gpytorch.likelihoods.GaussianLikelihood(
+            batch_size=self.D).to(self.device)
+        self.model = GPModel(self.train_x, self.train_y,
+                             self.likelihood).to(self.device)
         # Find optimal model hyperparameters
         self.model.train()
         self.likelihood.train()
@@ -99,12 +105,12 @@ class ForwardModel:
 
         # Random computation for force the kernel to be evaluated
         # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
-        self.predict(torch.tensor([2.0, 2], device=self.device))
+        self.predict(torch.zeros(1, self.train_x.shape[-1]))
 
     def update_data(self, new_x, new_y):
         """
-        new_x: N x D
-        new_y: N x S
+        new_x: N x D+F
+        new_y: N x D
         """
         new_x, new_y = self.__process_inputs(new_x, new_y)
 
@@ -114,19 +120,18 @@ class ForwardModel:
     def __process_inputs(self, x, y):
         """
         Puts inputs in batch form for the Batch GP
-        x: N x D
-        y: N x S
-        output[0]: S x N x D
-        output[1]: S x N
+        x: N x D+F
+        y: N x D
+        output[0]: D x N x D+F
+        output[1]: D x N
         """
-        S = y.shape[1]
-        # X is now S x N x D which is what the GP expects
-        x = x.unsqueeze(0).repeat(S, 1, 1)
-        # y is now S x N
+        D = y.shape[1]
+        # X is now D x N x D+F which is what the GP expects
+        x = x.unsqueeze(0).repeat(D, 1, 1)
+        # y is now D x N
         y = torch.t(y)
 
         return x, y
-
 
     def plot_fm_mean(self, T=10):
         nx = 10
@@ -153,7 +158,7 @@ class ForwardModel:
         ax.scatter(self.train_x[0, :, 0].numpy(), self.train_x[0, :, 1].numpy(
         ), self.train_y[0].numpy(), label="Data")
         surf = ax.plot_surface(X, U, Y, cmap=cm.coolwarm,
-                            linewidth=0, antialiased=False)
+                               linewidth=0, antialiased=False)
         ax.set_xlabel("x_t")
         ax.set_ylabel("u")
         ax.set_zlabel("x_t+1")
@@ -169,11 +174,11 @@ class ForwardModel:
 class GPModel(gpytorch.models.ExactGP):
     def __init__(self, train_x, train_y, likelihood):
         """
-        Let S be the dimension of the functions output,
-        D the dimension of the input and N the number of data.
-        We would model the actual function with S separate/independant GPs 
-        train_y: S x N
-        train_x: S x N x D
+        Let D be the dimension of the functions output,
+        D+F the dimension of the input and N the number of data.
+        We would model the actual function with D separate/independant GPs 
+        train_y: D x N
+        train_x: D x N x D+F
         """
         super(GPModel, self).__init__(train_x, train_y, likelihood)
         num_output = train_y.shape[0]
