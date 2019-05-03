@@ -38,7 +38,7 @@ class Agent:
 
     def get_state_action_pairs(self):
         """
-        output: T x D
+        output: T x D+F
         """
         assert self.state_action_pairs is not None
 
@@ -55,7 +55,7 @@ class Agent:
     def go_to_beginning(self):
         self.curr = self.start + self.std * \
             torch.randn(self.state_dim, device=self.device)
-        # Would be a T+1 X D tensor
+        # Would be a T+1 X D+F tensor
         self.state_action_pairs = None
 
 

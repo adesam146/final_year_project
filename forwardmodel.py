@@ -46,6 +46,7 @@ class ForwardModel:
         """
         x: Tst x D+F
         output: D x Tst x D+F
+        Need to replicate x for each target dimension
         """
         return x.view(1, -1, x.shape[-1]).repeat(self.D, 1, 1)
 

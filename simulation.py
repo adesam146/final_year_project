@@ -48,17 +48,18 @@ def plot_trajectories(trajectories):
 
 def get_input_output(agent):
     """
-    output x: T X D
+    output x: T X D+F
     output y: T x 1
     """
     x = agent.get_state_action_pairs()
-    y = agent.get_curr_trajectory()[1:].reshape(-1, 1) - x[:,0].view(-1, 1)
+    y = agent.get_curr_trajectory()[1:].reshape(-1, 1) - x[:, 0].view(-1, 1)
     return x, y
+
 
 # This is the number of observed samples from the expert
 expert_N = 5
 T = 10
-print(T)
+
 expert_trajectories = get_expert_trajectories(expert_N, T=T)
 print(expert_trajectories[0])
 
@@ -95,6 +96,8 @@ disc_optimizer = torch.optim.Adam(disc.parameters())
 policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
     policy_optimizer, gamma=0.99)
 
+# This is the number of samples from each distribution to be compared
+# against each other
 N = 512
 
 bce_logit_loss = torch.nn.BCEWithLogitsLoss()
@@ -112,14 +115,16 @@ for expr in range(num_of_experience-1):
 
     for i in range(expr):
         # Optimize policy for given forward model
-        # N samples from estimated expert distribution. Shape: N x T+1
-        expert_samples = expert_distn.sample((N,)).to(device)
+        # N samples from estimated expert distribution. Shape: N x T
+        expert_samples = expert_distn.sample((N,))[:, :T].to(device)
 
-        fm_samples = torch.empty(N, T+1, device=device)
+        fm_samples = torch.empty(N, T, device=device)
         x = init_state_distn.sample((N,)).to(device)
-        fm_samples[:, 0] = x
-        for t in range(1, T+1):
-            y = fm.predict(torch.cat((x.view(-1,1), policy.action(x).unsqueeze(0).repeat(N, 1)), dim=1))
+        for t in range(T):
+            y = fm.predict(
+                torch.cat(
+                    (x.view(-1, 1), policy.action(x).unsqueeze(0).repeat(N, 1)), dim=1)
+            )
             x = x + y.view(N)
             fm_samples[:, t] = x
 
@@ -137,26 +142,22 @@ for expr in range(num_of_experience-1):
 
         disc_loss = loss_real + loss_fake
         disc_loss.backward()
-
-        disc_losses.append(disc_loss.detach().item())
-
         disc_optimizer.step()
+        disc_losses.append(disc_loss.detach().item())
 
         # Optimise policy
         policy_optimizer.zero_grad()
-
         policy_loss = bce_logit_loss(disc(fm_samples), real_target)
-
         policy_loss.backward()
-
+        policy_optimizer.step()
         policy_losses.append(policy_loss.detach().item())
 
-        policy_optimizer.step()
-
-        print("Experience {}, Iter {}, disc loss: {}, policy loss: {}".format(expr, i, disc_losses[-1], policy_losses[-1]))
+        print("Experience {}, Iter {}, disc loss: {}, policy loss: {}".format(
+            expr, i, disc_losses[-1], policy_losses[-1]))
 
     print(policy.theta)
     policies.append(policy.theta.detach().item())
+    
     # Get more experienial data
     with torch.no_grad():
         agent.go_to_beginning()
@@ -178,16 +179,19 @@ for ax in axs:
 
 plt.show()
 
-fig.suptitle(f'Behaviour of density matching objective with {num_of_experience} agent experience with true agent dynamics')
-fig.savefig(f'./plots/compareT/losses-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
+fig.suptitle(
+    f'Behaviour of density matching objective with {num_of_experience} agent experience with true agent dynamics')
+fig.savefig(
+    f'./plots/compareT/losses-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
 
 print(policy.theta)
 
-fig, ax = plt.subplots(figsize=(16,10))
+fig, ax = plt.subplots(figsize=(16, 10))
 
 ax.plot(policies)
 
 fig.suptitle("Learnt policy value against number of experience")
-fig.savefig(f'./plots/compareT/learn_policy_vs_experience-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
+fig.savefig(
+    f'./plots/compareT/learn_policy_vs_experience-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
 
 plt.show()
