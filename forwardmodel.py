@@ -106,7 +106,7 @@ class ForwardModel:
 
         # Random computation for force the kernel to be evaluated
         # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
-        self.predict(torch.zeros(1, self.train_x.shape[-1]))
+        self.predict(torch.zeros(1, self.train_x.shape[-1], device=self.device))
 
     def update_data(self, new_x, new_y):
         """

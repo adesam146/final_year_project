@@ -79,7 +79,7 @@ for expr in range(1, num_of_experience+1):
     for i in range(expr):
         # Optimize policy for given forward model
 
-        fm_samples = torch.empty(N, T, state_dim, device=device)
+        fm_samples = expert_samples.new_empty(N, T, state_dim)
         x = init_state_distn.sample((N,)).to(device)
         for t in range(T):
             y = fm.predict(
@@ -123,10 +123,9 @@ for expr in range(1, num_of_experience+1):
 
     # Plotting expert theta trajectory
     for i in range(N):
-        ax.plot(np.arange(1, T+1), expert_samples.to(torch.device('cpu')
-                                                     ).numpy()[i, :, 3], alpha=0.15, color='blue')
+        ax.plot(np.arange(1, T+1), expert_samples.cpu().numpy()[i, :, 3], alpha=0.15, color='blue')
 
-    ax.plot(np.arange(0, T+1), traj.numpy()[:, 3], color='red')
+    ax.plot(np.arange(0, T+1), traj.cpu().numpy()[:, 3], color='red')
 
     ax.set_xlabel("Time steps")
     ax.set_ylabel(r'$\theta$')
