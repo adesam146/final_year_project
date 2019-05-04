@@ -37,7 +37,7 @@ class CartPoleAgent():
 
         # Updating state action pair and adding measurement noise to state
         state_action = torch.cat(
-            (self.state + self.err_distn.sample(), action)).view(1, -1)
+            (self.state + self.err_distn.sample().to(self.device), action)).view(1, -1)
         if self.state_action_pairs is not None:
             self.state_action_pairs = torch.cat(
                 (self.state_action_pairs, state_action))
@@ -69,8 +69,7 @@ class CartPoleAgent():
         return output
 
     def go_to_beginning(self):
-        # Using the error distribution for the start state as well
-        self.state = self.err_distn.sample()
+        self.state = self.init_state_distn.sample().to(self.device)
 
         # Going to be a T x D+F
         self.state_action_pairs = None
