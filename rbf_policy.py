@@ -6,6 +6,7 @@ class RBFPolicy:
         self.u_max = u_max
         self.input_dim = input_dim
         self.nbasis = nbasis
+        self.device = device
         self.weights = torch.randn(nbasis, requires_grad=True, device=device)
         self.centers = torch.randn(input_dim, nbasis, requires_grad=True, device=device)
         self.ln_vars = torch.randn(input_dim, requires_grad=True, device=device)
@@ -23,7 +24,7 @@ class RBFPolicy:
         # return torch.matmul(self.weights, torch.exp())
         inv_gamma = torch.diag(1/torch.exp(self.ln_vars))
 
-        bases = torch.empty(batch, self.nbasis)
+        bases = torch.empty(batch, self.nbasis, device=self.device)
         for i in range(self.nbasis):
             x_minus_c_t = x.view(batch, self.input_dim) - self.centers[:, i]
             bases[:, i] = torch.diag(torch.chain_matmul(x_minus_c_t, inv_gamma, torch.t(x_minus_c_t)))
