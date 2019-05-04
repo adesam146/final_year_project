@@ -46,8 +46,8 @@ class CartPoleAgent():
 
         # Solving ODE
         # Using a zero order hold with no delay for the controller
-        sol = odeint(cartpole_dynamics, self.state.numpy(), t=np.array(
-            [0, self.dt]), args=(lambda t: action.detach().numpy().item(),), tfirst=True)
+        sol = odeint(cartpole_dynamics, self.state.cpu().numpy(), t=np.array(
+            [0, self.dt]), args=(lambda t: action.detach().cpu().numpy().item(),), tfirst=True)
 
         self.state = torch.from_numpy(sol[1, :]).type(action.dtype)
 
