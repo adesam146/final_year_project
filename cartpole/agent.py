@@ -17,17 +17,17 @@ class CartPoleAgent():
         self.dt = dt
         self.T = int(np.ceil(time/self.dt))
         self.policy = policy
+        self.device = device
 
         self.init_state_distn = init_state_distn
         if init_state_distn is None:
             self.init_state_distn = trd.MultivariateNormal(torch.zeros(
-                self.state_dim), covariance_matrix=torch.diag(0.1**2*torch.ones(self.state_dim)))
+                self.state_dim, device=self.device), covariance_matrix=torch.diag(0.1**2*torch.ones(self.state_dim, device=self.device)))
 
         # This is the measurement noise
         self.err_distn = trd.MultivariateNormal(
-            torch.zeros(self.state_dim), covariance_matrix=measurement_var)
+            torch.zeros(self.state_dim, device=self.device), covariance_matrix=measurement_var.to(self.device))
 
-        self.device = device
 
         self.go_to_beginning()
 
@@ -37,7 +37,7 @@ class CartPoleAgent():
 
         # Updating state action pair and adding measurement noise to state
         state_action = torch.cat(
-            (self.state + self.err_distn.sample().to(self.device), action)).view(1, -1)
+            (self.state + self.err_distn.sample(), action)).view(1, -1)
         if self.state_action_pairs is not None:
             self.state_action_pairs = torch.cat(
                 (self.state_action_pairs, state_action))
@@ -49,7 +49,7 @@ class CartPoleAgent():
         sol = odeint(cartpole_dynamics, self.state.cpu().numpy(), t=np.array(
             [0, self.dt]), args=(lambda t: action.detach().cpu().numpy().item(),), tfirst=True)
 
-        self.state = torch.from_numpy(sol[1, :]).type(action.dtype)
+        self.state = torch.from_numpy(sol[1, :]).type(action.dtype).to(self.device)
 
     def act(self):
         """
@@ -69,7 +69,7 @@ class CartPoleAgent():
         return output
 
     def go_to_beginning(self):
-        self.state = self.init_state_distn.sample().to(self.device)
+        self.state = self.init_state_distn.sample()
 
         # Going to be a T x D+F
         self.state_action_pairs = None
