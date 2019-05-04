@@ -6,6 +6,7 @@ from cartpole.utils import get_train_y, get_expert_data
 from forwardmodel import ForwardModel
 from rbf_policy import RBFPolicy
 from discrimator import Discrimator
+import matplotlib.pyplot as plt
 
 
 # TODO: Consider
@@ -34,9 +35,9 @@ policy = RBFPolicy(u_max=10, input_dim=state_dim, nbasis=10, device=device)
 dt = 0.1
 time = 4
 T = int(np.ceil(4/dt))
-dyn_var = torch.diag(0.01**2 * torch.ones(state_dim))
+measurement_var = torch.diag(0.01**2 * torch.ones(state_dim))
 agent = CartPoleAgent(dt=dt, time=time, policy=policy,
-                      dyn_var=dyn_var, device=device)
+                      measurement_var=measurement_var, device=device)
 
 with torch.no_grad():
     # Only when generating samples from GP posterior do we need the grad wrt policy parameter
@@ -69,7 +70,8 @@ num_of_experience = 50
 disc_losses = []
 policy_losses = []
 
-for expr in range(num_of_experience-1):
+for expr in range(1, num_of_experience+1):
+    print("Experience:", expr)
     fm.learn()
 
     policy_lr_sch.step()
@@ -115,3 +117,21 @@ for expr in range(num_of_experience-1):
         new_y = get_train_y(traj)
 
     fm.update_data(new_x, new_y)
+
+    # Plotting progress
+    fig, ax = plt.subplots()
+
+    # Plotting expert theta trajectory
+    for i in range(N):
+        ax.plot(np.arange(1, T+1), expert_samples.to(torch.device('cpu')
+                                                     ).numpy()[i, :, 3], alpha=0.15, color='blue')
+
+    ax.plot(np.arange(0, T+1), traj.numpy()[:, 3], color='red')
+
+    ax.set_xlabel("Time steps")
+    ax.set_ylabel(r'$\theta$')
+    ax.set_title(
+        r"$\theta$ of expert vs learner with {} number of experience".format(expr))
+
+    fig.savefig(
+        f'./cartpole/plots/expert_vs_learner_{expr}.png', format='png')
