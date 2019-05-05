@@ -17,18 +17,17 @@ class RBFPolicy:
     def __call__(self, x):
         """
         x: (batch) x D
-        output: batch x 1
+        output: batch
         """
-        batch = 1
-        if x.dim() > 1:
-            batch = x.shape[0]
+        x = x.view(-1, self.input_dim)
+        batch = x.shape[0]
 
         # return torch.matmul(self.weights, torch.exp())
         inv_gamma = torch.diag(1/torch.exp(self.ln_vars))
 
         bases = torch.empty(batch, self.nbasis, device=self.device)
         for i in range(self.nbasis):
-            x_minus_c_t = x.view(batch, self.input_dim) - self.centers[:, i]
+            x_minus_c_t = x - self.centers[:, i]
             bases[:, i] = torch.diag(torch.chain_matmul(
                 x_minus_c_t, inv_gamma, torch.t(x_minus_c_t)))
 

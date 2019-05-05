@@ -18,7 +18,7 @@ class Agent:
         self.go_to_beginning()
 
     def _step(self):
-        action = self.policy.action(self.curr)
+        action = self.policy(self.curr)
 
         state_action = torch.cat((self.curr, action)).view(1, -1)
         if self.state_action_pairs is not None:
@@ -64,6 +64,9 @@ class SimplePolicy:
         self.device = device
         self.theta = torch.randn(1, requires_grad=True, device=device)
 
+    def __call__(self, x):
+        return self.action(x)
+    
     def action(self, x):
         return self.theta
 

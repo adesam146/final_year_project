@@ -71,7 +71,9 @@ expert_var = 1.0/(expert_N-1) * \
 
 expert_distn = trd.MultivariateNormal(expert_mu, torch.diag(expert_var))
 
-policy = SimplePolicy(device)
+# policy = SimplePolicy(device)
+from rbf_policy import RBFPolicy
+policy = RBFPolicy(u_max=100, input_dim=1, nbasis=10, device=device)
 dyn_std = 1e-1
 agent = Agent(policy, T, dyn_std=dyn_std, device=device)
 
@@ -123,12 +125,12 @@ for expr in range(num_of_experience-1):
         for t in range(T):
             y = fm.predict(
                 torch.cat(
-                    (x.view(-1, 1), policy.action(x).unsqueeze(0).repeat(N, 1)), dim=1)
+                    (x.view(-1, 1), policy(x).view(-1, 1)), dim=1)
             )
             x = x + y.view(N)
             fm_samples[:, t] = x
 
-            # x = trd.Normal(x+policy.action(x), scale=1e-3).rsample()
+            # x = trd.Normal(x+policy(x), scale=1e-3).rsample()
             # fm_samples[:,t] = x.view(N)
 
         # Train Discrimator
@@ -155,8 +157,8 @@ for expr in range(num_of_experience-1):
         print("Experience {}, Iter {}, disc loss: {}, policy loss: {}".format(
             expr, i, disc_losses[-1], policy_losses[-1]))
 
-    print(policy.theta)
-    policies.append(policy.theta.detach().item())
+    # print(policy.theta)
+    # policies.append(policy.theta.detach().item())
     
     # Get more experienial data
     with torch.no_grad():
@@ -184,14 +186,14 @@ fig.suptitle(
 fig.savefig(
     f'./plots/compareT/losses-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
 
-print(policy.theta)
+# print(policy.theta)
 
-fig, ax = plt.subplots(figsize=(16, 10))
+# fig, ax = plt.subplots(figsize=(16, 10))
 
-ax.plot(policies)
+# ax.plot(policies)
 
-fig.suptitle("Learnt policy value against number of experience")
-fig.savefig(
-    f'./plots/compareT/learn_policy_vs_experience-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
+# fig.suptitle("Learnt policy value against number of experience")
+# fig.savefig(
+#     f'./plots/compareT/learn_policy_vs_experience-{num_of_experience}-T-{T}-lr-{policy_lr}-dynstd-{dyn_std}-N-{N}.png', format='png')
 
-plt.show()
+# plt.show()
