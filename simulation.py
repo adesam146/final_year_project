@@ -1,3 +1,4 @@
+from rbf_policy import RBFPolicy
 from forwardmodel import ForwardModel
 from agent import Agent, SimplePolicy
 import numpy as np
@@ -72,9 +73,8 @@ expert_var = 1.0/(expert_N-1) * \
 expert_distn = trd.MultivariateNormal(expert_mu, torch.diag(expert_var))
 
 # policy = SimplePolicy(device)
-from rbf_policy import RBFPolicy
-policy = RBFPolicy(u_max=100, input_dim=1, nbasis=10, device=device)
-dyn_std = 1e-1
+policy = RBFPolicy(u_max=20, input_dim=1, nbasis=5, device=device)
+dyn_std = 1e-2
 agent = Agent(policy, T, dyn_std=dyn_std, device=device)
 
 with torch.no_grad():
@@ -100,17 +100,17 @@ policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 
 # This is the number of samples from each distribution to be compared
 # against each other
-N = 512
+N = 128
 
 bce_logit_loss = torch.nn.BCEWithLogitsLoss()
 real_target = torch.ones(N, 1, device=device)
 fake_target = torch.zeros(N, 1, device=device)
 
-num_of_experience = 50
+num_of_experience = 2
 disc_losses = []
 policy_losses = []
 policies = []
-for expr in range(num_of_experience-1):
+for expr in range(1, num_of_experience+1):
     fm.learn()
 
     policy_lr_sch.step()
@@ -122,16 +122,23 @@ for expr in range(num_of_experience-1):
 
         fm_samples = torch.empty(N, T, device=device)
         x = init_state_distn.sample((N,)).to(device)
-        for t in range(T):
-            y = fm.predict(
-                torch.cat(
-                    (x.view(-1, 1), policy(x).view(-1, 1)), dim=1)
-            )
-            x = x + y.view(N)
-            fm_samples[:, t] = x
+        # for t in range(T):
+        #     y = fm.predict(
+        #         torch.cat(
+        #             (x.view(-1, 1), policy(x).view(-1, 1)), dim=1)
+        #     )
+        #     x = x + y.view(N)
+        #     fm_samples[:, t] = x
 
-            # x = trd.Normal(x+policy(x), scale=1e-3).rsample()
-            # fm_samples[:,t] = x.view(N)
+        for x0 in x:
+            x_t = x0
+            for t in range(T):
+                x_t_u_t = torch.cat(
+                    (x_t.view(-1, 1), policy(x_t).view(-1, 1)), dim=1)
+                y = fm.predict(x_t_u_t)
+                fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
+                x_t = x_t + y
+                fm_samples[:, t] = x_t
 
         # Train Discrimator
         disc_optimizer.zero_grad()
@@ -159,7 +166,7 @@ for expr in range(num_of_experience-1):
 
     # print(policy.theta)
     # policies.append(policy.theta.detach().item())
-    
+
     # Get more experienial data
     with torch.no_grad():
         agent.go_to_beginning()
@@ -169,6 +176,17 @@ for expr in range(num_of_experience-1):
 
     fm.update_data(new_x, new_y)
 
+    fig, ax = plt.subplots()
+
+    ax.plot(np.arange(0, T+1), agent.get_curr_trajectory().cpu().numpy())
+
+    ax.set_xlabel("Time steps")
+    ax.set_ylabel(r'$x_t$')
+    ax.set_title(
+        r"$x_t$ learner with {} number of training experience".format(expr))
+
+    fig.savefig(
+        f'./plots/learner_{expr}-T-{T}-N-{N}.png', format='png')
 
 fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(16, 10))
 
@@ -178,8 +196,6 @@ axs[1].plot(policy_losses, label="Losses for generator/policy")
 for ax in axs:
     ax.set_xlabel("Number of iterations for density matching objective")
     ax.legend()
-
-plt.show()
 
 fig.suptitle(
     f'Behaviour of density matching objective with {num_of_experience} agent experience with true agent dynamics')

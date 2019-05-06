@@ -23,7 +23,7 @@ class RBFPolicy:
         batch = x.shape[0]
 
         # return torch.matmul(self.weights, torch.exp())
-        inv_gamma = torch.diag(1/torch.exp(self.ln_vars))
+        inv_gamma = torch.diag(1/(torch.exp(self.ln_vars)+1e-8))
 
         bases = torch.empty(batch, self.nbasis, device=self.device)
         for i in range(self.nbasis):
