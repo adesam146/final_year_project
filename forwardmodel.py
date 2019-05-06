@@ -19,6 +19,7 @@ class ForwardModel:
         init_y: N x D
         """
         self.D = init_y.shape[1]
+        self.F = init_x.shape[-1] - self.D
         self.device = device
 
         self.train_x, self.train_y = self.__process_inputs(init_x, init_y)
@@ -37,18 +38,10 @@ class ForwardModel:
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # Output from sample is (n x ) D x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
-        output = self.likelihood(self.model(
-            self.__adjust_shape(x))).rsample().view(-1, self.D)
+        output = torch.t(self.likelihood(self.model(
+            self.__adjust_shape(x))).rsample())
 
         return output
-
-    def __adjust_shape(self, x):
-        """
-        x: Tst x D+F
-        output: D x Tst x D+F
-        Need to replicate x for each target dimension
-        """
-        return x.view(1, -1, x.shape[-1]).repeat(self.D, 1, 1)
 
     def __mean(self, x):
         """
@@ -104,6 +97,10 @@ class ForwardModel:
         self.model.eval()
         self.likelihood.eval()
 
+        # TO be used for addition of fantasy data
+        self.dummy_x = self.train_x
+        self.dummy_y = self.train_y
+
         # Random computation for force the kernel to be evaluated
         # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
         self.predict(torch.zeros(1, self.train_x.shape[-1], device=self.device))
@@ -118,6 +115,20 @@ class ForwardModel:
         self.train_x = torch.cat((self.train_x, new_x), dim=1)
         self.train_y = torch.cat((self.train_y, new_y), dim=1)
 
+    def add_fantasy_data(self, x, y):
+        """
+        x: (N x) D+F
+        y: (N x) D
+        """
+        assert self.model is not None
+
+        x, y = self.__process_inputs(x.view(-1, self.D+self.F), y.view(-1, self.D))
+
+        self.dummy_x = torch.cat((self.dummy_x, x), dim=1)
+        self.dummy_y = torch.cat((self.dummy_y, y), dim=1)
+
+        self.model.set_train_data(self.dummy_x, self.dummy_y, strict=False)
+
     def __process_inputs(self, x, y):
         """
         Puts inputs in batch form for the Batch GP
@@ -126,13 +137,20 @@ class ForwardModel:
         output[0]: D x N x D+F
         output[1]: D x N
         """
-        D = y.shape[1]
         # X is now D x N x D+F which is what the GP expects
-        x = x.unsqueeze(0).repeat(D, 1, 1)
+        x = self.__adjust_shape(x)
         # y is now D x N
         y = torch.t(y)
 
         return x, y
+
+    def __adjust_shape(self, x):
+        """
+        x: Tst x D+F
+        output: D x Tst x D+F
+        Need to replicate x for each target dimension
+        """
+        return x.unsqueeze(0).repeat(self.D, 1, 1)
 
     def plot_fm_mean(self, T=10):
         nx = 10
