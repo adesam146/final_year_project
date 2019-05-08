@@ -4,6 +4,7 @@ from agent import Agent, SimplePolicy
 import numpy as np
 import torch
 import torch.distributions as trd
+import torch.nn.functional as F
 from matplotlib import pyplot as plt
 from discrimator import Discrimator
 
@@ -22,7 +23,7 @@ else:
     device = torch.device("cpu")
 
 
-def get_expert_trajectories(N, end=100, T=10, std_div=0.01):
+def get_expert_trajectories(N, end=10, T=10, std_div=0.01):
     """
     output: N x T+1
     """
@@ -57,6 +58,9 @@ def get_input_output(agent):
     return x, y
 
 
+state_dim = 1
+action_dim = 1
+
 # This is the number of observed samples from the expert
 expert_N = 5
 T = 10
@@ -73,7 +77,7 @@ expert_var = 1.0/(expert_N-1) * \
 expert_distn = trd.MultivariateNormal(expert_mu, torch.diag(expert_var))
 
 # policy = SimplePolicy(device)
-policy = RBFPolicy(u_max=20, input_dim=1, nbasis=5, device=device)
+policy = RBFPolicy(u_max=20, input_dim=state_dim, nbasis=5, device=device)
 dyn_std = 1e-2
 agent = Agent(policy, T, dyn_std=dyn_std, device=device)
 
@@ -83,16 +87,18 @@ with torch.no_grad():
 
 init_x, init_y = get_input_output(agent)
 
-fm = ForwardModel(init_x.to(device), init_y.to(device), device=device)
+fm = ForwardModel(init_x=init_x.to(device),
+                  init_y=init_y.to(device), D=state_dim, S=state_dim, F=action_dim, device=device)
 
 # fm.plot_fm_mean(T=T)
 
 # We are free to choose what the initial state distribution of the agent is so setting it to same as expert.
-init_state_distn = trd.Normal(expert_mu[0], torch.sqrt(expert_var[0]))
+init_state_distn = trd.MultivariateNormal(torch.tensor(
+    [expert_mu[0]]), torch.diag(torch.sqrt(expert_var[0]).view(state_dim)))
 
 disc = Discrimator(T).to(device)
 
-policy_lr = 0.5
+policy_lr = 1e-2
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
@@ -100,13 +106,13 @@ policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 
 # This is the number of samples from each distribution to be compared
 # against each other
-N = 128
+N = 256
 
 bce_logit_loss = torch.nn.BCEWithLogitsLoss()
 real_target = torch.ones(N, 1, device=device)
 fake_target = torch.zeros(N, 1, device=device)
 
-num_of_experience = 2
+num_of_experience = 50
 disc_losses = []
 policy_losses = []
 policies = []
@@ -121,24 +127,19 @@ for expr in range(1, num_of_experience+1):
         expert_samples = expert_distn.sample((N,))[:, :T].to(device)
 
         fm_samples = torch.empty(N, T, device=device)
-        x = init_state_distn.sample((N,)).to(device)
-        # for t in range(T):
-        #     y = fm.predict(
-        #         torch.cat(
-        #             (x.view(-1, 1), policy(x).view(-1, 1)), dim=1)
-        #     )
-        #     x = x + y.view(N)
-        #     fm_samples[:, t] = x
+        x0s = init_state_distn.sample((N,)).to(device)
+        log_prob = fm_samples.new_zeros(N)
 
-        for x0 in x:
-            x_t = x0
+        for j, x in enumerate(x0s):
             for t in range(T):
                 x_t_u_t = torch.cat(
-                    (x_t.view(-1, 1), policy(x_t).view(-1, 1)), dim=1)
-                y = fm.predict(x_t_u_t)
+                    (x.view(-1, 1), policy(x).view(-1, 1)), dim=1)
+                y, log_prob_t = fm.predict(x_t_u_t)
+                log_prob[j] += log_prob_t
                 fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
-                x_t = x_t + y
-                fm_samples[:, t] = x_t
+                x = x + y.view(state_dim)
+                fm_samples[j, t] = x
+            fm.clear_fantasy_data()
 
         # Train Discrimator
         disc_optimizer.zero_grad()
@@ -156,7 +157,8 @@ for expr in range(1, num_of_experience+1):
 
         # Optimise policy
         policy_optimizer.zero_grad()
-        policy_loss = bce_logit_loss(disc(fm_samples), real_target)
+        policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
+            disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
         policy_loss.backward()
         policy_optimizer.step()
         policy_losses.append(policy_loss.detach().item())

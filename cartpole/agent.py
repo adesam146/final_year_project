@@ -2,6 +2,7 @@ import numpy as np
 from scipy.integrate import odeint
 import torch
 import torch.distributions as trd
+from cartpole.utils import convert_to_aux_state
 
 
 class CartPoleAgent():
@@ -33,7 +34,7 @@ class CartPoleAgent():
 
     def step(self):
         # Assuming the cart is stationary and the pole is vertical and also stationary
-        action = self.policy(self.state)
+        action = self.policy(convert_to_aux_state(self.state, D=self.state_dim))
 
         # Updating state action pair and adding measurement noise to state
         state_action = torch.cat(
