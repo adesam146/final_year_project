@@ -20,7 +20,7 @@ if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
 torch.manual_seed(0)
 
-GPU = True
+GPU = False
 device_idx = 0
 device = None
 if GPU and torch.cuda.is_available():
