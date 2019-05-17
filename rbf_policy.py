@@ -19,6 +19,8 @@ class RBFPolicy:
         x: (batch) x S
         output: batch
         """
+        assert x.shape[-1] == self.input_dim
+        
         x = x.view(-1, self.input_dim)
         batch = x.shape[0]
 

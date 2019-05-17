@@ -19,5 +19,7 @@ class Discrimator(nn.Module):
         """
         t: batch_size x T x D
         """
+        assert t.shape[-2] == self.T
+        assert t.shape[-1] == self.D
         h = self.linear1(t.view(-1, self.T*self.D))
         return self.linear2(F.relu(h))

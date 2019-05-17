@@ -124,7 +124,7 @@ for expr in range(1, num_of_experience+1):
     for i in range(expr):
         # Optimize policy for given forward model
         # N samples from estimated expert distribution. Shape: N x T
-        expert_samples = expert_distn.sample((N,))[:, :T].to(device)
+        expert_samples = expert_distn.sample((N,))[:, 1:].to(device)
 
         fm_samples = torch.empty(N, T, device=device)
         x0s = init_state_distn.sample((N,)).to(device)
@@ -147,8 +147,8 @@ for expr in range(1, num_of_experience+1):
         # We detach forward model samples so that we don't calculate gradients
         # w.r.t the policy parameter here
 
-        loss_fake = bce_logit_loss(disc(fm_samples.detach()), fake_target)
-        loss_real = bce_logit_loss(disc(expert_samples), real_target)
+        loss_fake = bce_logit_loss(disc(fm_samples.detach().unsqueeze(2)), fake_target)
+        loss_real = bce_logit_loss(disc(expert_samples.unsqueeze(2)), real_target)
 
         disc_loss = loss_real + loss_fake
         disc_loss.backward()
@@ -158,7 +158,7 @@ for expr in range(1, num_of_experience+1):
         # Optimise policy
         policy_optimizer.zero_grad()
         policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
-            disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
+            disc(fm_samples.detach().unsqueeze(2)), real_target, reduction='none') - log_prob.view(-1, 1))
         policy_loss.backward()
         policy_optimizer.step()
         policy_losses.append(policy_loss.detach().item())

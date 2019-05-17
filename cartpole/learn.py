@@ -35,8 +35,8 @@ aux_state_dim = 5
 action_dim = 1
 policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
 dt = 0.1
-time = 4
-T = int(np.ceil(4/dt))
+time = 4.0
+T = int(np.ceil(time/dt))
 measurement_var = torch.diag(0.01**2 * torch.ones(state_dim))
 agent = CartPoleAgent(dt=dt, time=time, policy=policy,
                       measurement_var=measurement_var, device=device)
