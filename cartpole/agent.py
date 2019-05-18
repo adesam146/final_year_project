@@ -79,7 +79,7 @@ class CartPoleAgent():
 def cartpole_dynamics(t, z, f):
     m1 = 0.5  # Cart mass kg
     m2 = 0.5  # Pole mass kg
-    l = 0.6  # Pole length m
+    l = 0.5  # Pole length m
     b = 0.1  # Friction between cart and ground N/m/s
     g = 9.82  # Gravity m/s^2
 
