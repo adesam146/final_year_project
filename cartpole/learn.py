@@ -20,6 +20,8 @@ if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
 torch.manual_seed(0)
 
+torch.set_default_dtype(torch.float64)
+
 GPU = False
 device_idx = 0
 device = None
