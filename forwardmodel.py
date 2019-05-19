@@ -63,11 +63,15 @@ class ForwardModel:
                              self.likelihood).to(self.device)
 
         print("***BEFORE OPTIMATION***")
+        self.model.covar_module.outputscale = torch.var(self.train_y, dim=1).squeeze()
+        kappa = 2
+        self.model.likelihood.noise = torch.var(self.train_y, dim=1).squeeze() / (kappa**2)
         self.mll_optimising_progress()
 
         # Find optimal model hyperparameters
         self.model.train()
         self.likelihood.train()
+
 
         # Use the adam optimizer
         optimizer = torch.optim.Adam([
