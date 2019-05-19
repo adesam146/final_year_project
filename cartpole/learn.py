@@ -56,8 +56,9 @@ init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
 
 disc = Discrimator(T, D=state_dim).to(device)
 
-policy_lr = 1e-2
-policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
+# policy_lr = 1e-2
+# policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
+policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
     policy_optimizer, gamma=1.0)
@@ -71,8 +72,6 @@ real_target = torch.ones(N, 1, device=device)
 fake_target = torch.zeros(N, 1, device=device)
 
 num_of_experience = 50
-disc_losses = []
-policy_losses = []
 
 for expr in range(1, num_of_experience+1):
     print("Experience:", expr)
@@ -83,24 +82,27 @@ for expr in range(1, num_of_experience+1):
     for i in range(expr):
         # Optimize policy for given forward model
 
-        fm_samples = expert_samples.new_empty(N, T, state_dim)
-        log_prob = fm_samples.new_zeros(N)
-        x0s = init_state_distn.sample((N,)).to(device)
-        for j, x in enumerate(x0s):
-            for t in range(T):
-                aux_x = convert_to_aux_state(x, state_dim)
-                x_t_u_t = torch.cat(
-                    (aux_x, policy(aux_x).view(-1, action_dim)), dim=1)
-                y, log_prob_t = fm.predict(x_t_u_t)
-                log_prob[j] += log_prob_t
-                fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
-                x = x + y.view(state_dim)
-                fm_samples[j, t] = x
-            fm.clear_fantasy_data()
+        def get_samples_and_log_prob():
+            fm_samples = expert_samples.new_empty(N, T, state_dim)
+            log_prob = fm_samples.new_zeros(N)
+            x0s = init_state_distn.sample((N,)).to(device)
+            for j, x in enumerate(x0s):
+                for t in range(T):
+                    aux_x = convert_to_aux_state(x, state_dim)
+                    x_t_u_t = torch.cat(
+                        (aux_x, policy(aux_x).view(-1, action_dim)), dim=1)
+                    y, log_prob_t = fm.predict(x_t_u_t)
+                    log_prob[j] += log_prob_t
+                    fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
+                    x = x + y.view(state_dim)
+                    fm_samples[j, t] = x
+                fm.clear_fantasy_data()
+
+            return fm_samples, log_prob
 
         # Train Discrimator
         disc_optimizer.zero_grad()
-
+        fm_samples, _ = get_samples_and_log_prob()
         # We detach forward model samples so that we don't calculate gradients
         # w.r.t the policy parameter here
         loss_fake = bce_logit_loss(disc(fm_samples.detach()), fake_target)
@@ -109,22 +111,24 @@ for expr in range(1, num_of_experience+1):
         disc_loss = loss_real + loss_fake
         disc_loss.backward()
         disc_optimizer.step()
-        disc_losses.append(disc_loss.detach().item())
 
         # Optimise policy
-        policy_optimizer.zero_grad()
-        policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
-            disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
-        policy_loss.backward()
-        policy_optimizer.step()
-        policy_losses.append(policy_loss.detach().item())
+        def closure():
+            policy_optimizer.zero_grad()
+            fm_samples, log_prob = get_samples_and_log_prob()
+            policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
+                disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
+            policy_loss.backward()
+            return policy_loss
 
-        print("Experience {}, Iter {}, disc loss: {}, policy loss: {}".format(
-            expr, i, disc_losses[-1], policy_losses[-1]))
+        policy_optimizer.step(closure)
+
+        print("Experience {}, Iter {}, disc loss: {}".format(
+            expr, i, disc_loss.detach().item()))
 
     # Get more experienial data
     with torch.no_grad():
-        s_a_pairs, traj = agent.act()
+        s_a_pairs, traj = agent.act()   
         new_x, new_y = get_training_data(s_a_pairs, traj)
 
     fm.update_data(new_x, new_y)
