@@ -36,7 +36,7 @@ def get_training_data(s_a_pairs, traj):
         s_a_pairs[:, :D], D), s_a_pairs[:, D:]), dim=1)
 
     y = traj[1:] - traj[:-1]
-    return x, y
+    return x, y + 0.01 * torch.randn_like(y)
 
 
 def convert_to_aux_state(state, D):
