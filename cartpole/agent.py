@@ -29,12 +29,12 @@ class CartPoleAgent():
         self.err_distn = trd.MultivariateNormal(
             torch.zeros(self.state_dim, device=self.device), covariance_matrix=measurement_var.to(self.device))
 
-
         self.go_to_beginning()
 
     def step(self):
         # Assuming the cart is stationary and the pole is vertical and also stationary
-        action = self.policy(convert_to_aux_state(self.state, D=self.state_dim))
+        action = self.policy(convert_to_aux_state(
+            self.state, D=self.state_dim))
 
         # Updating state action pair and adding measurement noise to state
         state_action = torch.cat(
@@ -50,7 +50,8 @@ class CartPoleAgent():
         sol = odeint(cartpole_dynamics, self.state.cpu().numpy(), t=np.array(
             [0, self.dt]), args=(lambda t: action.detach().cpu().numpy().item(),), tfirst=True)
 
-        self.state = torch.from_numpy(sol[1, :]).type(action.dtype).to(self.device)
+        self.state = torch.from_numpy(sol[1, :]).type(
+            action.dtype).to(self.device)
 
     def act(self):
         """

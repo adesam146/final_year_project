@@ -35,37 +35,43 @@ expert_samples = get_expert_data().to(device)
 state_dim = 4
 aux_state_dim = 5
 action_dim = 1
-policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
 dt = 0.1
 time = 4.0
 T = int(np.ceil(time/dt))
+# This is the number of samples from each source (expert/predicted) to be compared against each other
+N = expert_samples.shape[0]
+
+# *** POLICY SETUP ***
+policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
+policy_lr = 1e-2
+
+policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
+# policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
+policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
+    policy_optimizer, gamma=(0.9)**(1/100))
+
+# *** AGENT SETUP ***
 measurement_var = torch.diag(0.01**2 * torch.ones(state_dim))
 agent = CartPoleAgent(dt=dt, time=time, policy=policy,
                       measurement_var=measurement_var, device=device)
 
+# *** FIRST RANDOM ROLLOUT ***
 with torch.no_grad():
-    # Only when generating samples from GP posterior do we need the grad wrt policy parameter
     s_a_pairs, traj = agent.act()
     init_x, init_y = get_training_data(s_a_pairs, traj)
 
+# *** FORWARD MODEL SETUP ***
 fm = ForwardModel(init_x=init_x.to(device),
                   init_y=init_y.to(device), D=state_dim, S=aux_state_dim, F=action_dim, device=device)
 
+# *** INITIAL STATE DISTRIBUTION FOR GP PREDICTION ***
 init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
     state_dim), covariance_matrix=torch.diag(0.1**2 * torch.ones(state_dim)))
 
+# *** DISCRIMATOR SETUP ***
 disc = Discrimator(T, D=state_dim).to(device)
-
-# policy_lr = 1e-2
-# policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
-policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
 disc_optimizer = torch.optim.Adam(disc.parameters())
-policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
-    policy_optimizer, gamma=1.0)
 
-# This is the number of samples from each source (expert/predicted) to be compared
-# against each other
-N = expert_samples.shape[0]
 
 bce_logit_loss = torch.nn.BCEWithLogitsLoss()
 real_target = torch.ones(N, 1, device=device)
@@ -128,7 +134,7 @@ for expr in range(1, num_of_experience+1):
 
     # Get more experienial data
     with torch.no_grad():
-        s_a_pairs, traj = agent.act()   
+        s_a_pairs, traj = agent.act()
         new_x, new_y = get_training_data(s_a_pairs, traj)
 
     fm.update_data(new_x, new_y)
@@ -148,9 +154,11 @@ for expr in range(1, num_of_experience+1):
         with torch.no_grad():
             _, traj = agent.act()
         for i, ax in enumerate(np.ravel(axs)):
-            ax.plot(np.arange(0, T+1), traj.cpu().numpy()[:, i], color='red', alpha=0.2)
-        
-    fig.suptitle("State values of expert vs learner with {} number of experience".format(expr))
+            ax.plot(np.arange(0, T+1), traj.cpu().numpy()
+                    [:, i], color='red', alpha=0.2)
+
+    fig.suptitle(
+        "State values of expert vs learner with {} number of experience".format(expr))
 
     fig.savefig(
         f'./cartpole/plots/expert_vs_learner_{expr}.png', format='png')
