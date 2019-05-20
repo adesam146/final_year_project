@@ -44,7 +44,7 @@ N = expert_samples.shape[0]
 
 # *** POLICY SETUP ***
 policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
-policy_lr = 1e-2
+policy_lr = 1e-3
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
 # policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
@@ -87,7 +87,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
         policy_lr_sch.step()
 
-        for i in range(expr):
+        for i in range(100):
             # Optimize policy for given forward model
 
             def get_samples_and_log_prob():
