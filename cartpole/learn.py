@@ -110,7 +110,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
             # Train Discrimator
             disc_optimizer.zero_grad()
-            fm_samples, _ = get_samples_and_log_prob()
+            fm_samples, log_prob = get_samples_and_log_prob()
             # We detach forward model samples so that we don't calculate gradients
             # w.r.t the policy parameter here
             disc_loss = bce_logit_loss(disc(fm_samples.detach()), fake_target) + bce_logit_loss(disc(expert_samples), real_target)
@@ -119,15 +119,11 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             disc_optimizer.step()
 
             # Optimise policy
-            def closure():
-                policy_optimizer.zero_grad()
-                fm_samples, log_prob = get_samples_and_log_prob()
-                policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
-                    disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
-                policy_loss.backward()
-                return policy_loss
-
-            policy_optimizer.step(closure)
+            policy_optimizer.zero_grad()
+            policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
+                disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
+            policy_loss.backward()
+            policy_optimizer.step()
 
             print("Experience {}, Iter {}, disc loss: {}".format(
                 expr, i, disc_loss.detach().item()))
