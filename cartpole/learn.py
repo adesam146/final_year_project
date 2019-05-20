@@ -44,7 +44,7 @@ N = expert_samples.shape[0]
 
 # *** POLICY SETUP ***
 policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
-policy_lr = 1e-1
+policy_lr = 1e-2
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
 # policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
@@ -156,4 +156,4 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             "State values of expert vs learner with {} number of experience".format(expr))
 
         fig.savefig(
-            f'./cartpole/plots/0.1lr/expert_vs_learner_{expr}.png', format='png')
+            f'./cartpole/plots/0.01lr/expert_vs_learner_{expr}_2.png', format='png')

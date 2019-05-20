@@ -43,7 +43,7 @@ class ForwardModel:
 
         # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
         # Output from sample is (n x ) D x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
-        dyn_model = self.likelihood(self.model(self.__adjust_shape(x)))
+        dyn_model = self.model(self.__adjust_shape(x))
 
         sample = dyn_model.sample()
         log_probs = dyn_model.log_prob(sample)
@@ -154,6 +154,8 @@ class ForwardModel:
 
         x, y = self.__process_inputs(
             x.view(-1, self.S+self.F), y.view(-1, self.D))
+
+        y = y + torch.sqrt(self.model.likelihood.noise) * torch.randn_like(y)
 
         self.dummy_x = torch.cat((self.dummy_x, x), dim=1)
         self.dummy_y = torch.cat((self.dummy_y, y), dim=1)
