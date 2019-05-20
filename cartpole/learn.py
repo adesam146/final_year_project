@@ -87,7 +87,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
         policy_lr_sch.step()
 
-        for i in range(100):
+        for i in range(50):
             # Optimize policy for given forward model
 
             def get_samples_and_log_prob():
