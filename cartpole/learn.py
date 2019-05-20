@@ -111,8 +111,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             # Train Discrimator
             disc_optimizer.zero_grad()
             fm_samples, log_prob = get_samples_and_log_prob()
-            # We detach forward model samples so that we don't calculate gradients
-            # w.r.t the policy parameter here
+            # We detach forward model samples so that we don't calculate gradients w.r.t the policy parameter here
             disc_loss = bce_logit_loss(disc(fm_samples.detach()), fake_target) + bce_logit_loss(disc(expert_samples), real_target)
 
             disc_loss.backward()
