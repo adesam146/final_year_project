@@ -8,6 +8,7 @@ from forwardmodel import ForwardModel
 from rbf_policy import RBFPolicy
 from discrimator import Discrimator
 import matplotlib.pyplot as plt
+import gpytorch
 
 
 # TODO: Consider
@@ -43,7 +44,7 @@ N = expert_samples.shape[0]
 
 # *** POLICY SETUP ***
 policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
-policy_lr = 1e-2
+policy_lr = 0.1
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
 # policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
@@ -79,86 +80,85 @@ fake_target = torch.zeros(N, 1, device=device)
 
 num_of_experience = 50
 
-for expr in range(1, num_of_experience+1):
-    print("Experience:", expr)
-    fm.learn()
+with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_prob=False, solves=False):
+    for expr in range(1, num_of_experience+1):
+        print("Experience:", expr)
+        fm.learn()
 
-    policy_lr_sch.step()
+        policy_lr_sch.step()
 
-    for i in range(expr):
-        # Optimize policy for given forward model
+        for i in range(expr):
+            # Optimize policy for given forward model
 
-        def get_samples_and_log_prob():
-            fm_samples = expert_samples.new_empty(N, T, state_dim)
-            log_prob = fm_samples.new_zeros(N)
-            x0s = init_state_distn.sample((N,)).to(device)
-            for j, x in enumerate(x0s):
-                for t in range(T):
-                    aux_x = convert_to_aux_state(x, state_dim)
-                    x_t_u_t = torch.cat(
-                        (aux_x, policy(aux_x).view(-1, action_dim)), dim=1)
-                    y, log_prob_t = fm.predict(x_t_u_t)
-                    log_prob[j] += log_prob_t
-                    fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
-                    x = x + y.view(state_dim)
-                    fm_samples[j, t] = x
-                fm.clear_fantasy_data()
+            def get_samples_and_log_prob():
+                fm_samples = expert_samples.new_empty(N, T, state_dim)
+                log_prob = fm_samples.new_zeros(N)
+                x0s = init_state_distn.sample((N,)).to(device)
+                for j, x in enumerate(x0s):
+                    for t in range(T):
+                        aux_x = convert_to_aux_state(x, state_dim)
+                        x_t_u_t = torch.cat(
+                            (aux_x, policy(aux_x).view(-1, action_dim)), dim=1)
+                        y, log_prob_t = fm.predict(x_t_u_t)
+                        log_prob[j] += log_prob_t
+                        fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
+                        x = x + y.view(state_dim)
+                        fm_samples[j, t] = x
+                    fm.clear_fantasy_data()
 
-            return fm_samples, log_prob
+                return fm_samples, log_prob
 
-        # Train Discrimator
-        disc_optimizer.zero_grad()
-        fm_samples, _ = get_samples_and_log_prob()
-        # We detach forward model samples so that we don't calculate gradients
-        # w.r.t the policy parameter here
-        loss_fake = bce_logit_loss(disc(fm_samples.detach()), fake_target)
-        loss_real = bce_logit_loss(disc(expert_samples), real_target)
+            # Train Discrimator
+            disc_optimizer.zero_grad()
+            fm_samples, _ = get_samples_and_log_prob()
+            # We detach forward model samples so that we don't calculate gradients
+            # w.r.t the policy parameter here
+            disc_loss = bce_logit_loss(disc(fm_samples.detach()), fake_target) + bce_logit_loss(disc(expert_samples), real_target)
 
-        disc_loss = loss_real + loss_fake
-        disc_loss.backward()
-        disc_optimizer.step()
+            disc_loss.backward()
+            disc_optimizer.step()
 
-        # Optimise policy
-        def closure():
-            policy_optimizer.zero_grad()
-            fm_samples, log_prob = get_samples_and_log_prob()
-            policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
-                disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
-            policy_loss.backward()
-            return policy_loss
+            # Optimise policy
+            def closure():
+                policy_optimizer.zero_grad()
+                fm_samples, log_prob = get_samples_and_log_prob()
+                policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
+                    disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
+                policy_loss.backward()
+                return policy_loss
 
-        policy_optimizer.step(closure)
+            policy_optimizer.step(closure)
 
-        print("Experience {}, Iter {}, disc loss: {}".format(
-            expr, i, disc_loss.detach().item()))
+            print("Experience {}, Iter {}, disc loss: {}".format(
+                expr, i, disc_loss.detach().item()))
 
-    # Get more experienial data
-    with torch.no_grad():
-        s_a_pairs, traj = agent.act()
-        new_x, new_y = get_training_data(s_a_pairs, traj)
-
-    fm.update_data(new_x, new_y)
-
-    # Plotting progress
-    fig, axs = plt.subplots(2, 2, figsize=(16, 10))
-    state_names = [r'$x$', r'$v$', r'$\dot{\theta}$', r'$\theta$']
-    for i, ax in enumerate(np.ravel(axs)):
-        # Plotting expert theta trajectory
-        for n in range(N):
-            ax.plot(np.arange(1, T+1), expert_samples.cpu().numpy()
-                    [n, :, i], alpha=0.15, color='blue')
-        ax.set_xlabel("Time steps")
-        ax.set_ylabel(state_names[i])
-
-    for roll in range(10):
+        # Get more experienial data
         with torch.no_grad():
-            _, traj = agent.act()
+            s_a_pairs, traj = agent.act()
+            new_x, new_y = get_training_data(s_a_pairs, traj)
+
+        fm.update_data(new_x, new_y)
+
+        # Plotting progress
+        fig, axs = plt.subplots(2, 2, figsize=(16, 10))
+        state_names = [r'$x$', r'$v$', r'$\dot{\theta}$', r'$\theta$']
         for i, ax in enumerate(np.ravel(axs)):
-            ax.plot(np.arange(0, T+1), traj.cpu().numpy()
-                    [:, i], color='red', alpha=0.2)
+            # Plotting expert theta trajectory
+            for n in range(N):
+                ax.plot(np.arange(1, T+1), expert_samples.cpu().numpy()
+                        [n, :, i], alpha=0.15, color='blue')
+            ax.set_xlabel("Time steps")
+            ax.set_ylabel(state_names[i])
 
-    fig.suptitle(
-        "State values of expert vs learner with {} number of experience".format(expr))
+        for roll in range(10):
+            with torch.no_grad():
+                _, traj = agent.act()
+            for i, ax in enumerate(np.ravel(axs)):
+                ax.plot(np.arange(0, T+1), traj.cpu().numpy()
+                        [:, i], color='red', alpha=0.2)
 
-    fig.savefig(
-        f'./cartpole/plots/expert_vs_learner_{expr}.png', format='png')
+        fig.suptitle(
+            "State values of expert vs learner with {} number of experience".format(expr))
+
+        fig.savefig(
+            f'./cartpole/plots/0.1lr/expert_vs_learner_{expr}.png', format='png')

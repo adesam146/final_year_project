@@ -66,6 +66,7 @@ class ForwardModel:
         self.model.covar_module.outputscale = torch.var(self.train_y, dim=1).squeeze()
         kappa = 2
         self.model.likelihood.noise = torch.var(self.train_y, dim=1).squeeze() / (kappa**2)
+        self.model.covar_module.base_kernel.lengthscale = torch.var(self.train_x[0], dim=0, keepdim=True).unsqueeze(0).repeat(self.D, 1, 1)
         self.mll_optimising_progress()
 
         # Find optimal model hyperparameters
