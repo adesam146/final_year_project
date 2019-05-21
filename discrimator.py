@@ -11,9 +11,9 @@ class Discrimator(nn.Module):
         self.D = D
 
         self.linear1 = nn.Linear(in_features=self.T*self.D,
-                                 out_features=64, bias=True)
+                                 out_features=16, bias=True)
 
-        self.linear2 = nn.Linear(in_features=64, out_features=1, bias=True)
+        self.linear2 = nn.Linear(in_features=16, out_features=1, bias=True)
 
     def forward(self, t):
         """
@@ -23,3 +23,7 @@ class Discrimator(nn.Module):
         assert t.shape[-1] == self.D
         h = self.linear1(t.view(-1, self.T*self.D))
         return self.linear2(F.relu(h))
+
+    def enable_parameters_grad(self, enable=True):
+        for param in self.parameters():
+            param.requires_grad = enable
