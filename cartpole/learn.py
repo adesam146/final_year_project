@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 script_dir = os.path.dirname(__file__)
 # plot_dir = os.path.join(script_dir, f'plots/{arg.plot_dir+"/" or ""}')
-plot_dir = os.path.join(script_dir, f'plots/double_expec/')
+plot_dir = os.path.join(script_dir, f'plots/double_expec-1e-3lr/')
 if not os.path.isdir(plot_dir):
     os.makedirs(plot_dir)
 
@@ -57,7 +57,7 @@ N = expert_samples.shape[0]
 
 # *** POLICY SETUP ***
 policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
-policy_lr = 0.01
+policy_lr = 1e-3
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
 # policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
