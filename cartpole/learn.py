@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 script_dir = os.path.dirname(__file__)
 # plot_dir = os.path.join(script_dir, f'plots/{arg.plot_dir+"/" or ""}')
-plot_dir = os.path.join(script_dir, f'plots/policy_debug_0.01lr/')
+plot_dir = os.path.join(script_dir, f'plots/T-10/')
 if not os.path.isdir(plot_dir):
     os.makedirs(plot_dir)
 
@@ -50,7 +50,7 @@ state_dim = 4
 aux_state_dim = 5
 action_dim = 1
 dt = 0.1
-time = 4.0
+time = 1.0
 T = int(np.ceil(time/dt))
 # This is the number of samples from each source (expert/predicted) to be compared against each other
 N = expert_samples.shape[0]
@@ -85,7 +85,6 @@ init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
 # *** DISCRIMATOR SETUP ***
 disc = Discrimator(T, D=state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
-
 
 bce_logit_loss = torch.nn.BCEWithLogitsLoss()
 real_target = torch.ones(N, 1, device=device)
@@ -140,7 +139,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
             # To avoid having to calculate gradients of discrimator
             disc.enable_parameters_grad(enable=False)
-            
+
             # Optimise policy
             policy_optimizer.zero_grad()
             policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(

@@ -19,7 +19,7 @@ def get_expert_data():
         result[i, :, :] = torch.from_numpy(
             df.loc[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
 
-    return result
+    return result[:, :10, :]
 
 
 def get_training_data(s_a_pairs, traj):
