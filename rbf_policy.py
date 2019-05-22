@@ -8,11 +8,13 @@ class RBFPolicy:
         self.input_dim = input_dim
         self.nbasis = nbasis
         self.device = device
-        self.weights = torch.randn(nbasis, requires_grad=True, device=device)
-        self.centers = torch.randn(
-            input_dim, nbasis, requires_grad=True, device=device)
-        self.ln_vars = torch.randn(
-            input_dim, requires_grad=True, device=device)
+        self.weights = torch.ones(nbasis, requires_grad=True, device=device)
+        self.centers = 0.1 * torch.randn(
+            input_dim, nbasis, device=device)
+        self.centers.requires_grad = True
+        # self.ln_vars = torch.randn(
+        # input_dim, requires_grad=True, device=device)
+        self.ln_vars = torch.tensor([1, 1, 1, 0.7, 0.7], requires_grad=True, device=device)
 
     def __call__(self, x):
         """
