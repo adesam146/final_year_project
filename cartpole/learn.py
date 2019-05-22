@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 script_dir = os.path.dirname(__file__)
 # plot_dir = os.path.join(script_dir, f'plots/{arg.plot_dir+"/" or ""}')
-plot_dir = os.path.join(script_dir, f'plots/T-10/')
+plot_dir = os.path.join(script_dir, f'plots/double_expec/')
 if not os.path.isdir(plot_dir):
     os.makedirs(plot_dir)
 
@@ -81,6 +81,7 @@ fm = ForwardModel(init_x=init_x.to(device),
 # *** INITIAL STATE DISTRIBUTION FOR GP PREDICTION ***
 init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
     state_dim), covariance_matrix=torch.diag(0.1**2 * torch.ones(state_dim)))
+N_x0 = 10
 
 # *** DISCRIMATOR SETUP ***
 disc = Discrimator(T, D=state_dim).to(device)
@@ -88,7 +89,8 @@ disc_optimizer = torch.optim.Adam(disc.parameters())
 
 bce_logit_loss = torch.nn.BCEWithLogitsLoss()
 real_target = torch.ones(N, 1, device=device)
-fake_target = torch.zeros(N, 1, device=device)
+fake_target = torch.zeros(N*N_x0, 1, device=device)
+real_target_for_policy = torch.ones(N*N_x0, 1, device=device)
 
 num_of_experience = 50
 
@@ -102,33 +104,35 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
         for i in range(50):
             # Optimize policy for given forward model
 
-            def get_samples_and_log_prob(N):
-                fm_samples = expert_samples.new_empty(N, T, state_dim)
-                actions = expert_samples.new_empty(N, T, action_dim)
-                log_prob = fm_samples.new_zeros(N)
-                x0s = init_state_distn.sample((N,)).to(device)
-                for j, x in enumerate(x0s):
-                    for t in range(T):
-                        aux_x = convert_to_aux_state(x, state_dim)
-                        x_t_u_t = torch.cat(
-                            (aux_x, policy(aux_x).view(-1, action_dim)), dim=1)
-                        y, log_prob_t = fm.predict(x_t_u_t)
-                        log_prob[j] += log_prob_t
+            def get_samples_and_log_prob(N, N_x0=10):
+                fm_samples = expert_samples.new_empty(N_x0 * N, T, state_dim)
+                actions = expert_samples.new_empty(N_x0 * N, T, action_dim)
+                log_prob = fm_samples.new_zeros(N_x0 * N)
+                x0s = init_state_distn.sample((N_x0,)).to(device)
+                for j, x0 in enumerate(x0s):
+                    for i in range(N):
+                        x = x0
+                        for t in range(T):
+                            aux_x = convert_to_aux_state(x, state_dim)
+                            x_t_u_t = torch.cat(
+                                (aux_x, policy(aux_x).view(-1, action_dim)), dim=1)
+                            y, log_prob_t = fm.predict(x_t_u_t)
+                            log_prob[i + N*j] += log_prob_t
 
-                        fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
-                        x = x + y.view(state_dim)
+                            fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
+                            x = x + y.view(state_dim)
 
-                        fm_samples[j, t] = x
-                        actions[j, t] = x_t_u_t[:, -
-                                                action_dim:].detach().squeeze()
-                    fm.clear_fantasy_data()
+                            fm_samples[i + N*j, t] = x
+                            actions[i + N*j, t] = x_t_u_t[:, -
+                                                    action_dim:].detach().squeeze()
+                        fm.clear_fantasy_data()
 
                 return fm_samples, log_prob, actions, x0s
 
             # Train Discrimator
             disc.enable_parameters_grad()
             disc_optimizer.zero_grad()
-            fm_samples, log_prob, _, _ = get_samples_and_log_prob(N)
+            fm_samples, log_prob, _, _ = get_samples_and_log_prob(N, N_x0)
 
             # We detach forward model samples so that we don't calculate gradients w.r.t the policy parameter here
             disc_loss = bce_logit_loss(disc(fm_samples.detach(
@@ -143,7 +147,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             # Optimise policy
             policy_optimizer.zero_grad()
             policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
-                disc(fm_samples), real_target, reduction='none') - log_prob.view(-1, 1))
+                disc(fm_samples), real_target_for_policy, reduction='none') - log_prob.view(-1, 1))
             policy_loss.backward()
             policy_optimizer.step()
 
@@ -184,6 +188,6 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
         # Plotting prediction of GP under current policy
         with torch.no_grad():
-            samples, _, actions, x0s = get_samples_and_log_prob(N=10)
-        plot_gp_trajectories(torch.cat((x0s.unsqueeze(
+            samples, _, actions, x0s = get_samples_and_log_prob(N=10, N_x0=N_x0)
+        plot_gp_trajectories(torch.cat((x0s.repeat_interleave(10, dim=0).unsqueeze(
             1), samples), dim=1), actions, T=T, plot_dir=plot_dir, expr=expr)
