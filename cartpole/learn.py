@@ -16,8 +16,10 @@ import json
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--gpu", help="Train using a GPU if available", action="store_true")
-parser.add_argument("--result_dir_name", help="Name of directory to place results")
-parser.add_argument("--policy_lr", type=float, help="Learning rate for the policy, default is 1e-2")
+parser.add_argument("--result_dir_name",
+                    help="Name of directory to place results")
+parser.add_argument("--policy_lr", type=float,
+                    help="Learning rate for the policy, default is 1e-2")
 args = parser.parse_args()
 
 script_dir = os.path.dirname(__file__)
@@ -104,7 +106,8 @@ num_of_experience = 50
 
 # Write to a json file all defined variables before training starts
 with open(variables_file, 'w') as fp:
-    json.dump(locals(), fp, skipkeys=True, sort_keys=True, default=lambda obj: "The object can't be json serialized")
+    json.dump(locals(), fp, skipkeys=True, sort_keys=True,
+              default=lambda obj: "The object can't be json serialized")
 
 with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_prob=False, solves=False):
     for expr in range(1, num_of_experience+1):
@@ -136,7 +139,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
                             fm_samples[i + N*j, t] = x
                             actions[i + N*j, t] = x_t_u_t[:, -
-                                                    action_dim:].detach().squeeze()
+                                                          action_dim:].detach().squeeze()
                         fm.clear_fantasy_data()
 
                 return fm_samples, log_prob, actions, x0s
@@ -200,6 +203,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
         # Plotting prediction of GP under current policy
         with torch.no_grad():
-            samples, _, actions, x0s = get_samples_and_log_prob(N=10, N_x0=N_x0)
+            samples, _, actions, x0s = get_samples_and_log_prob(
+                N=10, N_x0=N_x0)
         plot_gp_trajectories(torch.cat((x0s.repeat_interleave(10, dim=0).unsqueeze(
             1), samples), dim=1), actions, T=T, plot_dir=plot_dir, expr=expr)
