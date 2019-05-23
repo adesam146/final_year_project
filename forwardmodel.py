@@ -32,7 +32,7 @@ class ForwardModel:
         self.likelihood = None
         self.model = None
 
-    def predict(self, x):
+    def predict(self, x, with_rsample=False):
         """
         x: 1 x S+F
         sample: 1 x D
@@ -45,7 +45,11 @@ class ForwardModel:
         # Output from sample is (n x ) D x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
         dyn_model = self.model(self.__adjust_shape(x))
 
-        sample = dyn_model.sample()
+        if with_rsample:
+            sample = dyn_model.rsample()
+        else:
+            sample = dyn_model.sample()
+            
         log_probs = dyn_model.log_prob(sample)
 
         return torch.t(sample), log_probs.sum()
