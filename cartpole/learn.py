@@ -11,18 +11,26 @@ import matplotlib.pyplot as plt
 import gpytorch
 import os
 import argparse
+import json
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--gpu", help="Train using a GPU if available", action="store_true")
-parser.add_argument("--plot_dir", help="Name of subdirectory to place plots")
-parser.add_argument("--policy_lr", type=float, help="Learning rate for the policy")
+parser.add_argument("--result_dir_name", help="Name of directory to place results")
+parser.add_argument("--policy_lr", type=float, help="Learning rate for the policy, default is 1e-2")
 args = parser.parse_args()
 
 script_dir = os.path.dirname(__file__)
-plot_dir = os.path.join(script_dir, f'plots/{args.plot_dir or "double_expec-1e-3lr"}/')
-if not os.path.isdir(plot_dir):
-    os.makedirs(plot_dir)
+result_dir_name = f'{args.result_dir_name or "result"}'
+result_dir = os.path.join(script_dir, result_dir_name)
+count = 1
+while os.path.isdir(result_dir):
+    result_dir = os.path.join(script_dir, result_dir_name+f'{count}')
+    count += 1
+os.makedirs(result_dir)
+plot_dir = os.path.join(result_dir, 'plots/')
+os.makedirs(plot_dir)
+variables_file = os.path.join(result_dir, 'variables.json')
 
 # TODO: Consider
 # gpytorch.settings.detach_test_caches(state=True)
@@ -36,28 +44,28 @@ torch.manual_seed(0)
 
 torch.set_default_dtype(torch.float64)
 
-GPU = args.gpu
+GPU = args.gpu and torch.cuda.is_available()
 device_idx = 0
 device = None
-if GPU and torch.cuda.is_available():
+if GPU:
     device = torch.device("cuda:" + str(device_idx))
 else:
     device = torch.device("cpu")
 
 expert_samples = get_expert_data().to(device)
+T = expert_samples.shape[1]
+# This is the number of samples from each source (expert/predicted) to be compared against each other
+N = expert_samples.shape[0]
 
 state_dim = 4
 aux_state_dim = 5
 action_dim = 1
 dt = 0.1
-time = 1.0
-T = int(np.ceil(time/dt))
-# This is the number of samples from each source (expert/predicted) to be compared against each other
-N = expert_samples.shape[0]
+time = dt * T
 
 # *** POLICY SETUP ***
 policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
-policy_lr = args.policy_lr or 1e-3
+policy_lr = args.policy_lr or 1e-2
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
 # policy_optimizer = torch.optim.LBFGS(policy.parameters(), lr=1, max_iter=20, max_eval=None, tolerance_grad=1e-05, tolerance_change=1e-09, history_size=100, line_search_fn=None)
@@ -93,6 +101,10 @@ fake_target = torch.zeros(N*N_x0, 1, device=device)
 real_target_for_policy = torch.ones(N*N_x0, 1, device=device)
 
 num_of_experience = 50
+
+# Write to a json file all defined variables before training starts
+with open(variables_file, 'w') as fp:
+    json.dump(locals(), fp, skipkeys=True, sort_keys=True, default=lambda obj: "The object can't be json serialized")
 
 with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_prob=False, solves=False):
     for expr in range(1, num_of_experience+1):
