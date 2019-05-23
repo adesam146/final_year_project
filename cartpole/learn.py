@@ -1,18 +1,25 @@
+import argparse
+import json
+import os
+from datetime import datetime
+
+import gpytorch
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.distributions as trd
 import torch.nn.functional as F
-from cartpole.agent import CartPoleAgent
-from cartpole.utils import get_training_data, get_expert_data, convert_to_aux_state, plot_trajectories, plot_gp_trajectories
-from forwardmodel import ForwardModel
-from rbf_policy import RBFPolicy
-from discrimator import Discrimator
-import matplotlib.pyplot as plt
-import gpytorch
-import os
-import argparse
-import json
 
+from cartpole.agent import CartPoleAgent
+from cartpole.utils import (convert_to_aux_state, get_expert_data,
+                            get_training_data, plot_gp_trajectories,
+                            plot_trajectories)
+from discrimator import Discrimator
+from forwardmodel import ForwardModel
+from nn_policy import NNPolicy
+from rbf_policy import RBFPolicy
+
+# *** ARGUMENT SET UP ***
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--gpu", help="Train using a GPU if available", action="store_true")
@@ -20,10 +27,13 @@ parser.add_argument("--result_dir_name",
                     help="Name of directory to place results")
 parser.add_argument("--policy_lr", type=float,
                     help="Learning rate for the policy, default is 1e-2")
+parser.add_argument("--description", help="Description the experiment")
+parser.add_argument("--T", type=int, help="Number of predicted timesteps")
 args = parser.parse_args()
 
+# *** RESULTS LOGGING SETUP ***
 script_dir = os.path.dirname(__file__)
-result_dir_name = f'{args.result_dir_name or "result"}'
+result_dir_name = args.result_dir_name or f"result-{datetime.now().strftime('%Y-%m-%d-T-%H-%M-%S')}"
 result_dir = os.path.join(script_dir, result_dir_name)
 count = 1
 while os.path.isdir(result_dir):
@@ -33,12 +43,15 @@ os.makedirs(result_dir)
 plot_dir = os.path.join(result_dir, 'plots/')
 os.makedirs(plot_dir)
 variables_file = os.path.join(result_dir, 'variables.json')
+description_file = os.path.join(result_dir, 'description.txt')
+with open(description_file, 'w') as fp:
+    fp.write(f'{args.description}')
 
 # TODO: Consider
 # gpytorch.settings.detach_test_caches(state=True)
 # https://gpytorch.readthedocs.io/en/latest/settings.html?highlight=fantasy
 
-# Set random seed to ensure that your results are reproducible.
+# Set random seed to ensure that results are reproducible.
 np.random.seed(0)
 if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
@@ -55,7 +68,8 @@ else:
     device = torch.device("cpu")
 
 expert_samples = get_expert_data().to(device)
-T = expert_samples.shape[1]
+T = args.T or expert_samples.shape[1]
+expert_samples = expert_samples[:, :T, :]
 # This is the number of samples from each source (expert/predicted) to be compared against each other
 N = expert_samples.shape[0]
 
@@ -66,7 +80,8 @@ dt = 0.1
 time = dt * T
 
 # *** POLICY SETUP ***
-policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
+# policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
+policy = NNPolicy(u_max=10, input_dim=aux_state_dim).to(device)
 policy_lr = args.policy_lr or 1e-2
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
@@ -103,11 +118,12 @@ fake_target = torch.zeros(N*N_x0, 1, device=device)
 real_target_for_policy = torch.ones(N*N_x0, 1, device=device)
 
 num_of_experience = 50
+policy_iter = 50
 
 # Write to a json file all defined variables before training starts
 with open(variables_file, 'w') as fp:
     json.dump(locals(), fp, skipkeys=True, sort_keys=True,
-              default=lambda obj: "The object can't be json serialized")
+              default=lambda obj: type(obj).__name__)
 
 with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_prob=False, solves=False):
     for expr in range(1, num_of_experience+1):
@@ -116,7 +132,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
         policy_lr_sch.step()
 
-        for i in range(50):
+        for i in range(policy_iter):
             # Optimize policy for given forward model
 
             def get_samples_and_log_prob(N, N_x0=10):
@@ -162,12 +178,12 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             # Optimise policy
             policy_optimizer.zero_grad()
             policy_loss = torch.mean(log_prob.view(-1, 1) * F.binary_cross_entropy_with_logits(
-                disc(fm_samples), real_target_for_policy, reduction='none') - log_prob.view(-1, 1))
+                disc(fm_samples.detach()), real_target_for_policy, reduction='none') - log_prob.view(-1, 1))
             policy_loss.backward()
             policy_optimizer.step()
 
             print(
-                f"Experience {expr}, Iter {i}, disc loss: {disc_loss.detach().item()}, policy loss: {policy_loss.detach()}, policy weights grad: {policy.weights.grad}, policy ln_vars grad: {policy.ln_vars.grad}, policy centers grad: {policy.centers.grad}")
+                f"Experience {expr}, Iter {i}, disc loss: {disc_loss.detach().item()}, policy loss: {policy_loss.detach()}")
 
         # Get more experienial data
         with torch.no_grad():
@@ -183,7 +199,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             expert_samples, T=T, color='blue', with_x0=False)
 
         # Plotting result of rollout with current policy
-        for roll in range(10):
+        for roll in range(20):
             with torch.no_grad():
                 s_a_pairs, traj = agent.act()
             # Plot states

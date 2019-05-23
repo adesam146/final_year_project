@@ -5,11 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def get_expert_data():
+def get_expert_data(N=64):
     """
     output: N X T x 4
     """
-    N = 64
     result = torch.empty(N, 40, 4)
 
     for i in range(N):
@@ -19,7 +18,7 @@ def get_expert_data():
         result[i, :, :] = torch.from_numpy(
             df.loc[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
 
-    return result[:, :10, :]
+    return result
 
 
 def get_training_data(s_a_pairs, traj):
