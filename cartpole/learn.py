@@ -69,7 +69,7 @@ else:
 
 expert_samples = get_expert_data().to(device)
 T = args.T or expert_samples.shape[1]
-expert_samples = expert_samples[:, :T, :]
+expert_samples = expert_samples[:, 1:T+1, :]
 # This is the number of samples from each source (expert/predicted) to be compared against each other
 N = expert_samples.shape[0]
 

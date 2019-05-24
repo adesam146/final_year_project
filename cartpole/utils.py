@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 
 def get_expert_data(N=64):
     """
-    output: N X T x 4
+    output: N X T+1 x 4
     """
-    result = torch.empty(N, 40, 4)
+    result = torch.empty(N, 41, 4)
 
     for i in range(N):
         df = pd.read_csv(
