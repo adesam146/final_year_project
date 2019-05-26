@@ -1,5 +1,3 @@
-from setup import Setup
-
 class CartPoleSetup():
   def __init__(self, N, T):
     # UNCHANGING DEFAULTS
