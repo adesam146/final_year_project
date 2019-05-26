@@ -13,6 +13,7 @@ import torch.nn.functional as F
 from cartpole.agent import CartPoleAgent
 from cartpole.cartpole_setup import CartPoleSetup
 from cartpole.score_function import score_function_training
+from cartpole.pathwise_grad import pathwise_grad
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_samples_and_log_prob, get_training_data,
                             plot_gp_trajectories, plot_progress,
@@ -32,6 +33,7 @@ parser.add_argument("--policy_lr", type=float,
                     help="Learning rate for the policy, default is 1e-2")
 parser.add_argument("--description", help="Description the experiment")
 parser.add_argument("--T", type=int, help="Number of predicted timesteps")
+parser.add_argument("--use_score_func_grad", help="Use score function gradient method for optimising policy", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -114,6 +116,7 @@ disc_optimizer = torch.optim.Adam(disc.parameters())
 
 num_of_experience = 50
 policy_iter = 50
+use_score_func_grad = args.use_score_func_grad
 
 # Write to a json file all defined variables before training starts
 with open(variables_file, 'w') as fp:
@@ -128,8 +131,11 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
         policy_lr_sch.step()
 
         for i in range(policy_iter):
-            disc_loss, policy_loss = score_function_training(
-                setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, device, init_state_distn)
+            if use_score_func_grad:
+                disc_loss, policy_loss = score_function_training(
+                    setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
+            else:
+                disc_loss, policy_loss = pathwise_grad(setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
 
             print(
                 f"Experience {expr}, Iter {i}, disc loss: {disc_loss.detach().item()}, policy loss: {policy_loss.detach()}")

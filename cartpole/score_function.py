@@ -3,16 +3,16 @@ import torch.nn.functional as F
 from cartpole.utils import convert_to_aux_state, get_samples_and_log_prob
 
 
-def score_function_training(setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, device, init_state_distn, policy_iter=50):
+def score_function_training(setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn, policy_iter=50):
     """
     Optimize policy for given forward model using a GAN objective and score function gradients
     output: discrimator loss, policy loss (both with grad detached)
     """
 
     bce_logit_loss = torch.nn.BCEWithLogitsLoss()
-    real_target = torch.ones(setup.N, 1, device=device)
-    fake_target = torch.zeros(setup.N*N_x0, 1, device=device)
-    real_target_for_policy = torch.ones(setup.N*N_x0, 1, device=device)
+    real_target = init_state_distn.mean.new_ones(setup.N, 1)
+    fake_target = init_state_distn.mean.new_zeros(setup.N*N_x0, 1)
+    real_target_for_policy = init_state_distn.mean.new_ones(setup.N*N_x0, 1)
 
     fm_samples, log_prob, _, _ = get_samples_and_log_prob(
         setup, policy, init_state_distn, fm, N_x0)
