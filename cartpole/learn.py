@@ -115,7 +115,7 @@ disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 
 num_of_experience = 50
-policy_iter = 50
+policy_iter = 1
 use_score_func_grad = args.use_score_func_grad
 
 # Write to a json file all defined variables before training starts

@@ -1,5 +1,5 @@
 import torch
-from cartpole.utils import convert_to_aux_state
+from cartpole.utils import convert_to_aux_state, sample_trajectories
 
 
 def pathwise_grad(setup, expert_samples, policy, fm, disc,
@@ -12,23 +12,7 @@ def pathwise_grad(setup, expert_samples, policy, fm, disc,
     real_target = init_state_distn.mean.new_ones(setup.N, 1)
     fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
 
-    x0s = init_state_distn.sample((setup.N,))
-    fm_samples = x0s.new_empty(setup.N, setup.T, setup.state_dim)
-    actions = x0s.new_empty(setup.N, setup.T, setup.action_dim)
-
-    for n, x in enumerate(x0s):
-        for t in range(setup.T):
-            aux_x = convert_to_aux_state(x, setup.state_dim)
-            x_t_u_t = torch.cat(
-                (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1)
-            y, _ = fm.predict(x_t_u_t, with_rsample=True)
-
-            fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
-            x = x + y.view(setup.state_dim)
-
-            fm_samples[n, t] = x
-            actions[n, t] = x_t_u_t[:, -setup.action_dim:].detach().squeeze()
-        fm.clear_fantasy_data()
+    fm_samples, _, _= sample_trajectories(setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
 
     # Train Discrimator
     disc.enable_parameters_grad()

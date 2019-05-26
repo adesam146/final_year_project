@@ -127,7 +127,8 @@ def get_samples_and_log_prob(setup, policy, init_state_distn, fm, N_x0=10):
                 aux_x = convert_to_aux_state(x, setup.state_dim)
                 x_t_u_t = torch.cat(
                     (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1)
-                y, log_prob_t = fm.predict(x_t_u_t, with_rsample=False,return_log_prob=True)
+                y, log_prob_t = fm.predict(
+                    x_t_u_t, with_rsample=False, return_log_prob=True)
                 log_prob[i + setup.N*j] += log_prob_t
 
                 fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
@@ -159,7 +160,7 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
                     [:, i], color='red', alpha=0.2)
         # Plot action
         axs[-1].plot(np.arange(0, setup.T), s_a_pairs[:, -
-                                                1].cpu().numpy(), color='red', alpha=0.2)
+                                                      1].cpu().numpy(), color='red', alpha=0.2)
     fig.suptitle(
         f"State values of expert vs learner with {expr} number of experience")
 
@@ -170,7 +171,32 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
 
     # Plotting prediction of GP under current policy
     with torch.no_grad():
-        samples, _, actions, x0s = get_samples_and_log_prob(
-            setup, policy, init_state_distn, fm, N_x0=N_x0)
-    plot_gp_trajectories(torch.cat((x0s.repeat_interleave(10, dim=0).unsqueeze(
+        samples, actions, x0s = sample_trajectories(
+            setup, fm, init_state_distn, policy, sample_N=20, sample_T=setup.T, with_rsample=False)
+    plot_gp_trajectories(torch.cat((x0s.unsqueeze(
         1), samples), dim=1), actions, T=setup.T, plot_dir=plot_dir, expr=expr)
+
+
+def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T, with_rsample):
+    """
+    output: samples (x_1 to x_sample_T), actions (u_0 to u_sample_T-1), x0s
+    """
+    x0s = init_state_distn.sample((sample_N,))
+    fm_samples = x0s.new_empty(sample_N, sample_T, setup.state_dim)
+    actions = x0s.new_empty(sample_N, sample_T, setup.action_dim)
+
+    for n, x in enumerate(x0s):
+        for t in range(sample_T):
+            aux_x = convert_to_aux_state(x, setup.state_dim)
+            x_t_u_t = torch.cat(
+                (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1)
+            y, _ = fm.predict(x_t_u_t, with_rsample=True)
+
+            fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
+            x = x + y.view(setup.state_dim)
+
+            fm_samples[n, t] = x
+            actions[n, t] = x_t_u_t[:, -setup.action_dim:].detach().squeeze()
+        fm.clear_fantasy_data()
+
+    return fm_samples, actions, x0s
