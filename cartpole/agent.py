@@ -6,7 +6,7 @@ from cartpole.utils import convert_to_aux_state
 
 
 class CartPoleAgent():
-    def __init__(self, time, dt, policy, measurement_var, init_state_distn=None, device=torch.device('cpu')):
+    def __init__(self, T, dt, policy, measurement_var, init_state_distn=None, device=torch.device('cpu')):
         """
         The states are
         1  x          cart position
@@ -16,7 +16,7 @@ class CartPoleAgent():
         """
         self.state_dim = 4
         self.dt = dt
-        self.T = int(np.ceil(time/self.dt))
+        self.T = T
         self.policy = policy
         self.device = device
 

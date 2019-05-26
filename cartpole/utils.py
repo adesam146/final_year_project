@@ -111,3 +111,66 @@ def plot_gp_trajectories(fm_samples, actions, T, plot_dir, expr):
         os.makedirs(gp_plot_dir)
     gp_fig.savefig(
         gp_plot_dir + f'GP_trajectories_{expr}.png', format='png')
+
+
+def get_samples_and_log_prob(setup, policy, init_state_distn, fm, N_x0=10):
+    x0s = init_state_distn.sample((N_x0,))
+    fm_samples = x0s.new_empty(
+        N_x0 * setup.N, setup.T, setup.state_dim)
+    actions = x0s.new_empty(
+        N_x0 * setup.N, setup.T, setup.action_dim)
+    log_prob = fm_samples.new_zeros(N_x0 * setup.N)
+    for j, x0 in enumerate(x0s):
+        for i in range(setup.N):
+            x = x0
+            for t in range(setup.T):
+                aux_x = convert_to_aux_state(x, setup.state_dim)
+                x_t_u_t = torch.cat(
+                    (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1)
+                y, log_prob_t = fm.predict(x_t_u_t, with_rsample=False,return_log_prob=True)
+                log_prob[i + setup.N*j] += log_prob_t
+
+                fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
+                x = x + y.view(setup.state_dim)
+
+                fm_samples[i + setup.N*j, t] = x
+                actions[i + setup.N*j, t] = x_t_u_t[:, -
+                                                    setup.action_dim:].detach().squeeze()
+            fm.clear_fantasy_data()
+
+    return fm_samples, log_prob, actions, x0s
+
+
+def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, expert_samples, N_x0):
+    """
+    TODO: AT THE MOMENT STILL ASSUMES USING SCORE FUNCTION
+    """
+    # Plotting expert trajectory
+    fig, axs = plot_trajectories(
+        expert_samples, T=setup.T, color='blue', with_x0=False)
+
+    # Plotting result of rollout with current policy
+    for _ in range(20):
+        with torch.no_grad():
+            s_a_pairs, traj = agent.act()
+        # Plot states
+        for i, ax in enumerate(np.ravel(axs[:setup.state_dim])):
+            ax.plot(np.arange(0, setup.T+1), traj.cpu().numpy()
+                    [:, i], color='red', alpha=0.2)
+        # Plot action
+        axs[-1].plot(np.arange(0, setup.T), s_a_pairs[:, -
+                                                1].cpu().numpy(), color='red', alpha=0.2)
+    fig.suptitle(
+        f"State values of expert vs learner with {expr} number of experience")
+
+    fig.tight_layout()
+
+    fig.savefig(
+        plot_dir + f'expert_vs_learner_{expr}.png', format='png')
+
+    # Plotting prediction of GP under current policy
+    with torch.no_grad():
+        samples, _, actions, x0s = get_samples_and_log_prob(
+            setup, policy, init_state_distn, fm, N_x0=N_x0)
+    plot_gp_trajectories(torch.cat((x0s.repeat_interleave(10, dim=0).unsqueeze(
+        1), samples), dim=1), actions, T=setup.T, plot_dir=plot_dir, expr=expr)

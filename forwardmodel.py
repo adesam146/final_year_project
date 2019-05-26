@@ -32,7 +32,7 @@ class ForwardModel:
         self.likelihood = None
         self.model = None
 
-    def predict(self, x, with_rsample=False):
+    def predict(self, x, with_rsample=True, return_log_prob=False):
         """
         x: 1 x S+F
         sample: 1 x D
@@ -50,9 +50,11 @@ class ForwardModel:
         else:
             sample = dyn_model.sample()
             
-        log_probs = dyn_model.log_prob(sample)
+        log_prob = None
+        if return_log_prob:
+            log_prob = dyn_model.log_prob(sample).sum()
 
-        return torch.t(sample), log_probs.sum()
+        return torch.t(sample), log_prob
 
     def learn(self):
         if self.model is not None:
