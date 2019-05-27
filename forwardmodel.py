@@ -39,11 +39,10 @@ class ForwardModel:
         log_prob: 1
         """
         assert self.model is not None
-        assert x.shape[-1] == self.S + self.F
+        assert x.shape[0] == 1
+        assert x.shape[1] == self.S + self.F
 
-        # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
-        # Output from sample is (n x ) D x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
-        dyn_model = self.model(self.__adjust_shape(x))
+        dyn_model = self.predictive_distn(x)
 
         if with_rsample:
             sample = dyn_model.rsample()
@@ -55,6 +54,22 @@ class ForwardModel:
             log_prob = dyn_model.log_prob(sample).sum()
 
         return torch.t(sample), log_prob
+
+    def predictive_distn(self, x):
+        """
+        x: 1 x S+F
+        output: A gpytorch.MultivariateNormal with mean D x 1
+        """
+        assert self.model is not None
+        assert x.shape[0] == 1
+        assert x.shape[1] == self.S + self.F
+
+        # A model evaluated at x just returns a pytorch multivariate gaussian and calling the likelihood just transforms the distribution apporiately, i.e. at the noise variance
+        # Output from sample is (n x ) D x Tst = (1 x) 1 x 1. Where n is number of sample and Tst is number of test points
+        dyn_model = self.model(self.__adjust_shape(x))
+
+        return dyn_model
+
 
     def learn(self):
         if self.model is not None:

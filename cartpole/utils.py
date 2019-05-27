@@ -46,6 +46,7 @@ def convert_to_aux_state(state, D):
     state: (N x) D
     output: N x S
     """
+    assert state.shape[-1] == D
     state = state.view(-1, D)
 
     return torch.cat((state[:, :D-1], torch.sin(state[:, D-1:D]), torch.cos(state[:, D-1:D])), dim=1)

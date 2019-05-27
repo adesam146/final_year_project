@@ -80,7 +80,7 @@ setup = CartPoleSetup(
     N=expert_samples.shape[0], T=args.T or expert_samples.shape[1]-1)
 
 # Restrict samples to specfied horizon T
-expert_samples = expert_samples[:, 1:setup.T+1, :]
+expert_samples = expert_samples[:, 0:setup.T+1, :]
 
 # *** POLICY SETUP ***
 # policy = RBFPolicy(u_max=10, input_dim=aux_state_dim, nbasis=10, device=device)
@@ -132,15 +132,30 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
         policy_lr_sch.step()
 
         for i in range(policy_iter):
-            if use_score_func_grad:
-                disc_loss, policy_loss = score_function_training(
-                    setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
-            else:
-                disc_loss, policy_loss = pathwise_grad(setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
+            # if use_score_func_grad:
+            #     disc_loss, policy_loss = score_function_training(
+            #         setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
+            # else:
+            #     disc_loss, policy_loss = pathwise_grad(setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
 
-            print(
-                f"Experience {expr}, Iter {i}, disc loss: {disc_loss.detach().item()}, policy loss: {policy_loss.detach()}")
+            policy_optimizer.zero_grad()
+            loss = 0
+            for t in range(setup.T):
+                for n in range(setup.N):
+                    # TODO: Do we need to include the likelihood how that we
+                    # are looking at the observed difference
+                    aux_x = convert_to_aux_state(expert_samples[n, t], setup.state_dim)
+                    dyn_model = fm.predictive_distn(torch.cat( (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1))
+                    loss += dyn_model.log_prob((expert_samples[n, t+1] - expert_samples[n, t]).view(setup.state_dim, -1)).sum()
 
+            loss.backward()
+            policy_optimizer.step()
+            print(f"Experience {expr}, Iter {i}, policy loss: {loss.detach().item()}")
+
+            # print(
+            #     f"Experience {expr}, Iter {i}, disc loss: {disc_loss.detach().item()}, policy loss: {policy_loss.detach()}")
+
+        policy.eval()
         # Get more experienial data
         with torch.no_grad():
             s_a_pairs, traj = agent.act()
@@ -149,5 +164,8 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
         fm.update_data(new_x, new_y)
 
         # Plotting progress
+        policy.eval()
         plot_progress(setup, expr, agent, plot_dir, policy,
                       init_state_distn, fm, expert_samples, N_x0)
+
+        policy.train()
