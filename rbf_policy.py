@@ -46,6 +46,12 @@ class RBFPolicy:
     def parameters(self):
         return [self.weights, self.centers, self.ln_vars]
 
+    def eval(self):
+        pass
+
+    def train(self):
+        pass
+
 # Testing Policy, TODO: Convert to test
 # policy = RBFPolicy(1, input_dim=1, nbasis=2, device=torch.device('cpu'))
 
