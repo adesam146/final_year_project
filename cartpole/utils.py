@@ -149,7 +149,7 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
     """
     # Plotting expert trajectory
     fig, axs = plot_trajectories(
-        expert_samples, T=setup.T, color='blue', with_x0=False)
+        expert_samples, T=setup.T, color='blue', with_x0=expert_samples.shape[-2] == setup.T+1)
 
     # Plotting result of rollout with current policy
     for _ in range(20):
