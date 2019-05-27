@@ -31,6 +31,7 @@ parser.add_argument("--result_dir_name",
                     help="Name of directory to place results")
 parser.add_argument("--policy_lr", type=float,
                     help="Learning rate for the policy, default is 1e-2")
+parser.add_argument("--policy_iter", type=int, help="Number of iterations to optimise policy (default is 50)")
 parser.add_argument("--description", help="Description the experiment")
 parser.add_argument("--T", type=int, help="Number of predicted timesteps")
 parser.add_argument("--use_score_func_grad", help="Use score function gradient method for optimising policy", action="store_true")
@@ -115,7 +116,7 @@ disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 
 num_of_experience = 50
-policy_iter = 50
+policy_iter = args.policy_iter or 50
 use_score_func_grad = args.use_score_func_grad
 
 # Write to a json file all defined variables before training starts
