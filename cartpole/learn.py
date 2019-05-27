@@ -146,7 +146,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     # are looking at the observed difference
                     aux_x = convert_to_aux_state(expert_samples[n, t], setup.state_dim)
                     dyn_model = fm.predictive_distn(torch.cat( (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1))
-                    loss += dyn_model.log_prob((expert_samples[n, t+1] - expert_samples[n, t]).view(setup.state_dim, -1)).sum()
+                    loss += -dyn_model.log_prob((expert_samples[n, t+1] - expert_samples[n, t]).view(setup.state_dim, -1)).sum()
 
             loss.backward()
             policy_optimizer.step()
