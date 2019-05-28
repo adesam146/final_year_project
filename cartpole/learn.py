@@ -83,7 +83,7 @@ setup = CartPoleSetup(
     N=expert_samples.shape[0], T=args.T or expert_samples.shape[1]-1)
 
 # Restrict samples to specfied horizon T
-expert_samples = expert_samples[:, 0:setup.T+1, :]
+expert_samples = expert_samples[:, 1:setup.T+1, :]
 
 # *** POLICY SETUP ***
 # policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim, nbasis=10, device=device)
