@@ -26,12 +26,12 @@ class OptimalPolicy:
                                 2.09700193997521,	-0.147539886461367],
                                [-2.29523332434410,	0.587459048200402,	-0.127238083265639,	-2.12728785878586,	0.887069801692657]], requires_grad=True, device=self.device)
 
-        self.W = torch.diag(torch.exp( -2 * torch.tensor([2.34165811758010,
-                                          0.652757197256950,
-                                          1.35740406373520,
-                                          0.520681839124039,
-                                          -0.309966200635860], device=self.device)))
-        self.W.requires_grad = True
+        self.log_l = torch.tensor([2.34165811758010,
+                                   0.652757197256950,
+                                   1.35740406373520,
+                                   0.520681839124039,
+                                   -0.309966200635860], device=self.device)
+        self.log_l.requires_grad = True
         self.Y = torch.tensor([-14.7283720839688,
                                -19.6035046557288,
                                -2.35525991310959,
@@ -43,17 +43,17 @@ class OptimalPolicy:
                                -1.51330986923437,
                                -0.589476409536458], requires_grad=True, device=self.device)
 
-        self.recompute_K()
-
-
     def recompute_K(self):
+        """
+        Signal variance is implictly set to 1 and
+        Signal noise variance to 0.01**2
+        """
         self.K = torch.zeros(10, 10, device=self.device)
         for i in range(10):
             for j in range(10):
                 self.K[i, j] = self.kernel(self.X[i], self.X[j])
                 if i == j:
                     self.K[i, j] += 0.01**2
-
 
     def __call__(self, x):
         self.recompute_K()
@@ -63,17 +63,17 @@ class OptimalPolicy:
         for i in range(10):
             k[i] = self.kernel(x, self.X[i])
 
-        l = torch.cholesky(self.K)
+        l_inv = torch.cholesky(self.K).inverse()
 
-        v = torch.cholesky_solve(self.Y.view(-1, 1), l)
-        
+        v = torch.chain_matmul(l_inv.t(), l_inv, self.Y.view(-1, 1))
+
         return self.u_max * self.squash(torch.matmul(k.view(1, -1), v)).view(1)
 
     def kernel(self, x1, x2):
         """
         x1, x2: 5
         """
-        return torch.exp(-0.5 * torch.chain_matmul((x1-x2).view(1, 5), self.W, (x1-x2).view(5, 1)))
+        return torch.exp(-0.5 * torch.chain_matmul((x1-x2).view(1, 5), torch.diag(torch.exp(-2 * self.log_l)), (x1-x2).view(5, 1)))
 
     def squash(self, x):
         """
@@ -83,7 +83,7 @@ class OptimalPolicy:
 
     def parameters(self):
         # return [self.weights, self.centers, self.ln_vars]
-        return [self.W, self.Y, self.X]
+        return [self.log_l, self.Y, self.X]
 
     def eval(self):
         pass
@@ -91,24 +91,28 @@ class OptimalPolicy:
     def train(self):
         pass
 
+
 if __name__ == "__main__":
     print("TESTING OPTIMAL POLICY")
     import numpy as np
     torch.set_default_dtype(torch.float64)
 
     # Testing Policy, TODO: Convert to test
-    policy = OptimalPolicy(10, input_dim=1, nbasis=2, device=torch.device('cpu'))
+    policy = OptimalPolicy(10, device=torch.device('cpu'))
 
     # Testing against output from optimal policy in matlab
     # with the optimal parameters hardcorded into policy.
     test1 = policy(torch.tensor([0, 0, 0, 0, 1.0]))
-    np.testing.assert_almost_equal(test1.detach().numpy(), np.array([3.771637760361378]), decimal=4)
+    np.testing.assert_almost_equal(
+        test1.detach().numpy(), np.array([3.771637760361378]), decimal=4)
 
     test2 = policy(torch.tensor([1.0, 1.0, 1.0, 1.0, 1.0]))
-    np.testing.assert_almost_equal(test2.detach().numpy(), np.array([-1.417889544030735]), decimal=4)
+    np.testing.assert_almost_equal(
+        test2.detach().numpy(), np.array([-1.417889544030735]), decimal=4)
 
     test3 = policy(torch.tensor([0.5, 1, 1.5, 2, 2.5]))
-    np.testing.assert_almost_equal(test3.detach().numpy(), np.array([-3.679293910231314]), decimal=4)
+    np.testing.assert_almost_equal(
+        test3.detach().numpy(), np.array([-3.679293910231314]), decimal=4)
 
     print("OPTIMAL POLICY TEST SUCCESSFULL")
 

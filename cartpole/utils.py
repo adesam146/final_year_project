@@ -122,6 +122,7 @@ def get_samples_and_log_prob(setup, policy, init_state_distn, fm, N_x0=10):
         N_x0 * setup.N, setup.T, setup.action_dim)
     log_prob = fm_samples.new_zeros(N_x0 * setup.N)
     for j, x0 in enumerate(x0s):
+        print(f'j: {j}')
         for i in range(setup.N):
             x = x0
             for t in range(setup.T):
