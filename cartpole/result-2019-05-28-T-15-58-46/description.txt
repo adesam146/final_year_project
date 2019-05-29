@@ -1,1 +1,1 @@
-None
+Result of optimising with optimal parameters with score_func_grad

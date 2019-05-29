@@ -16,9 +16,8 @@ from cartpole.optimal_policy import OptimalPolicy
 from cartpole.pathwise_grad import pathwise_grad
 from cartpole.score_function import score_function_training
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
-                            get_samples_and_log_prob, get_training_data,
-                            plot_gp_trajectories, plot_progress,
-                            plot_trajectories)
+                            get_training_data, plot_gp_trajectories,
+                            plot_progress)
 from discrimator import Discrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
@@ -137,11 +136,17 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
 
         for i in range(policy_iter):
             if use_score_func_grad:
-                disc_loss, policy_loss = score_function_training(
+                disc_loss, policy_loss, samples, actions = score_function_training(
                     setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
             else:
-                disc_loss, policy_loss = pathwise_grad(
+                disc_loss, policy_loss, samples, actions = pathwise_grad(
                     setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
+
+            if i % 10 == 0:
+                plot_gp_trajectories(
+                    samples, actions, T=setup.T, plot_dir=plot_dir, title=f'Predicted trajectories with {expr} interactions and at {i} policy iterations.', file_name=f'training_trajs_expr-{expr}-policy_iter-{i}')
+
+            del samples, actions
 
             # policy_optimizer.zero_grad()
             # loss = 0

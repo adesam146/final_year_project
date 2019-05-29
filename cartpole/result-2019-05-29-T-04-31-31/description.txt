@@ -1,1 +1,1 @@
-None
+Results with pathwise alg starting from optimal policy
