@@ -25,14 +25,14 @@ def get_optimal_gp_inputs():
     output: 600 x 7
     """
     df = pd.read_csv(f'{os.path.dirname(__file__)}/expert_data/optimal_gp_inputs.tsv', delimiter='\t')
-    return torch.from_numpy(df[:, ['x', 'v', 'dtheta', 'sin(theta)', 'cos(theta)', 'u']].to_numpy())
+    return torch.from_numpy(df.loc[:, ['x', 'v', 'dtheta', 'sin(theta)', 'cos(theta)', 'u']].to_numpy())
 
 def get_optimal_gp_targets():
     """
     output: 600 x 4
     """
     df = pd.read_csv(f'{os.path.dirname(__file__)}/expert_data/optimal_gp_targets.tsv', delimiter='\t')
-    return torch.from_numpy(df[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
+    return torch.from_numpy(df.loc[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
 
 def get_training_data(s_a_pairs, traj):
     """
@@ -124,6 +124,7 @@ def plot_gp_trajectories(fm_samples, actions, T, plot_dir, title, file_name, wit
         os.makedirs(gp_plot_dir)
     gp_fig.savefig(
         gp_plot_dir + f'{file_name}.png', format='png')
+    plt.close(gp_fig)
 
 
 def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, expert_samples, N_x0):
@@ -152,6 +153,7 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
 
     fig.savefig(
         plot_dir + f'expert_vs_learner_{expr}.png', format='png')
+    plt.close(fig)
 
     # Plotting prediction of GP under current policy
     with torch.no_grad():

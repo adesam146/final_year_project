@@ -21,6 +21,7 @@ from cartpole.utils import (convert_to_aux_state, get_expert_data,
 from discrimator import Discrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
+from cartpole.optimal_gp import OptimalGP
 from rbf_policy import RBFPolicy
 
 # *** ARGUMENT SET UP ***
@@ -106,8 +107,10 @@ with torch.no_grad():
     init_x, init_y = get_training_data(s_a_pairs, traj)
 
 # *** FORWARD MODEL SETUP ***
-fm = ForwardModel(init_x=init_x.to(device),
-                  init_y=init_y.to(device), D=setup.state_dim, S=setup.aux_state_dim, F=setup.action_dim, device=device)
+# fm = ForwardModel(init_x=init_x.to(device),
+#                   init_y=init_y.to(device), D=setup.state_dim, S=setup.aux_state_dim, F=setup.action_dim, device=device)
+fm = OptimalGP(device=device)
+
 
 # *** INITIAL STATE DISTRIBUTION FOR GP PREDICTION ***
 init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
