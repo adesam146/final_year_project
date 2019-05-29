@@ -20,6 +20,19 @@ def get_expert_data(N=64):
 
     return result
 
+def get_optimal_gp_inputs():
+    """
+    output: 600 x 7
+    """
+    df = pd.read_csv(f'{os.path.dirname(__file__)}/expert_data/optimal_gp_inputs.tsv', delimiter='\t')
+    return torch.from_numpy(df[:, ['x', 'v', 'dtheta', 'sin(theta)', 'cos(theta)', 'u']].to_numpy())
+
+def get_optimal_gp_targets():
+    """
+    output: 600 x 4
+    """
+    df = pd.read_csv(f'{os.path.dirname(__file__)}/expert_data/optimal_gp_targets.tsv', delimiter='\t')
+    return torch.from_numpy(df[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
 
 def get_training_data(s_a_pairs, traj):
     """
