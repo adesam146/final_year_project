@@ -1,0 +1,1 @@
+optimal GP and optimal Policy sampled trajectories using score_func sampling method(double expec) with N_x0 = 10, N = 16
