@@ -1,0 +1,6 @@
+To get plot samples using optimal policy applied to optimal gp without/before any optimisation
+
+If needed:
+Using Optimal GP Model. No training being done.
+Experience 1, Iter 0, disc loss: 1.4936050636607237, policy loss: 4.522663877102467
+Experience 1, Iter 1, disc loss: 1.2830947472605996, policy loss: 7.61819137337268
