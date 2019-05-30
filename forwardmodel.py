@@ -188,6 +188,8 @@ class ForwardModel:
         self.dummy_x = self.train_x
         self.dummy_y = self.train_y
 
+        self.model.set_train_data(self.train_x, self.train_y, strict=False)
+
     def __process_inputs(self, x, y):
         """
         Puts inputs in batch form for the Batch GP

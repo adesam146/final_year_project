@@ -38,14 +38,12 @@ class OptimalGP(ForwardModel):
     def learn(self):
         print("Using Optimal GP Model. No training being done.")
 
+        # TO be used for addition of fantasy data
+        self.dummy_x = self.train_x
+        self.dummy_y = self.train_y
+
         # Some 'random' computation see ForwardModel for why this might be needed
         self.predict(torch.zeros(1, self.S+self.F, device=self.device))
 
     def update_data(self, *args, **kwargs):
-        pass
-
-    def add_fantasy_data(self, *args, **kwargs):
-        pass
-
-    def clear_fantasy_data(self):
         pass
