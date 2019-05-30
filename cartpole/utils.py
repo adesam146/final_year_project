@@ -78,7 +78,7 @@ def plot_trajectories(samples, T, actions=None, color=None, alpha=0.15, with_x0=
     """
     Creates a figure and axes for the states and actions.
     samples: N x T(+1) x D=4
-    actions: N x T, if None then empty plot added
+    actions: N x T x 1, if None then empty plot added
     output: fig and an array of axis for each state dimension D.
     """
     assert samples.shape[2] == 4
@@ -198,3 +198,11 @@ def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T,
         fm.clear_fantasy_data()
 
     return fm_samples, actions, x0s
+
+if __name__ == "__main__":
+    # Plot the optimal GP's training data    
+    inputs = get_optimal_gp_inputs(with_theta=True).view(15, 40, 7)
+    samples = inputs[:, :, :4]
+    actions = inputs[:, :, -1].unsqueeze(-1)
+
+    plot_gp_trajectories(samples, actions[:, :39, :], T=39, plot_dir=os.path.dirname(__file__),title="Optimal GP training data", file_name='optimal_gp_data')

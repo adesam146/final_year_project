@@ -97,9 +97,8 @@ policy_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
     policy_optimizer, gamma=(0.9)**(1/100))
 
 # *** AGENT SETUP ***
-measurement_var = torch.diag(0.01**2 * torch.ones(setup.state_dim))
 agent = CartPoleAgent(dt=setup.dt, T=setup.T, policy=policy,
-                      measurement_var=measurement_var, device=device)
+                      measurement_var=torch.diag(0.01**2 * torch.ones(setup.state_dim)), device=device)
 
 # *** FIRST RANDOM ROLLOUT ***
 with torch.no_grad():
@@ -120,6 +119,8 @@ N_x0 = 10
 # *** DISCRIMATOR SETUP ***
 disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
+# disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
+#     disc_optimizer, gamma=(0.9)**(1/100))
 
 num_of_experience = 50
 policy_iter = args.policy_iter or 50
@@ -127,7 +128,7 @@ use_score_func_grad = args.use_score_func_grad
 
 # Write to a json file all defined variables before training starts
 with open(variables_file, 'w') as fp:
-    json.dump(locals(), fp, skipkeys=True, sort_keys=True,
+    json.dump({**locals(), **setup.__dict__}, fp, skipkeys=True, sort_keys=True,
               default=lambda obj: type(obj).__name__)
 
 with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_prob=False, solves=False):
