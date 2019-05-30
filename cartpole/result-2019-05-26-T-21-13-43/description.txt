@@ -1,1 +1,0 @@
-Running pathwise grad method on sml

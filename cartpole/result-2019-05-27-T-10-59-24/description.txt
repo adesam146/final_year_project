@@ -1,1 +1,0 @@
-With 450 policy_iter nn policy 1e-3 policy lr and gpu

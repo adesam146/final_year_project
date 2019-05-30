@@ -1,0 +1,148 @@
+Experience: 1
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0012],
+        [0.1025],
+        [0.8817],
+        [0.0160]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[1.4197e-03, 6.2227e-02, 7.8419e-01, 1.0537e-02, 6.2650e-02,
+          2.1919e+00]],
+
+        [[1.4197e-03, 6.2227e-02, 7.8419e-01, 1.0537e-02, 6.2650e-02,
+          2.1919e+00]],
+
+        [[1.4197e-03, 6.2227e-02, 7.8419e-01, 1.0537e-02, 6.2650e-02,
+          2.1919e+00]],
+
+        [[1.4197e-03, 6.2227e-02, 7.8419e-01, 1.0537e-02, 6.2650e-02,
+          2.1919e+00]]], grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0049, 0.4100, 3.5268, 0.0641], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0049, 0.4100, 3.5268, 0.0641])
+N: 40
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([161.0000, 161.0000, 161.0000, 161.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 1.801
+Iter 2/2000 - Loss: 2.506
+Iter 3/2000 - Loss: 1.768
+Iter 4/2000 - Loss: 1.842
+Iter 5/2000 - Loss: 2.065
+Iter 6/2000 - Loss: 1.975
+Iter 7/2000 - Loss: 1.761
+Iter 8/2000 - Loss: 1.615
+Iter 9/2000 - Loss: 1.589
+Iter 10/2000 - Loss: 1.625
+Iter 1990/2000 - Loss: -5.853
+Iter 1991/2000 - Loss: -5.853
+Iter 1992/2000 - Loss: -5.853
+Iter 1993/2000 - Loss: -5.853
+Iter 1994/2000 - Loss: -5.853
+Iter 1995/2000 - Loss: -5.853
+Iter 1996/2000 - Loss: -5.853
+Iter 1997/2000 - Loss: -5.853
+Iter 1998/2000 - Loss: -5.853
+Iter 1999/2000 - Loss: -5.853
+Iter 2000/2000 - Loss: -5.853
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0005],
+        [0.0002],
+        [0.0006],
+        [0.0002]])
+Lengthscale: tensor([[[ 8.9461,  3.1602, 62.6778, 15.1518, 47.8698, 34.5818]],
+
+        [[10.8714,  3.6176, 32.7204,  1.6209, 17.5724,  7.3003]],
+
+        [[12.9437,  8.5454, 13.9107,  0.7255,  1.0680, 15.3572]],
+
+        [[ 3.7415, 13.5838, 16.6274,  1.0151, 16.0627, 19.2499]]])
+Signal Variance: tensor([ 0.0293,  1.2734, 12.7788,  0.6070])
+Estimated target variance: tensor([0.0049, 0.4100, 3.5268, 0.0641])
+N: 40
+Signal to noise ratio: tensor([  7.6216,  74.1630, 144.7709,  53.1409])
+Bound on condition number: tensor([  2324.5289, 220006.9088, 838345.8702, 112959.4095])
+Experience 1, Iter 0, disc loss: 1.3173179138553248, policy loss: 2.7052442006570656
+Experience 1, Iter 1, disc loss: 1.2565730811486655, policy loss: 51.601714660115974
+Experience 1, Iter 2, disc loss: 1.0425526750995138, policy loss: 102.31154545019578
+Experience 1, Iter 3, disc loss: 0.929876229238211, policy loss: 163.2646989948007
+Experience 1, Iter 4, disc loss: 0.8614733102649049, policy loss: 212.48250316727527
+Experience 1, Iter 5, disc loss: 0.7915582188806236, policy loss: 283.1706837415369
+Experience 1, Iter 6, disc loss: 0.718676607523316, policy loss: 340.8729764851875
+Experience 1, Iter 7, disc loss: 0.7019874359616524, policy loss: 339.9995159943559
+Experience 1, Iter 8, disc loss: 0.6632755364375561, policy loss: 406.4541846251834
+Experience 1, Iter 9, disc loss: 0.6900829645002845, policy loss: 366.20761497585534
+Experience 1, Iter 10, disc loss: 0.62515181145441, policy loss: 440.9011159383026
+Experience 1, Iter 11, disc loss: 0.5571448656191329, policy loss: 555.1640768987512
+Experience 1, Iter 12, disc loss: 0.5491562373102983, policy loss: 599.5084114104014
+Experience 1, Iter 13, disc loss: 0.43970281928933297, policy loss: 759.7678158386277
+Experience 1, Iter 14, disc loss: 0.4946108251267067, policy loss: 641.8810063478677
+Experience 1, Iter 15, disc loss: 0.42472765651974886, policy loss: 664.6303359269839
+Experience 1, Iter 16, disc loss: 0.40615983209545414, policy loss: 750.0486703055816
+Experience 1, Iter 17, disc loss: 0.4330428282552797, policy loss: 670.6523301339462
+Experience 1, Iter 18, disc loss: 0.39116906080019764, policy loss: 869.028286552124
+Experience 1, Iter 19, disc loss: 0.4077959305544064, policy loss: 808.4384707689661
+Experience: 2
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[1.6915e-03],
+        [1.8809e-01],
+        [1.8140e+00],
+        [2.8837e-02]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.1011, 0.0890, 1.4094, 0.0257, 0.0862, 4.1863]],
+
+        [[0.1011, 0.0890, 1.4094, 0.0257, 0.0862, 4.1863]],
+
+        [[0.1011, 0.0890, 1.4094, 0.0257, 0.0862, 4.1863]],
+
+        [[0.1011, 0.0890, 1.4094, 0.0257, 0.0862, 4.1863]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([6.7659e-03, 7.5237e-01, 7.2562e+00, 1.1535e-01],
+       grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([6.7659e-03, 7.5237e-01, 7.2562e+00, 1.1535e-01])
+N: 80
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([321.0000, 321.0000, 321.0000, 321.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 2.803
+Iter 2/2000 - Loss: 2.799
+Iter 3/2000 - Loss: 2.702
+Iter 4/2000 - Loss: 2.581
+Iter 5/2000 - Loss: 2.572
+Iter 6/2000 - Loss: 2.550
+Iter 7/2000 - Loss: 2.452
+Iter 8/2000 - Loss: 2.359
+Iter 9/2000 - Loss: 2.321
+Iter 10/2000 - Loss: 2.283
+Iter 1990/2000 - Loss: -5.095
+Iter 1991/2000 - Loss: -5.095
+Iter 1992/2000 - Loss: -5.095
+Iter 1993/2000 - Loss: -5.095
+Iter 1994/2000 - Loss: -5.095
+Iter 1995/2000 - Loss: -5.095
+Iter 1996/2000 - Loss: -5.095
+Iter 1997/2000 - Loss: -5.095
+Iter 1998/2000 - Loss: -5.095
+Iter 1999/2000 - Loss: -5.095
+Iter 2000/2000 - Loss: -5.095
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0004],
+        [0.0003],
+        [0.0009],
+        [0.0003]])
+Lengthscale: tensor([[[12.5292,  4.2109, 61.4520,  6.9413,  1.7936, 44.3282]],
+
+        [[45.6710, 30.8538, 10.1767,  1.2979,  1.3895, 16.5876]],
+
+        [[42.4589, 25.7855, 13.9982,  0.8927,  1.3419, 16.8963]],
+
+        [[43.4487, 21.5645, 14.0068,  2.1345,  1.8694, 34.5453]]])
+Signal Variance: tensor([ 0.0405,  1.5188, 15.8696,  0.4712])
+Estimated target variance: tensor([6.7659e-03, 7.5237e-01, 7.2562e+00, 1.1535e-01])
+N: 80
+Signal to noise ratio: tensor([  9.6056,  71.8816, 132.5169,  41.8438])
+Bound on condition number: tensor([   7382.3424,  413358.2343, 1404858.3309,  140073.4456])
+j: 0
+j: 1
+j: 2
+j: 3
+j: 4
+j: 5
+j: 6
+j: 7
+j: 8
+j: 9

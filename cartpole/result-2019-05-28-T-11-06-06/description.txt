@@ -1,0 +1,2 @@
+A run with the optimal policy (as derived from PILCO matlab).
+Helps confirm the dynamics setting are right.

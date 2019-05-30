@@ -5,14 +5,19 @@ from cartpole.utils import convert_to_aux_state, sample_trajectories
 def pathwise_grad(setup, expert_samples, policy, fm, disc,
                   disc_optimizer, policy_optimizer, init_state_distn):
     """
-    output: discrimator loss, policy loss (both with grad detached)
+    output:
+        discrimator loss (grad detached),
+        policy loss (grad detached),
+        samples: setup.N, setup.T+1, setup.state_dim
+        actions: setup.N, setup.T, setup.action_dim
     """
 
     bce_logit_loss = torch.nn.BCEWithLogitsLoss()
     real_target = init_state_distn.mean.new_ones(setup.N, 1)
     fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
 
-    fm_samples, _, _= sample_trajectories(setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
+    fm_samples, actions, x0s = sample_trajectories(
+        setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
 
     # Train Discrimator
     disc.enable_parameters_grad()
@@ -35,4 +40,4 @@ def pathwise_grad(setup, expert_samples, policy, fm, disc,
     policy_loss.backward()
     policy_optimizer.step()
 
-    return disc_loss.detach(), policy_loss.detach()
+    return disc_loss.detach(), policy_loss.detach(), torch.cat((x0s.unsqueeze(1), fm_samples.detach()), dim=1), actions.detach()

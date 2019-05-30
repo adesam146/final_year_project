@@ -20,6 +20,19 @@ def get_expert_data(N=64):
 
     return result
 
+def get_optimal_gp_inputs():
+    """
+    output: 600 x 7
+    """
+    df = pd.read_csv(f'{os.path.dirname(__file__)}/expert_data/optimal_gp_inputs.tsv', delimiter='\t')
+    return torch.from_numpy(df.loc[:, ['x', 'v', 'dtheta', 'sin(theta)', 'cos(theta)', 'u']].to_numpy())
+
+def get_optimal_gp_targets():
+    """
+    output: 600 x 4
+    """
+    df = pd.read_csv(f'{os.path.dirname(__file__)}/expert_data/optimal_gp_targets.tsv', delimiter='\t')
+    return torch.from_numpy(df.loc[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
 
 def get_training_data(s_a_pairs, traj):
     """
@@ -99,11 +112,10 @@ def plot_trajectories(samples, T, actions=None, color=None, alpha=0.15, with_x0=
     return fig, axs
 
 
-def plot_gp_trajectories(fm_samples, actions, T, plot_dir, expr):
+def plot_gp_trajectories(fm_samples, actions, T, plot_dir, title, file_name, with_x0=True):
     gp_fig, _ = plot_trajectories(
-        fm_samples, actions=actions, T=T, color='green')
-    gp_fig.suptitle(
-        f"Predicted state values of GP and corresponding actions at Experience: {expr}")
+        fm_samples, actions=actions, T=T, color='green', with_x0=with_x0)
+    gp_fig.suptitle(title)
 
     gp_fig.tight_layout()
 
@@ -111,36 +123,8 @@ def plot_gp_trajectories(fm_samples, actions, T, plot_dir, expr):
     if not os.path.isdir(gp_plot_dir):
         os.makedirs(gp_plot_dir)
     gp_fig.savefig(
-        gp_plot_dir + f'GP_trajectories_{expr}.png', format='png')
-
-
-def get_samples_and_log_prob(setup, policy, init_state_distn, fm, N_x0=10):
-    x0s = init_state_distn.sample((N_x0,))
-    fm_samples = x0s.new_empty(
-        N_x0 * setup.N, setup.T, setup.state_dim)
-    actions = x0s.new_empty(
-        N_x0 * setup.N, setup.T, setup.action_dim)
-    log_prob = fm_samples.new_zeros(N_x0 * setup.N)
-    for j, x0 in enumerate(x0s):
-        for i in range(setup.N):
-            x = x0
-            for t in range(setup.T):
-                aux_x = convert_to_aux_state(x, setup.state_dim)
-                x_t_u_t = torch.cat(
-                    (aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1)
-                y, log_prob_t = fm.predict(
-                    x_t_u_t, with_rsample=False, return_log_prob=True)
-                log_prob[i + setup.N*j] += log_prob_t
-
-                fm.add_fantasy_data(x_t_u_t.detach(), y.detach())
-                x = x + y.view(setup.state_dim)
-
-                fm_samples[i + setup.N*j, t] = x
-                actions[i + setup.N*j, t] = x_t_u_t[:, -
-                                                    setup.action_dim:].detach().squeeze()
-            fm.clear_fantasy_data()
-
-    return fm_samples, log_prob, actions, x0s
+        gp_plot_dir + f'{file_name}.png', format='png')
+    plt.close(gp_fig)
 
 
 def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, expert_samples, N_x0):
@@ -169,18 +153,22 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
 
     fig.savefig(
         plot_dir + f'expert_vs_learner_{expr}.png', format='png')
+    plt.close(fig)
 
     # Plotting prediction of GP under current policy
     with torch.no_grad():
         samples, actions, x0s = sample_trajectories(
             setup, fm, init_state_distn, policy, sample_N=20, sample_T=setup.T, with_rsample=False)
     plot_gp_trajectories(torch.cat((x0s.unsqueeze(
-        1), samples), dim=1), actions, T=setup.T, plot_dir=plot_dir, expr=expr)
+        1), samples), dim=1), actions, T=setup.T, plot_dir=plot_dir, title=f"Predicted state values of GP and corresponding actions after optimisation and Experience: {expr}", file_name=f'GP_trajectories_{expr}')
 
 
 def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T, with_rsample):
     """
-    output: samples (x_1 to x_sample_T), actions (u_0 to u_sample_T-1), x0s
+    output:
+        samples (x_1 to x_sample_T): sample_N, sample_T, setup.state_dim, 
+        actions (u_0 to u_sample_T-1): sample_N, sample_T, setup.state_dim,
+        x0s: sample_N, setup.state_dim
     """
     x0s = init_state_distn.sample((sample_N,))
     fm_samples = x0s.new_empty(sample_N, sample_T, setup.state_dim)

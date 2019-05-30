@@ -48,7 +48,7 @@ class ForwardModel:
             sample = dyn_model.rsample()
         else:
             sample = dyn_model.sample()
-            
+
         log_prob = None
         if return_log_prob:
             log_prob = dyn_model.log_prob(sample).sum()
@@ -70,7 +70,6 @@ class ForwardModel:
 
         return dyn_model
 
-
     def learn(self):
         if self.model is not None:
             # Consider how model can be set in constructor and reused
@@ -84,20 +83,22 @@ class ForwardModel:
                              self.likelihood).to(self.device)
 
         print("***BEFORE OPTIMATION***")
-        self.model.covar_module.outputscale = torch.var(self.train_y, dim=1).squeeze()
-        
+        self.model.covar_module.outputscale = torch.var(
+            self.train_y, dim=1).squeeze()
+
         kappa = 2
-        self.model.likelihood.noise = torch.var(self.train_y, dim=1).squeeze() / (kappa**2)
+        self.model.likelihood.noise = torch.var(
+            self.train_y, dim=1).squeeze() / (kappa**2)
 
         lambda_sq = 3**2
-        self.model.covar_module.base_kernel.lengthscale = torch.var(self.train_x[0], dim=0, keepdim=True).unsqueeze(0).repeat(self.D, 1, 1) / lambda_sq
+        self.model.covar_module.base_kernel.lengthscale = torch.var(
+            self.train_x[0], dim=0, keepdim=True).unsqueeze(0).repeat(self.D, 1, 1) / lambda_sq
 
         self.mll_optimising_progress()
 
         # Find optimal model hyperparameters
         self.model.train()
         self.likelihood.train()
-
 
         # Use the adam optimizer
         optimizer = torch.optim.Adam([
@@ -186,6 +187,8 @@ class ForwardModel:
     def clear_fantasy_data(self):
         self.dummy_x = self.train_x
         self.dummy_y = self.train_y
+
+        self.model.set_train_data(self.train_x, self.train_y, strict=False)
 
     def __process_inputs(self, x, y):
         """
