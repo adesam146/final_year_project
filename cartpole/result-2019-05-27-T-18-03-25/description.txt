@@ -1,0 +1,1 @@
+With maximising log prob forward model, policy_lr=0.01, policy_iter=200
