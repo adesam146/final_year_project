@@ -187,6 +187,8 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                         loss += -dyn_model.log_prob(
                             (expert_samples[n, t+1] - expert_samples[n, t]).view(setup.state_dim, -1)).sum()
 
+                        del dyn_model
+
                 loss *= 1.0/setup.N
                 loss.backward()
                 policy_optimizer.step()
