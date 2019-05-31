@@ -42,13 +42,16 @@ args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
 script_dir = os.path.dirname(__file__)
-result_dir_name = args.result_dir_name or f"result-{datetime.now().strftime('%Y-%m-%d-T-%H-%M-%S')}"
-result_dir = os.path.join(script_dir, result_dir_name)
-count = 1
-while os.path.isdir(result_dir):
-    result_dir = os.path.join(script_dir, result_dir_name+f'{count}')
-    count += 1
+exec_datetime = datetime.now().strftime('%Y-%m-%d-T-%H-%M-%S')
+result_dir_name = args.result_dir_name or f"result-{exec_datetime}"
+result_dir = os.path.join(os.path.join(script_dir, "results"), result_dir_name)
+
+# In case the provided name already exist
+if os.path.isdir(result_dir):
+    result_dir = result_dir + f'-{exec_datetime}'
+
 os.makedirs(result_dir)
+
 plot_dir = os.path.join(result_dir, 'plots/')
 os.makedirs(plot_dir)
 variables_file = os.path.join(result_dir, 'variables.json')
@@ -129,7 +132,7 @@ use_score_func_grad = args.use_score_func_grad
 # Write to a json file all defined variables before training starts
 with open(variables_file, 'w') as fp:
     json.dump({**locals(), **setup.__dict__}, fp, skipkeys=True, sort_keys=True,
-              default=lambda obj: type(obj).__name__)
+              default=lambda obj: type(obj).__name__, indent=2)
 
 with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_prob=False, solves=False):
     for expr in range(1, num_of_experience+1):
