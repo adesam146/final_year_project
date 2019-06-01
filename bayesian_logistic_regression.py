@@ -13,15 +13,26 @@ from matplotlib import pyplot as plt
 
 
 def load_data(N=50, jitter=0.7, offset=1.2):
+    """
+    output:
+        x_train: N x 2
+        y_train: N x 1
+        x_test: N x 2
+    """
     # Generate the data
     x = np.vstack([np.random.normal(0, jitter, (N // 2, 1)),
                    np.random.normal(offset, jitter, (N // 2, 1))])
+    # x: N x 1
     y = np.vstack([np.zeros((N // 2, 1)), np.ones((N // 2, 1))])
+    # y: N x 1
     x_test = np.linspace(-2, offset + 2, num=N).reshape(-1, 1)
+    # x_test: N x 1
 
     # Make the augmented data matrix by adding a column of ones
     x_train = np.hstack([np.ones((N, 1)), x])
+    # x_train: N x 2
     x_test = np.hstack([np.ones((N, 1)), x_test])
+    # x_test: N x 2
     return x_train, y, x_test
 
 
@@ -70,19 +81,17 @@ if __name__ == "__main__":
 
     from sklearn import metrics
 
-    
     # From Coursework
     y_hat = model_simulator.simulate(beta_sample, torch.from_numpy(
         X_train).float()).numpy()
-    print(metrics.accuracy_score(Y_train, y_hat))
-    print(metrics.confusion_matrix(Y_train, y_hat))
+    print("Accuracy:", metrics.accuracy_score(Y_train, y_hat))
+    print("Confusion matrix", metrics.confusion_matrix(Y_train, y_hat))
 
     plt.scatter(X_train[y_hat < 0.5, 1], Y_train[y_hat < 0.5])
     plt.scatter(X_train[y_hat > 0.5, 1], Y_train[y_hat > 0.5])
     plt.legend(['Classified as 0', 'Classified as 1'])
     # plt.plot(X_test[:, 1], model_simulator.simulate(
-        # beta_sample, torch.from_numpy(X_test).float()).numpy())
+    # beta_sample, torch.from_numpy(X_test).float()).numpy())
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
-
