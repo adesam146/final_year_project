@@ -1,11 +1,11 @@
 import torch
+from rbf_policy import RBFPolicy
 
 
-class OptimalPolicy:
+class OptimalPolicy(RBFPolicy):
     # Consider making an nn module
     def __init__(self, u_max, device):
-        self.u_max = u_max
-        self.device = device
+        super().__init__(u_max, 5, 10, device)
 
         self.X = torch.tensor([[-4.13779749423284,	0.388195736104642,	0.311289659549716,	-2.16182462811072,	0.987866588280126],
                                [3.78758225404730,	-1.50196979968876,
@@ -42,54 +42,6 @@ class OptimalPolicy:
                                6.33739805806107,
                                -1.51330986923437,
                                -0.589476409536458], requires_grad=True, device=self.device)
-
-    def recompute_K(self):
-        """
-        Signal variance is implictly set to 1 and
-        Signal noise variance to 0.01**2
-        """
-        self.K = torch.zeros(10, 10, device=self.device)
-        for i in range(10):
-            for j in range(10):
-                self.K[i, j] = self.kernel(self.X[i], self.X[j])
-                if i == j:
-                    self.K[i, j] += 0.01**2
-
-    def __call__(self, x):
-        self.recompute_K()
-
-        k = torch.zeros(10, device=self.device)
-
-        for i in range(10):
-            k[i] = self.kernel(x, self.X[i])
-
-        l_inv = torch.cholesky(self.K).inverse()
-
-        v = torch.chain_matmul(l_inv.t(), l_inv, self.Y.view(-1, 1))
-
-        return self.u_max * self.squash(torch.matmul(k.view(1, -1), v)).view(1)
-
-    def kernel(self, x1, x2):
-        """
-        x1, x2: 5
-        """
-        return torch.exp(-0.5 * torch.chain_matmul((x1-x2).view(1, 5), torch.diag(torch.exp(-2 * self.log_l)), (x1-x2).view(5, 1)))
-
-    def squash(self, x):
-        """
-        Squashing the values in x to be between -1 and 1
-        """
-        return (9*torch.sin(x) + torch.sin(3*x))/8
-
-    def parameters(self):
-        # return [self.weights, self.centers, self.ln_vars]
-        return [self.log_l, self.Y, self.X]
-
-    def eval(self):
-        pass
-
-    def train(self):
-        pass
 
 
 if __name__ == "__main__":

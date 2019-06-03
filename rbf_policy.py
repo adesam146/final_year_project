@@ -4,38 +4,53 @@ import torch
 class RBFPolicy:
     # Consider making an nn module
     def __init__(self, u_max, input_dim, nbasis, device):
+        assert input_dim == 5 # Only dealing with the cartpole problem for now
         self.u_max = u_max
         self.input_dim = input_dim
         self.nbasis = nbasis
         self.device = device
-        self.weights = torch.ones(nbasis, requires_grad=True, device=device)
-        self.centers = 0.1 * torch.randn(
-            input_dim, nbasis, device=device)
-        self.centers.requires_grad = True
-        # self.ln_vars = torch.randn(
-        # input_dim, requires_grad=True, device=device)
-        self.ln_vars = torch.tensor([1, 1, 1, 0.7, 0.7], requires_grad=True, device=device)
+
+        # Most of the initialisations here are based on the PILCO code
+
+        self.X = torch.randn(self.nbasis, self.input_dim, requires_grad=True, device=self.device)
+
+        self.log_l = torch.log(torch.tensor([1, 1, 1, 0.7, 0.7], device=self.device))
+        self.log_l.requires_grad = True
+
+        self.Y = 0.1 * torch.randn(self.nbasis, device=self.device)
+        self.Y.requires_grad = True
 
     def __call__(self, x):
-        """
-        x: (batch) x S
-        output: batch
-        """
-        assert x.shape[-1] == self.input_dim
-        
-        x = x.view(-1, self.input_dim)
-        batch = x.shape[0]
+        self.recompute_K()
 
-        # return torch.matmul(self.weights, torch.exp())
-        inv_gamma = torch.diag(1/(torch.exp(self.ln_vars)+1e-12))
+        k = torch.zeros(self.nbasis, device=self.device)
 
-        bases = torch.empty(batch, self.nbasis, device=self.device)
         for i in range(self.nbasis):
-            x_minus_c_t = x - self.centers[:, i]
-            bases[:, i] = torch.diag(torch.chain_matmul(
-                x_minus_c_t, inv_gamma, torch.t(x_minus_c_t)))
+            k[i] = self.kernel(x, self.X[i])
 
-        return self.u_max * self.squash(torch.matmul(torch.exp(-0.5 * bases), self.weights))
+        l_inv = torch.cholesky(self.K).inverse()
+
+        v = torch.chain_matmul(l_inv.t(), l_inv, self.Y.view(-1, 1))
+
+        return self.u_max * self.squash(torch.matmul(k.view(1, -1), v)).view(1)
+
+    def recompute_K(self):
+        """
+        Signal variance is implictly set to 1 and
+        Signal noise variance to 0.01**2
+        """
+        self.K = torch.zeros(self.nbasis, self.nbasis, device=self.device)
+        for i in range(self.nbasis):
+            for j in range(self.nbasis):
+                self.K[i, j] = self.kernel(self.X[i], self.X[j])
+                if i == j:
+                    self.K[i, j] += 0.01**2
+
+    def kernel(self, x1, x2):
+        """
+        x1, x2: input_dim
+        """
+        return torch.exp(-0.5 * torch.chain_matmul((x1-x2).view(1, self.input_dim), torch.diag(torch.exp(-2 * self.log_l)), (x1-x2).view(self.input_dim, 1)))
 
     def squash(self, x):
         """
@@ -44,7 +59,7 @@ class RBFPolicy:
         return (9*torch.sin(x) + torch.sin(3*x))/8
 
     def parameters(self):
-        return [self.weights, self.centers, self.ln_vars]
+        return [self.log_l, self.Y, self.X]
 
     def eval(self):
         pass
