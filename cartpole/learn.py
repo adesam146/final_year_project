@@ -17,12 +17,13 @@ from cartpole.pathwise_grad import pathwise_grad
 from cartpole.score_function import score_function_training
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
-                            plot_progress)
+                            plot_progress, sample_trajectories)
 from discrimator import Discrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
 from cartpole.optimal_gp import OptimalGP
 from rbf_policy import RBFPolicy
+from ss_discrimator import SSDiscriminator
 
 # *** ARGUMENT SET UP ***
 parser = argparse.ArgumentParser()
@@ -42,6 +43,8 @@ parser.add_argument("--use_pathwise_grad",
                     help="Use pathwise gradient method for optimising policy", action="store_true")
 parser.add_argument("--use_max_log_prob",
                     help="Use maxising the log prob of forward method for optimising policy", action="store_true")
+parser.add_argument("--use_state_to_state",
+                    help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -87,6 +90,7 @@ else:
 use_score_func_grad = args.use_score_func_grad
 use_pathwise_grad = args.use_pathwise_grad
 use_max_log_prob = args.use_max_log_prob
+use_state_to_state = args.use_state_to_state
 
 # *** GET EXPERT SAMPLES ***
 expert_samples = get_expert_data().to(device)
@@ -97,15 +101,15 @@ setup = CartPoleSetup(
 
 # Determine whether expert x0 is needed or not
 expert_sample_start = 0
-if not use_max_log_prob:
+if use_score_func_grad or use_pathwise_grad:
     expert_sample_start = 1
 # Restrict samples to specfied horizon T
 expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
 
 # *** POLICY SETUP ***
-# policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim, nbasis=10, device=device)
+policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim, nbasis=10, device=device)
 # policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
-policy = OptimalPolicy(u_max=10, device=device)
+# policy = OptimalPolicy(u_max=10, device=device)
 policy_lr = args.policy_lr or 1e-2
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
@@ -123,9 +127,9 @@ with torch.no_grad():
     init_x, init_y = get_training_data(s_a_pairs, traj)
 
 # *** FORWARD MODEL SETUP ***
-# fm = ForwardModel(init_x=init_x.to(device),
-#                   init_y=init_y.to(device), D=setup.state_dim, S=setup.aux_state_dim, F=setup.action_dim, device=device)
-fm = OptimalGP(device=device)
+fm = ForwardModel(init_x=init_x.to(device),
+                  init_y=init_y.to(device), D=setup.state_dim, S=setup.aux_state_dim, F=setup.action_dim, device=device)
+# fm = OptimalGP(device=device)
 
 
 # *** INITIAL STATE DISTRIBUTION FOR GP PREDICTION ***
@@ -134,7 +138,10 @@ init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
 N_x0 = 10
 
 # *** DISCRIMATOR SETUP ***
-disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
+if use_state_to_state:
+    disc = SSDiscriminator(D=setup.state_dim)
+else:
+    disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 # disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 #     disc_optimizer, gamma=(0.9)**(1/100))
@@ -155,17 +162,54 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
         policy_lr_sch.step()
 
         for i in range(policy_iter):
-            if use_score_func_grad or use_pathwise_grad:
+            if not use_max_log_prob:
                 if use_score_func_grad:
                     disc_loss, policy_loss, samples, actions = score_function_training(
                         setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
-                else:
+                elif use_pathwise_grad:
                     disc_loss, policy_loss, samples, actions = pathwise_grad(
                         setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
+                else:
+                    bce_logit_loss = torch.nn.BCEWithLogitsLoss()
+                    real_target = init_state_distn.mean.new_ones(setup.N, 1)
+                    fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
+
+                    samples, actions, x0s = sample_trajectories(
+                        setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
+
+                    samples = torch.cat((x0s.unsqueeze(1), samples), dim=1)
+
+                    # Train Discrimator
+                    disc.enable_parameters_grad()
+                    disc_optimizer.zero_grad()
+
+                    disc_loss = 0
+                    for t in range(setup.T):
+                        disc_loss += bce_logit_loss(disc(expert_samples[:, t:t+2]), real_target) + bce_logit_loss(
+                            disc(samples[:, t:t+2].detach()), fake_target)
+
+                    disc_loss *= 1.0/setup.T
+
+                    disc_loss.backward()
+                    disc_optimizer.step()
+
+                    # Optimise policy
+                    policy_optimizer.zero_grad()
+
+                    # To avoid having to calculate gradients of discrimator
+                    disc.enable_parameters_grad(enable=False)
+
+                    policy_loss = 0
+                    for t in range(setup.T):
+                        policy_loss += bce_logit_loss(
+                            disc(samples[:, t:t+2]), real_target)
+
+                    policy_loss.backward()
+                    policy_optimizer.step()
 
                 if i % 10 == 0:
                     plot_gp_trajectories(
-                        samples, actions, T=setup.T, plot_dir=plot_dir, title=f'Predicted trajectories with {expr} interactions and at {i} policy iterations (before the {i+1}th parameter update).', file_name=f'training_trajs_expr-{expr}-policy_iter-{i}')
+                        samples.detach(), actions.detach(), T=setup.T, plot_dir=plot_dir, title=f'Predicted trajectories with {expr} interactions and at {i} policy iterations (before the {i+1}th parameter update).', file_name=f'training_trajs_expr-{expr}-policy_iter-{i}')
 
                 del samples, actions
 
