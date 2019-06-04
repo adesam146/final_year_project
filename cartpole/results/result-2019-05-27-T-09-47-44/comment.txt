@@ -1,8 +1,0 @@
-From expr 1 to 7 the policy seems to have gotten to a state in which it "thinks" it can do ok with just having x, v, dtheta and theta be 0 throughout.
-Which is senisible with regards to x, v and dtheta but not helpful for theta.
-However the discrimator is not really fooled as the example loss below shows
-How to avoid this?
-- Add some sought of weight on theta? Seems adhoc though.
-- Have discrimators for each stat dimension ?
-An example loss: 
-Experience 7, Iter 71, disc loss: 0.043590788960003096, policy loss: 3.289292145426538

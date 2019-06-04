@@ -1,0 +1,1 @@
+Using a Non-Convolutional Discriminator with leaky_relu, T=5 and pathwise grad and policy_iter=20, policy_lr=0.01
