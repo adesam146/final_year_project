@@ -11,7 +11,7 @@ import matplotlib.colorbar as cbar
 
 
 class ForwardModel:
-    def __init__(self, init_x, init_y, D, S, F, device):
+    def __init__(self, init_x, init_y, D, S, F, device, save_dir=''):
         """
         This model assumes the states and actions have already been paired
         to form the input into the GP
@@ -24,6 +24,9 @@ class ForwardModel:
         self.S = S
         self.F = F
         self.device = device
+        self.save_dir = save_dir
+        self.train_x_filename = 'train_x.pt'
+        self.train_y_filename = 'train_y.pt'
 
         self.train_x, self.train_y = self.__process_inputs(init_x, init_y)
 
@@ -130,13 +133,17 @@ class ForwardModel:
         print("***AFTER OPTIMATION***")
         self.mll_optimising_progress()
 
-        # TO be used for addition of fantasy data
-        self.dummy_x = self.train_x
-        self.dummy_y = self.train_y
+        # Saving current training data so it can be recovered after
+        # temporary data points are added during trajectory prediction
+        self.save_training_data()
 
         # Random computation for force the kernel to be evaluated
         # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
         self.predict(torch.zeros(1, self.S+self.F, device=self.device))
+
+    def save_training_data(self):
+        torch.save(self.train_x, self.save_dir + self.train_x_filename)
+        torch.save(self.train_y, self.save_dir + self.train_y_filename)
 
     def mll_optimising_progress(self):
         print("Noise Variance:", self.model.likelihood.noise)
@@ -179,14 +186,16 @@ class ForwardModel:
 
         y = y + torch.sqrt(self.model.likelihood.noise) * torch.randn_like(y)
 
-        self.dummy_x = torch.cat((self.dummy_x, x), dim=1)
-        self.dummy_y = torch.cat((self.dummy_y, y), dim=1)
+        self.train_x = torch.cat((self.train_x, x), dim=1)
+        self.train_y = torch.cat((self.train_y, y), dim=1)
 
-        self.model.set_train_data(self.dummy_x, self.dummy_y, strict=False)
+        self.model.set_train_data(self.train_x, self.train_y, strict=False)
 
     def clear_fantasy_data(self):
-        self.dummy_x = self.train_x
-        self.dummy_y = self.train_y
+        del self.train_x, self.train_y
+
+        self.train_x = torch.load(self.save_dir + self.train_x_filename)
+        self.train_y = torch.load(self.save_dir + self.train_y_filename)
 
         self.model.set_train_data(self.train_x, self.train_y, strict=False)
 
@@ -211,7 +220,7 @@ class ForwardModel:
         output: D x Tst x S+F
         Need to replicate x for each target dimension
         """
-        return x.unsqueeze(0).repeat(self.D, 1, 1)
+        return x.unsqueeze(0).expand(self.D, -1, -1)
 
 
 class GPModel(gpytorch.models.ExactGP):
