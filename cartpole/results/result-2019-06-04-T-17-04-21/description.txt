@@ -1,1 +1,1 @@
-None
+Result for T=5 with relu and normal disc and pathwise grad
