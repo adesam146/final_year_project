@@ -199,10 +199,31 @@ def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T,
 
     return fm_samples, actions, x0s
 
+
+def save_current_state(expr, fm, disc, disc_optimizer, disc_dir, policy, policy_optimizer, policy_lr_sch, policy_dir):
+    # Forward Model
+    fm.save_training_data()
+    fm.save_model_state()
+
+    # Discriminator
+    torch.save(disc.state_dict(), disc_dir+f'disc_after-expr-{expr}.pt')
+    torch.save(disc_optimizer.state_dict(), disc_dir +
+               f'optimizer_after_expr-{expr}.pt')
+
+    # Policy
+    torch.save(policy.state_dict(), policy_dir +
+               f'policy_after_expr-{expr}.pt')
+    torch.save(policy_optimizer.state_dict(),
+               policy_dir+f'optimizer_after_expr-{expr}.pt')
+    torch.save(policy_lr_sch.state_dict(), policy_dir +
+               f'lr_scheduler_after_expr-{expr}.pt')
+
+
 if __name__ == "__main__":
-    # Plot the optimal GP's training data    
+    # Plot the optimal GP's training data
     inputs = get_optimal_gp_inputs(with_theta=True).view(15, 40, 7)
     samples = inputs[:, :, :4]
     actions = inputs[:, :, -1].unsqueeze(-1)
 
-    plot_gp_trajectories(samples, actions[:, :39, :], T=39, plot_dir=os.path.dirname(__file__),title="Optimal GP training data", file_name='optimal_gp_data')
+    plot_gp_trajectories(samples, actions[:, :39, :], T=39, plot_dir=os.path.dirname(
+        __file__), title="Optimal GP training data", file_name='optimal_gp_data')
