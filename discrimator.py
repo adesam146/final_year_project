@@ -22,7 +22,7 @@ class Discrimator(nn.Module):
         assert t.shape[-2] == self.T
         assert t.shape[-1] == self.D
         h = self.linear1(t.view(-1, self.T*self.D))
-        return self.linear2(F.relu(h))
+        return self.linear2(F.leaky_relu(h))
 
     def enable_parameters_grad(self, enable=True):
         for param in self.parameters():

@@ -46,6 +46,8 @@ parser.add_argument("--use_max_log_prob",
                     help="Use maxising the log prob of forward method for optimising policy", action="store_true")
 parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
+parser.add_argument(
+    "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -111,7 +113,7 @@ expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
 policy_dir = os.path.join(result_dir, 'policy/')
 os.makedirs(policy_dir)
 # policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
-                #    nbasis=10, device=device)
+#    nbasis=10, device=device)
 policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 # policy = OptimalPolicy(u_max=10, device=device)
 policy_lr = args.policy_lr or 1e-2
@@ -144,12 +146,16 @@ init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
 N_x0 = 10
 
 # *** DISCRIMATOR SETUP ***
+use_conv_disc = args.use_conv_disc
 disc_dir = os.path.join(result_dir, 'disc/')
 os.makedirs(disc_dir)
+
 if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
-else:
+elif use_conv_disc:
     disc = ConvDiscrimator(T=setup.T, D=setup.state_dim).to(device)
+else:
+    disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 # disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 #     disc_optimizer, gamma=(0.9)**(1/100))
