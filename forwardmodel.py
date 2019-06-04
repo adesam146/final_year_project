@@ -136,14 +136,11 @@ class ForwardModel:
         # Saving current training data so it can be recovered after
         # temporary data points are added during trajectory prediction
         self.save_training_data()
+        self.save_model_state()
 
         # Random computation for force the kernel to be evaluated
         # The reason this is done is that you do not want the first time the kernel for the data is calculated to be in a loop and involve a tensor that requires_grad because onces backward is called, in a subsequence iteration due to gpytorch's lazy loading, autograd would try to access the TODO
         self.predict(torch.zeros(1, self.S+self.F, device=self.device))
-
-    def save_training_data(self):
-        torch.save(self.train_x, self.save_dir + self.train_x_filename)
-        torch.save(self.train_y, self.save_dir + self.train_y_filename)
 
     def mll_optimising_progress(self):
         print("Noise Variance:", self.model.likelihood.noise)
@@ -198,6 +195,14 @@ class ForwardModel:
         self.train_y = torch.load(self.save_dir + self.train_y_filename)
 
         self.model.set_train_data(self.train_x, self.train_y, strict=False)
+
+    def save_training_data(self):
+        torch.save(self.train_x, self.save_dir + self.train_x_filename)
+        torch.save(self.train_y, self.save_dir + self.train_y_filename)
+
+    def save_model_state(self):
+        torch.save(self.model.state_dict(),
+                   self.save_dir + 'gp_model_state.pt')
 
     def __process_inputs(self, x, y):
         """

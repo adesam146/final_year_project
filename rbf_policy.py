@@ -1,10 +1,12 @@
 import torch
+import torch.nn as nn
 
 
-class RBFPolicy:
+class RBFPolicy(nn.Module):
     # Consider making an nn module
     def __init__(self, u_max, input_dim, nbasis, device):
-        assert input_dim == 5 # Only dealing with the cartpole problem for now
+        assert input_dim == 5  # Only dealing with the cartpole problem for now
+        super().__init__()
         self.u_max = u_max
         self.input_dim = input_dim
         self.nbasis = nbasis
@@ -12,13 +14,14 @@ class RBFPolicy:
 
         # Most of the initialisations here are based on the PILCO code
 
-        self.X = torch.randn(self.nbasis, self.input_dim, requires_grad=True, device=self.device)
+        self.X = nn.Parameter(torch.randn(
+            self.nbasis, self.input_dim, device=self.device))
 
-        self.log_l = torch.log(torch.tensor([1, 1, 1, 0.7, 0.7], device=self.device))
-        self.log_l.requires_grad = True
+        self.log_l = nn.Parameter(
+            torch.log(torch.tensor([1, 1, 1, 0.7, 0.7], device=self.device)))
 
-        self.Y = 0.1 * torch.randn(self.nbasis, device=self.device)
-        self.Y.requires_grad = True
+        self.Y = nn.Parameter(
+            0.1 * torch.randn(self.nbasis, device=self.device))
 
     def __call__(self, x):
         self.recompute_K()
@@ -57,9 +60,6 @@ class RBFPolicy:
         Squashing the values in x to be between -1 and 1
         """
         return (9*torch.sin(x) + torch.sin(3*x))/8
-
-    def parameters(self):
-        return [self.log_l, self.Y, self.X]
 
     def eval(self):
         pass
