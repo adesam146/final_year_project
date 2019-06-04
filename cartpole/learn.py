@@ -20,7 +20,7 @@ from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
                             plot_progress, sample_trajectories,
                             save_current_state)
-from discrimator import Discrimator
+from discrimator import Discrimator, ConvDiscrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
 from rbf_policy import RBFPolicy
@@ -149,7 +149,7 @@ os.makedirs(disc_dir)
 if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
 else:
-    disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
+    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
 # disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 #     disc_optimizer, gamma=(0.9)**(1/100))

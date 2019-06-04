@@ -1,0 +1,46 @@
+EXAMPLE OUTPUT COPIED FROM TERMINAL
+
+Iter 1994/2000 - Loss: -7.671
+Iter 1995/2000 - Loss: -7.671
+Iter 1996/2000 - Loss: -7.671
+Iter 1997/2000 - Loss: -7.671
+Iter 1998/2000 - Loss: -7.671
+Iter 1999/2000 - Loss: -7.671
+Iter 2000/2000 - Loss: -7.671
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0002],
+        [0.0002],
+        [0.0021],
+        [0.0003]])
+Lengthscale: tensor([[[13.8604,  8.5605, 44.1330,  5.7127,  5.0101, 48.9933]],
+
+        [[17.4892, 35.0160,  8.2458,  1.3688,  3.5025, 19.2702]],
+
+        [[17.8133, 42.9932, 10.5067,  1.1212,  2.1144, 21.6876]],
+
+        [[14.4849, 31.1207, 13.2785,  1.1720,  5.6156, 44.6415]]])
+Signal Variance: tensor([ 0.1488,  1.6641, 18.9552,  0.3071])
+Estimated target variance: tensor([0.0263, 1.0315, 9.8272, 0.0680])
+N: 110
+Signal to noise ratio: tensor([28.2543, 82.9596, 95.4539, 34.6697])
+Bound on condition number: tensor([  87814.8937,  757054.1508, 1002259.7092,  132219.9207])
+Policy Optimizer learning rate:
+0.009781172698749015
+Experience 22, Iter 0, disc loss: 1.387262558158962, policy loss: 0.7007363355516145
+Experience 22, Iter 1, disc loss: 1.3849864027280574, policy loss: 0.7031728449601418
+Experience 22, Iter 2, disc loss: 1.3756067134584218, policy loss: 0.7203119058918129
+Experience 22, Iter 3, disc loss: 1.3914061645106965, policy loss: 0.6970516080921118
+Experience 22, Iter 4, disc loss: 1.3955026315734314, policy loss: 0.6925966611393404
+Experience 22, Iter 5, disc loss: 1.388005416106226, policy loss: 0.7003934061148007
+Experience 22, Iter 6, disc loss: 1.3925282438293016, policy loss: 0.6957950068031058
+Experience 22, Iter 7, disc loss: 1.3857557682262278, policy loss: 0.7025274431771527
+Experience 22, Iter 8, disc loss: 1.3874337052121453, policy loss: 0.7007205126717619
+Experience 22, Iter 9, disc loss: 1.3869122718896576, policy loss: 0.7010103667895462
+Experience 22, Iter 10, disc loss: 1.3797551630513385, policy loss: 0.7112393508930854
+Experience 22, Iter 11, disc loss: 1.3897927009303106, policy loss: 0.6975354463279264
+Experience 22, Iter 12, disc loss: 1.3886964380295297, policy loss: 0.69867268686583
+Experience 22, Iter 13, disc loss: 1.3910613790770152, policy loss: 0.6962099628790858
+Experience 22, Iter 14, disc loss: 1.3844466485259779, policy loss: 0.7041119011135059
+Experience 22, Iter 15, disc loss: 1.3916762953090265, policy loss: 0.6958653517641931
+Experience 22, Iter 16, disc loss: 1.3856442205371704, policy loss: 0.7035020229126459
+Experience 22, Iter 17, disc loss: 1.3899169772372626, policy loss: 0.6980205739017558
