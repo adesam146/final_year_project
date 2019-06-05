@@ -1,1 +1,1 @@
-None
+Pathwise grad with T=15 and Conv disc
