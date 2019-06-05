@@ -129,12 +129,16 @@ for epoch in range(epochs):
 
 print(f'a: {func.a.item()}, b: {func.b.item()}, c:{func.c.item()}')
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10, 8))
 
-ax.scatter(train_X.squeeze().numpy(), train_Y.squeeze().numpy(), label='True Function')
-ax.scatter(train_X.squeeze().numpy(), func(train_X).detach().squeeze().numpy(), label=r"Learnt function: $f_{\theta_m^*}$")
-ax.scatter(train_X.squeeze().numpy(), gen(func(train_X), torch.rand_like(train_Y)).detach().squeeze().numpy(), label=r"Generator applied to learnt function: $G_{\theta_g^*}(f_{\theta_m^*}(.), \epsilon)$")
+ax.scatter(train_X.squeeze().numpy(), train_Y.squeeze().numpy(), label='Observed Y')
+ax.scatter(train_X.squeeze().numpy(), func(train_X).detach().squeeze().numpy(), label=r"Learnt function: $f_{\theta_m^*}(x)$")
+ax.scatter(train_X.squeeze().numpy(), gen(func(train_X), torch.randn_like(train_Y)).detach().squeeze().numpy(), label=r"Generator applied to learnt function: $G_{\theta_g^*}(f_{\theta_m^*}(x), \epsilon)$")
 
 ax.legend()
 
-plt.show()
+fig.tight_layout()
+fig.savefig("gan_regression_failure.png", format='png')
+
+
+plt.close(fig)
