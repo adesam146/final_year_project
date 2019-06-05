@@ -1,0 +1,3 @@
+The key thing that was gotten from this experiment is how policy seems to have trouble learning that very close to [0, 0, 0, 0] (i.e. x_0) it needs to apply apply force around 5 but in the next time step (t=1) which is around [0, 2, 0.6, 0] you need to apply -10. The problem also seem to step from the fact that the discrimator doesn't seem to penalise the wrong transition fron x0 to x1 well.
+
+Therefore, I hypothesised that a convolutional discriminator might be able to pick up such problems easier and thereby provide better signal to the policy.

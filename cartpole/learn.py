@@ -12,16 +12,17 @@ import torch.nn.functional as F
 
 from cartpole.agent import CartPoleAgent
 from cartpole.cartpole_setup import CartPoleSetup
+from cartpole.optimal_gp import OptimalGP
 from cartpole.optimal_policy import OptimalPolicy
 from cartpole.pathwise_grad import pathwise_grad
 from cartpole.score_function import score_function_training
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
-                            plot_progress, sample_trajectories)
-from discrimator import Discrimator
+                            plot_progress, sample_trajectories,
+                            save_current_state)
+from discrimator import Discrimator, ConvDiscrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
-from cartpole.optimal_gp import OptimalGP
 from rbf_policy import RBFPolicy
 from ss_discrimator import SSDiscriminator
 
@@ -45,6 +46,8 @@ parser.add_argument("--use_max_log_prob",
                     help="Use maxising the log prob of forward method for optimising policy", action="store_true")
 parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
+parser.add_argument(
+    "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -107,8 +110,11 @@ if use_score_func_grad or use_pathwise_grad:
 expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
 
 # *** POLICY SETUP ***
-policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim, nbasis=10, device=device)
-# policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
+policy_dir = os.path.join(result_dir, 'policy/')
+os.makedirs(policy_dir)
+# policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
+#    nbasis=10, device=device)
+policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 # policy = OptimalPolicy(u_max=10, device=device)
 policy_lr = args.policy_lr or 1e-2
 
@@ -127,9 +133,11 @@ with torch.no_grad():
     init_x, init_y = get_training_data(s_a_pairs, traj)
 
 # *** FORWARD MODEL SETUP ***
+fm_dir = os.path.join(result_dir, 'fm/')
+os.makedirs(fm_dir)
 fm = ForwardModel(init_x=init_x.to(device),
-                  init_y=init_y.to(device), D=setup.state_dim, S=setup.aux_state_dim, F=setup.action_dim, device=device)
-# fm = OptimalGP(device=device)
+                  init_y=init_y.to(device), D=setup.state_dim, S=setup.aux_state_dim, F=setup.action_dim, device=device, save_dir=fm_dir)
+# fm = OptimalGP(device=device, save_dir=fm_dir)
 
 
 # *** INITIAL STATE DISTRIBUTION FOR GP PREDICTION ***
@@ -138,8 +146,14 @@ init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
 N_x0 = 10
 
 # *** DISCRIMATOR SETUP ***
+use_conv_disc = args.use_conv_disc
+disc_dir = os.path.join(result_dir, 'disc/')
+os.makedirs(disc_dir)
+
 if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
+elif use_conv_disc:
+    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim).to(device)
 else:
     disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
@@ -159,7 +173,9 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
         print("Experience:", expr)
         fm.learn()
 
-        policy_lr_sch.step()
+        print("Policy Optimizer learning rate:")
+        for param_group in policy_optimizer.param_groups:
+            print(param_group['lr'])
 
         for i in range(policy_iter):
             if not use_max_log_prob:
@@ -239,17 +255,23 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                 print(
                     f"Experience {expr}, Iter {i}, policy loss: {loss.detach().item()}")
 
+        policy_lr_sch.step()
+
         policy.eval()
+
+        # Plotting progress
+        plot_progress(setup, expr, agent, plot_dir, policy,
+                      init_state_distn, fm, expert_samples, N_x0)
+
+        # Saving Current state
+        save_current_state(expr, fm, disc, disc_optimizer, disc_dir,
+                           policy, policy_optimizer, policy_lr_sch, policy_dir)
+
         # Get more experienial data
         with torch.no_grad():
             s_a_pairs, traj = agent.act()
             new_x, new_y = get_training_data(s_a_pairs, traj)
 
         fm.update_data(new_x, new_y)
-
-        # Plotting progress
-        policy.eval()
-        plot_progress(setup, expr, agent, plot_dir, policy,
-                      init_state_distn, fm, expert_samples, N_x0)
 
         policy.train()

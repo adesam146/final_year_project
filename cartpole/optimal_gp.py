@@ -5,9 +5,9 @@ import gpytorch
 
 
 class OptimalGP(ForwardModel):
-    def __init__(self, device):
+    def __init__(self, device, save_dir=''):
         super().__init__(get_optimal_gp_inputs(),
-                         get_optimal_gp_targets(), D=4, S=5, F=1, device=device)
+                         get_optimal_gp_targets(), D=4, S=5, F=1, device=device, save_dir=save_dir)
 
         self.likelihood = gpytorch.likelihoods.GaussianLikelihood(
             batch_size=self.D).to(self.device)
@@ -38,12 +38,7 @@ class OptimalGP(ForwardModel):
     def learn(self):
         print("Using Optimal GP Model. No training being done.")
 
-        # TO be used for addition of fantasy data
-        self.dummy_x = self.train_x
-        self.dummy_y = self.train_y
-
-        # Some 'random' computation see ForwardModel for why this might be needed
-        self.predict(torch.zeros(1, self.S+self.F, device=self.device))
+        self.save_training_data()
 
     def update_data(self, *args, **kwargs):
         pass
