@@ -1,1 +1,1 @@
-None
+Pathwise grad with Convolutional Discrimator and T=10
