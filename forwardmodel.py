@@ -122,7 +122,9 @@ class ForwardModel:
             # Calc loss and backprop gradients
             loss = -mll(output, self.train_y).sum()
             loss.backward()
-            print('Iter %d/%d - Loss: %.3f' %
+            if i < 20 or i > training_iter - 21:
+                # Only print first 20 and last 20 losses
+                print('Iter %d/%d - Loss: %.3f' %
                   (i + 1, training_iter, loss.item()))
             optimizer.step()
 
