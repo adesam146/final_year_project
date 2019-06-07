@@ -39,10 +39,13 @@ class TrainableMultivariateNormal:
 
         self.L_unconstrained = transform_to(constraints.lower_cholesky).inv(L).clone().detach().requires_grad_(True)
 
-    def rsample(self):
+    def rsample(self, n=None):
         """
-        Returns tensor of shape (D,)
+        if n is None returns tensor of shape (D,) 
+        otherwise (n, D)
         """
+        if n is not None:
+            return self._get_distribution().rsample((n,))
         return self._get_distribution().rsample()
 
     def sample(self):

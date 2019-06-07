@@ -9,21 +9,62 @@ import torch.distributions as trd
 from trainable import TrainableNormal, TrainableMultivariateNormal
 
 
-def linear_dataset(beta_true, N, noise_std=1):
+def linear_dataset(beta_true, N, noise_std=0.1):
     """
-    For now just assuming that beta_true is a scalar
+    beta_true: D
+    output: 
+        X: N x D
+        Y: N x 1
     """
-    X = torch.linspace(0, 5, steps=N).view(N, 1) ** 3
+    X = torch.randn(N, beta_true.shape[0])
     noise = noise_std * torch.randn(N, 1)
 
-    Y = beta_true * X + noise
+    Y = torch.matmul(X, beta_true.view(-1, 1)) + noise
 
     return X, Y
 
+def pure_cubic_dataset(beta_true, N, noise_std=1):
+    """
+    For now just assuming that beta_true is a scalar
+    """
+    # X = torch.linspace(-5, 5, steps=N).view(N, 1)
+    X = torch.randn(N, 1)
+    noise = noise_std * torch.randn(N, 1)
+
+    Y = beta_true * X ** 3 + noise
+
+    return X, Y
+
+def polynomial_basis_funcs(x, order):
+    """
+    x is assummed to be a single point i.e. in R while
+    order is the order of the polynomials
+    Return value: a numpy array of shape (order+1,)
+    """
+    result = [1]
+    for i in range(1, order+1):
+        result.append(x ** i)
+
+    return np.array(result)
+
+
+def polynomial_design_matrix(X, order):
+    """
+    X: N (x 1)
+    order: >=0
+    output: a numpy array of shape N x order+1
+    """
+    result = []
+    for x_arr in X.view(-1, 1):
+        result.append(polynomial_basis_funcs(x_arr[0], order))
+
+    return np.array(result)
+
 
 class NormalLikelihoodSimulator():
-    def __init__(self, noise_std):
+    def __init__(self, noise_std, convert_to_design_matrix):
         self.noise_std = noise_std
+        self.convert_to_design_matrix = convert_to_design_matrix
 
     def simulate(self, beta, X):
         """
@@ -32,7 +73,7 @@ class NormalLikelihoodSimulator():
         beta is of the form (D, 1)
         output has shape (N, 1)
         """
-        mean = torch.matmul(X, beta.view(-1,1))
+        mean = torch.matmul(self.convert_to_design_matrix(X), beta.view(-1,1))
 
         return mean + self.noise_std * torch.randn(X.shape[0], 1)
 
@@ -63,7 +104,7 @@ class RatioEstimator(nn.Module):
             (y.view(-1, 1), beta.view(1, D).expand(B, D)),
             dim=1)
         h = self.linear1(inputs.view(-1, self.in_features))
-        return self.linear2(F.relu(h))
+        return self.linear2(F.leaky_relu(h))
 
 
 def train_ratio_estimator(beta, ratio_estimator, model_simulator, approx_simulator, data, ratio_optimizer):
@@ -109,9 +150,7 @@ def train_approx_posterior(prior, approx_posterior, ratio_estimator, data, poste
 
     beta_sample = approx_posterior.rsample()
 
-    # TODO: Make better use of batching
-    expec_est_1 = approx_posterior.log_prob(beta_sample) - \
-        prior.log_prob(beta_sample)
+    expec_est_1 = trd.kl.kl_divergence(trd.MultivariateNormal(loc=approx_posterior.mean, covariance_matrix=approx_posterior.cov()), prior)
 
     _, Y = data
     sum_of_expec_est_2 = torch.sum(ratio_estimator(Y, beta_sample))
@@ -155,24 +194,54 @@ def inference(ratio_estimator, prior, approx_posterior, data_loader, model_simul
 
 
 if __name__ == "__main__":
-    torch.manual_seed(0)
-    np.random.seed(0)
+    torch.manual_seed(42)
+    np.random.seed(42)
+    torch.set_default_dtype(torch.float64)
 
     # DATA
-    beta_true = torch.tensor([5.0])
-    N_train = 500
-    X_train, Y_train = linear_dataset(beta_true, N_train)
+    N_train = 50
+
+    # 2D linear regression (i.e. X is 2D)
+    # D = 2
+    # beta_true = 5.0 * torch.ones(D)
+    # X_train, Y_train = linear_dataset(beta_true, N_train)
+    # convert_to_design_matrix = lambda X: X
+
+    # Polynomial of order 3 with no intersect or quadratic term
+    D = 1
+    beta_true = 5.0 * torch.ones(D)
+    X_train, Y_train = pure_cubic_dataset(beta_true, N_train)
+    convert_to_design_matrix = lambda X: torch.tensor(polynomial_design_matrix(X, order=3))[:, -1:]
+
+    # Polynomial of order 3
+    # D = 4
+    # X_train = torch.randn(N_train, 1)
+    # beta_true = torch.tensor([4, 3, 2 , 1])
+    # Y_train = 0
+    # for i, coeff in enumerate(beta_true):
+    #     Y_train += coeff * X_train ** i
+    # Y_train += torch.randn(N_train, 1)
+    # convert_to_design_matrix = lambda X: torch.tensor(polynomial_design_matrix(X, order=3))
+
+    # Polynomial of order 3
+    # D = 3
+    # X_train = torch.randn(N_train, 1)
+    # beta_true = torch.tensor([3, 2 , 1])
+    # Y_train = 0
+    # for i, coeff in enumerate(beta_true):
+    #     Y_train += coeff * X_train ** i
+    # Y_train += torch.randn(N_train, 1)
+    # convert_to_design_matrix = lambda X: torch.tensor(polynomial_design_matrix(X, order=2))
 
     train_dataset = TensorDataset(X_train, Y_train)
     data_loader_train = DataLoader(train_dataset, batch_size=N_train)
 
     # Model
-    D = X_train.shape[1]
     m0 = torch.zeros(D)
     S0 = 36 * torch.eye(D)
     prior = trd.MultivariateNormal(loc=m0, covariance_matrix=S0)
     noise_std = 1
-    model_simulator = NormalLikelihoodSimulator(noise_std)
+    model_simulator = NormalLikelihoodSimulator(noise_std, convert_to_design_matrix=convert_to_design_matrix)
 
     # Approximation
     approx_posterior = TrainableMultivariateNormal(mean=torch.ones(D), cov=torch.eye(D))
@@ -192,9 +261,9 @@ if __name__ == "__main__":
     print("Learnt mean", approx_posterior.mean)
     print("Learnt variance", approx_posterior.cov())
 
-    SN = 1/(1/S0 + 1/(noise_std**2) * torch.matmul(X_train.t(), X_train))
-    mN = SN * (1/S0 * m0 + 1/(noise_std**2) *
-               torch.matmul(X_train.t(), Y_train))
+    Phi = convert_to_design_matrix(X_train)
+    SN = torch.inverse(torch.inverse(S0) + 1/(noise_std**2) * torch.matmul(Phi.t(), Phi))
+    mN = torch.matmul(SN, torch.matmul(torch.inverse(S0), m0) + 1/(noise_std**2) * torch.matmul(Phi.t(), Y_train.squeeze()))
     print("Expected mean", mN)
     print("Expected variance", SN)
 
@@ -202,23 +271,32 @@ if __name__ == "__main__":
 
     fig, axs = plt.subplots(1, 2)
 
-    X = X_train.numpy().squeeze() ** (1/3)
-    Y = Y_train.squeeze().numpy()
+    X = X_train.squeeze().numpy()
+    order = np.argsort(X)
+    X = X[order]
+    Y = Y_train.squeeze().numpy()[order]
 
-    mean_pred = approx_posterior.mean.item() * X**3
-    mean_pred_exact = mN.item() * X**3
+    mean_pred = torch.matmul(Phi, approx_posterior.mean.detach()).squeeze().numpy()[order]
+    std_pred = torch.sqrt(torch.diag(torch.chain_matmul(Phi, approx_posterior.cov().detach(), Phi.t()))).numpy()[order]
+
+    mean_pred_exact = torch.matmul(Phi, mN).squeeze().numpy()[order]
+    std_pred_exact = torch.sqrt(torch.diag(torch.chain_matmul(Phi, SN, Phi.t()))).numpy()[order]
+
+
+    axs[0].set_ylim(bottom=-1000, top=1000, auto=True)
+    axs[1].set_ylim(bottom=-1000, top=1000, auto=True)
 
     axs[0].scatter(X, Y, label='Observed Y', color='black', s=0.5)
     axs[1].scatter(X, Y, label='Observed Y', color='black', s=0.5)
     # ax.fill_between(X, Y - (X ** 3) * np.sqrt(SN.item()), Y + (X ** 3) * np.sqrt(SN.item()), alpha = 0.15)
 
     axs[0].plot(X, mean_pred, label='Mean Prediction of LFVI')
-    axs[0].fill_between(X, mean_pred - 2 * (X ** 3) * np.sqrt(approx_posterior.cov().item()), mean_pred + 2 * (X ** 3) * np.sqrt(approx_posterior.cov().item()), alpha=0.15, label='2 standard deviation from the likelihood-free posterior mean')
+    axs[0].fill_between(X, mean_pred - 2 * std_pred, mean_pred + 2 * std_pred, alpha=0.15, label='2 standard deviation from the likelihood-free posterior mean')
 
     axs[0].legend()
 
     axs[1].plot(X, mean_pred_exact, label='Mean prediction of exact Bayesian Linear Regression')
-    axs[1].fill_between(X, mean_pred_exact - 2 * (X ** 3) * np.sqrt(SN.item()), mean_pred + 2 * (X ** 3) * np.sqrt(SN.item()), alpha=0.15, label='2 standard deviation from the exact posterior mean')
+    axs[1].fill_between(X, mean_pred_exact - 2 * std_pred_exact, mean_pred_exact + 2 * std_pred_exact, alpha=0.15, label='2 standard deviation from the exact posterior mean')
 
     axs[1].legend()
 

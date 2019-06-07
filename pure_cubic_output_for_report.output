@@ -1,0 +1,864 @@
+Epoch:  1570 ratio_loss: 1.317925316266014 post_loss: 2.4353839360921126
+post mean tensor([5.5103], requires_grad=True) post variance tensor([[0.9073]], grad_fn=<MmBackward>)
+Epoch:  1571 ratio_loss: 1.3456428397977551 post_loss: 4.270535187889426
+post mean tensor([5.5098], requires_grad=True) post variance tensor([[0.9079]], grad_fn=<MmBackward>)
+Epoch:  1572 ratio_loss: 1.3175985192125221 post_loss: 11.707805606126557
+post mean tensor([5.5086], requires_grad=True) post variance tensor([[0.9087]], grad_fn=<MmBackward>)
+Epoch:  1573 ratio_loss: 1.3855889946609306 post_loss: 5.6544255553462826
+post mean tensor([5.5076], requires_grad=True) post variance tensor([[0.9102]], grad_fn=<MmBackward>)
+Epoch:  1574 ratio_loss: 1.2959694348369981 post_loss: 10.273130855272928
+post mean tensor([5.5059], requires_grad=True) post variance tensor([[0.9127]], grad_fn=<MmBackward>)
+Epoch:  1575 ratio_loss: 1.2918940426209127 post_loss: 9.727368275982199
+post mean tensor([5.5040], requires_grad=True) post variance tensor([[0.9153]], grad_fn=<MmBackward>)
+Epoch:  1576 ratio_loss: 1.374930174887234 post_loss: 4.259893251638648
+post mean tensor([5.5019], requires_grad=True) post variance tensor([[0.9183]], grad_fn=<MmBackward>)
+Epoch:  1577 ratio_loss: 1.3459464339278875 post_loss: 6.169037179438137
+post mean tensor([5.4998], requires_grad=True) post variance tensor([[0.9214]], grad_fn=<MmBackward>)
+Epoch:  1578 ratio_loss: 1.363476638380054 post_loss: 5.778028476848053
+post mean tensor([5.4977], requires_grad=True) post variance tensor([[0.9248]], grad_fn=<MmBackward>)
+Epoch:  1579 ratio_loss: 1.3485397258795686 post_loss: 8.087237975132581
+post mean tensor([5.4955], requires_grad=True) post variance tensor([[0.9285]], grad_fn=<MmBackward>)
+Epoch:  1580 ratio_loss: 1.3217731179875092 post_loss: 13.149415938280795
+post mean tensor([5.4925], requires_grad=True) post variance tensor([[0.9330]], grad_fn=<MmBackward>)
+Epoch:  1581 ratio_loss: 1.3623578590421512 post_loss: 6.536102288310032
+post mean tensor([5.4899], requires_grad=True) post variance tensor([[0.9377]], grad_fn=<MmBackward>)
+Epoch:  1582 ratio_loss: 1.3200759857867794 post_loss: -1.0933348072933415
+post mean tensor([5.4877], requires_grad=True) post variance tensor([[0.9424]], grad_fn=<MmBackward>)
+Epoch:  1583 ratio_loss: 1.3532124661388272 post_loss: 15.156159320915345
+post mean tensor([5.4848], requires_grad=True) post variance tensor([[0.9467]], grad_fn=<MmBackward>)
+Epoch:  1584 ratio_loss: 1.360274569628452 post_loss: 6.97941520739089
+post mean tensor([5.4823], requires_grad=True) post variance tensor([[0.9512]], grad_fn=<MmBackward>)
+Epoch:  1585 ratio_loss: 1.290864930203739 post_loss: -0.34855663901366274
+post mean tensor([5.4803], requires_grad=True) post variance tensor([[0.9560]], grad_fn=<MmBackward>)
+Epoch:  1586 ratio_loss: 1.3137604845452038 post_loss: 7.522558942243651
+post mean tensor([5.4781], requires_grad=True) post variance tensor([[0.9608]], grad_fn=<MmBackward>)
+Epoch:  1587 ratio_loss: 1.3063851517434928 post_loss: 4.723198572940827
+post mean tensor([5.4762], requires_grad=True) post variance tensor([[0.9658]], grad_fn=<MmBackward>)
+Epoch:  1588 ratio_loss: 1.3987088980441036 post_loss: 7.363332719207221
+post mean tensor([5.4744], requires_grad=True) post variance tensor([[0.9709]], grad_fn=<MmBackward>)
+Epoch:  1589 ratio_loss: 1.286329213982541 post_loss: 10.458603926542704
+post mean tensor([5.4723], requires_grad=True) post variance tensor([[0.9763]], grad_fn=<MmBackward>)
+Epoch:  1590 ratio_loss: 1.3315625828156294 post_loss: 6.262085252423558
+post mean tensor([5.4751], requires_grad=True) post variance tensor([[0.9748]], grad_fn=<MmBackward>)
+Epoch:  1591 ratio_loss: 1.3356149260920787 post_loss: 13.703943906688364
+post mean tensor([5.4771], requires_grad=True) post variance tensor([[0.9738]], grad_fn=<MmBackward>)
+Epoch:  1592 ratio_loss: 1.3594728096196587 post_loss: 7.3179961749375435
+post mean tensor([5.4791], requires_grad=True) post variance tensor([[0.9736]], grad_fn=<MmBackward>)
+Epoch:  1593 ratio_loss: 1.2880506753204828 post_loss: 6.474506344329567
+post mean tensor([5.4807], requires_grad=True) post variance tensor([[0.9739]], grad_fn=<MmBackward>)
+Epoch:  1594 ratio_loss: 1.2765284180981002 post_loss: 6.069092220780782
+post mean tensor([5.4817], requires_grad=True) post variance tensor([[0.9745]], grad_fn=<MmBackward>)
+Epoch:  1595 ratio_loss: 1.3569505489683817 post_loss: 10.677214323201493
+post mean tensor([5.4823], requires_grad=True) post variance tensor([[0.9757]], grad_fn=<MmBackward>)
+Epoch:  1596 ratio_loss: 1.3033834508006605 post_loss: 6.638483307890413
+post mean tensor([5.4823], requires_grad=True) post variance tensor([[0.9769]], grad_fn=<MmBackward>)
+Epoch:  1597 ratio_loss: 1.3375184776471518 post_loss: 5.449551731002327
+post mean tensor([5.4820], requires_grad=True) post variance tensor([[0.9785]], grad_fn=<MmBackward>)
+Epoch:  1598 ratio_loss: 1.3414363956382074 post_loss: 3.8166655422313367
+post mean tensor([5.4819], requires_grad=True) post variance tensor([[0.9805]], grad_fn=<MmBackward>)
+Epoch:  1599 ratio_loss: 1.3394660847677737 post_loss: 15.193208823919848
+post mean tensor([5.4812], requires_grad=True) post variance tensor([[0.9823]], grad_fn=<MmBackward>)
+Epoch:  1600 ratio_loss: 1.2954362247032418 post_loss: 9.765453824319636
+post mean tensor([5.4802], requires_grad=True) post variance tensor([[0.9847]], grad_fn=<MmBackward>)
+Epoch:  1601 ratio_loss: 1.2987017333033322 post_loss: 5.710547311804417
+post mean tensor([5.4790], requires_grad=True) post variance tensor([[0.9873]], grad_fn=<MmBackward>)
+Epoch:  1602 ratio_loss: 1.3029476307582077 post_loss: 11.962963913762286
+post mean tensor([5.4774], requires_grad=True) post variance tensor([[0.9898]], grad_fn=<MmBackward>)
+Epoch:  1603 ratio_loss: 1.319432756700265 post_loss: 0.9787739809142555
+post mean tensor([5.4766], requires_grad=True) post variance tensor([[0.9931]], grad_fn=<MmBackward>)
+Epoch:  1604 ratio_loss: 1.306310561635743 post_loss: 12.793590021391864
+post mean tensor([5.4751], requires_grad=True) post variance tensor([[0.9958]], grad_fn=<MmBackward>)
+Epoch:  1605 ratio_loss: 1.32202299730601 post_loss: 7.81260483694557
+post mean tensor([5.4728], requires_grad=True) post variance tensor([[0.9994]], grad_fn=<MmBackward>)
+Epoch:  1606 ratio_loss: 1.3456266500708134 post_loss: 1.2471878532696212
+post mean tensor([5.4711], requires_grad=True) post variance tensor([[1.0033]], grad_fn=<MmBackward>)
+Epoch:  1607 ratio_loss: 1.3433942002815786 post_loss: 21.14420415043005
+post mean tensor([5.4680], requires_grad=True) post variance tensor([[1.0065]], grad_fn=<MmBackward>)
+Epoch:  1608 ratio_loss: 1.3457215855954072 post_loss: 7.086212417330808
+post mean tensor([5.4646], requires_grad=True) post variance tensor([[1.0095]], grad_fn=<MmBackward>)
+Epoch:  1609 ratio_loss: 1.3393151704380932 post_loss: 3.120982705628451
+post mean tensor([5.4654], requires_grad=True) post variance tensor([[1.0093]], grad_fn=<MmBackward>)
+Epoch:  1610 ratio_loss: 1.329045076249353 post_loss: 5.132250653291346
+post mean tensor([5.4696], requires_grad=True) post variance tensor([[1.0069]], grad_fn=<MmBackward>)
+Epoch:  1611 ratio_loss: 1.346471726057616 post_loss: 11.263664142235603
+post mean tensor([5.4723], requires_grad=True) post variance tensor([[1.0054]], grad_fn=<MmBackward>)
+Epoch:  1612 ratio_loss: 1.344046174769684 post_loss: 7.369224393854742
+post mean tensor([5.4788], requires_grad=True) post variance tensor([[0.9974]], grad_fn=<MmBackward>)
+Epoch:  1613 ratio_loss: 1.318191806160666 post_loss: 4.323689801590756
+post mean tensor([5.4883], requires_grad=True) post variance tensor([[0.9850]], grad_fn=<MmBackward>)
+Epoch:  1614 ratio_loss: 1.350095984647191 post_loss: 8.37752353226421
+post mean tensor([5.5004], requires_grad=True) post variance tensor([[0.9682]], grad_fn=<MmBackward>)
+Epoch:  1615 ratio_loss: 1.325662731262451 post_loss: 4.6501781459973905
+post mean tensor([5.5109], requires_grad=True) post variance tensor([[0.9539]], grad_fn=<MmBackward>)
+Epoch:  1616 ratio_loss: 1.3357124589847933 post_loss: 11.18360168894196
+post mean tensor([5.5196], requires_grad=True) post variance tensor([[0.9414]], grad_fn=<MmBackward>)
+Epoch:  1617 ratio_loss: 1.320336971687767 post_loss: 4.819866971494127
+post mean tensor([5.5271], requires_grad=True) post variance tensor([[0.9308]], grad_fn=<MmBackward>)
+Epoch:  1618 ratio_loss: 1.3484254011985746 post_loss: 2.2768664530047107
+post mean tensor([5.5332], requires_grad=True) post variance tensor([[0.9219]], grad_fn=<MmBackward>)
+Epoch:  1619 ratio_loss: 1.3168317833614058 post_loss: 5.156935311234487
+post mean tensor([5.5383], requires_grad=True) post variance tensor([[0.9146]], grad_fn=<MmBackward>)
+Epoch:  1620 ratio_loss: 1.332663398007716 post_loss: 14.687494971304469
+post mean tensor([5.5421], requires_grad=True) post variance tensor([[0.9085]], grad_fn=<MmBackward>)
+Epoch:  1621 ratio_loss: 1.3447327188171272 post_loss: 6.983861940258702
+post mean tensor([5.5450], requires_grad=True) post variance tensor([[0.9037]], grad_fn=<MmBackward>)
+Epoch:  1622 ratio_loss: 1.3574105808402686 post_loss: 8.009936555612327
+post mean tensor([5.5469], requires_grad=True) post variance tensor([[0.9008]], grad_fn=<MmBackward>)
+Epoch:  1623 ratio_loss: 1.3294502644735195 post_loss: 5.3317092568003135
+post mean tensor([5.5483], requires_grad=True) post variance tensor([[0.8989]], grad_fn=<MmBackward>)
+Epoch:  1624 ratio_loss: 1.3284608822596895 post_loss: 9.929205655941683
+post mean tensor([5.5488], requires_grad=True) post variance tensor([[0.8981]], grad_fn=<MmBackward>)
+Epoch:  1625 ratio_loss: 1.3270572748313172 post_loss: 7.041267934044576
+post mean tensor([5.5489], requires_grad=True) post variance tensor([[0.8978]], grad_fn=<MmBackward>)
+Epoch:  1626 ratio_loss: 1.3194341864310486 post_loss: 0.6293152292338884
+post mean tensor([5.5490], requires_grad=True) post variance tensor([[0.8981]], grad_fn=<MmBackward>)
+Epoch:  1627 ratio_loss: 1.3282761178645766 post_loss: 10.707839516375085
+post mean tensor([5.5481], requires_grad=True) post variance tensor([[0.8991]], grad_fn=<MmBackward>)
+Epoch:  1628 ratio_loss: 1.3532655735309511 post_loss: 7.959781984268513
+post mean tensor([5.5465], requires_grad=True) post variance tensor([[0.9006]], grad_fn=<MmBackward>)
+Epoch:  1629 ratio_loss: 1.3602383261104545 post_loss: 7.741729540047129
+post mean tensor([5.5489], requires_grad=True) post variance tensor([[0.8988]], grad_fn=<MmBackward>)
+Epoch:  1630 ratio_loss: 1.3187505458266098 post_loss: 6.295133121190569
+post mean tensor([5.5510], requires_grad=True) post variance tensor([[0.8976]], grad_fn=<MmBackward>)
+Epoch:  1631 ratio_loss: 1.362767471885391 post_loss: 11.792315635413681
+post mean tensor([5.5561], requires_grad=True) post variance tensor([[0.8938]], grad_fn=<MmBackward>)
+Epoch:  1632 ratio_loss: 1.3405674042481466 post_loss: 7.089450241175373
+post mean tensor([5.5642], requires_grad=True) post variance tensor([[0.8871]], grad_fn=<MmBackward>)
+Epoch:  1633 ratio_loss: 1.2883291781024904 post_loss: 1.595658787849142
+post mean tensor([5.5713], requires_grad=True) post variance tensor([[0.8815]], grad_fn=<MmBackward>)
+Epoch:  1634 ratio_loss: 1.3373982549846888 post_loss: 11.802174585606164
+post mean tensor([5.5769], requires_grad=True) post variance tensor([[0.8770]], grad_fn=<MmBackward>)
+Epoch:  1635 ratio_loss: 1.3276398153837785 post_loss: 12.424162827582613
+post mean tensor([5.5808], requires_grad=True) post variance tensor([[0.8733]], grad_fn=<MmBackward>)
+Epoch:  1636 ratio_loss: 1.331821594261838 post_loss: -1.0274411538571362
+post mean tensor([5.5838], requires_grad=True) post variance tensor([[0.8707]], grad_fn=<MmBackward>)
+Epoch:  1637 ratio_loss: 1.3401098792325248 post_loss: 9.013070582568732
+post mean tensor([5.5899], requires_grad=True) post variance tensor([[0.8641]], grad_fn=<MmBackward>)
+Epoch:  1638 ratio_loss: 1.3228529655552095 post_loss: 10.709817990698987
+post mean tensor([5.5942], requires_grad=True) post variance tensor([[0.8582]], grad_fn=<MmBackward>)
+Epoch:  1639 ratio_loss: 1.3223097961670833 post_loss: 5.790240674649662
+post mean tensor([5.6011], requires_grad=True) post variance tensor([[0.8505]], grad_fn=<MmBackward>)
+Epoch:  1640 ratio_loss: 1.3335238299304915 post_loss: 0.9531791252755417
+post mean tensor([5.6069], requires_grad=True) post variance tensor([[0.8441]], grad_fn=<MmBackward>)
+Epoch:  1641 ratio_loss: 1.3532470997653192 post_loss: 15.443176917176547
+post mean tensor([5.6146], requires_grad=True) post variance tensor([[0.8370]], grad_fn=<MmBackward>)
+Epoch:  1642 ratio_loss: 1.3108609387532963 post_loss: 10.252436344167393
+post mean tensor([5.6203], requires_grad=True) post variance tensor([[0.8317]], grad_fn=<MmBackward>)
+Epoch:  1643 ratio_loss: 1.3378236387246871 post_loss: 11.219986175441294
+post mean tensor([5.6241], requires_grad=True) post variance tensor([[0.8272]], grad_fn=<MmBackward>)
+Epoch:  1644 ratio_loss: 1.3188151399874228 post_loss: 1.8065410511413234
+post mean tensor([5.6268], requires_grad=True) post variance tensor([[0.8239]], grad_fn=<MmBackward>)
+Epoch:  1645 ratio_loss: 1.3280563640587228 post_loss: 4.49035183280291
+post mean tensor([5.6289], requires_grad=True) post variance tensor([[0.8214]], grad_fn=<MmBackward>)
+Epoch:  1646 ratio_loss: 1.317972850641075 post_loss: 21.736975153634926
+post mean tensor([5.6288], requires_grad=True) post variance tensor([[0.8194]], grad_fn=<MmBackward>)
+Epoch:  1647 ratio_loss: 1.3285491750951905 post_loss: -3.0822772358405914
+post mean tensor([5.6284], requires_grad=True) post variance tensor([[0.8180]], grad_fn=<MmBackward>)
+Epoch:  1648 ratio_loss: 1.2887563001390285 post_loss: 5.306107925419117
+post mean tensor([5.6272], requires_grad=True) post variance tensor([[0.8168]], grad_fn=<MmBackward>)
+Epoch:  1649 ratio_loss: 1.362994696410253 post_loss: 12.670664316991319
+post mean tensor([5.6246], requires_grad=True) post variance tensor([[0.8181]], grad_fn=<MmBackward>)
+Epoch:  1650 ratio_loss: 1.355425315964089 post_loss: 3.930034685557972
+post mean tensor([5.6215], requires_grad=True) post variance tensor([[0.8193]], grad_fn=<MmBackward>)
+Epoch:  1651 ratio_loss: 1.3255321839210161 post_loss: 3.9767416300768903
+post mean tensor([5.6178], requires_grad=True) post variance tensor([[0.8204]], grad_fn=<MmBackward>)
+Epoch:  1652 ratio_loss: 1.3673704265678552 post_loss: 10.23814034469736
+post mean tensor([5.6131], requires_grad=True) post variance tensor([[0.8228]], grad_fn=<MmBackward>)
+Epoch:  1653 ratio_loss: 1.3163055327220494 post_loss: 13.968423250801381
+post mean tensor([5.6078], requires_grad=True) post variance tensor([[0.8246]], grad_fn=<MmBackward>)
+Epoch:  1654 ratio_loss: 1.3410923551176308 post_loss: 2.495867462705821
+post mean tensor([5.6019], requires_grad=True) post variance tensor([[0.8276]], grad_fn=<MmBackward>)
+Epoch:  1655 ratio_loss: 1.3182051315813341 post_loss: 4.29562794337723
+post mean tensor([5.5996], requires_grad=True) post variance tensor([[0.8264]], grad_fn=<MmBackward>)
+Epoch:  1656 ratio_loss: 1.3242993939809513 post_loss: 13.74521612855131
+post mean tensor([5.5963], requires_grad=True) post variance tensor([[0.8252]], grad_fn=<MmBackward>)
+Epoch:  1657 ratio_loss: 1.340996391982364 post_loss: 5.673556069585388
+post mean tensor([5.5920], requires_grad=True) post variance tensor([[0.8246]], grad_fn=<MmBackward>)
+Epoch:  1658 ratio_loss: 1.3291678939576093 post_loss: 7.485022311808774
+post mean tensor([5.5870], requires_grad=True) post variance tensor([[0.8247]], grad_fn=<MmBackward>)
+Epoch:  1659 ratio_loss: 1.293644253807451 post_loss: 13.047925373227576
+post mean tensor([5.5814], requires_grad=True) post variance tensor([[0.8238]], grad_fn=<MmBackward>)
+Epoch:  1660 ratio_loss: 1.3272435603727781 post_loss: 4.826304346902608
+post mean tensor([5.5752], requires_grad=True) post variance tensor([[0.8235]], grad_fn=<MmBackward>)
+Epoch:  1661 ratio_loss: 1.308588807584052 post_loss: 7.80274895996298
+post mean tensor([5.5683], requires_grad=True) post variance tensor([[0.8235]], grad_fn=<MmBackward>)
+Epoch:  1662 ratio_loss: 1.3458012659782308 post_loss: 2.896371651515243
+post mean tensor([5.5612], requires_grad=True) post variance tensor([[0.8250]], grad_fn=<MmBackward>)
+Epoch:  1663 ratio_loss: 1.3100387950500576 post_loss: 7.27038832033133
+post mean tensor([5.5533], requires_grad=True) post variance tensor([[0.8284]], grad_fn=<MmBackward>)
+Epoch:  1664 ratio_loss: 1.3067469184525806 post_loss: -0.09565941487604879
+post mean tensor([5.5453], requires_grad=True) post variance tensor([[0.8325]], grad_fn=<MmBackward>)
+Epoch:  1665 ratio_loss: 1.3768952143396957 post_loss: 4.357408064055587
+post mean tensor([5.5377], requires_grad=True) post variance tensor([[0.8365]], grad_fn=<MmBackward>)
+Epoch:  1666 ratio_loss: 1.3116474344990205 post_loss: 19.993101957978304
+post mean tensor([5.5292], requires_grad=True) post variance tensor([[0.8387]], grad_fn=<MmBackward>)
+Epoch:  1667 ratio_loss: 1.380483564818312 post_loss: 7.814736622676941
+post mean tensor([5.5206], requires_grad=True) post variance tensor([[0.8414]], grad_fn=<MmBackward>)
+Epoch:  1668 ratio_loss: 1.3070952079256544 post_loss: 2.6487195583778282
+post mean tensor([5.5122], requires_grad=True) post variance tensor([[0.8441]], grad_fn=<MmBackward>)
+Epoch:  1669 ratio_loss: 1.3074686770074317 post_loss: 7.148099588586351
+post mean tensor([5.5035], requires_grad=True) post variance tensor([[0.8470]], grad_fn=<MmBackward>)
+Epoch:  1670 ratio_loss: 1.2984809352773041 post_loss: 2.903922409417805
+post mean tensor([5.4954], requires_grad=True) post variance tensor([[0.8500]], grad_fn=<MmBackward>)
+Epoch:  1671 ratio_loss: 1.30191005260802 post_loss: 11.706838598948725
+post mean tensor([5.4870], requires_grad=True) post variance tensor([[0.8531]], grad_fn=<MmBackward>)
+Epoch:  1672 ratio_loss: 1.3531425358405302 post_loss: 13.02517954627206
+post mean tensor([5.4825], requires_grad=True) post variance tensor([[0.8538]], grad_fn=<MmBackward>)
+Epoch:  1673 ratio_loss: 1.3364718920143535 post_loss: -1.908763124393699
+post mean tensor([5.4822], requires_grad=True) post variance tensor([[0.8502]], grad_fn=<MmBackward>)
+Epoch:  1674 ratio_loss: 1.3717116219352024 post_loss: 6.889699718985859
+post mean tensor([5.4807], requires_grad=True) post variance tensor([[0.8483]], grad_fn=<MmBackward>)
+Epoch:  1675 ratio_loss: 1.3842355981340528 post_loss: 18.39527054962531
+post mean tensor([5.4784], requires_grad=True) post variance tensor([[0.8471]], grad_fn=<MmBackward>)
+Epoch:  1676 ratio_loss: 1.3576204900979232 post_loss: 0.18088344501657927
+post mean tensor([5.4757], requires_grad=True) post variance tensor([[0.8462]], grad_fn=<MmBackward>)
+Epoch:  1677 ratio_loss: 1.3086807323589729 post_loss: 12.497181506727514
+post mean tensor([5.4720], requires_grad=True) post variance tensor([[0.8453]], grad_fn=<MmBackward>)
+Epoch:  1678 ratio_loss: 1.3664516370587076 post_loss: 5.59451012202891
+post mean tensor([5.4681], requires_grad=True) post variance tensor([[0.8449]], grad_fn=<MmBackward>)
+Epoch:  1679 ratio_loss: 1.335622746215754 post_loss: 3.014423451040484
+post mean tensor([5.4643], requires_grad=True) post variance tensor([[0.8450]], grad_fn=<MmBackward>)
+Epoch:  1680 ratio_loss: 1.3777243850603758 post_loss: 11.37651316898188
+post mean tensor([5.4602], requires_grad=True) post variance tensor([[0.8448]], grad_fn=<MmBackward>)
+Epoch:  1681 ratio_loss: 1.381854111766521 post_loss: 4.3040106126210915
+post mean tensor([5.4561], requires_grad=True) post variance tensor([[0.8448]], grad_fn=<MmBackward>)
+Epoch:  1682 ratio_loss: 1.348920612088017 post_loss: 5.788745333883469
+post mean tensor([5.4558], requires_grad=True) post variance tensor([[0.8415]], grad_fn=<MmBackward>)
+Epoch:  1683 ratio_loss: 1.2976116321328035 post_loss: 7.617377608425312
+post mean tensor([5.4548], requires_grad=True) post variance tensor([[0.8391]], grad_fn=<MmBackward>)
+Epoch:  1684 ratio_loss: 1.2951646612520316 post_loss: 7.878852574822453
+post mean tensor([5.4533], requires_grad=True) post variance tensor([[0.8375]], grad_fn=<MmBackward>)
+Epoch:  1685 ratio_loss: 1.353705289400195 post_loss: 3.9476485297451607
+post mean tensor([5.4513], requires_grad=True) post variance tensor([[0.8368]], grad_fn=<MmBackward>)
+Epoch:  1686 ratio_loss: 1.3256925378002058 post_loss: 10.441484613505649
+post mean tensor([5.4486], requires_grad=True) post variance tensor([[0.8371]], grad_fn=<MmBackward>)
+Epoch:  1687 ratio_loss: 1.3218919924036787 post_loss: 5.730862969565711
+post mean tensor([5.4456], requires_grad=True) post variance tensor([[0.8378]], grad_fn=<MmBackward>)
+Epoch:  1688 ratio_loss: 1.337886290787223 post_loss: 7.895063238515206
+post mean tensor([5.4418], requires_grad=True) post variance tensor([[0.8390]], grad_fn=<MmBackward>)
+Epoch:  1689 ratio_loss: 1.359077742424259 post_loss: 2.241723360689404
+post mean tensor([5.4382], requires_grad=True) post variance tensor([[0.8406]], grad_fn=<MmBackward>)
+Epoch:  1690 ratio_loss: 1.406704600438108 post_loss: 7.453528757794943
+post mean tensor([5.4345], requires_grad=True) post variance tensor([[0.8426]], grad_fn=<MmBackward>)
+Epoch:  1691 ratio_loss: 1.350291893289965 post_loss: 11.070963464104464
+post mean tensor([5.4302], requires_grad=True) post variance tensor([[0.8450]], grad_fn=<MmBackward>)
+Epoch:  1692 ratio_loss: 1.3107616585000221 post_loss: 2.152418312511579
+post mean tensor([5.4261], requires_grad=True) post variance tensor([[0.8476]], grad_fn=<MmBackward>)
+Epoch:  1693 ratio_loss: 1.3417939573764528 post_loss: 7.334377602094815
+post mean tensor([5.4219], requires_grad=True) post variance tensor([[0.8506]], grad_fn=<MmBackward>)
+Epoch:  1694 ratio_loss: 1.3196343299560442 post_loss: 9.363091601050456
+post mean tensor([5.4173], requires_grad=True) post variance tensor([[0.8538]], grad_fn=<MmBackward>)
+Epoch:  1695 ratio_loss: 1.3403036644419801 post_loss: 6.282253523704652
+post mean tensor([5.4126], requires_grad=True) post variance tensor([[0.8576]], grad_fn=<MmBackward>)
+Epoch:  1696 ratio_loss: 1.3403233199320854 post_loss: 5.68043112220716
+post mean tensor([5.4081], requires_grad=True) post variance tensor([[0.8615]], grad_fn=<MmBackward>)
+Epoch:  1697 ratio_loss: 1.3355901184320145 post_loss: 11.87046133431913
+post mean tensor([5.4032], requires_grad=True) post variance tensor([[0.8662]], grad_fn=<MmBackward>)
+Epoch:  1698 ratio_loss: 1.3076337491610335 post_loss: 4.910608582369809
+post mean tensor([5.3982], requires_grad=True) post variance tensor([[0.8707]], grad_fn=<MmBackward>)
+Epoch:  1699 ratio_loss: 1.3722400453462695 post_loss: 11.09975414237339
+post mean tensor([5.3934], requires_grad=True) post variance tensor([[0.8748]], grad_fn=<MmBackward>)
+Epoch:  1700 ratio_loss: 1.3471153933284188 post_loss: 1.351127824477464
+post mean tensor([5.3886], requires_grad=True) post variance tensor([[0.8788]], grad_fn=<MmBackward>)
+Epoch:  1701 ratio_loss: 1.4054630114974267 post_loss: 11.067124829550352
+post mean tensor([5.3835], requires_grad=True) post variance tensor([[0.8824]], grad_fn=<MmBackward>)
+Epoch:  1702 ratio_loss: 1.293197332527701 post_loss: 9.412692742358091
+post mean tensor([5.3784], requires_grad=True) post variance tensor([[0.8860]], grad_fn=<MmBackward>)
+Epoch:  1703 ratio_loss: 1.3182816494876926 post_loss: 4.378032222767062
+post mean tensor([5.3734], requires_grad=True) post variance tensor([[0.8894]], grad_fn=<MmBackward>)
+Epoch:  1704 ratio_loss: 1.3557708548553484 post_loss: 10.404878517887653
+post mean tensor([5.3684], requires_grad=True) post variance tensor([[0.8924]], grad_fn=<MmBackward>)
+Epoch:  1705 ratio_loss: 1.3241640904347096 post_loss: 9.41472253394673
+post mean tensor([5.3668], requires_grad=True) post variance tensor([[0.8933]], grad_fn=<MmBackward>)
+Epoch:  1706 ratio_loss: 1.2860080259121678 post_loss: 6.234472078677353
+post mean tensor([5.3650], requires_grad=True) post variance tensor([[0.8942]], grad_fn=<MmBackward>)
+Epoch:  1707 ratio_loss: 1.3739929571090443 post_loss: 1.0790613443437578
+post mean tensor([5.3629], requires_grad=True) post variance tensor([[0.8956]], grad_fn=<MmBackward>)
+Epoch:  1708 ratio_loss: 1.3570653811165694 post_loss: 20.410080244480348
+post mean tensor([5.3597], requires_grad=True) post variance tensor([[0.8961]], grad_fn=<MmBackward>)
+Epoch:  1709 ratio_loss: 1.3226817935788873 post_loss: 1.6789053943985008
+post mean tensor([5.3563], requires_grad=True) post variance tensor([[0.8969]], grad_fn=<MmBackward>)
+Epoch:  1710 ratio_loss: 1.3282856931878269 post_loss: 7.14648986659254
+post mean tensor([5.3522], requires_grad=True) post variance tensor([[0.8975]], grad_fn=<MmBackward>)
+Epoch:  1711 ratio_loss: 1.3094200844436583 post_loss: 12.952684589156533
+post mean tensor([5.3474], requires_grad=True) post variance tensor([[0.8979]], grad_fn=<MmBackward>)
+Epoch:  1712 ratio_loss: 1.3832620653083119 post_loss: -1.944385124223488
+post mean tensor([5.3465], requires_grad=True) post variance tensor([[0.8953]], grad_fn=<MmBackward>)
+Epoch:  1713 ratio_loss: 1.3681869408387972 post_loss: 25.50891493288312
+post mean tensor([5.3552], requires_grad=True) post variance tensor([[0.8677]], grad_fn=<MmBackward>)
+Epoch:  1714 ratio_loss: 1.3114130939429471 post_loss: 10.003539390471783
+post mean tensor([5.3620], requires_grad=True) post variance tensor([[0.8447]], grad_fn=<MmBackward>)
+Epoch:  1715 ratio_loss: 1.3638180754507618 post_loss: 2.444821926510737
+post mean tensor([5.3671], requires_grad=True) post variance tensor([[0.8256]], grad_fn=<MmBackward>)
+Epoch:  1716 ratio_loss: 1.3664757252878974 post_loss: 5.906395607368505
+post mean tensor([5.3711], requires_grad=True) post variance tensor([[0.8085]], grad_fn=<MmBackward>)
+Epoch:  1717 ratio_loss: 1.32271851552666 post_loss: 14.994405697934505
+post mean tensor([5.3732], requires_grad=True) post variance tensor([[0.7939]], grad_fn=<MmBackward>)
+Epoch:  1718 ratio_loss: 1.3432903737964363 post_loss: 7.0927659853253955
+post mean tensor([5.3739], requires_grad=True) post variance tensor([[0.7817]], grad_fn=<MmBackward>)
+Epoch:  1719 ratio_loss: 1.3191011761128402 post_loss: 0.24478778811562774
+post mean tensor([5.3739], requires_grad=True) post variance tensor([[0.7714]], grad_fn=<MmBackward>)
+Epoch:  1720 ratio_loss: 1.3041613511030363 post_loss: 12.675691824243128
+post mean tensor([5.3733], requires_grad=True) post variance tensor([[0.7624]], grad_fn=<MmBackward>)
+Epoch:  1721 ratio_loss: 1.296611179361792 post_loss: 7.069993518285694
+post mean tensor([5.3720], requires_grad=True) post variance tensor([[0.7544]], grad_fn=<MmBackward>)
+Epoch:  1722 ratio_loss: 1.3981239437331354 post_loss: 4.147292334807133
+post mean tensor([5.3702], requires_grad=True) post variance tensor([[0.7470]], grad_fn=<MmBackward>)
+Epoch:  1723 ratio_loss: 1.3064192565127404 post_loss: 9.66984560854114
+post mean tensor([5.3678], requires_grad=True) post variance tensor([[0.7407]], grad_fn=<MmBackward>)
+Epoch:  1724 ratio_loss: 1.3539930252057775 post_loss: 6.576775943841286
+post mean tensor([5.3647], requires_grad=True) post variance tensor([[0.7356]], grad_fn=<MmBackward>)
+Epoch:  1725 ratio_loss: 1.3219708328228466 post_loss: 5.149878084005946
+post mean tensor([5.3652], requires_grad=True) post variance tensor([[0.7288]], grad_fn=<MmBackward>)
+Epoch:  1726 ratio_loss: 1.3787767436835945 post_loss: 10.466836490062686
+post mean tensor([5.3647], requires_grad=True) post variance tensor([[0.7233]], grad_fn=<MmBackward>)
+Epoch:  1727 ratio_loss: 1.3468433823586743 post_loss: 5.836672428732241
+post mean tensor([5.3640], requires_grad=True) post variance tensor([[0.7187]], grad_fn=<MmBackward>)
+Epoch:  1728 ratio_loss: 1.3442808915582825 post_loss: 9.002433853189993
+post mean tensor([5.3625], requires_grad=True) post variance tensor([[0.7149]], grad_fn=<MmBackward>)
+Epoch:  1729 ratio_loss: 1.280589001137075 post_loss: 4.257164204483303
+post mean tensor([5.3606], requires_grad=True) post variance tensor([[0.7119]], grad_fn=<MmBackward>)
+Epoch:  1730 ratio_loss: 1.3358045529017066 post_loss: 10.146623863849825
+post mean tensor([5.3622], requires_grad=True) post variance tensor([[0.7068]], grad_fn=<MmBackward>)
+Epoch:  1731 ratio_loss: 1.3628158980951746 post_loss: 3.5800064932220463
+post mean tensor([5.3633], requires_grad=True) post variance tensor([[0.7027]], grad_fn=<MmBackward>)
+Epoch:  1732 ratio_loss: 1.345411775048448 post_loss: 5.881326296083957
+post mean tensor([5.3678], requires_grad=True) post variance tensor([[0.6961]], grad_fn=<MmBackward>)
+Epoch:  1733 ratio_loss: 1.3314045361076303 post_loss: 17.716483751082677
+post mean tensor([5.3711], requires_grad=True) post variance tensor([[0.6898]], grad_fn=<MmBackward>)
+Epoch:  1734 ratio_loss: 1.381333648118117 post_loss: 2.7890743104925173
+post mean tensor([5.3734], requires_grad=True) post variance tensor([[0.6845]], grad_fn=<MmBackward>)
+Epoch:  1735 ratio_loss: 1.3334554210623946 post_loss: -2.5987315917541536
+post mean tensor([5.3793], requires_grad=True) post variance tensor([[0.6774]], grad_fn=<MmBackward>)
+Epoch:  1736 ratio_loss: 1.417002983397043 post_loss: 14.843973581962414
+post mean tensor([5.3836], requires_grad=True) post variance tensor([[0.6718]], grad_fn=<MmBackward>)
+Epoch:  1737 ratio_loss: 1.3324745477587792 post_loss: 2.8534757867454714
+post mean tensor([5.3872], requires_grad=True) post variance tensor([[0.6672]], grad_fn=<MmBackward>)
+Epoch:  1738 ratio_loss: 1.3582013632893006 post_loss: 7.8122256933224214
+post mean tensor([5.3895], requires_grad=True) post variance tensor([[0.6635]], grad_fn=<MmBackward>)
+Epoch:  1739 ratio_loss: 1.3747288739790027 post_loss: 11.637008036472066
+post mean tensor([5.3945], requires_grad=True) post variance tensor([[0.6579]], grad_fn=<MmBackward>)
+Epoch:  1740 ratio_loss: 1.2932335353572764 post_loss: 0.48575937015364845
+post mean tensor([5.3983], requires_grad=True) post variance tensor([[0.6534]], grad_fn=<MmBackward>)
+Epoch:  1741 ratio_loss: 1.3460157354567657 post_loss: 2.2006812190745793
+post mean tensor([5.4012], requires_grad=True) post variance tensor([[0.6499]], grad_fn=<MmBackward>)
+Epoch:  1742 ratio_loss: 1.305613422265 post_loss: 12.055330067900691
+post mean tensor([5.4026], requires_grad=True) post variance tensor([[0.6475]], grad_fn=<MmBackward>)
+Epoch:  1743 ratio_loss: 1.3582462110542204 post_loss: 4.9476128894577
+post mean tensor([5.4067], requires_grad=True) post variance tensor([[0.6444]], grad_fn=<MmBackward>)
+Epoch:  1744 ratio_loss: 1.347254357647437 post_loss: 4.179222311810747
+post mean tensor([5.4100], requires_grad=True) post variance tensor([[0.6420]], grad_fn=<MmBackward>)
+Epoch:  1745 ratio_loss: 1.3227557071300047 post_loss: 7.0936219338164435
+post mean tensor([5.4123], requires_grad=True) post variance tensor([[0.6400]], grad_fn=<MmBackward>)
+Epoch:  1746 ratio_loss: 1.3392710154915288 post_loss: 5.364047483191461
+post mean tensor([5.4137], requires_grad=True) post variance tensor([[0.6382]], grad_fn=<MmBackward>)
+Epoch:  1747 ratio_loss: 1.3523105501530615 post_loss: 9.194444599695284
+post mean tensor([5.4142], requires_grad=True) post variance tensor([[0.6374]], grad_fn=<MmBackward>)
+Epoch:  1748 ratio_loss: 1.3749931324316162 post_loss: 6.708420921040295
+post mean tensor([5.4141], requires_grad=True) post variance tensor([[0.6371]], grad_fn=<MmBackward>)
+Epoch:  1749 ratio_loss: 1.3377350497614209 post_loss: 5.855870638269728
+post mean tensor([5.4134], requires_grad=True) post variance tensor([[0.6374]], grad_fn=<MmBackward>)
+Epoch:  1750 ratio_loss: 1.3435642457336914 post_loss: 7.573664933203773
+post mean tensor([5.4122], requires_grad=True) post variance tensor([[0.6381]], grad_fn=<MmBackward>)
+Epoch:  1751 ratio_loss: 1.3112972024301564 post_loss: 6.435405059006095
+post mean tensor([5.4108], requires_grad=True) post variance tensor([[0.6390]], grad_fn=<MmBackward>)
+Epoch:  1752 ratio_loss: 1.3284253607877892 post_loss: 5.855456110101422
+post mean tensor([5.4091], requires_grad=True) post variance tensor([[0.6403]], grad_fn=<MmBackward>)
+Epoch:  1753 ratio_loss: 1.3483460944962524 post_loss: 9.341575411457878
+post mean tensor([5.4067], requires_grad=True) post variance tensor([[0.6417]], grad_fn=<MmBackward>)
+Epoch:  1754 ratio_loss: 1.3192964358153634 post_loss: 5.144797899840815
+post mean tensor([5.4043], requires_grad=True) post variance tensor([[0.6433]], grad_fn=<MmBackward>)
+Epoch:  1755 ratio_loss: 1.3306587725327255 post_loss: 11.200608111628505
+post mean tensor([5.4013], requires_grad=True) post variance tensor([[0.6452]], grad_fn=<MmBackward>)
+Epoch:  1756 ratio_loss: 1.32233457318426 post_loss: 8.005027431139974
+post mean tensor([5.4017], requires_grad=True) post variance tensor([[0.6460]], grad_fn=<MmBackward>)
+Epoch:  1757 ratio_loss: 1.3489568136127312 post_loss: 3.8285479861496894
+post mean tensor([5.4019], requires_grad=True) post variance tensor([[0.6471]], grad_fn=<MmBackward>)
+Epoch:  1758 ratio_loss: 1.3666537758430666 post_loss: 7.688850022718022
+post mean tensor([5.4017], requires_grad=True) post variance tensor([[0.6485]], grad_fn=<MmBackward>)
+Epoch:  1759 ratio_loss: 1.3080902876217775 post_loss: 12.169857985475776
+post mean tensor([5.4008], requires_grad=True) post variance tensor([[0.6501]], grad_fn=<MmBackward>)
+Epoch:  1760 ratio_loss: 1.3052584122703366 post_loss: 6.6128622958348675
+post mean tensor([5.3994], requires_grad=True) post variance tensor([[0.6517]], grad_fn=<MmBackward>)
+Epoch:  1761 ratio_loss: 1.4044555505996286 post_loss: 8.787649438556784
+post mean tensor([5.3976], requires_grad=True) post variance tensor([[0.6533]], grad_fn=<MmBackward>)
+Epoch:  1762 ratio_loss: 1.3587237336967117 post_loss: 5.118220122442602
+post mean tensor([5.3958], requires_grad=True) post variance tensor([[0.6549]], grad_fn=<MmBackward>)
+Epoch:  1763 ratio_loss: 1.3317609399225276 post_loss: 10.084069395730237
+post mean tensor([5.3934], requires_grad=True) post variance tensor([[0.6565]], grad_fn=<MmBackward>)
+Epoch:  1764 ratio_loss: 1.293174214003189 post_loss: 4.627600002017574
+post mean tensor([5.3906], requires_grad=True) post variance tensor([[0.6581]], grad_fn=<MmBackward>)
+Epoch:  1765 ratio_loss: 1.288403206984938 post_loss: 13.316889001254829
+post mean tensor([5.3873], requires_grad=True) post variance tensor([[0.6604]], grad_fn=<MmBackward>)
+Epoch:  1766 ratio_loss: 1.2813074672090279 post_loss: 4.49741421603098
+post mean tensor([5.3839], requires_grad=True) post variance tensor([[0.6628]], grad_fn=<MmBackward>)
+Epoch:  1767 ratio_loss: 1.293412064807713 post_loss: 8.781622229425171
+post mean tensor([5.3840], requires_grad=True) post variance tensor([[0.6628]], grad_fn=<MmBackward>)
+Epoch:  1768 ratio_loss: 1.3283875794397229 post_loss: 8.22927839072263
+post mean tensor([5.3836], requires_grad=True) post variance tensor([[0.6632]], grad_fn=<MmBackward>)
+Epoch:  1769 ratio_loss: 1.3287729549933884 post_loss: 10.424811015743003
+post mean tensor([5.3825], requires_grad=True) post variance tensor([[0.6637]], grad_fn=<MmBackward>)
+Epoch:  1770 ratio_loss: 1.3394954385831241 post_loss: 9.623328584346424
+post mean tensor([5.3809], requires_grad=True) post variance tensor([[0.6642]], grad_fn=<MmBackward>)
+Epoch:  1771 ratio_loss: 1.3129767138314148 post_loss: 11.460347013455092
+post mean tensor([5.3826], requires_grad=True) post variance tensor([[0.6611]], grad_fn=<MmBackward>)
+Epoch:  1772 ratio_loss: 1.3438355994117552 post_loss: 6.0774613060239115
+post mean tensor([5.3840], requires_grad=True) post variance tensor([[0.6586]], grad_fn=<MmBackward>)
+Epoch:  1773 ratio_loss: 1.3342102809289886 post_loss: 7.6115082707970565
+post mean tensor([5.3847], requires_grad=True) post variance tensor([[0.6565]], grad_fn=<MmBackward>)
+Epoch:  1774 ratio_loss: 1.3821124835305365 post_loss: 8.055478981327358
+post mean tensor([5.3848], requires_grad=True) post variance tensor([[0.6550]], grad_fn=<MmBackward>)
+Epoch:  1775 ratio_loss: 1.355206063870054 post_loss: 3.9391861026860218
+post mean tensor([5.3847], requires_grad=True) post variance tensor([[0.6540]], grad_fn=<MmBackward>)
+Epoch:  1776 ratio_loss: 1.3669353529931962 post_loss: 6.965285083591947
+post mean tensor([5.3841], requires_grad=True) post variance tensor([[0.6533]], grad_fn=<MmBackward>)
+Epoch:  1777 ratio_loss: 1.3145330959630872 post_loss: 5.960845131566942
+post mean tensor([5.3831], requires_grad=True) post variance tensor([[0.6532]], grad_fn=<MmBackward>)
+Epoch:  1778 ratio_loss: 1.3243460701095613 post_loss: 19.89069685005642
+post mean tensor([5.3903], requires_grad=True) post variance tensor([[0.6398]], grad_fn=<MmBackward>)
+Epoch:  1779 ratio_loss: 1.3313601193734093 post_loss: 11.158082254835405
+post mean tensor([5.3961], requires_grad=True) post variance tensor([[0.6284]], grad_fn=<MmBackward>)
+Epoch:  1780 ratio_loss: 1.3153816967279275 post_loss: 9.287230796513018
+post mean tensor([5.4012], requires_grad=True) post variance tensor([[0.6186]], grad_fn=<MmBackward>)
+Epoch:  1781 ratio_loss: 1.3680740339130653 post_loss: 4.191439611133164
+post mean tensor([5.4056], requires_grad=True) post variance tensor([[0.6102]], grad_fn=<MmBackward>)
+Epoch:  1782 ratio_loss: 1.352873457128422 post_loss: 7.824487545022761
+post mean tensor([5.4093], requires_grad=True) post variance tensor([[0.6029]], grad_fn=<MmBackward>)
+Epoch:  1783 ratio_loss: 1.3078412963797907 post_loss: 8.494236560263134
+post mean tensor([5.4122], requires_grad=True) post variance tensor([[0.5966]], grad_fn=<MmBackward>)
+Epoch:  1784 ratio_loss: 1.392440718482327 post_loss: 14.358253573849336
+post mean tensor([5.4176], requires_grad=True) post variance tensor([[0.5891]], grad_fn=<MmBackward>)
+Epoch:  1785 ratio_loss: 1.308157181633005 post_loss: 1.0495682620359408
+post mean tensor([5.4228], requires_grad=True) post variance tensor([[0.5829]], grad_fn=<MmBackward>)
+Epoch:  1786 ratio_loss: 1.3037862443894843 post_loss: 12.803562519384652
+post mean tensor([5.4267], requires_grad=True) post variance tensor([[0.5775]], grad_fn=<MmBackward>)
+Epoch:  1787 ratio_loss: 1.322748917020932 post_loss: 6.901324903274917
+post mean tensor([5.4299], requires_grad=True) post variance tensor([[0.5729]], grad_fn=<MmBackward>)
+Epoch:  1788 ratio_loss: 1.3092631328168989 post_loss: 5.657920894745785
+post mean tensor([5.4324], requires_grad=True) post variance tensor([[0.5691]], grad_fn=<MmBackward>)
+Epoch:  1789 ratio_loss: 1.3353641623094141 post_loss: 6.365298602027636
+post mean tensor([5.4341], requires_grad=True) post variance tensor([[0.5657]], grad_fn=<MmBackward>)
+Epoch:  1790 ratio_loss: 1.312728894619992 post_loss: 0.740367693539701
+post mean tensor([5.4357], requires_grad=True) post variance tensor([[0.5631]], grad_fn=<MmBackward>)
+Epoch:  1791 ratio_loss: 1.309851980548735 post_loss: 14.749668427377607
+post mean tensor([5.4363], requires_grad=True) post variance tensor([[0.5608]], grad_fn=<MmBackward>)
+Epoch:  1792 ratio_loss: 1.3363478805916584 post_loss: 7.559028496738541
+post mean tensor([5.4399], requires_grad=True) post variance tensor([[0.5572]], grad_fn=<MmBackward>)
+Epoch:  1793 ratio_loss: 1.2948692346891184 post_loss: 4.755485938636104
+post mean tensor([5.4428], requires_grad=True) post variance tensor([[0.5544]], grad_fn=<MmBackward>)
+Epoch:  1794 ratio_loss: 1.3234295892277486 post_loss: 11.279303029273477
+post mean tensor([5.4447], requires_grad=True) post variance tensor([[0.5523]], grad_fn=<MmBackward>)
+Epoch:  1795 ratio_loss: 1.2992078745455147 post_loss: 13.114946749774983
+post mean tensor([5.4455], requires_grad=True) post variance tensor([[0.5508]], grad_fn=<MmBackward>)
+Epoch:  1796 ratio_loss: 1.3406331529119129 post_loss: 5.217183999733754
+post mean tensor([5.4459], requires_grad=True) post variance tensor([[0.5497]], grad_fn=<MmBackward>)
+Epoch:  1797 ratio_loss: 1.3145313077488052 post_loss: 5.530799628904754
+post mean tensor([5.4459], requires_grad=True) post variance tensor([[0.5490]], grad_fn=<MmBackward>)
+Epoch:  1798 ratio_loss: 1.3358256177474246 post_loss: 14.760337395320619
+post mean tensor([5.4448], requires_grad=True) post variance tensor([[0.5489]], grad_fn=<MmBackward>)
+Epoch:  1799 ratio_loss: 1.3140793762156155 post_loss: 3.9798820103336867
+post mean tensor([5.4435], requires_grad=True) post variance tensor([[0.5490]], grad_fn=<MmBackward>)
+Epoch:  1800 ratio_loss: 1.2877529958705403 post_loss: 6.232364686158934
+post mean tensor([5.4452], requires_grad=True) post variance tensor([[0.5483]], grad_fn=<MmBackward>)
+Epoch:  1801 ratio_loss: 1.3061166309705023 post_loss: 10.951425792308267
+post mean tensor([5.4493], requires_grad=True) post variance tensor([[0.5468]], grad_fn=<MmBackward>)
+Epoch:  1802 ratio_loss: 1.3190539590527939 post_loss: 6.426945909579353
+post mean tensor([5.4524], requires_grad=True) post variance tensor([[0.5458]], grad_fn=<MmBackward>)
+Epoch:  1803 ratio_loss: 1.3570017283819409 post_loss: 10.821179828701647
+post mean tensor([5.4580], requires_grad=True) post variance tensor([[0.5426]], grad_fn=<MmBackward>)
+Epoch:  1804 ratio_loss: 1.3455013818581802 post_loss: 6.798300963817788
+post mean tensor([5.4624], requires_grad=True) post variance tensor([[0.5399]], grad_fn=<MmBackward>)
+Epoch:  1805 ratio_loss: 1.3197973066992437 post_loss: 4.930537720652508
+post mean tensor([5.4659], requires_grad=True) post variance tensor([[0.5378]], grad_fn=<MmBackward>)
+Epoch:  1806 ratio_loss: 1.2799968543421438 post_loss: 6.9583694656717885
+post mean tensor([5.4684], requires_grad=True) post variance tensor([[0.5363]], grad_fn=<MmBackward>)
+Epoch:  1807 ratio_loss: 1.2979740732187188 post_loss: 13.951700541164321
+post mean tensor([5.4735], requires_grad=True) post variance tensor([[0.5330]], grad_fn=<MmBackward>)
+Epoch:  1808 ratio_loss: 1.3211135271052301 post_loss: 7.234048691973267
+post mean tensor([5.4776], requires_grad=True) post variance tensor([[0.5304]], grad_fn=<MmBackward>)
+Epoch:  1809 ratio_loss: 1.3466753597783276 post_loss: 8.547574007345768
+post mean tensor([5.4807], requires_grad=True) post variance tensor([[0.5282]], grad_fn=<MmBackward>)
+Epoch:  1810 ratio_loss: 1.3071354790546934 post_loss: 4.939043153789724
+post mean tensor([5.4832], requires_grad=True) post variance tensor([[0.5265]], grad_fn=<MmBackward>)
+Epoch:  1811 ratio_loss: 1.3478767472833586 post_loss: 9.436079653031875
+post mean tensor([5.4849], requires_grad=True) post variance tensor([[0.5253]], grad_fn=<MmBackward>)
+Epoch:  1812 ratio_loss: 1.3674335634406103 post_loss: 3.913056460062107
+post mean tensor([5.4860], requires_grad=True) post variance tensor([[0.5245]], grad_fn=<MmBackward>)
+Epoch:  1813 ratio_loss: 1.349195220102498 post_loss: 11.09075498977628
+post mean tensor([5.4897], requires_grad=True) post variance tensor([[0.5216]], grad_fn=<MmBackward>)
+Epoch:  1814 ratio_loss: 1.3504254174129593 post_loss: 11.651647597639373
+post mean tensor([5.4923], requires_grad=True) post variance tensor([[0.5190]], grad_fn=<MmBackward>)
+Epoch:  1815 ratio_loss: 1.3483936762209145 post_loss: 6.538452927743927
+post mean tensor([5.4941], requires_grad=True) post variance tensor([[0.5170]], grad_fn=<MmBackward>)
+Epoch:  1816 ratio_loss: 1.3519277942642398 post_loss: 2.7955770793549357
+post mean tensor([5.4955], requires_grad=True) post variance tensor([[0.5154]], grad_fn=<MmBackward>)
+Epoch:  1817 ratio_loss: 1.3186558480774946 post_loss: 9.589375097636777
+post mean tensor([5.4958], requires_grad=True) post variance tensor([[0.5144]], grad_fn=<MmBackward>)
+Epoch:  1818 ratio_loss: 1.3296595357358407 post_loss: 7.170580372435552
+post mean tensor([5.4959], requires_grad=True) post variance tensor([[0.5137]], grad_fn=<MmBackward>)
+Epoch:  1819 ratio_loss: 1.3242376306481527 post_loss: 3.3841681876701895
+post mean tensor([5.4957], requires_grad=True) post variance tensor([[0.5134]], grad_fn=<MmBackward>)
+Epoch:  1820 ratio_loss: 1.3029422061879097 post_loss: 9.488138350743622
+post mean tensor([5.4951], requires_grad=True) post variance tensor([[0.5131]], grad_fn=<MmBackward>)
+Epoch:  1821 ratio_loss: 1.3536092516098615 post_loss: 10.459636305700908
+post mean tensor([5.4942], requires_grad=True) post variance tensor([[0.5130]], grad_fn=<MmBackward>)
+Epoch:  1822 ratio_loss: 1.3521935414404718 post_loss: 7.248518126683234
+post mean tensor([5.4928], requires_grad=True) post variance tensor([[0.5132]], grad_fn=<MmBackward>)
+Epoch:  1823 ratio_loss: 1.3184661812055767 post_loss: 3.4825225713061556
+post mean tensor([5.4913], requires_grad=True) post variance tensor([[0.5136]], grad_fn=<MmBackward>)
+Epoch:  1824 ratio_loss: 1.3582213277474549 post_loss: 11.135422457040995
+post mean tensor([5.4897], requires_grad=True) post variance tensor([[0.5142]], grad_fn=<MmBackward>)
+Epoch:  1825 ratio_loss: 1.3432474073790772 post_loss: 9.187566795216267
+post mean tensor([5.4876], requires_grad=True) post variance tensor([[0.5151]], grad_fn=<MmBackward>)
+Epoch:  1826 ratio_loss: 1.3090549809939347 post_loss: 1.0565550234898358
+post mean tensor([5.4856], requires_grad=True) post variance tensor([[0.5163]], grad_fn=<MmBackward>)
+Epoch:  1827 ratio_loss: 1.3680956459877123 post_loss: 6.56602437273925
+post mean tensor([5.4834], requires_grad=True) post variance tensor([[0.5176]], grad_fn=<MmBackward>)
+Epoch:  1828 ratio_loss: 1.3115775098911142 post_loss: 7.204251256010087
+post mean tensor([5.4811], requires_grad=True) post variance tensor([[0.5191]], grad_fn=<MmBackward>)
+Epoch:  1829 ratio_loss: 1.3467041074598034 post_loss: 9.865741010403028
+post mean tensor([5.4786], requires_grad=True) post variance tensor([[0.5207]], grad_fn=<MmBackward>)
+Epoch:  1830 ratio_loss: 1.3436344421311586 post_loss: 5.317993926342746
+post mean tensor([5.4762], requires_grad=True) post variance tensor([[0.5225]], grad_fn=<MmBackward>)
+Epoch:  1831 ratio_loss: 1.3389960071991758 post_loss: 7.684581693671317
+post mean tensor([5.4737], requires_grad=True) post variance tensor([[0.5242]], grad_fn=<MmBackward>)
+Epoch:  1832 ratio_loss: 1.3057532616962724 post_loss: 9.3572713244629
+post mean tensor([5.4709], requires_grad=True) post variance tensor([[0.5259]], grad_fn=<MmBackward>)
+Epoch:  1833 ratio_loss: 1.3126930110954138 post_loss: 7.356185843038647
+post mean tensor([5.4682], requires_grad=True) post variance tensor([[0.5278]], grad_fn=<MmBackward>)
+Epoch:  1834 ratio_loss: 1.3265127108778996 post_loss: 3.9539537584501327
+post mean tensor([5.4655], requires_grad=True) post variance tensor([[0.5299]], grad_fn=<MmBackward>)
+Epoch:  1835 ratio_loss: 1.3465528698663936 post_loss: 5.918018804114727
+post mean tensor([5.4626], requires_grad=True) post variance tensor([[0.5320]], grad_fn=<MmBackward>)
+Epoch:  1836 ratio_loss: 1.3018661745238393 post_loss: 6.472031188325262
+post mean tensor([5.4598], requires_grad=True) post variance tensor([[0.5342]], grad_fn=<MmBackward>)
+Epoch:  1837 ratio_loss: 1.3757043793307413 post_loss: 10.19895725240013
+post mean tensor([5.4568], requires_grad=True) post variance tensor([[0.5364]], grad_fn=<MmBackward>)
+Epoch:  1838 ratio_loss: 1.3538702229558868 post_loss: 4.6506209410411135
+post mean tensor([5.4537], requires_grad=True) post variance tensor([[0.5385]], grad_fn=<MmBackward>)
+Epoch:  1839 ratio_loss: 1.296656240931098 post_loss: 6.960441095630513
+post mean tensor([5.4504], requires_grad=True) post variance tensor([[0.5407]], grad_fn=<MmBackward>)
+Epoch:  1840 ratio_loss: 1.3361768315636229 post_loss: 9.337764733880839
+post mean tensor([5.4470], requires_grad=True) post variance tensor([[0.5428]], grad_fn=<MmBackward>)
+Epoch:  1841 ratio_loss: 1.3227805849419665 post_loss: 6.268329586844647
+post mean tensor([5.4436], requires_grad=True) post variance tensor([[0.5449]], grad_fn=<MmBackward>)
+Epoch:  1842 ratio_loss: 1.2898691247866765 post_loss: 9.231296584933565
+post mean tensor([5.4399], requires_grad=True) post variance tensor([[0.5469]], grad_fn=<MmBackward>)
+Epoch:  1843 ratio_loss: 1.353608707713267 post_loss: 12.517216152659929
+post mean tensor([5.4358], requires_grad=True) post variance tensor([[0.5492]], grad_fn=<MmBackward>)
+Epoch:  1844 ratio_loss: 1.344846956111803 post_loss: 0.8101761573221258
+post mean tensor([5.4319], requires_grad=True) post variance tensor([[0.5515]], grad_fn=<MmBackward>)
+Epoch:  1845 ratio_loss: 1.333248246002423 post_loss: 9.378217118915636
+post mean tensor([5.4309], requires_grad=True) post variance tensor([[0.5523]], grad_fn=<MmBackward>)
+Epoch:  1846 ratio_loss: 1.3247360358439122 post_loss: 10.805486902971143
+post mean tensor([5.4293], requires_grad=True) post variance tensor([[0.5530]], grad_fn=<MmBackward>)
+Epoch:  1847 ratio_loss: 1.3650032002688048 post_loss: 5.969767372142428
+post mean tensor([5.4271], requires_grad=True) post variance tensor([[0.5541]], grad_fn=<MmBackward>)
+Epoch:  1848 ratio_loss: 1.3229953571075348 post_loss: 2.2943954038246934
+post mean tensor([5.4245], requires_grad=True) post variance tensor([[0.5556]], grad_fn=<MmBackward>)
+Epoch:  1849 ratio_loss: 1.3437079165978552 post_loss: 8.588247198965343
+post mean tensor([5.4216], requires_grad=True) post variance tensor([[0.5572]], grad_fn=<MmBackward>)
+Epoch:  1850 ratio_loss: 1.4057654773700583 post_loss: 15.644073697372775
+post mean tensor([5.4215], requires_grad=True) post variance tensor([[0.5566]], grad_fn=<MmBackward>)
+Epoch:  1851 ratio_loss: 1.3690279418858202 post_loss: 8.55249358525402
+post mean tensor([5.4205], requires_grad=True) post variance tensor([[0.5560]], grad_fn=<MmBackward>)
+Epoch:  1852 ratio_loss: 1.333831558139393 post_loss: 3.077953021755409
+post mean tensor([5.4193], requires_grad=True) post variance tensor([[0.5555]], grad_fn=<MmBackward>)
+Epoch:  1853 ratio_loss: 1.3659273352581571 post_loss: 6.268204487406903
+post mean tensor([5.4176], requires_grad=True) post variance tensor([[0.5553]], grad_fn=<MmBackward>)
+Epoch:  1854 ratio_loss: 1.348970757095998 post_loss: 7.983541534771749
+post mean tensor([5.4155], requires_grad=True) post variance tensor([[0.5557]], grad_fn=<MmBackward>)
+Epoch:  1855 ratio_loss: 1.3547724708748365 post_loss: 3.456742250683462
+post mean tensor([5.4132], requires_grad=True) post variance tensor([[0.5563]], grad_fn=<MmBackward>)
+Epoch:  1856 ratio_loss: 1.3184417186881892 post_loss: 5.784898788861602
+post mean tensor([5.4105], requires_grad=True) post variance tensor([[0.5575]], grad_fn=<MmBackward>)
+Epoch:  1857 ratio_loss: 1.3488987414397555 post_loss: 7.756415405450524
+post mean tensor([5.4074], requires_grad=True) post variance tensor([[0.5590]], grad_fn=<MmBackward>)
+Epoch:  1858 ratio_loss: 1.3159215528593888 post_loss: 5.34238774354069
+post mean tensor([5.4074], requires_grad=True) post variance tensor([[0.5585]], grad_fn=<MmBackward>)
+Epoch:  1859 ratio_loss: 1.3102511887159856 post_loss: 3.286513756481443
+post mean tensor([5.4069], requires_grad=True) post variance tensor([[0.5582]], grad_fn=<MmBackward>)
+Epoch:  1860 ratio_loss: 1.3068900019050407 post_loss: 11.845891558267954
+post mean tensor([5.4056], requires_grad=True) post variance tensor([[0.5584]], grad_fn=<MmBackward>)
+Epoch:  1861 ratio_loss: 1.3633602120483581 post_loss: 10.95591779236326
+post mean tensor([5.4036], requires_grad=True) post variance tensor([[0.5586]], grad_fn=<MmBackward>)
+Epoch:  1862 ratio_loss: 1.281416670771584 post_loss: 6.472730040109317
+post mean tensor([5.4011], requires_grad=True) post variance tensor([[0.5589]], grad_fn=<MmBackward>)
+Epoch:  1863 ratio_loss: 1.317438471080235 post_loss: 5.85754742000363
+post mean tensor([5.3981], requires_grad=True) post variance tensor([[0.5592]], grad_fn=<MmBackward>)
+Epoch:  1864 ratio_loss: 1.3342917702305102 post_loss: 15.50357342149204
+post mean tensor([5.3944], requires_grad=True) post variance tensor([[0.5596]], grad_fn=<MmBackward>)
+Epoch:  1865 ratio_loss: 1.376348209712551 post_loss: 4.257291135220327
+post mean tensor([5.3907], requires_grad=True) post variance tensor([[0.5602]], grad_fn=<MmBackward>)
+Epoch:  1866 ratio_loss: 1.3716126330060774 post_loss: 5.784486740234962
+post mean tensor([5.3869], requires_grad=True) post variance tensor([[0.5612]], grad_fn=<MmBackward>)
+Epoch:  1867 ratio_loss: 1.3352853067947887 post_loss: 9.157968260222988
+post mean tensor([5.3828], requires_grad=True) post variance tensor([[0.5623]], grad_fn=<MmBackward>)
+Epoch:  1868 ratio_loss: 1.312094968164197 post_loss: 4.539908387070699
+post mean tensor([5.3787], requires_grad=True) post variance tensor([[0.5636]], grad_fn=<MmBackward>)
+Epoch:  1869 ratio_loss: 1.3491621715961581 post_loss: 8.342907749476806
+post mean tensor([5.3742], requires_grad=True) post variance tensor([[0.5649]], grad_fn=<MmBackward>)
+Epoch:  1870 ratio_loss: 1.3397086208329163 post_loss: 5.4192547980002335
+post mean tensor([5.3697], requires_grad=True) post variance tensor([[0.5663]], grad_fn=<MmBackward>)
+Epoch:  1871 ratio_loss: 1.3705268013221903 post_loss: 8.878656989880863
+post mean tensor([5.3650], requires_grad=True) post variance tensor([[0.5677]], grad_fn=<MmBackward>)
+Epoch:  1872 ratio_loss: 1.333694463661894 post_loss: 5.210905690083942
+post mean tensor([5.3635], requires_grad=True) post variance tensor([[0.5680]], grad_fn=<MmBackward>)
+Epoch:  1873 ratio_loss: 1.3199186598302606 post_loss: 7.923674693662219
+post mean tensor([5.3612], requires_grad=True) post variance tensor([[0.5684]], grad_fn=<MmBackward>)
+Epoch:  1874 ratio_loss: 1.3192421561898473 post_loss: 9.142331602969325
+post mean tensor([5.3585], requires_grad=True) post variance tensor([[0.5689]], grad_fn=<MmBackward>)
+Epoch:  1875 ratio_loss: 1.3258991688410493 post_loss: 7.137119312886393
+post mean tensor([5.3551], requires_grad=True) post variance tensor([[0.5697]], grad_fn=<MmBackward>)
+Epoch:  1876 ratio_loss: 1.3175181596719128 post_loss: 7.592654597365189
+post mean tensor([5.3513], requires_grad=True) post variance tensor([[0.5708]], grad_fn=<MmBackward>)
+Epoch:  1877 ratio_loss: 1.3364946484264957 post_loss: 14.959819580206648
+post mean tensor([5.3470], requires_grad=True) post variance tensor([[0.5717]], grad_fn=<MmBackward>)
+Epoch:  1878 ratio_loss: 1.3814587503032487 post_loss: 5.656234302431535
+post mean tensor([5.3458], requires_grad=True) post variance tensor([[0.5704]], grad_fn=<MmBackward>)
+Epoch:  1879 ratio_loss: 1.3681374619491358 post_loss: 2.674760309469751
+post mean tensor([5.3441], requires_grad=True) post variance tensor([[0.5694]], grad_fn=<MmBackward>)
+Epoch:  1880 ratio_loss: 1.3174216762533706 post_loss: 13.54691995844015
+post mean tensor([5.3449], requires_grad=True) post variance tensor([[0.5674]], grad_fn=<MmBackward>)
+Epoch:  1881 ratio_loss: 1.4400215885111909 post_loss: 4.3405462992585395
+post mean tensor([5.3483], requires_grad=True) post variance tensor([[0.5647]], grad_fn=<MmBackward>)
+Epoch:  1882 ratio_loss: 1.3249126315191417 post_loss: 1.9264789672273586
+post mean tensor([5.3509], requires_grad=True) post variance tensor([[0.5627]], grad_fn=<MmBackward>)
+Epoch:  1883 ratio_loss: 1.345485311056279 post_loss: 13.292578754085065
+post mean tensor([5.3557], requires_grad=True) post variance tensor([[0.5597]], grad_fn=<MmBackward>)
+Epoch:  1884 ratio_loss: 1.3372112550821542 post_loss: 13.235418311205917
+post mean tensor([5.3592], requires_grad=True) post variance tensor([[0.5572]], grad_fn=<MmBackward>)
+Epoch:  1885 ratio_loss: 1.3806619460023852 post_loss: 8.08690439372154
+post mean tensor([5.3653], requires_grad=True) post variance tensor([[0.5525]], grad_fn=<MmBackward>)
+Epoch:  1886 ratio_loss: 1.3342110510071783 post_loss: 3.257279108614052
+post mean tensor([5.3736], requires_grad=True) post variance tensor([[0.5470]], grad_fn=<MmBackward>)
+Epoch:  1887 ratio_loss: 1.338341235337653 post_loss: 6.248528644555476
+post mean tensor([5.3804], requires_grad=True) post variance tensor([[0.5427]], grad_fn=<MmBackward>)
+Epoch:  1888 ratio_loss: 1.3169793056313 post_loss: 5.280579475868351
+post mean tensor([5.3864], requires_grad=True) post variance tensor([[0.5391]], grad_fn=<MmBackward>)
+Epoch:  1889 ratio_loss: 1.3669782551782228 post_loss: 6.896589875045203
+post mean tensor([5.3913], requires_grad=True) post variance tensor([[0.5361]], grad_fn=<MmBackward>)
+Epoch:  1890 ratio_loss: 1.4090003708900904 post_loss: 7.010354839415907
+post mean tensor([5.3956], requires_grad=True) post variance tensor([[0.5337]], grad_fn=<MmBackward>)
+Epoch:  1891 ratio_loss: 1.3026898645037046 post_loss: 8.974283984831782
+post mean tensor([5.3990], requires_grad=True) post variance tensor([[0.5319]], grad_fn=<MmBackward>)
+Epoch:  1892 ratio_loss: 1.3185819686741798 post_loss: 9.877130485798203
+post mean tensor([5.4017], requires_grad=True) post variance tensor([[0.5305]], grad_fn=<MmBackward>)
+Epoch:  1893 ratio_loss: 1.3117947973440758 post_loss: 0.5756510524592624
+post mean tensor([5.4042], requires_grad=True) post variance tensor([[0.5295]], grad_fn=<MmBackward>)
+Epoch:  1894 ratio_loss: 1.3384409880569437 post_loss: 6.24900249156362
+post mean tensor([5.4060], requires_grad=True) post variance tensor([[0.5288]], grad_fn=<MmBackward>)
+Epoch:  1895 ratio_loss: 1.3328793165701829 post_loss: 8.62255708093648
+post mean tensor([5.4073], requires_grad=True) post variance tensor([[0.5285]], grad_fn=<MmBackward>)
+Epoch:  1896 ratio_loss: 1.3104092486221757 post_loss: 8.370680461709625
+post mean tensor([5.4083], requires_grad=True) post variance tensor([[0.5285]], grad_fn=<MmBackward>)
+Epoch:  1897 ratio_loss: 1.3335748329861823 post_loss: 9.25976004279567
+post mean tensor([5.4090], requires_grad=True) post variance tensor([[0.5286]], grad_fn=<MmBackward>)
+Epoch:  1898 ratio_loss: 1.3324474010128498 post_loss: 8.076728799472548
+post mean tensor([5.4095], requires_grad=True) post variance tensor([[0.5290]], grad_fn=<MmBackward>)
+Epoch:  1899 ratio_loss: 1.3464180297418842 post_loss: 6.5750306819540425
+post mean tensor([5.4098], requires_grad=True) post variance tensor([[0.5296]], grad_fn=<MmBackward>)
+Epoch:  1900 ratio_loss: 1.31832628136097 post_loss: 5.83745057982903
+post mean tensor([5.4102], requires_grad=True) post variance tensor([[0.5305]], grad_fn=<MmBackward>)
+Epoch:  1901 ratio_loss: 1.3525579692070018 post_loss: 11.484340728432683
+post mean tensor([5.4100], requires_grad=True) post variance tensor([[0.5317]], grad_fn=<MmBackward>)
+Epoch:  1902 ratio_loss: 1.3094187654714986 post_loss: 6.626508019593968
+post mean tensor([5.4098], requires_grad=True) post variance tensor([[0.5330]], grad_fn=<MmBackward>)
+Epoch:  1903 ratio_loss: 1.3406202402796081 post_loss: 2.0318085162725747
+post mean tensor([5.4099], requires_grad=True) post variance tensor([[0.5344]], grad_fn=<MmBackward>)
+Epoch:  1904 ratio_loss: 1.3507091434223946 post_loss: 12.335750113474532
+post mean tensor([5.4096], requires_grad=True) post variance tensor([[0.5359]], grad_fn=<MmBackward>)
+Epoch:  1905 ratio_loss: 1.3244146131870815 post_loss: 4.957144800729152
+post mean tensor([5.4093], requires_grad=True) post variance tensor([[0.5375]], grad_fn=<MmBackward>)
+Epoch:  1906 ratio_loss: 1.3739571001773614 post_loss: 7.1631283755005715
+post mean tensor([5.4121], requires_grad=True) post variance tensor([[0.5371]], grad_fn=<MmBackward>)
+Epoch:  1907 ratio_loss: 1.3000936784004258 post_loss: 8.097440250881794
+post mean tensor([5.4143], requires_grad=True) post variance tensor([[0.5370]], grad_fn=<MmBackward>)
+Epoch:  1908 ratio_loss: 1.3036715483455577 post_loss: 6.697592576074897
+post mean tensor([5.4161], requires_grad=True) post variance tensor([[0.5371]], grad_fn=<MmBackward>)
+Epoch:  1909 ratio_loss: 1.2599191186868364 post_loss: 10.637157788639445
+post mean tensor([5.4208], requires_grad=True) post variance tensor([[0.5347]], grad_fn=<MmBackward>)
+Epoch:  1910 ratio_loss: 1.3326686281249578 post_loss: 8.192802243303431
+post mean tensor([5.4246], requires_grad=True) post variance tensor([[0.5328]], grad_fn=<MmBackward>)
+Epoch:  1911 ratio_loss: 1.3269063268552541 post_loss: 4.8427388659948445
+post mean tensor([5.4280], requires_grad=True) post variance tensor([[0.5313]], grad_fn=<MmBackward>)
+Epoch:  1912 ratio_loss: 1.3060816308014425 post_loss: 11.471465791326825
+post mean tensor([5.4303], requires_grad=True) post variance tensor([[0.5303]], grad_fn=<MmBackward>)
+Epoch:  1913 ratio_loss: 1.3266026579861538 post_loss: 1.458239515936805
+post mean tensor([5.4326], requires_grad=True) post variance tensor([[0.5297]], grad_fn=<MmBackward>)
+Epoch:  1914 ratio_loss: 1.3481857872154075 post_loss: 13.992556014514983
+post mean tensor([5.4375], requires_grad=True) post variance tensor([[0.5274]], grad_fn=<MmBackward>)
+Epoch:  1915 ratio_loss: 1.360027398991739 post_loss: 10.473556570208716
+post mean tensor([5.4413], requires_grad=True) post variance tensor([[0.5257]], grad_fn=<MmBackward>)
+Epoch:  1916 ratio_loss: 1.336309330766349 post_loss: 1.0588041932846046
+post mean tensor([5.4449], requires_grad=True) post variance tensor([[0.5247]], grad_fn=<MmBackward>)
+Epoch:  1917 ratio_loss: 1.313956197899575 post_loss: 6.427959683088009
+post mean tensor([5.4510], requires_grad=True) post variance tensor([[0.5226]], grad_fn=<MmBackward>)
+Epoch:  1918 ratio_loss: 1.3494893540800423 post_loss: 10.446774681591611
+post mean tensor([5.4593], requires_grad=True) post variance tensor([[0.5193]], grad_fn=<MmBackward>)
+Epoch:  1919 ratio_loss: 1.3006097741840097 post_loss: 3.078465651848364
+post mean tensor([5.4665], requires_grad=True) post variance tensor([[0.5166]], grad_fn=<MmBackward>)
+Epoch:  1920 ratio_loss: 1.3081426328619061 post_loss: 6.304141682086167
+post mean tensor([5.4727], requires_grad=True) post variance tensor([[0.5144]], grad_fn=<MmBackward>)
+Epoch:  1921 ratio_loss: 1.3376815205727937 post_loss: 8.838949746662445
+post mean tensor([5.4781], requires_grad=True) post variance tensor([[0.5127]], grad_fn=<MmBackward>)
+Epoch:  1922 ratio_loss: 1.3425343792112687 post_loss: 8.862449740643585
+post mean tensor([5.4857], requires_grad=True) post variance tensor([[0.5096]], grad_fn=<MmBackward>)
+Epoch:  1923 ratio_loss: 1.384649733588054 post_loss: 8.118041791719824
+post mean tensor([5.4922], requires_grad=True) post variance tensor([[0.5071]], grad_fn=<MmBackward>)
+Epoch:  1924 ratio_loss: 1.3436360248665573 post_loss: 5.376158539420896
+post mean tensor([5.4980], requires_grad=True) post variance tensor([[0.5052]], grad_fn=<MmBackward>)
+Epoch:  1925 ratio_loss: 1.3316451000683065 post_loss: 7.6966794233870335
+post mean tensor([5.5030], requires_grad=True) post variance tensor([[0.5036]], grad_fn=<MmBackward>)
+Epoch:  1926 ratio_loss: 1.324478269749767 post_loss: 4.397476968408752
+post mean tensor([5.5072], requires_grad=True) post variance tensor([[0.5025]], grad_fn=<MmBackward>)
+Epoch:  1927 ratio_loss: 1.3134536338951586 post_loss: 7.407677303623612
+post mean tensor([5.5109], requires_grad=True) post variance tensor([[0.5017]], grad_fn=<MmBackward>)
+Epoch:  1928 ratio_loss: 1.3601790528460755 post_loss: 10.909593555341976
+post mean tensor([5.5138], requires_grad=True) post variance tensor([[0.5012]], grad_fn=<MmBackward>)
+Epoch:  1929 ratio_loss: 1.3147177857954644 post_loss: 3.2677214532673453
+post mean tensor([5.5163], requires_grad=True) post variance tensor([[0.5011]], grad_fn=<MmBackward>)
+Epoch:  1930 ratio_loss: 1.3432148510090736 post_loss: 4.186432638342145
+post mean tensor([5.5181], requires_grad=True) post variance tensor([[0.5012]], grad_fn=<MmBackward>)
+Epoch:  1931 ratio_loss: 1.3564343540863253 post_loss: 8.60528554721396
+post mean tensor([5.5195], requires_grad=True) post variance tensor([[0.5016]], grad_fn=<MmBackward>)
+Epoch:  1932 ratio_loss: 1.3269014722589105 post_loss: 11.497071734524983
+post mean tensor([5.5203], requires_grad=True) post variance tensor([[0.5022]], grad_fn=<MmBackward>)
+Epoch:  1933 ratio_loss: 1.3628734564790044 post_loss: 8.387939876883529
+post mean tensor([5.5210], requires_grad=True) post variance tensor([[0.5029]], grad_fn=<MmBackward>)
+Epoch:  1934 ratio_loss: 1.3433207485973329 post_loss: 8.809688519606791
+post mean tensor([5.5216], requires_grad=True) post variance tensor([[0.5038]], grad_fn=<MmBackward>)
+Epoch:  1935 ratio_loss: 1.369243239938268 post_loss: 5.465670551016002
+post mean tensor([5.5223], requires_grad=True) post variance tensor([[0.5049]], grad_fn=<MmBackward>)
+Epoch:  1936 ratio_loss: 1.3439658048059355 post_loss: 8.912846571490732
+post mean tensor([5.5228], requires_grad=True) post variance tensor([[0.5062]], grad_fn=<MmBackward>)
+Epoch:  1937 ratio_loss: 1.3330038814953584 post_loss: 3.3773664447644216
+post mean tensor([5.5236], requires_grad=True) post variance tensor([[0.5075]], grad_fn=<MmBackward>)
+Epoch:  1938 ratio_loss: 1.3209981977177816 post_loss: 8.879064181659922
+post mean tensor([5.5241], requires_grad=True) post variance tensor([[0.5089]], grad_fn=<MmBackward>)
+Epoch:  1939 ratio_loss: 1.2936597044353493 post_loss: 7.0369713706531325
+post mean tensor([5.5249], requires_grad=True) post variance tensor([[0.5103]], grad_fn=<MmBackward>)
+Epoch:  1940 ratio_loss: 1.3165693481565763 post_loss: 5.552751872433326
+post mean tensor([5.5259], requires_grad=True) post variance tensor([[0.5120]], grad_fn=<MmBackward>)
+Epoch:  1941 ratio_loss: 1.3139841723190187 post_loss: 7.079912916002884
+post mean tensor([5.5267], requires_grad=True) post variance tensor([[0.5138]], grad_fn=<MmBackward>)
+Epoch:  1942 ratio_loss: 1.3499943518654562 post_loss: 6.800748443419186
+post mean tensor([5.5277], requires_grad=True) post variance tensor([[0.5156]], grad_fn=<MmBackward>)
+Epoch:  1943 ratio_loss: 1.3140651312662 post_loss: 4.191355199727544
+post mean tensor([5.5291], requires_grad=True) post variance tensor([[0.5175]], grad_fn=<MmBackward>)
+Epoch:  1944 ratio_loss: 1.340343447371337 post_loss: 4.236559917865559
+post mean tensor([5.5307], requires_grad=True) post variance tensor([[0.5193]], grad_fn=<MmBackward>)
+Epoch:  1945 ratio_loss: 1.3032462160846046 post_loss: 3.7470864484006676
+post mean tensor([5.5324], requires_grad=True) post variance tensor([[0.5213]], grad_fn=<MmBackward>)
+Epoch:  1946 ratio_loss: 1.304583459721476 post_loss: 6.033957935901569
+post mean tensor([5.5339], requires_grad=True) post variance tensor([[0.5233]], grad_fn=<MmBackward>)
+Epoch:  1947 ratio_loss: 1.2551357062233561 post_loss: 7.024295731635474
+post mean tensor([5.5388], requires_grad=True) post variance tensor([[0.5228]], grad_fn=<MmBackward>)
+Epoch:  1948 ratio_loss: 1.3308493560830144 post_loss: 8.798638471325598
+post mean tensor([5.5431], requires_grad=True) post variance tensor([[0.5227]], grad_fn=<MmBackward>)
+Epoch:  1949 ratio_loss: 1.3535947045949748 post_loss: 1.5245434885721103
+post mean tensor([5.5472], requires_grad=True) post variance tensor([[0.5229]], grad_fn=<MmBackward>)
+Epoch:  1950 ratio_loss: 1.317561586680123 post_loss: 8.8406413291189
+post mean tensor([5.5508], requires_grad=True) post variance tensor([[0.5234]], grad_fn=<MmBackward>)
+Epoch:  1951 ratio_loss: 1.2750357872848253 post_loss: 4.976364250164653
+post mean tensor([5.5541], requires_grad=True) post variance tensor([[0.5242]], grad_fn=<MmBackward>)
+Epoch:  1952 ratio_loss: 1.350236589625167 post_loss: 5.505276786832901
+post mean tensor([5.5573], requires_grad=True) post variance tensor([[0.5251]], grad_fn=<MmBackward>)
+Epoch:  1953 ratio_loss: 1.3016790833955847 post_loss: 11.659268598669508
+post mean tensor([5.5599], requires_grad=True) post variance tensor([[0.5261]], grad_fn=<MmBackward>)
+Epoch:  1954 ratio_loss: 1.3200677324218084 post_loss: 4.368113768829338
+post mean tensor([5.5624], requires_grad=True) post variance tensor([[0.5273]], grad_fn=<MmBackward>)
+Epoch:  1955 ratio_loss: 1.352926317358532 post_loss: 10.068966514337173
+post mean tensor([5.5644], requires_grad=True) post variance tensor([[0.5287]], grad_fn=<MmBackward>)
+Epoch:  1956 ratio_loss: 1.3116173426853628 post_loss: 4.013505378078318
+post mean tensor([5.5667], requires_grad=True) post variance tensor([[0.5304]], grad_fn=<MmBackward>)
+Epoch:  1957 ratio_loss: 1.3573902775216042 post_loss: 8.495523568259792
+post mean tensor([5.5689], requires_grad=True) post variance tensor([[0.5324]], grad_fn=<MmBackward>)
+Epoch:  1958 ratio_loss: 1.3381929050094743 post_loss: 6.354749793928705
+post mean tensor([5.5709], requires_grad=True) post variance tensor([[0.5344]], grad_fn=<MmBackward>)
+Epoch:  1959 ratio_loss: 1.3107590753114593 post_loss: 2.221768002575371
+post mean tensor([5.5731], requires_grad=True) post variance tensor([[0.5364]], grad_fn=<MmBackward>)
+Epoch:  1960 ratio_loss: 1.3438455417341795 post_loss: 6.130040477949906
+post mean tensor([5.5752], requires_grad=True) post variance tensor([[0.5385]], grad_fn=<MmBackward>)
+Epoch:  1961 ratio_loss: 1.3454581462229376 post_loss: 6.490967733378836
+post mean tensor([5.5770], requires_grad=True) post variance tensor([[0.5406]], grad_fn=<MmBackward>)
+Epoch:  1962 ratio_loss: 1.3106441054702898 post_loss: 10.500311540962294
+post mean tensor([5.5785], requires_grad=True) post variance tensor([[0.5428]], grad_fn=<MmBackward>)
+Epoch:  1963 ratio_loss: 1.305145217912139 post_loss: 9.250194843999827
+post mean tensor([5.5798], requires_grad=True) post variance tensor([[0.5450]], grad_fn=<MmBackward>)
+Epoch:  1964 ratio_loss: 1.3317959548012588 post_loss: 10.698057102963247
+post mean tensor([5.5808], requires_grad=True) post variance tensor([[0.5472]], grad_fn=<MmBackward>)
+Epoch:  1965 ratio_loss: 1.3101586720552971 post_loss: 10.699287682013363
+post mean tensor([5.5816], requires_grad=True) post variance tensor([[0.5495]], grad_fn=<MmBackward>)
+Epoch:  1966 ratio_loss: 1.3269453647064138 post_loss: 10.348676746842834
+post mean tensor([5.5822], requires_grad=True) post variance tensor([[0.5518]], grad_fn=<MmBackward>)
+Epoch:  1967 ratio_loss: 1.3267385513984442 post_loss: 14.08591443242126
+post mean tensor([5.5825], requires_grad=True) post variance tensor([[0.5540]], grad_fn=<MmBackward>)
+Epoch:  1968 ratio_loss: 1.3245446689106752 post_loss: 10.625882839531432
+post mean tensor([5.5828], requires_grad=True) post variance tensor([[0.5564]], grad_fn=<MmBackward>)
+Epoch:  1969 ratio_loss: 1.2841336197550026 post_loss: 8.329971472616375
+post mean tensor([5.5831], requires_grad=True) post variance tensor([[0.5588]], grad_fn=<MmBackward>)
+Epoch:  1970 ratio_loss: 1.3509217280975148 post_loss: 5.942603232169944
+post mean tensor([5.5833], requires_grad=True) post variance tensor([[0.5613]], grad_fn=<MmBackward>)
+Epoch:  1971 ratio_loss: 1.3386398751036064 post_loss: 8.111475210445743
+post mean tensor([5.5830], requires_grad=True) post variance tensor([[0.5640]], grad_fn=<MmBackward>)
+Epoch:  1972 ratio_loss: 1.3189099762201855 post_loss: 3.410516163026964
+post mean tensor([5.5826], requires_grad=True) post variance tensor([[0.5667]], grad_fn=<MmBackward>)
+Epoch:  1973 ratio_loss: 1.3290436837252013 post_loss: 9.231303174612385
+post mean tensor([5.5816], requires_grad=True) post variance tensor([[0.5695]], grad_fn=<MmBackward>)
+Epoch:  1974 ratio_loss: 1.2922823398332375 post_loss: 5.168582024769067
+post mean tensor([5.5804], requires_grad=True) post variance tensor([[0.5723]], grad_fn=<MmBackward>)
+Epoch:  1975 ratio_loss: 1.3419880254982663 post_loss: 7.087717571214537
+post mean tensor([5.5790], requires_grad=True) post variance tensor([[0.5751]], grad_fn=<MmBackward>)
+Epoch:  1976 ratio_loss: 1.3086619573525207 post_loss: 6.303670206582561
+post mean tensor([5.5774], requires_grad=True) post variance tensor([[0.5779]], grad_fn=<MmBackward>)
+Epoch:  1977 ratio_loss: 1.3152357614024812 post_loss: 6.4600674777125935
+post mean tensor([5.5754], requires_grad=True) post variance tensor([[0.5807]], grad_fn=<MmBackward>)
+Epoch:  1978 ratio_loss: 1.3271640182082534 post_loss: 12.201124582369467
+post mean tensor([5.5733], requires_grad=True) post variance tensor([[0.5833]], grad_fn=<MmBackward>)
+Epoch:  1979 ratio_loss: 1.3057515055388067 post_loss: 5.9962815347183005
+post mean tensor([5.5711], requires_grad=True) post variance tensor([[0.5860]], grad_fn=<MmBackward>)
+Epoch:  1980 ratio_loss: 1.3307271198078712 post_loss: 11.074641087779051
+post mean tensor([5.5687], requires_grad=True) post variance tensor([[0.5885]], grad_fn=<MmBackward>)
+Epoch:  1981 ratio_loss: 1.353493334400857 post_loss: 13.268922471242249
+post mean tensor([5.5662], requires_grad=True) post variance tensor([[0.5908]], grad_fn=<MmBackward>)
+Epoch:  1982 ratio_loss: 1.347682304663885 post_loss: 10.622724267733995
+post mean tensor([5.5635], requires_grad=True) post variance tensor([[0.5933]], grad_fn=<MmBackward>)
+Epoch:  1983 ratio_loss: 1.3589368872942464 post_loss: 12.73681115392536
+post mean tensor([5.5606], requires_grad=True) post variance tensor([[0.5960]], grad_fn=<MmBackward>)
+Epoch:  1984 ratio_loss: 1.3221019185945875 post_loss: 12.40687992284912
+post mean tensor([5.5575], requires_grad=True) post variance tensor([[0.5984]], grad_fn=<MmBackward>)
+Epoch:  1985 ratio_loss: 1.2982089555180467 post_loss: 3.760063425437904
+post mean tensor([5.5545], requires_grad=True) post variance tensor([[0.6008]], grad_fn=<MmBackward>)
+Epoch:  1986 ratio_loss: 1.2879215728217215 post_loss: 2.9906358483337465
+post mean tensor([5.5511], requires_grad=True) post variance tensor([[0.6031]], grad_fn=<MmBackward>)
+Epoch:  1987 ratio_loss: 1.3173083529756204 post_loss: 4.802689982236031
+post mean tensor([5.5480], requires_grad=True) post variance tensor([[0.6054]], grad_fn=<MmBackward>)
+Epoch:  1988 ratio_loss: 1.3367093000377928 post_loss: 13.727833010718378
+post mean tensor([5.5451], requires_grad=True) post variance tensor([[0.6078]], grad_fn=<MmBackward>)
+Epoch:  1989 ratio_loss: 1.338563768051999 post_loss: 17.415318626876516
+post mean tensor([5.5416], requires_grad=True) post variance tensor([[0.6101]], grad_fn=<MmBackward>)
+Epoch:  1990 ratio_loss: 1.323153948423626 post_loss: 0.6710853880709504
+post mean tensor([5.5386], requires_grad=True) post variance tensor([[0.6125]], grad_fn=<MmBackward>)
+Epoch:  1991 ratio_loss: 1.3110221195439715 post_loss: 2.6717123929667315
+post mean tensor([5.5355], requires_grad=True) post variance tensor([[0.6150]], grad_fn=<MmBackward>)
+Epoch:  1992 ratio_loss: 1.3720959808799744 post_loss: 13.503021682700238
+post mean tensor([5.5322], requires_grad=True) post variance tensor([[0.6173]], grad_fn=<MmBackward>)
+Epoch:  1993 ratio_loss: 1.3100885591545968 post_loss: 3.4292049390474695
+post mean tensor([5.5292], requires_grad=True) post variance tensor([[0.6196]], grad_fn=<MmBackward>)
+Epoch:  1994 ratio_loss: 1.2953000004831938 post_loss: 7.7519470953742555
+post mean tensor([5.5263], requires_grad=True) post variance tensor([[0.6219]], grad_fn=<MmBackward>)
+Epoch:  1995 ratio_loss: 1.3108044690447567 post_loss: 9.296590981844556
+post mean tensor([5.5235], requires_grad=True) post variance tensor([[0.6242]], grad_fn=<MmBackward>)
+Epoch:  1996 ratio_loss: 1.3577134241371502 post_loss: 6.413055962926289
+post mean tensor([5.5211], requires_grad=True) post variance tensor([[0.6267]], grad_fn=<MmBackward>)
+Epoch:  1997 ratio_loss: 1.3391673686775487 post_loss: 10.667938220730584
+post mean tensor([5.5185], requires_grad=True) post variance tensor([[0.6291]], grad_fn=<MmBackward>)
+Epoch:  1998 ratio_loss: 1.3115491709778249 post_loss: 6.356539909844
+post mean tensor([5.5161], requires_grad=True) post variance tensor([[0.6316]], grad_fn=<MmBackward>)
+Epoch:  1999 ratio_loss: 1.3172686629610781 post_loss: 5.43314354398805
+post mean tensor([5.5135], requires_grad=True) post variance tensor([[0.6342]], grad_fn=<MmBackward>)
+Learnt mean tensor([5.5135], requires_grad=True)
+Learnt variance tensor([[0.6342]], grad_fn=<MmBackward>)
+Expected mean tensor([4.9971])
+Expected variance tensor([[0.0015]])

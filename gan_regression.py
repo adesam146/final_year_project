@@ -82,63 +82,63 @@ class Discriminator(nn.Module):
         h = torch.cat((x.view(-1, self.x_dim), y.view(-1, self.y_dim)), dim=1)
         return self.linear2(F.relu(self.linear1(h)))
 
+if __name__ == "__main__":
+    N = 1000
+    train_X, train_Y = load_data(N=N)
 
-N = 1000
-train_X, train_Y = load_data(N=N)
+    func = Function()
+    func_optimizer = torch.optim.Adam(func.parameters(), lr=1e-2)
 
-func = Function()
-func_optimizer = torch.optim.Adam(func.parameters(), lr=1e-2)
+    gen = Generator()
+    gen_optimizer = torch.optim.Adam(gen.parameters(), lr=1e-2)
 
-gen = Generator()
-gen_optimizer = torch.optim.Adam(gen.parameters(), lr=1e-2)
+    disc = Discriminator()
+    disc_optimizer = torch.optim.Adam(disc.parameters(), lr=1e-2)
 
-disc = Discriminator()
-disc_optimizer = torch.optim.Adam(disc.parameters(), lr=1e-2)
+    bce_logit_loss = torch.nn.BCEWithLogitsLoss()
+    real_target = torch.ones(N, 1)
+    fake_target = torch.zeros(N, 1)
 
-bce_logit_loss = torch.nn.BCEWithLogitsLoss()
-real_target = torch.ones(N, 1)
-fake_target = torch.zeros(N, 1)
+    epochs = 2000
+    for epoch in range(epochs):
 
-epochs = 2000
-for epoch in range(epochs):
+        eps = torch.randn_like(train_Y)
+        fake_Y = gen(func(train_X), eps)
 
-    eps = torch.randn_like(train_Y)
-    fake_Y = gen(func(train_X), eps)
+        # Optimise discrimator
+        disc_optimizer.zero_grad()
 
-    # Optimise discrimator
-    disc_optimizer.zero_grad()
+        disc_loss = bce_logit_loss(disc(train_X, train_Y), real_target) + \
+            bce_logit_loss(disc(train_X, fake_Y.detach()), fake_target)
 
-    disc_loss = bce_logit_loss(disc(train_X, train_Y), real_target) + \
-        bce_logit_loss(disc(train_X, fake_Y.detach()), fake_target)
+        disc_loss.backward()
+        disc_optimizer.step()
 
-    disc_loss.backward()
-    disc_optimizer.step()
+        # Optimise generator and function
+        gen_optimizer.zero_grad()
+        func_optimizer.zero_grad()
 
-    # Optimise generator and function
-    gen_optimizer.zero_grad()
-    func_optimizer.zero_grad()
+        model_loss = bce_logit_loss(disc(train_X, fake_Y), real_target)
+        model_loss.backward()
 
-    model_loss = bce_logit_loss(disc(train_X, fake_Y), real_target)
-    model_loss.backward()
+        gen_optimizer.step()
+        func_optimizer.step()
 
-    gen_optimizer.step()
-    func_optimizer.step()
+        print(
+            f'Epoch {epoch}, disc loss: {disc_loss.detach()}, model loss: {model_loss.detach()}')
 
-    print(
-        f'Epoch {epoch}, disc loss: {disc_loss.detach()}, model loss: {model_loss.detach()}')
+    print(f'a: {func.a.item()}, b: {func.b.item()}, c:{func.c.item()}')
 
-print(f'a: {func.a.item()}, b: {func.b.item()}, c:{func.c.item()}')
+    fig, ax = plt.subplots(figsize=(10, 8))
 
-fig, ax = plt.subplots(figsize=(10, 8))
+    ax.scatter(train_X.squeeze().numpy(), train_Y.squeeze().numpy(), label='Observed Y')
+    ax.scatter(train_X.squeeze().numpy(), func(train_X).detach().squeeze().numpy(), label=r"Learnt function: $f_{\theta_m^*}(x)$")
+    ax.scatter(train_X.squeeze().numpy(), gen(func(train_X), torch.randn_like(train_Y)).detach().squeeze().numpy(), label=r"Generator applied to learnt function: $G_{\theta_g^*}(f_{\theta_m^*}(x), \epsilon)$")
 
-ax.scatter(train_X.squeeze().numpy(), train_Y.squeeze().numpy(), label='Observed Y')
-ax.scatter(train_X.squeeze().numpy(), func(train_X).detach().squeeze().numpy(), label=r"Learnt function: $f_{\theta_m^*}(x)$")
-ax.scatter(train_X.squeeze().numpy(), gen(func(train_X), torch.randn_like(train_Y)).detach().squeeze().numpy(), label=r"Generator applied to learnt function: $G_{\theta_g^*}(f_{\theta_m^*}(x), \epsilon)$")
+    ax.legend()
 
-ax.legend()
-
-fig.tight_layout()
-fig.savefig("gan_regression_failure.png", format='png')
+    fig.tight_layout()
+    fig.savefig("gan_regression_failure.png", format='png')
 
 
-plt.close(fig)
+    plt.close(fig)
