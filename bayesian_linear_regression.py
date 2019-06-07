@@ -9,12 +9,12 @@ import torch.distributions as trd
 from trainable import TrainableNormal, TrainableMultivariateNormal
 
 
-def linear_dataset(beta_true, N, noise_std=0.1):
+def linear_dataset(beta_true, N, noise_std=1):
     """
     For now just assuming that beta_true is a scalar
     """
-    X = np.random.normal(loc=0, scale=1, size=(N, 1))
-    noise = np.random.normal(loc=0, scale=noise_std, size=(N, 1))
+    X = torch.linspace(0, 5, steps=N).view(N, 1) ** 3
+    noise = noise_std * torch.randn(N, 1)
 
     Y = beta_true * X + noise
 
@@ -55,7 +55,7 @@ class RatioEstimator(nn.Module):
     def forward(self, y, beta):
         """
         y has shape (batch_size, 1)
-        beta has shape (D, 1)
+        beta has shape (1, D)
         """
         B = y.shape[0]
         D = beta.shape[0]
@@ -150,7 +150,7 @@ def inference(ratio_estimator, prior, approx_posterior, data_loader, model_simul
 
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
               "post_loss:", posterior_loss)
-        print("post mean", approx_posterior.mean, "post std_div",
+        print("post mean", approx_posterior.mean, "post variance",
               approx_posterior.cov())
 
 
@@ -159,18 +159,17 @@ if __name__ == "__main__":
     np.random.seed(0)
 
     # DATA
-    beta_true = np.array([5])
+    beta_true = torch.tensor([5.0])
     N_train = 500
     X_train, Y_train = linear_dataset(beta_true, N_train)
 
-    train_dataset = TensorDataset(torch.from_numpy(
-        X_train).float(), torch.from_numpy(Y_train).float())
+    train_dataset = TensorDataset(X_train, Y_train)
     data_loader_train = DataLoader(train_dataset, batch_size=N_train)
 
     # Model
     D = X_train.shape[1]
     m0 = torch.zeros(D)
-    S0 = 5 * torch.eye(D)
+    S0 = 36 * torch.eye(D)
     prior = trd.MultivariateNormal(loc=m0, covariance_matrix=S0)
     noise_std = 1
     model_simulator = NormalLikelihoodSimulator(noise_std)
@@ -183,7 +182,7 @@ if __name__ == "__main__":
     ratio_estimator = RatioEstimator(in_features=2)
 
     inference(ratio_estimator, prior, approx_posterior, data_loader_train,
-              model_simulator, approx_simulator, epochs=5000)
+              model_simulator, approx_simulator, epochs=2000)
 
     # The learnt std_dev tends to be larger than the expected and this
     # is also the case for the implementation in Edward (original)
@@ -191,9 +190,36 @@ if __name__ == "__main__":
     # iteration the learnt mean goes above the expected with more than
     # a decimal place difference
     print("Learnt mean", approx_posterior.mean)
-    print("Learnt std_dev", approx_posterior.cov())
+    print("Learnt variance", approx_posterior.cov())
 
-    # SN = 1/(1/S0 + 1/(noise_std**2) * np.dot(X_train.T, X_train))
-    # mN = SN * (1/S0 * m0 + 1/(noise_std**2) * np.dot(X_train.T, Y_train))
-    # print("Expected mean", mN)
-    # print("Expected std_div", np.sqrt(SN))
+    SN = 1/(1/S0 + 1/(noise_std**2) * torch.matmul(X_train.t(), X_train))
+    mN = SN * (1/S0 * m0 + 1/(noise_std**2) *
+               torch.matmul(X_train.t(), Y_train))
+    print("Expected mean", mN)
+    print("Expected variance", SN)
+
+    import matplotlib.pyplot as plt
+
+    fig, axs = plt.subplots(1, 2)
+
+    X = X_train.numpy().squeeze() ** (1/3)
+    Y = Y_train.squeeze().numpy()
+
+    mean_pred = approx_posterior.mean.item() * X**3
+    mean_pred_exact = mN.item() * X**3
+
+    axs[0].scatter(X, Y, label='Observed Y', color='black', s=0.5)
+    axs[1].scatter(X, Y, label='Observed Y', color='black', s=0.5)
+    # ax.fill_between(X, Y - (X ** 3) * np.sqrt(SN.item()), Y + (X ** 3) * np.sqrt(SN.item()), alpha = 0.15)
+
+    axs[0].plot(X, mean_pred, label='Mean Prediction of LFVI')
+    axs[0].fill_between(X, mean_pred - 2 * (X ** 3) * np.sqrt(approx_posterior.cov().item()), mean_pred + 2 * (X ** 3) * np.sqrt(approx_posterior.cov().item()), alpha=0.15, label='2 standard deviation from the likelihood-free posterior mean')
+
+    axs[0].legend()
+
+    axs[1].plot(X, mean_pred_exact, label='Mean prediction of exact Bayesian Linear Regression')
+    axs[1].fill_between(X, mean_pred_exact - 2 * (X ** 3) * np.sqrt(SN.item()), mean_pred + 2 * (X ** 3) * np.sqrt(SN.item()), alpha=0.15, label='2 standard deviation from the exact posterior mean')
+
+    axs[1].legend()
+
+    plt.show()
