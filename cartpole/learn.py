@@ -114,9 +114,9 @@ expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
 # *** POLICY SETUP ***
 policy_dir = os.path.join(result_dir, 'policy/')
 os.makedirs(policy_dir)
-# policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
-#    nbasis=10, device=device)
-policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
+policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
+   nbasis=10, device=device)
+# policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 # policy = OptimalPolicy(u_max=10, device=device)
 policy_lr = args.policy_lr or 1e-2
 
