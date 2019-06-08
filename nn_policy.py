@@ -20,7 +20,7 @@ class NNPolicy(nn.Module):
         assert x.shape[-1] == self.input_dim
 
         h = self.linear1(x.view(-1, self.input_dim))
-        return self.u_max * self.squash(self.linear2(F.relu(h))).view(1)
+        return self.u_max * self.squash(self.linear2(F.leaky_relu(h))).view(1)
 
         
     def squash(self, x):
