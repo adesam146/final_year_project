@@ -155,7 +155,7 @@ os.makedirs(disc_dir)
 if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
 elif use_conv_disc:
-    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim).to(device)
+    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim, with_x0=expert_sample_start==0).to(device)
 else:
     disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())

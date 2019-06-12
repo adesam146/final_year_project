@@ -1,0 +1,3430 @@
+Experience: 1
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0061],
+        [0.0089],
+        [0.8135],
+        [0.0200]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0739, 0.2623, 0.9125, 0.0150, 0.0060, 0.1463]],
+
+        [[0.0739, 0.2623, 0.9125, 0.0150, 0.0060, 0.1463]],
+
+        [[0.0739, 0.2623, 0.9125, 0.0150, 0.0060, 0.1463]],
+
+        [[0.0739, 0.2623, 0.9125, 0.0150, 0.0060, 0.1463]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0244, 0.0354, 3.2538, 0.0801], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0244, 0.0354, 3.2538, 0.0801])
+N: 10
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([41.0000, 41.0000, 41.0000, 41.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 6.309
+Iter 2/2000 - Loss: 4.158
+Iter 3/2000 - Loss: 2.767
+Iter 4/2000 - Loss: 2.067
+Iter 5/2000 - Loss: 1.795
+Iter 6/2000 - Loss: 1.724
+Iter 7/2000 - Loss: 1.748
+Iter 8/2000 - Loss: 1.811
+Iter 9/2000 - Loss: 1.869
+Iter 10/2000 - Loss: 1.895
+Iter 11/2000 - Loss: 1.896
+Iter 12/2000 - Loss: 1.891
+Iter 13/2000 - Loss: 1.892
+Iter 14/2000 - Loss: 1.898
+Iter 15/2000 - Loss: 1.901
+Iter 16/2000 - Loss: 1.896
+Iter 17/2000 - Loss: 1.880
+Iter 18/2000 - Loss: 1.853
+Iter 19/2000 - Loss: 1.811
+Iter 20/2000 - Loss: 1.755
+Iter 1981/2000 - Loss: 1.267
+Iter 1982/2000 - Loss: 1.267
+Iter 1983/2000 - Loss: 1.267
+Iter 1984/2000 - Loss: 1.267
+Iter 1985/2000 - Loss: 1.267
+Iter 1986/2000 - Loss: 1.267
+Iter 1987/2000 - Loss: 1.267
+Iter 1988/2000 - Loss: 1.267
+Iter 1989/2000 - Loss: 1.267
+Iter 1990/2000 - Loss: 1.267
+Iter 1991/2000 - Loss: 1.267
+Iter 1992/2000 - Loss: 1.267
+Iter 1993/2000 - Loss: 1.267
+Iter 1994/2000 - Loss: 1.267
+Iter 1995/2000 - Loss: 1.267
+Iter 1996/2000 - Loss: 1.267
+Iter 1997/2000 - Loss: 1.267
+Iter 1998/2000 - Loss: 1.267
+Iter 1999/2000 - Loss: 1.267
+Iter 2000/2000 - Loss: 1.267
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0044],
+        [0.0063],
+        [0.3845],
+        [0.0142]])
+Lengthscale: tensor([[[0.0740, 0.2623, 0.9127, 0.0150, 0.0060, 0.1463]],
+
+        [[0.0750, 0.2628, 0.9145, 0.0150, 0.0061, 0.1463]],
+
+        [[0.0806, 0.2653, 0.9240, 0.0151, 0.0068, 0.1467]],
+
+        [[0.0740, 0.2623, 0.9127, 0.0150, 0.0060, 0.1463]]])
+Signal Variance: tensor([0.0176, 0.0256, 2.5439, 0.0579])
+Estimated target variance: tensor([0.0244, 0.0354, 3.2538, 0.0801])
+N: 10
+Signal to noise ratio: tensor([2.0080, 2.0144, 2.5722, 2.0186])
+Bound on condition number: tensor([41.3205, 41.5781, 67.1605, 41.7462])
+Policy Optimizer learning rate:
+0.01
+Experience 1, Iter 0, disc loss: 1.4658328586104947, policy loss: 0.7484982519468459
+Experience 1, Iter 1, disc loss: 1.4511923061823184, policy loss: 0.7557884228086642
+Experience 1, Iter 2, disc loss: 1.4327440645930682, policy loss: 0.7664072363625247
+Experience 1, Iter 3, disc loss: 1.4145858758410483, policy loss: 0.7752862350805454
+Experience 1, Iter 4, disc loss: 1.397152727554712, policy loss: 0.7894236586219212
+Experience 1, Iter 5, disc loss: 1.3769651595634664, policy loss: 0.8021767713631813
+Experience 1, Iter 6, disc loss: 1.3621378417593677, policy loss: 0.8103068762626028
+Experience 1, Iter 7, disc loss: 1.33645589520887, policy loss: 0.8414828846209931
+Experience 1, Iter 8, disc loss: 1.3333318828275986, policy loss: 0.8317955726817966
+Experience 1, Iter 9, disc loss: 1.3101066367859486, policy loss: 0.8526805054514918
+Experience 1, Iter 10, disc loss: 1.311177395504899, policy loss: 0.8392277958971539
+Experience 1, Iter 11, disc loss: 1.2822873846125653, policy loss: 0.8756435868580781
+Experience 1, Iter 12, disc loss: 1.2746188651935741, policy loss: 0.8763365148395386
+Experience 1, Iter 13, disc loss: 1.2522122590085862, policy loss: 0.8990054182130494
+Experience 1, Iter 14, disc loss: 1.2371936749874455, policy loss: 0.9077901297533311
+Experience 1, Iter 15, disc loss: 1.2041814948638052, policy loss: 0.9562598968403448
+Experience 1, Iter 16, disc loss: 1.19534878081203, policy loss: 0.9593737900356076
+Experience 1, Iter 17, disc loss: 1.1821505942723323, policy loss: 0.968807645298629
+Experience 1, Iter 18, disc loss: 1.1699227700029748, policy loss: 0.9801740824027448
+Experience 1, Iter 19, disc loss: 1.174475103982361, policy loss: 0.9545259939970119
+Experience 1, Iter 20, disc loss: 1.146658406150594, policy loss: 0.9926922482079179
+Experience 1, Iter 21, disc loss: 1.1506562248821002, policy loss: 0.9762829730094478
+Experience 1, Iter 22, disc loss: 1.113503834367465, policy loss: 1.0325600378251294
+Experience 1, Iter 23, disc loss: 1.115473807959851, policy loss: 1.012560260968619
+Experience 1, Iter 24, disc loss: 1.085729110206869, policy loss: 1.0733530473842265
+Experience 1, Iter 25, disc loss: 1.0531393469157093, policy loss: 1.1338614686351116
+Experience 1, Iter 26, disc loss: 1.0839710585509943, policy loss: 1.039958095090895
+Experience 1, Iter 27, disc loss: 1.0761207887008641, policy loss: 1.0318420073540344
+Experience 1, Iter 28, disc loss: 1.0511729482826475, policy loss: 1.0863695189846925
+Experience 1, Iter 29, disc loss: 1.022172511970532, policy loss: 1.136156693600228
+Experience 1, Iter 30, disc loss: 0.9992184344944808, policy loss: 1.1706613987811898
+Experience 1, Iter 31, disc loss: 1.0214029586636517, policy loss: 1.0881575733742979
+Experience 1, Iter 32, disc loss: 0.9778004183010975, policy loss: 1.1921811843214671
+Experience 1, Iter 33, disc loss: 0.9992007987988507, policy loss: 1.1194422921759286
+Experience 1, Iter 34, disc loss: 0.9629772512833504, policy loss: 1.1892630150450216
+Experience 1, Iter 35, disc loss: 0.932861641078436, policy loss: 1.2530425238856369
+Experience 1, Iter 36, disc loss: 0.929875365671736, policy loss: 1.2202799070600818
+Experience 1, Iter 37, disc loss: 0.9169079350222836, policy loss: 1.2557706911706825
+Experience 1, Iter 38, disc loss: 0.8931716220177225, policy loss: 1.3146369059000684
+Experience 1, Iter 39, disc loss: 0.8955450786815851, policy loss: 1.3122147919551643
+Experience 1, Iter 40, disc loss: 0.8828110243358401, policy loss: 1.2958766062091085
+Experience 1, Iter 41, disc loss: 0.8842908293415925, policy loss: 1.3151095272064115
+Experience 1, Iter 42, disc loss: 0.8330679288999523, policy loss: 1.4236459693392474
+Experience 1, Iter 43, disc loss: 0.8443499557472729, policy loss: 1.3417450193775586
+Experience 1, Iter 44, disc loss: 0.8123198523145261, policy loss: 1.470764368915529
+Experience 1, Iter 45, disc loss: 0.8377275582452413, policy loss: 1.3433167102532275
+Experience 1, Iter 46, disc loss: 0.8277620460943196, policy loss: 1.360867370340533
+Experience 1, Iter 47, disc loss: 0.7741434730988968, policy loss: 1.5261436017403767
+Experience 1, Iter 48, disc loss: 0.7631935472193543, policy loss: 1.5492459787890793
+Experience 1, Iter 49, disc loss: 0.7398368916088862, policy loss: 1.685233054962022
+Experience: 2
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0074],
+        [0.0129],
+        [0.6801],
+        [0.0144]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0748, 0.3118, 0.6640, 0.0110, 0.0047, 0.2452]],
+
+        [[0.0748, 0.3118, 0.6640, 0.0110, 0.0047, 0.2452]],
+
+        [[0.0748, 0.3118, 0.6640, 0.0110, 0.0047, 0.2452]],
+
+        [[0.0748, 0.3118, 0.6640, 0.0110, 0.0047, 0.2452]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0296, 0.0516, 2.7205, 0.0575], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0296, 0.0516, 2.7205, 0.0575])
+N: 20
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([81.0000, 81.0000, 81.0000, 81.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 5.741
+Iter 2/2000 - Loss: 4.008
+Iter 3/2000 - Loss: 2.823
+Iter 4/2000 - Loss: 2.219
+Iter 5/2000 - Loss: 1.963
+Iter 6/2000 - Loss: 1.858
+Iter 7/2000 - Loss: 1.835
+Iter 8/2000 - Loss: 1.857
+Iter 9/2000 - Loss: 1.885
+Iter 10/2000 - Loss: 1.889
+Iter 11/2000 - Loss: 1.871
+Iter 12/2000 - Loss: 1.853
+Iter 13/2000 - Loss: 1.847
+Iter 14/2000 - Loss: 1.853
+Iter 15/2000 - Loss: 1.861
+Iter 16/2000 - Loss: 1.859
+Iter 17/2000 - Loss: 1.844
+Iter 18/2000 - Loss: 1.816
+Iter 19/2000 - Loss: 1.772
+Iter 20/2000 - Loss: 1.711
+Iter 1981/2000 - Loss: -5.577
+Iter 1982/2000 - Loss: -5.578
+Iter 1983/2000 - Loss: -5.578
+Iter 1984/2000 - Loss: -5.578
+Iter 1985/2000 - Loss: -5.578
+Iter 1986/2000 - Loss: -5.578
+Iter 1987/2000 - Loss: -5.578
+Iter 1988/2000 - Loss: -5.578
+Iter 1989/2000 - Loss: -5.578
+Iter 1990/2000 - Loss: -5.578
+Iter 1991/2000 - Loss: -5.578
+Iter 1992/2000 - Loss: -5.578
+Iter 1993/2000 - Loss: -5.578
+Iter 1994/2000 - Loss: -5.578
+Iter 1995/2000 - Loss: -5.578
+Iter 1996/2000 - Loss: -5.578
+Iter 1997/2000 - Loss: -5.578
+Iter 1998/2000 - Loss: -5.578
+Iter 1999/2000 - Loss: -5.578
+Iter 2000/2000 - Loss: -5.578
+***AFTER OPTIMATION***
+Noise Variance: tensor([[1.1083e-04],
+        [2.1774e-04],
+        [1.0141e-05],
+        [1.6553e-04]])
+Lengthscale: tensor([[[17.9600,  6.5829, 75.9739,  7.2816,  1.0231, 29.4735]],
+
+        [[33.2180, 55.3352,  8.9325,  0.4951,  7.8825,  5.9333]],
+
+        [[11.8494,  7.0962, 17.1904,  0.9857, 12.6041,  9.7163]],
+
+        [[40.6899, 61.4778,  8.7515,  2.9226, 12.2028, 13.4298]]])
+Signal Variance: tensor([ 0.1163,  0.1654, 12.0027,  0.2010])
+Estimated target variance: tensor([0.0296, 0.0516, 2.7205, 0.0575])
+N: 20
+Signal to noise ratio: tensor([  32.4007,   27.5584, 1087.9478,   34.8452])
+Bound on condition number: tensor([2.0997e+04, 1.5190e+04, 2.3673e+07, 2.4285e+04])
+Policy Optimizer learning rate:
+0.009989469496904544
+Experience 2, Iter 0, disc loss: 0.5666665923021819, policy loss: 2.396889838455085
+Experience 2, Iter 1, disc loss: 0.5730177298988701, policy loss: 2.3228892194850856
+Experience 2, Iter 2, disc loss: 0.6074030973717187, policy loss: 2.000443624468155
+Experience 2, Iter 3, disc loss: 0.6421353845722868, policy loss: 1.8138866437065182
+Experience 2, Iter 4, disc loss: 0.7458987908905464, policy loss: 1.4127502893943142
+Experience 2, Iter 5, disc loss: 0.828605522347608, policy loss: 1.1501332912725664
+Experience 2, Iter 6, disc loss: 0.8392524676360951, policy loss: 1.1051432790326765
+Experience 2, Iter 7, disc loss: 0.8442427139269728, policy loss: 1.0785813723926239
+Experience 2, Iter 8, disc loss: 0.8000152331635135, policy loss: 1.1639275172261996
+Experience 2, Iter 9, disc loss: 0.7879393673933657, policy loss: 1.1774022206313783
+Experience 2, Iter 10, disc loss: 0.756622458387151, policy loss: 1.2310265315529314
+Experience 2, Iter 11, disc loss: 0.75195015901204, policy loss: 1.2379083771367476
+Experience 2, Iter 12, disc loss: 0.7351411908966948, policy loss: 1.2685360924823899
+Experience 2, Iter 13, disc loss: 0.7423526832221504, policy loss: 1.2313081893431317
+Experience 2, Iter 14, disc loss: 0.7151515117054543, policy loss: 1.2862347676182013
+Experience 2, Iter 15, disc loss: 0.719687466108716, policy loss: 1.2679455746231663
+Experience 2, Iter 16, disc loss: 0.6991154955306487, policy loss: 1.2966446942577596
+Experience 2, Iter 17, disc loss: 0.6945307385592173, policy loss: 1.3074964350871798
+Experience 2, Iter 18, disc loss: 0.6755188528347948, policy loss: 1.3445883305536492
+Experience 2, Iter 19, disc loss: 0.6744119539450784, policy loss: 1.339371272077727
+Experience 2, Iter 20, disc loss: 0.6752865413033993, policy loss: 1.3267482193432258
+Experience 2, Iter 21, disc loss: 0.6776844337601943, policy loss: 1.3077360966473601
+Experience 2, Iter 22, disc loss: 0.6909569335472674, policy loss: 1.253297929784592
+Experience 2, Iter 23, disc loss: 0.6769537322207893, policy loss: 1.2697279613161463
+Experience 2, Iter 24, disc loss: 0.6668674110204391, policy loss: 1.3653112277730113
+Experience 2, Iter 25, disc loss: 0.6724805191536725, policy loss: 1.2649265064616915
+Experience 2, Iter 26, disc loss: 0.6311937101403786, policy loss: 1.3850694653888616
+Experience 2, Iter 27, disc loss: 0.6557552796635433, policy loss: 1.2925058660583355
+Experience 2, Iter 28, disc loss: 0.6320764911142416, policy loss: 1.3538221702657072
+Experience 2, Iter 29, disc loss: 0.6283340972438461, policy loss: 1.3378023632038458
+Experience 2, Iter 30, disc loss: 0.6120666597547277, policy loss: 1.3802160702657424
+Experience 2, Iter 31, disc loss: 0.6191679438297738, policy loss: 1.3556644965799278
+Experience 2, Iter 32, disc loss: 0.5878300392413924, policy loss: 1.4441319326204916
+Experience 2, Iter 33, disc loss: 0.5505293090378894, policy loss: 1.520183144091706
+Experience 2, Iter 34, disc loss: 0.5705389558322613, policy loss: 1.4452757461211365
+Experience 2, Iter 35, disc loss: 0.5470871793020771, policy loss: 1.5096027962534115
+Experience 2, Iter 36, disc loss: 0.5243749598836343, policy loss: 1.5830288648483748
+Experience 2, Iter 37, disc loss: 0.5044672489395818, policy loss: 1.6596477181158162
+Experience 2, Iter 38, disc loss: 0.5058192856543454, policy loss: 1.6451002527214609
+Experience 2, Iter 39, disc loss: 0.49870148716838814, policy loss: 1.6426195586626648
+Experience 2, Iter 40, disc loss: 0.47601929540861065, policy loss: 1.6875666620420227
+Experience 2, Iter 41, disc loss: 0.46929840759414665, policy loss: 1.714240235789181
+Experience 2, Iter 42, disc loss: 0.47120796284589705, policy loss: 1.7212592884153768
+Experience 2, Iter 43, disc loss: 0.4563840194992274, policy loss: 1.790895669831435
+Experience 2, Iter 44, disc loss: 0.4516839444592863, policy loss: 1.7913481017229893
+Experience 2, Iter 45, disc loss: 0.4132559222453311, policy loss: 1.9304254327031392
+Experience 2, Iter 46, disc loss: 0.4251425153626147, policy loss: 1.929104822150717
+Experience 2, Iter 47, disc loss: 0.4117818344963833, policy loss: 1.971887665356118
+Experience 2, Iter 48, disc loss: 0.39541859896633624, policy loss: 1.9681263352050244
+Experience 2, Iter 49, disc loss: 0.38213201987886036, policy loss: 2.015235596799082
+Experience: 3
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0100],
+        [0.0322],
+        [0.4532],
+        [0.0095]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0663, 0.3854, 0.4393, 0.0135, 0.0043, 1.2621]],
+
+        [[0.0663, 0.3854, 0.4393, 0.0135, 0.0043, 1.2621]],
+
+        [[0.0663, 0.3854, 0.4393, 0.0135, 0.0043, 1.2621]],
+
+        [[0.0663, 0.3854, 0.4393, 0.0135, 0.0043, 1.2621]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0401, 0.1286, 1.8127, 0.0382], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0401, 0.1286, 1.8127, 0.0382])
+N: 30
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([121.0000, 121.0000, 121.0000, 121.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 2.555
+Iter 2/2000 - Loss: 2.075
+Iter 3/2000 - Loss: 1.695
+Iter 4/2000 - Loss: 1.586
+Iter 5/2000 - Loss: 1.572
+Iter 6/2000 - Loss: 1.509
+Iter 7/2000 - Loss: 1.406
+Iter 8/2000 - Loss: 1.300
+Iter 9/2000 - Loss: 1.203
+Iter 10/2000 - Loss: 1.103
+Iter 11/2000 - Loss: 0.998
+Iter 12/2000 - Loss: 0.893
+Iter 13/2000 - Loss: 0.786
+Iter 14/2000 - Loss: 0.664
+Iter 15/2000 - Loss: 0.518
+Iter 16/2000 - Loss: 0.351
+Iter 17/2000 - Loss: 0.174
+Iter 18/2000 - Loss: 0.004
+Iter 19/2000 - Loss: -0.151
+Iter 20/2000 - Loss: -0.293
+Iter 1981/2000 - Loss: -6.588
+Iter 1982/2000 - Loss: -6.588
+Iter 1983/2000 - Loss: -6.588
+Iter 1984/2000 - Loss: -6.588
+Iter 1985/2000 - Loss: -6.588
+Iter 1986/2000 - Loss: -6.588
+Iter 1987/2000 - Loss: -6.588
+Iter 1988/2000 - Loss: -6.588
+Iter 1989/2000 - Loss: -6.588
+Iter 1990/2000 - Loss: -6.588
+Iter 1991/2000 - Loss: -6.588
+Iter 1992/2000 - Loss: -6.589
+Iter 1993/2000 - Loss: -6.589
+Iter 1994/2000 - Loss: -6.589
+Iter 1995/2000 - Loss: -6.589
+Iter 1996/2000 - Loss: -6.589
+Iter 1997/2000 - Loss: -6.589
+Iter 1998/2000 - Loss: -6.589
+Iter 1999/2000 - Loss: -6.589
+Iter 2000/2000 - Loss: -6.589
+***AFTER OPTIMATION***
+Noise Variance: tensor([[9.6956e-05],
+        [2.1849e-04],
+        [1.8598e-03],
+        [2.9799e-04]])
+Lengthscale: tensor([[[ 8.0981,  6.8382, 10.7526, 11.9731, 13.3585, 30.5774]],
+
+        [[32.0771, 54.3440, 17.0562,  2.6363,  0.4877, 13.7538]],
+
+        [[30.7106, 50.8665, 12.7157,  0.7978,  9.8558, 18.7468]],
+
+        [[31.1714, 55.7564, 10.1413,  3.2939, 11.9391, 27.7611]]])
+Signal Variance: tensor([ 0.1263,  0.8816, 11.3144,  0.3068])
+Estimated target variance: tensor([0.0401, 0.1286, 1.8127, 0.0382])
+N: 30
+Signal to noise ratio: tensor([36.0859, 63.5216, 77.9972, 32.0865])
+Bound on condition number: tensor([ 39066.8416, 121050.7627, 182507.6972,  30887.3886])
+Policy Optimizer learning rate:
+0.009978950082958633
+Experience 3, Iter 0, disc loss: 0.7785571552227728, policy loss: 0.8527616709600969
+Experience 3, Iter 1, disc loss: 0.7598082999371746, policy loss: 0.8741247476351649
+Experience 3, Iter 2, disc loss: 0.7670071212323709, policy loss: 0.856459144147394
+Experience 3, Iter 3, disc loss: 0.7771902434500568, policy loss: 0.8332458237802586
+Experience 3, Iter 4, disc loss: 0.7884751887894241, policy loss: 0.8112751277369712
+Experience 3, Iter 5, disc loss: 0.7848806780771441, policy loss: 0.8107616081634235
+Experience 3, Iter 6, disc loss: 0.777599663450895, policy loss: 0.8137896146592768
+Experience 3, Iter 7, disc loss: 0.7764319033464516, policy loss: 0.8103497059783615
+Experience 3, Iter 8, disc loss: 0.7892454699377135, policy loss: 0.7909194730151916
+Experience 3, Iter 9, disc loss: 0.7955095708424123, policy loss: 0.7803525408370178
+Experience 3, Iter 10, disc loss: 0.7891362564721832, policy loss: 0.7958810622276054
+Experience 3, Iter 11, disc loss: 0.8122689460864237, policy loss: 0.7552257737405386
+Experience 3, Iter 12, disc loss: 0.8057850075073563, policy loss: 0.7684559051355773
+Experience 3, Iter 13, disc loss: 0.806659747432538, policy loss: 0.773418343699219
+Experience 3, Iter 14, disc loss: 0.8571407572793053, policy loss: 0.7424045705280333
+Experience 3, Iter 15, disc loss: 0.8474303497859773, policy loss: 0.831436202294534
+Experience 3, Iter 16, disc loss: 0.8761926933668458, policy loss: 0.6949913593060164
+Experience 3, Iter 17, disc loss: 0.8498933339541268, policy loss: 0.726137358842226
+Experience 3, Iter 18, disc loss: 0.8176036812369023, policy loss: 0.7684209782644954
+Experience 3, Iter 19, disc loss: 0.8420973458121505, policy loss: 0.7217195002341523
+Experience 3, Iter 20, disc loss: 0.8188019537257857, policy loss: 0.7393893622903719
+Experience 3, Iter 21, disc loss: 0.8096325968204054, policy loss: 0.7449898167774438
+Experience 3, Iter 22, disc loss: 0.7824092798179964, policy loss: 0.795616762977625
+Experience 3, Iter 23, disc loss: 0.7791267987577071, policy loss: 0.7897713219881767
+Experience 3, Iter 24, disc loss: 0.7667613674833166, policy loss: 0.7988488715051836
+Experience 3, Iter 25, disc loss: 0.7612975248119944, policy loss: 0.8152835560514108
+Experience 3, Iter 26, disc loss: 0.7727945448320616, policy loss: 0.7920993439785049
+Experience 3, Iter 27, disc loss: 0.7310248765596451, policy loss: 0.8587585193484959
+Experience 3, Iter 28, disc loss: 0.7234377410757504, policy loss: 0.8661876024952697
+Experience 3, Iter 29, disc loss: 0.7239920093919149, policy loss: 0.856223033590343
+Experience 3, Iter 30, disc loss: 0.7360652724711616, policy loss: 0.841322145103945
+Experience 3, Iter 31, disc loss: 0.715109072485635, policy loss: 0.8674879568935719
+Experience 3, Iter 32, disc loss: 0.6699358362324332, policy loss: 0.942708695050743
+Experience 3, Iter 33, disc loss: 0.6958671080700014, policy loss: 0.8934391972312125
+Experience 3, Iter 34, disc loss: 0.6975786467866593, policy loss: 0.893497821216366
+Experience 3, Iter 35, disc loss: 0.6647386322747262, policy loss: 0.9395060602120233
+Experience 3, Iter 36, disc loss: 0.6575848158892061, policy loss: 0.9405795449510629
+Experience 3, Iter 37, disc loss: 0.651023825176191, policy loss: 0.952727365250977
+Experience 3, Iter 38, disc loss: 0.6442155899419004, policy loss: 0.9564110202959369
+Experience 3, Iter 39, disc loss: 0.6418111147193175, policy loss: 0.9572221412164312
+Experience 3, Iter 40, disc loss: 0.6149364617868297, policy loss: 1.0050840732599775
+Experience 3, Iter 41, disc loss: 0.6298788987222321, policy loss: 0.972571798107976
+Experience 3, Iter 42, disc loss: 0.608834598917255, policy loss: 1.0104786867565712
+Experience 3, Iter 43, disc loss: 0.5993400832150471, policy loss: 1.0235914435390279
+Experience 3, Iter 44, disc loss: 0.6018766410561488, policy loss: 1.0165794832516328
+Experience 3, Iter 45, disc loss: 0.5739098612854894, policy loss: 1.0668459034875044
+Experience 3, Iter 46, disc loss: 0.5760840112047453, policy loss: 1.0611556652375966
+Experience 3, Iter 47, disc loss: 0.57804008339799, policy loss: 1.0564580631747105
+Experience 3, Iter 48, disc loss: 0.5595217361148324, policy loss: 1.0949330916694267
+Experience 3, Iter 49, disc loss: 0.5621528655619643, policy loss: 1.0741787364028137
+Experience: 4
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0099],
+        [0.0384],
+        [0.5601],
+        [0.0111]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0634, 0.3782, 0.5229, 0.0169, 0.0038, 1.4184]],
+
+        [[0.0634, 0.3782, 0.5229, 0.0169, 0.0038, 1.4184]],
+
+        [[0.0634, 0.3782, 0.5229, 0.0169, 0.0038, 1.4184]],
+
+        [[0.0634, 0.3782, 0.5229, 0.0169, 0.0038, 1.4184]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0396, 0.1535, 2.2405, 0.0446], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0396, 0.1535, 2.2405, 0.0446])
+N: 40
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([161.0000, 161.0000, 161.0000, 161.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 2.368
+Iter 2/2000 - Loss: 2.063
+Iter 3/2000 - Loss: 1.878
+Iter 4/2000 - Loss: 1.852
+Iter 5/2000 - Loss: 1.837
+Iter 6/2000 - Loss: 1.758
+Iter 7/2000 - Loss: 1.669
+Iter 8/2000 - Loss: 1.611
+Iter 9/2000 - Loss: 1.570
+Iter 10/2000 - Loss: 1.521
+Iter 11/2000 - Loss: 1.447
+Iter 12/2000 - Loss: 1.346
+Iter 13/2000 - Loss: 1.236
+Iter 14/2000 - Loss: 1.130
+Iter 15/2000 - Loss: 1.034
+Iter 16/2000 - Loss: 0.943
+Iter 17/2000 - Loss: 0.846
+Iter 18/2000 - Loss: 0.733
+Iter 19/2000 - Loss: 0.604
+Iter 20/2000 - Loss: 0.461
+Iter 1981/2000 - Loss: -6.439
+Iter 1982/2000 - Loss: -6.439
+Iter 1983/2000 - Loss: -6.439
+Iter 1984/2000 - Loss: -6.439
+Iter 1985/2000 - Loss: -6.439
+Iter 1986/2000 - Loss: -6.439
+Iter 1987/2000 - Loss: -6.439
+Iter 1988/2000 - Loss: -6.439
+Iter 1989/2000 - Loss: -6.439
+Iter 1990/2000 - Loss: -6.439
+Iter 1991/2000 - Loss: -6.439
+Iter 1992/2000 - Loss: -6.439
+Iter 1993/2000 - Loss: -6.439
+Iter 1994/2000 - Loss: -6.439
+Iter 1995/2000 - Loss: -6.439
+Iter 1996/2000 - Loss: -6.439
+Iter 1997/2000 - Loss: -6.439
+Iter 1998/2000 - Loss: -6.439
+Iter 1999/2000 - Loss: -6.439
+Iter 2000/2000 - Loss: -6.439
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0001],
+        [0.0004],
+        [0.0020],
+        [0.0002]])
+Lengthscale: tensor([[[ 7.7482,  8.0265,  9.9856,  5.3143, 15.5680, 24.7299]],
+
+        [[41.0279, 63.7996, 11.8497,  1.1122,  8.6144, 25.6025]],
+
+        [[22.3189, 46.6198, 19.5672,  0.9271, 10.7603, 25.4563]],
+
+        [[28.9742, 40.8654, 11.3740,  3.2496, 13.0781, 24.4160]]])
+Signal Variance: tensor([ 0.1016,  2.3609, 22.5915,  0.2744])
+Estimated target variance: tensor([0.0396, 0.1535, 2.2405, 0.0446])
+N: 40
+Signal to noise ratio: tensor([ 27.1657,  78.5813, 105.8277,  33.1986])
+Bound on condition number: tensor([ 29520.1164, 247001.8777, 447981.0642,  44086.9805])
+Policy Optimizer learning rate:
+0.009968441746484834
+Experience 4, Iter 0, disc loss: 0.5700189642016765, policy loss: 1.0506929174126838
+Experience 4, Iter 1, disc loss: 0.5727021235871453, policy loss: 1.0424558120875962
+Experience 4, Iter 2, disc loss: 0.5319090254048331, policy loss: 1.1329016567903034
+Experience 4, Iter 3, disc loss: 0.5546689069936201, policy loss: 1.0840411342094332
+Experience 4, Iter 4, disc loss: 0.5508268068143772, policy loss: 1.0873736817118358
+Experience 4, Iter 5, disc loss: 0.5330634406893839, policy loss: 1.123888812428794
+Experience 4, Iter 6, disc loss: 0.5313656259838412, policy loss: 1.1236268810160754
+Experience 4, Iter 7, disc loss: 0.5242623864471135, policy loss: 1.141362193162886
+Experience 4, Iter 8, disc loss: 0.5147588565417442, policy loss: 1.160973631384444
+Experience 4, Iter 9, disc loss: 0.5142287594885471, policy loss: 1.1565478659972661
+Experience 4, Iter 10, disc loss: 0.49373184329811703, policy loss: 1.202979546168026
+Experience 4, Iter 11, disc loss: 0.49982945911374277, policy loss: 1.1878248648524237
+Experience 4, Iter 12, disc loss: 0.4829832023521824, policy loss: 1.238729438592964
+Experience 4, Iter 13, disc loss: 0.48340917841781383, policy loss: 1.2416876055895376
+Experience 4, Iter 14, disc loss: 0.46092787185060213, policy loss: 1.2903688908430666
+Experience 4, Iter 15, disc loss: 0.4622308725316584, policy loss: 1.2886184576999644
+Experience 4, Iter 16, disc loss: 0.45837534123465634, policy loss: 1.2963682044984561
+Experience 4, Iter 17, disc loss: 0.4473237876217078, policy loss: 1.3266028692088734
+Experience 4, Iter 18, disc loss: 0.4399438256262471, policy loss: 1.3416377133241968
+Experience 4, Iter 19, disc loss: 0.44796974069170925, policy loss: 1.3222429822270059
+Experience 4, Iter 20, disc loss: 0.4246242792116889, policy loss: 1.3917796421726756
+Experience 4, Iter 21, disc loss: 0.431388356683083, policy loss: 1.3728947462882057
+Experience 4, Iter 22, disc loss: 0.4165058227078118, policy loss: 1.4210909133496759
+Experience 4, Iter 23, disc loss: 0.40435993685172167, policy loss: 1.4711803715264433
+Experience 4, Iter 24, disc loss: 0.4071467502799032, policy loss: 1.4378948196409431
+Experience 4, Iter 25, disc loss: 0.3977692231518007, policy loss: 1.4823931972085567
+Experience 4, Iter 26, disc loss: 0.39117694867041314, policy loss: 1.4892835518439547
+Experience 4, Iter 27, disc loss: 0.3921487751525431, policy loss: 1.4805327604854277
+Experience 4, Iter 28, disc loss: 0.3870470392087083, policy loss: 1.5034719565094385
+Experience 4, Iter 29, disc loss: 0.3849107920314916, policy loss: 1.5098517490591665
+Experience 4, Iter 30, disc loss: 0.3557739397019239, policy loss: 1.6157051534635702
+Experience 4, Iter 31, disc loss: 0.3864969790627978, policy loss: 1.498300993097382
+Experience 4, Iter 32, disc loss: 0.37339465788344317, policy loss: 1.5533484259024757
+Experience 4, Iter 33, disc loss: 0.35603032594122846, policy loss: 1.653473306550954
+Experience 4, Iter 34, disc loss: 0.3682916973676102, policy loss: 1.5683923257774781
+Experience 4, Iter 35, disc loss: 0.3564312477518379, policy loss: 1.6109381067773811
+Experience 4, Iter 36, disc loss: 0.35388864730886627, policy loss: 1.634358767031984
+Experience 4, Iter 37, disc loss: 0.3453418180757234, policy loss: 1.6738722207414356
+Experience 4, Iter 38, disc loss: 0.34402619358289693, policy loss: 1.7244177075002542
+Experience 4, Iter 39, disc loss: 0.3506935557954415, policy loss: 1.6628913583147056
+Experience 4, Iter 40, disc loss: 0.35018993805382337, policy loss: 1.6898490950145004
+Experience 4, Iter 41, disc loss: 0.36956209802700796, policy loss: 1.6036283903530968
+Experience 4, Iter 42, disc loss: 0.3301139782686879, policy loss: 1.775218634982511
+Experience 4, Iter 43, disc loss: 0.34062669800470535, policy loss: 1.7757667746789085
+Experience 4, Iter 44, disc loss: 0.35963274836165965, policy loss: 1.7173949541382043
+Experience 4, Iter 45, disc loss: 0.3412335438997949, policy loss: 1.8079046542407453
+Experience 4, Iter 46, disc loss: 0.3509024539391812, policy loss: 1.7694691723409726
+Experience 4, Iter 47, disc loss: 0.33433636165474057, policy loss: 1.8796035511225084
+Experience 4, Iter 48, disc loss: 0.331363937085377, policy loss: 1.921054387183586
+Experience 4, Iter 49, disc loss: 0.31481426652800376, policy loss: 1.9959576029663373
+Experience: 5
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0090],
+        [0.0694],
+        [0.8182],
+        [0.0169]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0539, 0.3430, 0.8064, 0.0212, 0.0090, 2.2683]],
+
+        [[0.0539, 0.3430, 0.8064, 0.0212, 0.0090, 2.2683]],
+
+        [[0.0539, 0.3430, 0.8064, 0.0212, 0.0090, 2.2683]],
+
+        [[0.0539, 0.3430, 0.8064, 0.0212, 0.0090, 2.2683]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0362, 0.2777, 3.2727, 0.0678], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0362, 0.2777, 3.2727, 0.0678])
+N: 50
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([201.0000, 201.0000, 201.0000, 201.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 2.773
+Iter 2/2000 - Loss: 2.508
+Iter 3/2000 - Loss: 2.452
+Iter 4/2000 - Loss: 2.435
+Iter 5/2000 - Loss: 2.395
+Iter 6/2000 - Loss: 2.333
+Iter 7/2000 - Loss: 2.257
+Iter 8/2000 - Loss: 2.195
+Iter 9/2000 - Loss: 2.150
+Iter 10/2000 - Loss: 2.090
+Iter 11/2000 - Loss: 2.001
+Iter 12/2000 - Loss: 1.896
+Iter 13/2000 - Loss: 1.793
+Iter 14/2000 - Loss: 1.696
+Iter 15/2000 - Loss: 1.596
+Iter 16/2000 - Loss: 1.480
+Iter 17/2000 - Loss: 1.344
+Iter 18/2000 - Loss: 1.189
+Iter 19/2000 - Loss: 1.023
+Iter 20/2000 - Loss: 0.850
+Iter 1981/2000 - Loss: -6.045
+Iter 1982/2000 - Loss: -6.045
+Iter 1983/2000 - Loss: -6.045
+Iter 1984/2000 - Loss: -6.045
+Iter 1985/2000 - Loss: -6.045
+Iter 1986/2000 - Loss: -6.045
+Iter 1987/2000 - Loss: -6.045
+Iter 1988/2000 - Loss: -6.045
+Iter 1989/2000 - Loss: -6.045
+Iter 1990/2000 - Loss: -6.045
+Iter 1991/2000 - Loss: -6.045
+Iter 1992/2000 - Loss: -6.045
+Iter 1993/2000 - Loss: -6.045
+Iter 1994/2000 - Loss: -6.045
+Iter 1995/2000 - Loss: -6.045
+Iter 1996/2000 - Loss: -6.045
+Iter 1997/2000 - Loss: -6.045
+Iter 1998/2000 - Loss: -6.045
+Iter 1999/2000 - Loss: -6.046
+Iter 2000/2000 - Loss: -6.046
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0002],
+        [0.0004],
+        [0.0019],
+        [0.0003]])
+Lengthscale: tensor([[[18.0751,  9.2045, 33.1561,  9.2231, 20.2010, 52.5303]],
+
+        [[33.8625, 48.5020, 11.5722,  1.1254,  4.2095, 23.7845]],
+
+        [[33.5606, 47.0604, 14.1516,  0.8224,  2.0041, 21.3058]],
+
+        [[30.7330, 47.8078, 16.8004,  4.2501,  3.4944, 35.8293]]])
+Signal Variance: tensor([ 0.2024,  2.3411, 16.7081,  0.6276])
+Estimated target variance: tensor([0.0362, 0.2777, 3.2727, 0.0678])
+N: 50
+Signal to noise ratio: tensor([30.6605, 73.5448, 92.8949, 46.4664])
+Bound on condition number: tensor([ 47004.4175, 270442.7834, 431473.8007, 107957.4500])
+Policy Optimizer learning rate:
+0.00995794447581801
+Experience 5, Iter 0, disc loss: 0.4411150989519784, policy loss: 1.4949570830444119
+Experience 5, Iter 1, disc loss: 0.46355444643140453, policy loss: 1.4041650057805324
+Experience 5, Iter 2, disc loss: 0.48556755477168245, policy loss: 1.330481630725205
+Experience 5, Iter 3, disc loss: 0.4800821504314564, policy loss: 1.4119027707768013
+Experience 5, Iter 4, disc loss: 0.46896358902625, policy loss: 1.466753930699113
+Experience 5, Iter 5, disc loss: 0.4751820811136825, policy loss: 1.418806769055104
+Experience 5, Iter 6, disc loss: 0.45363221188057135, policy loss: 1.6199084799946948
+Experience 5, Iter 7, disc loss: 0.4793616422534103, policy loss: 1.4891797476573578
+Experience 5, Iter 8, disc loss: 0.4669941838665679, policy loss: 1.5344091828108797
+Experience 5, Iter 9, disc loss: 0.446347693710286, policy loss: 1.622879397796098
+Experience 5, Iter 10, disc loss: 0.4598197477727636, policy loss: 1.5847128323085689
+Experience 5, Iter 11, disc loss: 0.46523297282937226, policy loss: 1.6524490907198057
+Experience 5, Iter 12, disc loss: 0.45563400900064843, policy loss: 1.6526563477908824
+Experience 5, Iter 13, disc loss: 0.4601048486425694, policy loss: 1.6226051677660993
+Experience 5, Iter 14, disc loss: 0.42376489097917736, policy loss: 1.7953588848978177
+Experience 5, Iter 15, disc loss: 0.43926592912503404, policy loss: 1.6826921959055285
+Experience 5, Iter 16, disc loss: 0.4507524340054909, policy loss: 1.7303961143974296
+Experience 5, Iter 17, disc loss: 0.4074449046605776, policy loss: 1.8163688968780995
+Experience 5, Iter 18, disc loss: 0.4372015538749686, policy loss: 1.685091967176231
+Experience 5, Iter 19, disc loss: 0.40940971662987213, policy loss: 1.7797940416668032
+Experience 5, Iter 20, disc loss: 0.4043006761675027, policy loss: 1.8358824343934672
+Experience 5, Iter 21, disc loss: 0.41801301081975695, policy loss: 1.6243195511624617
+Experience 5, Iter 22, disc loss: 0.40832690043499453, policy loss: 1.6850435337601837
+Experience 5, Iter 23, disc loss: 0.3695213770160687, policy loss: 1.9014560598873191
+Experience 5, Iter 24, disc loss: 0.3683144209468834, policy loss: 1.8145063363755485
+Experience 5, Iter 25, disc loss: 0.37561549830765134, policy loss: 1.7573712586126997
+Experience 5, Iter 26, disc loss: 0.3840946450846835, policy loss: 1.677323327963229
+Experience 5, Iter 27, disc loss: 0.37288704279874546, policy loss: 1.768667644031229
+Experience 5, Iter 28, disc loss: 0.37511395215143334, policy loss: 1.7049363995837445
+Experience 5, Iter 29, disc loss: 0.3658210556714502, policy loss: 1.729549611032997
+Experience 5, Iter 30, disc loss: 0.35746812576513576, policy loss: 1.7558645286610082
+Experience 5, Iter 31, disc loss: 0.354292966801093, policy loss: 1.7787254182421084
+Experience 5, Iter 32, disc loss: 0.37551497007953627, policy loss: 1.6667424193689921
+Experience 5, Iter 33, disc loss: 0.3173556626811181, policy loss: 2.0652904306050432
+Experience 5, Iter 34, disc loss: 0.33527527762508447, policy loss: 1.8473006591894485
+Experience 5, Iter 35, disc loss: 0.3340669955301156, policy loss: 1.8682399160421925
+Experience 5, Iter 36, disc loss: 0.33145324644924706, policy loss: 1.8461955591470338
+Experience 5, Iter 37, disc loss: 0.31407850266653803, policy loss: 2.02557457774103
+Experience 5, Iter 38, disc loss: 0.30898700526284073, policy loss: 1.968854203476611
+Experience 5, Iter 39, disc loss: 0.3059553142474744, policy loss: 1.9745269739613323
+Experience 5, Iter 40, disc loss: 0.3378542403158421, policy loss: 1.8349663888813694
+Experience 5, Iter 41, disc loss: 0.3052377594251624, policy loss: 2.0260352785682105
+Experience 5, Iter 42, disc loss: 0.30092171668646783, policy loss: 2.0177456841324384
+Experience 5, Iter 43, disc loss: 0.31285276414269225, policy loss: 1.9509370162275013
+Experience 5, Iter 44, disc loss: 0.29418102926547485, policy loss: 2.0774194816900264
+Experience 5, Iter 45, disc loss: 0.3017419173954673, policy loss: 2.0465013651009336
+Experience 5, Iter 46, disc loss: 0.3047070356551166, policy loss: 2.0063209705742637
+Experience 5, Iter 47, disc loss: 0.29391284374488147, policy loss: 2.024672169345334
+Experience 5, Iter 48, disc loss: 0.2706240590866561, policy loss: 2.1677547637727943
+Experience 5, Iter 49, disc loss: 0.2880995935062382, policy loss: 2.0503557401804375
+Experience: 6
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0087],
+        [0.1115],
+        [1.0517],
+        [0.0247]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0475, 0.3320, 1.1684, 0.0245, 0.0153, 3.1302]],
+
+        [[0.0475, 0.3320, 1.1684, 0.0245, 0.0153, 3.1302]],
+
+        [[0.0475, 0.3320, 1.1684, 0.0245, 0.0153, 3.1302]],
+
+        [[0.0475, 0.3320, 1.1684, 0.0245, 0.0153, 3.1302]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0349, 0.4462, 4.2068, 0.0990], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0349, 0.4462, 4.2068, 0.0990])
+N: 60
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([241.0000, 241.0000, 241.0000, 241.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.193
+Iter 2/2000 - Loss: 2.953
+Iter 3/2000 - Loss: 2.927
+Iter 4/2000 - Loss: 2.919
+Iter 5/2000 - Loss: 2.838
+Iter 6/2000 - Loss: 2.740
+Iter 7/2000 - Loss: 2.675
+Iter 8/2000 - Loss: 2.636
+Iter 9/2000 - Loss: 2.577
+Iter 10/2000 - Loss: 2.483
+Iter 11/2000 - Loss: 2.373
+Iter 12/2000 - Loss: 2.267
+Iter 13/2000 - Loss: 2.167
+Iter 14/2000 - Loss: 2.057
+Iter 15/2000 - Loss: 1.928
+Iter 16/2000 - Loss: 1.775
+Iter 17/2000 - Loss: 1.604
+Iter 18/2000 - Loss: 1.420
+Iter 19/2000 - Loss: 1.228
+Iter 20/2000 - Loss: 1.028
+Iter 1981/2000 - Loss: -5.878
+Iter 1982/2000 - Loss: -5.878
+Iter 1983/2000 - Loss: -5.878
+Iter 1984/2000 - Loss: -5.878
+Iter 1985/2000 - Loss: -5.878
+Iter 1986/2000 - Loss: -5.878
+Iter 1987/2000 - Loss: -5.878
+Iter 1988/2000 - Loss: -5.878
+Iter 1989/2000 - Loss: -5.878
+Iter 1990/2000 - Loss: -5.878
+Iter 1991/2000 - Loss: -5.878
+Iter 1992/2000 - Loss: -5.878
+Iter 1993/2000 - Loss: -5.878
+Iter 1994/2000 - Loss: -5.878
+Iter 1995/2000 - Loss: -5.878
+Iter 1996/2000 - Loss: -5.878
+Iter 1997/2000 - Loss: -5.878
+Iter 1998/2000 - Loss: -5.878
+Iter 1999/2000 - Loss: -5.879
+Iter 2000/2000 - Loss: -5.879
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0002],
+        [0.0004],
+        [0.0017],
+        [0.0003]])
+Lengthscale: tensor([[[17.8100,  3.9777, 55.3649, 18.4391, 17.8074, 52.4507]],
+
+        [[28.9020, 46.4317, 10.9989,  1.2327,  3.3950, 20.0688]],
+
+        [[29.5817, 42.6098, 13.2077,  0.8168,  0.9878, 20.5357]],
+
+        [[26.4350, 49.2535, 16.6528,  3.4112,  1.6343, 47.8828]]])
+Signal Variance: tensor([ 0.1189,  2.4005, 15.5092,  0.6049])
+Estimated target variance: tensor([0.0349, 0.4462, 4.2068, 0.0990])
+N: 60
+Signal to noise ratio: tensor([23.4885, 77.0061, 94.4833, 43.3661])
+Bound on condition number: tensor([ 33103.5357, 355797.0427, 535626.7335, 112838.1852])
+Policy Optimizer learning rate:
+0.009947458259305311
+Experience 6, Iter 0, disc loss: 0.43926938448948566, policy loss: 1.4442213624427906
+Experience 6, Iter 1, disc loss: 0.43982807440949956, policy loss: 1.54581956705852
+Experience 6, Iter 2, disc loss: 0.4705086155430075, policy loss: 1.4441897035152258
+Experience 6, Iter 3, disc loss: 0.4506758469081505, policy loss: 1.5080509801810957
+Experience 6, Iter 4, disc loss: 0.4618801480423983, policy loss: 1.410571675558285
+Experience 6, Iter 5, disc loss: 0.4899189763518951, policy loss: 1.4047062761814073
+Experience 6, Iter 6, disc loss: 0.49325178237849765, policy loss: 1.385865863253126
+Experience 6, Iter 7, disc loss: 0.4688520510252518, policy loss: 1.5417236793815356
+Experience 6, Iter 8, disc loss: 0.4750621865004082, policy loss: 1.4885136497402836
+Experience 6, Iter 9, disc loss: 0.43312060938739333, policy loss: 1.6583912385550437
+Experience 6, Iter 10, disc loss: 0.4633649735388098, policy loss: 1.6584766555495183
+Experience 6, Iter 11, disc loss: 0.46405802015631414, policy loss: 1.581551619090396
+Experience 6, Iter 12, disc loss: 0.474019896244194, policy loss: 1.5858391187950038
+Experience 6, Iter 13, disc loss: 0.44981990693212537, policy loss: 1.7751331846917602
+Experience 6, Iter 14, disc loss: 0.4709317515563032, policy loss: 1.615302095155587
+Experience 6, Iter 15, disc loss: 0.4816423227822336, policy loss: 1.6223628450828504
+Experience 6, Iter 16, disc loss: 0.43518627382574565, policy loss: 1.7680993985818496
+Experience 6, Iter 17, disc loss: 0.4437159753262948, policy loss: 1.8214158907489515
+Experience 6, Iter 18, disc loss: 0.43006208707663063, policy loss: 1.8053185147990258
+Experience 6, Iter 19, disc loss: 0.4508698528351488, policy loss: 1.6571981015838122
+Experience 6, Iter 20, disc loss: 0.4609140285828156, policy loss: 1.632190522037847
+Experience 6, Iter 21, disc loss: 0.4466950583830279, policy loss: 1.6998305772577946
+Experience 6, Iter 22, disc loss: 0.4351834960717438, policy loss: 1.7240548851892212
+Experience 6, Iter 23, disc loss: 0.4608600968984553, policy loss: 1.570709830213562
+Experience 6, Iter 24, disc loss: 0.41678764640276555, policy loss: 1.7287017684882238
+Experience 6, Iter 25, disc loss: 0.43027007611333296, policy loss: 1.662892097572932
+Experience 6, Iter 26, disc loss: 0.41148427563712175, policy loss: 1.7465923551498483
+Experience 6, Iter 27, disc loss: 0.4155581878979746, policy loss: 1.6877401845477564
+Experience 6, Iter 28, disc loss: 0.40985946987741323, policy loss: 1.7136243921975065
+Experience 6, Iter 29, disc loss: 0.4108436326147439, policy loss: 1.6958659815674855
+Experience 6, Iter 30, disc loss: 0.42145227872063634, policy loss: 1.6356034993173374
+Experience 6, Iter 31, disc loss: 0.4144407720074471, policy loss: 1.7234027446410378
+Experience 6, Iter 32, disc loss: 0.4453053217475931, policy loss: 1.5479969236761075
+Experience 6, Iter 33, disc loss: 0.4281600238918436, policy loss: 1.6234053607315322
+Experience 6, Iter 34, disc loss: 0.4037229098869872, policy loss: 1.7211874093387378
+Experience 6, Iter 35, disc loss: 0.42157423224423496, policy loss: 1.6879078489888542
+Experience 6, Iter 36, disc loss: 0.4256867930910854, policy loss: 1.6937091740600412
+Experience 6, Iter 37, disc loss: 0.4162420897368436, policy loss: 1.727321070939225
+Experience 6, Iter 38, disc loss: 0.3961445083273808, policy loss: 1.8161576832405881
+Experience 6, Iter 39, disc loss: 0.380864212575301, policy loss: 1.8878969936363008
+Experience 6, Iter 40, disc loss: 0.3919325627733979, policy loss: 1.8302599569153142
+Experience 6, Iter 41, disc loss: 0.3826555508693199, policy loss: 1.8983732112859237
+Experience 6, Iter 42, disc loss: 0.39240003766705916, policy loss: 1.8233212372698597
+Experience 6, Iter 43, disc loss: 0.4004298087564806, policy loss: 1.7616266030118946
+Experience 6, Iter 44, disc loss: 0.388798703974215, policy loss: 1.8941658306854456
+Experience 6, Iter 45, disc loss: 0.39476192853586345, policy loss: 1.7564360511853516
+Experience 6, Iter 46, disc loss: 0.38795957325603986, policy loss: 1.8159408843315197
+Experience 6, Iter 47, disc loss: 0.3730221411847434, policy loss: 1.8543928275191106
+Experience 6, Iter 48, disc loss: 0.38581662933239147, policy loss: 1.8431295801013903
+Experience 6, Iter 49, disc loss: 0.360032486962349, policy loss: 1.9258522742821989
+Experience: 7
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0083],
+        [0.1541],
+        [1.3073],
+        [0.0321]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0422, 0.3216, 1.4558, 0.0261, 0.0208, 4.0160]],
+
+        [[0.0422, 0.3216, 1.4558, 0.0261, 0.0208, 4.0160]],
+
+        [[0.0422, 0.3216, 1.4558, 0.0261, 0.0208, 4.0160]],
+
+        [[0.0422, 0.3216, 1.4558, 0.0261, 0.0208, 4.0160]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0333, 0.6162, 5.2290, 0.1286], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0333, 0.6162, 5.2290, 0.1286])
+N: 70
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([281.0000, 281.0000, 281.0000, 281.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.535
+Iter 2/2000 - Loss: 3.294
+Iter 3/2000 - Loss: 3.268
+Iter 4/2000 - Loss: 3.240
+Iter 5/2000 - Loss: 3.155
+Iter 6/2000 - Loss: 3.063
+Iter 7/2000 - Loss: 2.991
+Iter 8/2000 - Loss: 2.919
+Iter 9/2000 - Loss: 2.828
+Iter 10/2000 - Loss: 2.720
+Iter 11/2000 - Loss: 2.603
+Iter 12/2000 - Loss: 2.480
+Iter 13/2000 - Loss: 2.347
+Iter 14/2000 - Loss: 2.197
+Iter 15/2000 - Loss: 2.028
+Iter 16/2000 - Loss: 1.842
+Iter 17/2000 - Loss: 1.647
+Iter 18/2000 - Loss: 1.445
+Iter 19/2000 - Loss: 1.233
+Iter 20/2000 - Loss: 1.009
+Iter 1981/2000 - Loss: -5.902
+Iter 1982/2000 - Loss: -5.902
+Iter 1983/2000 - Loss: -5.902
+Iter 1984/2000 - Loss: -5.902
+Iter 1985/2000 - Loss: -5.902
+Iter 1986/2000 - Loss: -5.902
+Iter 1987/2000 - Loss: -5.902
+Iter 1988/2000 - Loss: -5.902
+Iter 1989/2000 - Loss: -5.902
+Iter 1990/2000 - Loss: -5.902
+Iter 1991/2000 - Loss: -5.902
+Iter 1992/2000 - Loss: -5.902
+Iter 1993/2000 - Loss: -5.902
+Iter 1994/2000 - Loss: -5.903
+Iter 1995/2000 - Loss: -5.903
+Iter 1996/2000 - Loss: -5.903
+Iter 1997/2000 - Loss: -5.903
+Iter 1998/2000 - Loss: -5.903
+Iter 1999/2000 - Loss: -5.903
+Iter 2000/2000 - Loss: -5.903
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0002],
+        [0.0005],
+        [0.0017],
+        [0.0003]])
+Lengthscale: tensor([[[15.4947,  4.0058, 54.5572, 17.1345, 20.2302, 52.6820]],
+
+        [[27.5176, 39.0692,  9.6739,  1.3619,  1.9115, 28.9955]],
+
+        [[28.0689, 27.8356,  9.6130,  1.1796,  1.1780, 17.2730]],
+
+        [[23.8537, 44.1070, 23.3936,  4.6595,  1.4309, 59.9844]]])
+Signal Variance: tensor([ 0.1054,  2.8644, 18.5812,  1.1767])
+Estimated target variance: tensor([0.0333, 0.6162, 5.2290, 0.1286])
+N: 70
+Signal to noise ratio: tensor([ 22.3102,  77.8880, 104.9964,  63.7673])
+Bound on condition number: tensor([ 34843.0677, 424658.8774, 771698.3602, 284639.8429])
+Policy Optimizer learning rate:
+0.009936983085306158
+Experience 7, Iter 0, disc loss: 0.3680150228456447, policy loss: 1.877450127334686
+Experience 7, Iter 1, disc loss: 0.38254785914923617, policy loss: 1.782922691393145
+Experience 7, Iter 2, disc loss: 0.3781022485895119, policy loss: 1.956832172173065
+Experience 7, Iter 3, disc loss: 0.35798093003122444, policy loss: 2.0349762721191915
+Experience 7, Iter 4, disc loss: 0.3833948711747475, policy loss: 1.7512811695391108
+Experience 7, Iter 5, disc loss: 0.37539820635064913, policy loss: 1.7910584249725614
+Experience 7, Iter 6, disc loss: 0.33641786841521476, policy loss: 1.9989696720436867
+Experience 7, Iter 7, disc loss: 0.36925338212505093, policy loss: 1.8129552565038183
+Experience 7, Iter 8, disc loss: 0.37796870846968705, policy loss: 1.7339940064885835
+Experience 7, Iter 9, disc loss: 0.3589264384882551, policy loss: 1.8969010302841776
+Experience 7, Iter 10, disc loss: 0.39973280904488057, policy loss: 1.6688723641607472
+Experience 7, Iter 11, disc loss: 0.40185690496368676, policy loss: 1.6470073616889276
+Experience 7, Iter 12, disc loss: 0.3540938800272639, policy loss: 1.9589113221250707
+Experience 7, Iter 13, disc loss: 0.36573401238113545, policy loss: 1.8539806548912183
+Experience 7, Iter 14, disc loss: 0.37214375123626775, policy loss: 1.8659610059803264
+Experience 7, Iter 15, disc loss: 0.37234621764320175, policy loss: 1.9232301680106239
+Experience 7, Iter 16, disc loss: 0.37982078580055945, policy loss: 1.8127086402931625
+Experience 7, Iter 17, disc loss: 0.3677295329590089, policy loss: 1.8785195142661133
+Experience 7, Iter 18, disc loss: 0.37406105551951163, policy loss: 1.810095348605018
+Experience 7, Iter 19, disc loss: 0.3797600848682863, policy loss: 1.803892225943088
+Experience 7, Iter 20, disc loss: 0.3829823942091671, policy loss: 1.7422111651241279
+Experience 7, Iter 21, disc loss: 0.37474118779946614, policy loss: 1.8112101056455288
+Experience 7, Iter 22, disc loss: 0.3295577715028195, policy loss: 2.1057414581176923
+Experience 7, Iter 23, disc loss: 0.3366731645145114, policy loss: 1.9960717830723325
+Experience 7, Iter 24, disc loss: 0.32273312852351477, policy loss: 2.0672424693974234
+Experience 7, Iter 25, disc loss: 0.3345019288396207, policy loss: 1.964383489264327
+Experience 7, Iter 26, disc loss: 0.3568687914009586, policy loss: 1.7517397447046972
+Experience 7, Iter 27, disc loss: 0.35988000112743757, policy loss: 1.79334081276817
+Experience 7, Iter 28, disc loss: 0.3413922090749899, policy loss: 1.8655603848434055
+Experience 7, Iter 29, disc loss: 0.3455317514044158, policy loss: 1.8826168651021549
+Experience 7, Iter 30, disc loss: 0.32962427392966254, policy loss: 1.8691518900163147
+Experience 7, Iter 31, disc loss: 0.3278766512129785, policy loss: 1.8944795770738676
+Experience 7, Iter 32, disc loss: 0.34230635899179784, policy loss: 1.8120894101037044
+Experience 7, Iter 33, disc loss: 0.3551364269261303, policy loss: 1.715352868849108
+Experience 7, Iter 34, disc loss: 0.32653124152468155, policy loss: 1.937861821462057
+Experience 7, Iter 35, disc loss: 0.35289203235117445, policy loss: 1.733487898676426
+Experience 7, Iter 36, disc loss: 0.3268721725579362, policy loss: 1.915493923560655
+Experience 7, Iter 37, disc loss: 0.3277812779946485, policy loss: 1.8246282188967466
+Experience 7, Iter 38, disc loss: 0.31693631831223157, policy loss: 1.9514252359895792
+Experience 7, Iter 39, disc loss: 0.33650945978175995, policy loss: 1.987818445137413
+Experience 7, Iter 40, disc loss: 0.3197397236382748, policy loss: 1.960320454011089
+Experience 7, Iter 41, disc loss: 0.3254068514968167, policy loss: 1.864060243542316
+Experience 7, Iter 42, disc loss: 0.3015464288302111, policy loss: 1.9762468741738002
+Experience 7, Iter 43, disc loss: 0.2903736008767398, policy loss: 2.0888885254265706
+Experience 7, Iter 44, disc loss: 0.26937930647897607, policy loss: 2.2899817276383416
+Experience 7, Iter 45, disc loss: 0.2933550005044265, policy loss: 2.0785307348614257
+Experience 7, Iter 46, disc loss: 0.31542032067331605, policy loss: 1.9254592752331425
+Experience 7, Iter 47, disc loss: 0.3138741178334283, policy loss: 1.9129563877948401
+Experience 7, Iter 48, disc loss: 0.3085864027976872, policy loss: 2.036308578299063
+Experience 7, Iter 49, disc loss: 0.3177958449739692, policy loss: 1.8509292562730417
+Experience: 8
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0079],
+        [0.1829],
+        [1.4842],
+        [0.0357]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0378, 0.3082, 1.5982, 0.0268, 0.0248, 4.6625]],
+
+        [[0.0378, 0.3082, 1.5982, 0.0268, 0.0248, 4.6625]],
+
+        [[0.0378, 0.3082, 1.5982, 0.0268, 0.0248, 4.6625]],
+
+        [[0.0378, 0.3082, 1.5982, 0.0268, 0.0248, 4.6625]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0315, 0.7314, 5.9367, 0.1428], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0315, 0.7314, 5.9367, 0.1428])
+N: 80
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([321.0000, 321.0000, 321.0000, 321.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.713
+Iter 2/2000 - Loss: 3.468
+Iter 3/2000 - Loss: 3.425
+Iter 4/2000 - Loss: 3.370
+Iter 5/2000 - Loss: 3.283
+Iter 6/2000 - Loss: 3.199
+Iter 7/2000 - Loss: 3.123
+Iter 8/2000 - Loss: 3.030
+Iter 9/2000 - Loss: 2.912
+Iter 10/2000 - Loss: 2.782
+Iter 11/2000 - Loss: 2.649
+Iter 12/2000 - Loss: 2.511
+Iter 13/2000 - Loss: 2.358
+Iter 14/2000 - Loss: 2.183
+Iter 15/2000 - Loss: 1.986
+Iter 16/2000 - Loss: 1.773
+Iter 17/2000 - Loss: 1.552
+Iter 18/2000 - Loss: 1.326
+Iter 19/2000 - Loss: 1.092
+Iter 20/2000 - Loss: 0.848
+Iter 1981/2000 - Loss: -6.078
+Iter 1982/2000 - Loss: -6.078
+Iter 1983/2000 - Loss: -6.079
+Iter 1984/2000 - Loss: -6.079
+Iter 1985/2000 - Loss: -6.079
+Iter 1986/2000 - Loss: -6.079
+Iter 1987/2000 - Loss: -6.079
+Iter 1988/2000 - Loss: -6.079
+Iter 1989/2000 - Loss: -6.079
+Iter 1990/2000 - Loss: -6.079
+Iter 1991/2000 - Loss: -6.079
+Iter 1992/2000 - Loss: -6.079
+Iter 1993/2000 - Loss: -6.079
+Iter 1994/2000 - Loss: -6.079
+Iter 1995/2000 - Loss: -6.079
+Iter 1996/2000 - Loss: -6.079
+Iter 1997/2000 - Loss: -6.079
+Iter 1998/2000 - Loss: -6.079
+Iter 1999/2000 - Loss: -6.079
+Iter 2000/2000 - Loss: -6.079
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0013],
+        [0.0003]])
+Lengthscale: tensor([[[15.4954,  4.2370, 53.0741, 15.0192, 22.2711, 57.6234]],
+
+        [[23.2424, 35.8212,  8.8626,  1.4037,  2.0392, 27.8347]],
+
+        [[22.7861,  4.6571, 14.5622,  1.0040,  1.0307, 19.5687]],
+
+        [[21.7827, 41.2062, 22.8320,  3.9842,  1.4720, 56.7734]]])
+Signal Variance: tensor([ 0.1087,  2.8051, 14.7997,  1.0913])
+Estimated target variance: tensor([0.0315, 0.7314, 5.9367, 0.1428])
+N: 80
+Signal to noise ratio: tensor([ 20.0900,  81.0473, 107.2470,  63.9903])
+Bound on condition number: tensor([ 32289.6626, 525494.2721, 920155.1926, 327582.0778])
+Policy Optimizer learning rate:
+0.009926518942192228
+Experience 8, Iter 0, disc loss: 0.3141889052623266, policy loss: 1.8288711029787432
+Experience 8, Iter 1, disc loss: 0.3001088773167637, policy loss: 1.9482183521894838
+Experience 8, Iter 2, disc loss: 0.2968395492462288, policy loss: 1.9732145210973155
+Experience 8, Iter 3, disc loss: 0.303960597895621, policy loss: 1.9286015585152525
+Experience 8, Iter 4, disc loss: 0.2813561634032017, policy loss: 2.012318644323765
+Experience 8, Iter 5, disc loss: 0.28508178099645226, policy loss: 2.0065942003027546
+Experience 8, Iter 6, disc loss: 0.27352895096022095, policy loss: 2.0957174385108153
+Experience 8, Iter 7, disc loss: 0.27761247390485, policy loss: 2.008591314257995
+Experience 8, Iter 8, disc loss: 0.2433161657611304, policy loss: 2.5335118848860776
+Experience 8, Iter 9, disc loss: 0.26009267428178423, policy loss: 2.099560418561196
+Experience 8, Iter 10, disc loss: 0.23986958213102005, policy loss: 2.2331371506307676
+Experience 8, Iter 11, disc loss: 0.24811911940667764, policy loss: 2.106242849749058
+Experience 8, Iter 12, disc loss: 0.2550635226414061, policy loss: 2.089973348322914
+Experience 8, Iter 13, disc loss: 0.2274200001417086, policy loss: 2.3976403589566297
+Experience 8, Iter 14, disc loss: 0.24152091316457333, policy loss: 2.123284247121415
+Experience 8, Iter 15, disc loss: 0.21687519962138788, policy loss: 2.281942149546928
+Experience 8, Iter 16, disc loss: 0.1957407616623396, policy loss: 2.5162787661688055
+Experience 8, Iter 17, disc loss: 0.1922819968795537, policy loss: 2.714030156317599
+Experience 8, Iter 18, disc loss: 0.22947051197437196, policy loss: 2.1343387075250564
+Experience 8, Iter 19, disc loss: 0.23285942013234978, policy loss: 2.3044359797370406
+Experience 8, Iter 20, disc loss: 0.2508291763070965, policy loss: 2.000107866418084
+Experience 8, Iter 21, disc loss: 0.24855981725106663, policy loss: 1.971877449541716
+Experience 8, Iter 22, disc loss: 0.23432601422828286, policy loss: 2.099183787150863
+Experience 8, Iter 23, disc loss: 0.20925249304247567, policy loss: 2.3371410013637144
+Experience 8, Iter 24, disc loss: 0.20595681637453506, policy loss: 2.329941150724851
+Experience 8, Iter 25, disc loss: 0.21046056631235993, policy loss: 2.3798893142035205
+Experience 8, Iter 26, disc loss: 0.21844217744348815, policy loss: 2.256849345048222
+Experience 8, Iter 27, disc loss: 0.2088555966346773, policy loss: 2.4520401025047684
+Experience 8, Iter 28, disc loss: 0.22655445387960182, policy loss: 2.2683406964537145
+Experience 8, Iter 29, disc loss: 0.21735915303708003, policy loss: 2.4453248748255065
+Experience 8, Iter 30, disc loss: 0.21276038093590371, policy loss: 2.3788892044710943
+Experience 8, Iter 31, disc loss: 0.21993081405345621, policy loss: 2.3146232004389242
+Experience 8, Iter 32, disc loss: 0.22021222499161394, policy loss: 2.275151863736932
+Experience 8, Iter 33, disc loss: 0.21374129030502242, policy loss: 2.3850391178571266
+Experience 8, Iter 34, disc loss: 0.21410356032516992, policy loss: 2.3602380714703193
+Experience 8, Iter 35, disc loss: 0.2188801562451476, policy loss: 2.2606956387239423
+Experience 8, Iter 36, disc loss: 0.212879352692222, policy loss: 2.3261073289805614
+Experience 8, Iter 37, disc loss: 0.21511243426021695, policy loss: 2.2666152540506794
+Experience 8, Iter 38, disc loss: 0.2007547561567574, policy loss: 2.3643531937716027
+Experience 8, Iter 39, disc loss: 0.19570527991955744, policy loss: 2.5273207493924836
+Experience 8, Iter 40, disc loss: 0.20133578827785256, policy loss: 2.371980269137737
+Experience 8, Iter 41, disc loss: 0.19293831168679437, policy loss: 2.4659555512949227
+Experience 8, Iter 42, disc loss: 0.1994923605858463, policy loss: 2.3709042568633394
+Experience 8, Iter 43, disc loss: 0.19511766968171274, policy loss: 2.391315134064886
+Experience 8, Iter 44, disc loss: 0.17725059373184227, policy loss: 2.659692501596309
+Experience 8, Iter 45, disc loss: 0.18399204904468155, policy loss: 2.4872149031908326
+Experience 8, Iter 46, disc loss: 0.18352645364419076, policy loss: 2.3926930647560827
+Experience 8, Iter 47, disc loss: 0.17971808619405005, policy loss: 2.4799083311726138
+Experience 8, Iter 48, disc loss: 0.17855786365678328, policy loss: 2.662339268625021
+Experience 8, Iter 49, disc loss: 0.17901787734224017, policy loss: 2.4124415593666217
+Experience: 9
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0076],
+        [0.2071],
+        [1.6387],
+        [0.0381]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0347, 0.3000, 1.7019, 0.0272, 0.0272, 5.1543]],
+
+        [[0.0347, 0.3000, 1.7019, 0.0272, 0.0272, 5.1543]],
+
+        [[0.0347, 0.3000, 1.7019, 0.0272, 0.0272, 5.1543]],
+
+        [[0.0347, 0.3000, 1.7019, 0.0272, 0.0272, 5.1543]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0305, 0.8282, 6.5547, 0.1524], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0305, 0.8282, 6.5547, 0.1524])
+N: 90
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([361.0000, 361.0000, 361.0000, 361.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.849
+Iter 2/2000 - Loss: 3.607
+Iter 3/2000 - Loss: 3.554
+Iter 4/2000 - Loss: 3.471
+Iter 5/2000 - Loss: 3.370
+Iter 6/2000 - Loss: 3.281
+Iter 7/2000 - Loss: 3.187
+Iter 8/2000 - Loss: 3.061
+Iter 9/2000 - Loss: 2.907
+Iter 10/2000 - Loss: 2.744
+Iter 11/2000 - Loss: 2.584
+Iter 12/2000 - Loss: 2.420
+Iter 13/2000 - Loss: 2.243
+Iter 14/2000 - Loss: 2.043
+Iter 15/2000 - Loss: 1.821
+Iter 16/2000 - Loss: 1.584
+Iter 17/2000 - Loss: 1.340
+Iter 18/2000 - Loss: 1.093
+Iter 19/2000 - Loss: 0.841
+Iter 20/2000 - Loss: 0.584
+Iter 1981/2000 - Loss: -6.241
+Iter 1982/2000 - Loss: -6.241
+Iter 1983/2000 - Loss: -6.241
+Iter 1984/2000 - Loss: -6.241
+Iter 1985/2000 - Loss: -6.241
+Iter 1986/2000 - Loss: -6.241
+Iter 1987/2000 - Loss: -6.241
+Iter 1988/2000 - Loss: -6.241
+Iter 1989/2000 - Loss: -6.241
+Iter 1990/2000 - Loss: -6.241
+Iter 1991/2000 - Loss: -6.241
+Iter 1992/2000 - Loss: -6.241
+Iter 1993/2000 - Loss: -6.241
+Iter 1994/2000 - Loss: -6.241
+Iter 1995/2000 - Loss: -6.241
+Iter 1996/2000 - Loss: -6.241
+Iter 1997/2000 - Loss: -6.242
+Iter 1998/2000 - Loss: -6.242
+Iter 1999/2000 - Loss: -6.242
+Iter 2000/2000 - Loss: -6.242
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0016],
+        [0.0003]])
+Lengthscale: tensor([[[16.9966,  9.5067, 39.0928,  5.5301, 24.2060, 68.0931]],
+
+        [[22.3275, 34.3851,  9.0659,  1.2998,  1.7329, 29.1440]],
+
+        [[21.9163,  6.6810, 12.6783,  1.0046,  0.9617, 18.8046]],
+
+        [[20.7223, 40.0934, 21.3231,  3.4334,  1.4946, 55.3675]]])
+Signal Variance: tensor([ 0.2026,  2.9016, 16.4501,  0.9494])
+Estimated target variance: tensor([0.0305, 0.8282, 6.5547, 0.1524])
+N: 90
+Signal to noise ratio: tensor([ 26.6614,  83.2459, 102.5624,  58.9819])
+Bound on condition number: tensor([ 63975.9442, 623690.8323, 946714.7242, 313098.5053])
+Policy Optimizer learning rate:
+0.009916065818347442
+Experience 9, Iter 0, disc loss: 0.18092874196466063, policy loss: 2.4046795017336953
+Experience 9, Iter 1, disc loss: 0.17027090535270034, policy loss: 2.4643299528996545
+Experience 9, Iter 2, disc loss: 0.17513891284036046, policy loss: 2.4300586050015998
+Experience 9, Iter 3, disc loss: 0.16960541706575777, policy loss: 2.464336482398905
+Experience 9, Iter 4, disc loss: 0.17086547251922296, policy loss: 2.4907616537828083
+Experience 9, Iter 5, disc loss: 0.15388241745178494, policy loss: 2.757167826464651
+Experience 9, Iter 6, disc loss: 0.16328269946500568, policy loss: 2.5300371211436676
+Experience 9, Iter 7, disc loss: 0.16902433546471884, policy loss: 2.459646667672482
+Experience 9, Iter 8, disc loss: 0.16302296058874083, policy loss: 2.5327673484858595
+Experience 9, Iter 9, disc loss: 0.16440525315326432, policy loss: 2.529708200591534
+Experience 9, Iter 10, disc loss: 0.15840170411864785, policy loss: 2.651309641556871
+Experience 9, Iter 11, disc loss: 0.1562361783755461, policy loss: 2.586968649647491
+Experience 9, Iter 12, disc loss: 0.15660510790840582, policy loss: 2.580232690616997
+Experience 9, Iter 13, disc loss: 0.15453504020194003, policy loss: 2.567653955208966
+Experience 9, Iter 14, disc loss: 0.16082883292988878, policy loss: 2.5053455462618324
+Experience 9, Iter 15, disc loss: 0.15043185699957295, policy loss: 2.6934267897953212
+Experience 9, Iter 16, disc loss: 0.15327572382029303, policy loss: 2.6227958578259454
+Experience 9, Iter 17, disc loss: 0.1456181426508647, policy loss: 2.7025114398176813
+Experience 9, Iter 18, disc loss: 0.14959065443643088, policy loss: 2.620431003749605
+Experience 9, Iter 19, disc loss: 0.1456594751952629, policy loss: 2.6432648505530114
+Experience 9, Iter 20, disc loss: 0.15067417060442378, policy loss: 2.587445607760482
+Experience 9, Iter 21, disc loss: 0.14331832248299445, policy loss: 2.6713018258721837
+Experience 9, Iter 22, disc loss: 0.13793749419176835, policy loss: 2.7826359291584772
+Experience 9, Iter 23, disc loss: 0.14087712526617963, policy loss: 2.734736715411053
+Experience 9, Iter 24, disc loss: 0.14121200435949813, policy loss: 2.732300256580033
+Experience 9, Iter 25, disc loss: 0.14049950167345077, policy loss: 2.6346053756457484
+Experience 9, Iter 26, disc loss: 0.13356765756382824, policy loss: 2.760749086856618
+Experience 9, Iter 27, disc loss: 0.12950154007909823, policy loss: 2.838610984564034
+Experience 9, Iter 28, disc loss: 0.13136813425119187, policy loss: 2.821154029484528
+Experience 9, Iter 29, disc loss: 0.1262993095901328, policy loss: 2.8569120740871945
+Experience 9, Iter 30, disc loss: 0.12148726801459106, policy loss: 2.984828361288356
+Experience 9, Iter 31, disc loss: 0.12493041731544581, policy loss: 2.7907203375353022
+Experience 9, Iter 32, disc loss: 0.12781585765108477, policy loss: 2.8179738605858753
+Experience 9, Iter 33, disc loss: 0.12540466018778657, policy loss: 2.849675503084816
+Experience 9, Iter 34, disc loss: 0.12278927384365011, policy loss: 2.7982895894274256
+Experience 9, Iter 35, disc loss: 0.12385652461554678, policy loss: 2.7970385401417497
+Experience 9, Iter 36, disc loss: 0.11917276527408521, policy loss: 2.847622879214617
+Experience 9, Iter 37, disc loss: 0.11999378930183584, policy loss: 2.812586049351339
+Experience 9, Iter 38, disc loss: 0.11360342493915951, policy loss: 2.9373557951804194
+Experience 9, Iter 39, disc loss: 0.11614233984509834, policy loss: 2.90381729649911
+Experience 9, Iter 40, disc loss: 0.1201473951394421, policy loss: 2.856188641401141
+Experience 9, Iter 41, disc loss: 0.1188096081085792, policy loss: 2.832778076522154
+Experience 9, Iter 42, disc loss: 0.1166010928201467, policy loss: 2.877737176589929
+Experience 9, Iter 43, disc loss: 0.11445603973063675, policy loss: 2.963670814298534
+Experience 9, Iter 44, disc loss: 0.115844732448231, policy loss: 2.8861193812834016
+Experience 9, Iter 45, disc loss: 0.10881208837077475, policy loss: 3.012311413948122
+Experience 9, Iter 46, disc loss: 0.11211723893685363, policy loss: 2.9789987141826533
+Experience 9, Iter 47, disc loss: 0.11223159138629726, policy loss: 2.936349928330147
+Experience 9, Iter 48, disc loss: 0.11049244279315415, policy loss: 2.9750331991622163
+Experience 9, Iter 49, disc loss: 0.11458027897713804, policy loss: 2.8584553011749483
+Experience: 10
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0072],
+        [0.2226],
+        [1.7295],
+        [0.0391]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0319, 0.2895, 1.7537, 0.0277, 0.0294, 5.5061]],
+
+        [[0.0319, 0.2895, 1.7537, 0.0277, 0.0294, 5.5061]],
+
+        [[0.0319, 0.2895, 1.7537, 0.0277, 0.0294, 5.5061]],
+
+        [[0.0319, 0.2895, 1.7537, 0.0277, 0.0294, 5.5061]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0290, 0.8903, 6.9182, 0.1565], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0290, 0.8903, 6.9182, 0.1565])
+N: 100
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([401.0000, 401.0000, 401.0000, 401.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.882
+Iter 2/2000 - Loss: 3.637
+Iter 3/2000 - Loss: 3.568
+Iter 4/2000 - Loss: 3.455
+Iter 5/2000 - Loss: 3.331
+Iter 6/2000 - Loss: 3.235
+Iter 7/2000 - Loss: 3.138
+Iter 8/2000 - Loss: 2.999
+Iter 9/2000 - Loss: 2.823
+Iter 10/2000 - Loss: 2.640
+Iter 11/2000 - Loss: 2.462
+Iter 12/2000 - Loss: 2.286
+Iter 13/2000 - Loss: 2.100
+Iter 14/2000 - Loss: 1.893
+Iter 15/2000 - Loss: 1.665
+Iter 16/2000 - Loss: 1.423
+Iter 17/2000 - Loss: 1.173
+Iter 18/2000 - Loss: 0.918
+Iter 19/2000 - Loss: 0.659
+Iter 20/2000 - Loss: 0.394
+Iter 1981/2000 - Loss: -6.455
+Iter 1982/2000 - Loss: -6.455
+Iter 1983/2000 - Loss: -6.455
+Iter 1984/2000 - Loss: -6.455
+Iter 1985/2000 - Loss: -6.455
+Iter 1986/2000 - Loss: -6.455
+Iter 1987/2000 - Loss: -6.455
+Iter 1988/2000 - Loss: -6.455
+Iter 1989/2000 - Loss: -6.455
+Iter 1990/2000 - Loss: -6.455
+Iter 1991/2000 - Loss: -6.455
+Iter 1992/2000 - Loss: -6.455
+Iter 1993/2000 - Loss: -6.456
+Iter 1994/2000 - Loss: -6.456
+Iter 1995/2000 - Loss: -6.456
+Iter 1996/2000 - Loss: -6.456
+Iter 1997/2000 - Loss: -6.456
+Iter 1998/2000 - Loss: -6.456
+Iter 1999/2000 - Loss: -6.456
+Iter 2000/2000 - Loss: -6.456
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0024],
+        [0.0003]])
+Lengthscale: tensor([[[16.1136,  9.4472, 39.1934,  5.1144, 24.1688, 69.3598]],
+
+        [[21.3061, 34.5574,  8.7996,  1.2289,  1.8238, 30.7900]],
+
+        [[23.0430, 19.5571,  9.9537,  0.9433,  1.0324, 20.8360]],
+
+        [[20.1030, 40.5570, 21.0887,  3.3270,  1.5507, 55.9111]]])
+Signal Variance: tensor([ 0.1891,  2.9567, 19.3118,  0.9160])
+Estimated target variance: tensor([0.0290, 0.8903, 6.9182, 0.1565])
+N: 100
+Signal to noise ratio: tensor([26.3160, 87.5273, 89.4176, 58.3178])
+Bound on condition number: tensor([ 69254.0211, 766104.1294, 799551.4621, 340097.4761])
+Policy Optimizer learning rate:
+0.009905623702167956
+Experience 10, Iter 0, disc loss: 0.11159286860944567, policy loss: 3.015058080708061
+Experience 10, Iter 1, disc loss: 0.09964906580598554, policy loss: 3.2102509843907137
+Experience 10, Iter 2, disc loss: 0.11362675559929568, policy loss: 2.900929100227029
+Experience 10, Iter 3, disc loss: 0.10620846409171937, policy loss: 3.0099963629066826
+Experience 10, Iter 4, disc loss: 0.10053259709188292, policy loss: 3.256642246167669
+Experience 10, Iter 5, disc loss: 0.0966375998413063, policy loss: 3.2263437146152594
+Experience 10, Iter 6, disc loss: 0.09906328089850658, policy loss: 3.0983756481848834
+Experience 10, Iter 7, disc loss: 0.0817361858599868, policy loss: 3.696082740760997
+Experience 10, Iter 8, disc loss: 0.08873618332627939, policy loss: 3.647484813929151
+Experience 10, Iter 9, disc loss: 0.09954727449863521, policy loss: 3.0084326372386316
+Experience 10, Iter 10, disc loss: 0.09511343400281598, policy loss: 3.0702889313632005
+Experience 10, Iter 11, disc loss: 0.08519169602787571, policy loss: 3.4077055471740243
+Experience 10, Iter 12, disc loss: 0.09607484432947237, policy loss: 3.1301469355435017
+Experience 10, Iter 13, disc loss: 0.08994851727162956, policy loss: 3.1813283311034812
+Experience 10, Iter 14, disc loss: 0.0817956600084378, policy loss: 3.3612562891330264
+Experience 10, Iter 15, disc loss: 0.08138680309210246, policy loss: 3.3338554568730983
+Experience 10, Iter 16, disc loss: 0.08718676192062891, policy loss: 3.177489818035199
+Experience 10, Iter 17, disc loss: 0.07710781588995283, policy loss: 3.626130212160551
+Experience 10, Iter 18, disc loss: 0.08963649739240936, policy loss: 3.1005683821753642
+Experience 10, Iter 19, disc loss: 0.09008638409460065, policy loss: 3.1373997488535723
+Experience 10, Iter 20, disc loss: 0.08258303580836845, policy loss: 3.6989808898848344
+Experience 10, Iter 21, disc loss: 0.07588682832336237, policy loss: 4.068692086934248
+Experience 10, Iter 22, disc loss: 0.08393162464050893, policy loss: 3.540862703087024
+Experience 10, Iter 23, disc loss: 0.07876669225737694, policy loss: 3.572652448485331
+Experience 10, Iter 24, disc loss: 0.08250363113041222, policy loss: 3.315204991641796
+Experience 10, Iter 25, disc loss: 0.08545677816914113, policy loss: 3.2353975591161115
+Experience 10, Iter 26, disc loss: 0.08280075196057893, policy loss: 3.284686507749261
+Experience 10, Iter 27, disc loss: 0.0826492898769822, policy loss: 3.369842834947786
+Experience 10, Iter 28, disc loss: 0.08309609659054601, policy loss: 3.4330932721143057
+Experience 10, Iter 29, disc loss: 0.08134000870883805, policy loss: 3.327431294924878
+Experience 10, Iter 30, disc loss: 0.08297553943334461, policy loss: 3.3459627394739795
+Experience 10, Iter 31, disc loss: 0.08662197590822171, policy loss: 3.111246960577801
+Experience 10, Iter 32, disc loss: 0.08151876919196273, policy loss: 3.3233371833517262
+Experience 10, Iter 33, disc loss: 0.07892188487007257, policy loss: 3.29038326122373
+Experience 10, Iter 34, disc loss: 0.07932770880677614, policy loss: 3.2876492279869654
+Experience 10, Iter 35, disc loss: 0.0803253508111405, policy loss: 3.2766214236745688
+Experience 10, Iter 36, disc loss: 0.07999196591777911, policy loss: 3.4212042590694587
+Experience 10, Iter 37, disc loss: 0.0797838885893153, policy loss: 3.3598291205804167
+Experience 10, Iter 38, disc loss: 0.0809042531792736, policy loss: 3.3112033749318175
+Experience 10, Iter 39, disc loss: 0.07947960650008742, policy loss: 3.2674582714894633
+Experience 10, Iter 40, disc loss: 0.07967876326918567, policy loss: 3.3330460578342564
+Experience 10, Iter 41, disc loss: 0.07840194833084392, policy loss: 3.4725959206615187
+Experience 10, Iter 42, disc loss: 0.07387051073183895, policy loss: 3.5873348160223943
+Experience 10, Iter 43, disc loss: 0.07682545521093061, policy loss: 3.3618357129932264
+Experience 10, Iter 44, disc loss: 0.07253137195153922, policy loss: 3.567779016153156
+Experience 10, Iter 45, disc loss: 0.07597086487159328, policy loss: 3.3552875005784815
+Experience 10, Iter 46, disc loss: 0.07484002169469842, policy loss: 3.398936255569089
+Experience 10, Iter 47, disc loss: 0.07273423642000929, policy loss: 3.5651470590358816
+Experience 10, Iter 48, disc loss: 0.07375443811771729, policy loss: 3.4351712970621207
+Experience 10, Iter 49, disc loss: 0.07620990983940493, policy loss: 3.2366077011153416
+Experience: 11
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0070],
+        [0.2363],
+        [1.8119],
+        [0.0412]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0297, 0.2829, 1.8286, 0.0281, 0.0315, 5.8483]],
+
+        [[0.0297, 0.2829, 1.8286, 0.0281, 0.0315, 5.8483]],
+
+        [[0.0297, 0.2829, 1.8286, 0.0281, 0.0315, 5.8483]],
+
+        [[0.0297, 0.2829, 1.8286, 0.0281, 0.0315, 5.8483]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0281, 0.9453, 7.2475, 0.1647], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0281, 0.9453, 7.2475, 0.1647])
+N: 110
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([441.0000, 441.0000, 441.0000, 441.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.911
+Iter 2/2000 - Loss: 3.660
+Iter 3/2000 - Loss: 3.569
+Iter 4/2000 - Loss: 3.428
+Iter 5/2000 - Loss: 3.286
+Iter 6/2000 - Loss: 3.179
+Iter 7/2000 - Loss: 3.067
+Iter 8/2000 - Loss: 2.909
+Iter 9/2000 - Loss: 2.715
+Iter 10/2000 - Loss: 2.513
+Iter 11/2000 - Loss: 2.315
+Iter 12/2000 - Loss: 2.120
+Iter 13/2000 - Loss: 1.916
+Iter 14/2000 - Loss: 1.697
+Iter 15/2000 - Loss: 1.462
+Iter 16/2000 - Loss: 1.217
+Iter 17/2000 - Loss: 0.963
+Iter 18/2000 - Loss: 0.705
+Iter 19/2000 - Loss: 0.441
+Iter 20/2000 - Loss: 0.172
+Iter 1981/2000 - Loss: -6.704
+Iter 1982/2000 - Loss: -6.704
+Iter 1983/2000 - Loss: -6.704
+Iter 1984/2000 - Loss: -6.704
+Iter 1985/2000 - Loss: -6.704
+Iter 1986/2000 - Loss: -6.704
+Iter 1987/2000 - Loss: -6.704
+Iter 1988/2000 - Loss: -6.704
+Iter 1989/2000 - Loss: -6.704
+Iter 1990/2000 - Loss: -6.704
+Iter 1991/2000 - Loss: -6.704
+Iter 1992/2000 - Loss: -6.704
+Iter 1993/2000 - Loss: -6.704
+Iter 1994/2000 - Loss: -6.704
+Iter 1995/2000 - Loss: -6.704
+Iter 1996/2000 - Loss: -6.704
+Iter 1997/2000 - Loss: -6.704
+Iter 1998/2000 - Loss: -6.704
+Iter 1999/2000 - Loss: -6.704
+Iter 2000/2000 - Loss: -6.704
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0022],
+        [0.0003]])
+Lengthscale: tensor([[[15.7633,  9.1037, 37.3680,  4.4760, 22.6290, 70.0418]],
+
+        [[20.7646, 37.7817,  8.5044,  1.1162,  1.9256, 30.1605]],
+
+        [[22.2012, 22.6777,  9.6076,  0.9155,  1.0256, 21.5652]],
+
+        [[19.0314, 38.6226, 19.8222,  2.8482,  1.6741, 49.7399]]])
+Signal Variance: tensor([ 0.1743,  2.6885, 19.5983,  0.8129])
+Estimated target variance: tensor([0.0281, 0.9453, 7.2475, 0.1647])
+N: 110
+Signal to noise ratio: tensor([26.0152, 84.6687, 93.3600, 54.9348])
+Bound on condition number: tensor([ 74447.8659, 788568.6693, 958771.0216, 331962.8311])
+Policy Optimizer learning rate:
+0.009895192582062146
+Experience 11, Iter 0, disc loss: 0.07478731727682901, policy loss: 3.242485990219115
+Experience 11, Iter 1, disc loss: 0.07202049948967755, policy loss: 3.4132181476294043
+Experience 11, Iter 2, disc loss: 0.06823130586424386, policy loss: 3.5532999561215037
+Experience 11, Iter 3, disc loss: 0.06777004342873147, policy loss: 3.507530245899261
+Experience 11, Iter 4, disc loss: 0.0669430869644799, policy loss: 3.477659750639745
+Experience 11, Iter 5, disc loss: 0.07115523764938526, policy loss: 3.346686374526324
+Experience 11, Iter 6, disc loss: 0.06739139729382242, policy loss: 3.5935071624265844
+Experience 11, Iter 7, disc loss: 0.0688676799173887, policy loss: 3.389502370097033
+Experience 11, Iter 8, disc loss: 0.07006384527420034, policy loss: 3.3549785120143345
+Experience 11, Iter 9, disc loss: 0.06990371164647094, policy loss: 3.3640419016587413
+Experience 11, Iter 10, disc loss: 0.07295401154440731, policy loss: 3.489150954522713
+Experience 11, Iter 11, disc loss: 0.06882190548500225, policy loss: 3.474923022332628
+Experience 11, Iter 12, disc loss: 0.0675148384374532, policy loss: 3.4680035717211988
+Experience 11, Iter 13, disc loss: 0.059736223082724645, policy loss: 3.9313077061387727
+Experience 11, Iter 14, disc loss: 0.07071139062969282, policy loss: 3.3109204416914335
+Experience 11, Iter 15, disc loss: 0.06354460112026486, policy loss: 3.7477927551996295
+Experience 11, Iter 16, disc loss: 0.06109623412928625, policy loss: 3.7365248058034672
+Experience 11, Iter 17, disc loss: 0.06298501967120174, policy loss: 3.5367308008235305
+Experience 11, Iter 18, disc loss: 0.06263880710949396, policy loss: 3.837182284397465
+Experience 11, Iter 19, disc loss: 0.06336646544658531, policy loss: 3.659981491324313
+Experience 11, Iter 20, disc loss: 0.06240406961116704, policy loss: 3.5031271133958146
+Experience 11, Iter 21, disc loss: 0.05915891375945245, policy loss: 3.791782445413187
+Experience 11, Iter 22, disc loss: 0.06421530696380104, policy loss: 3.5964430919738737
+Experience 11, Iter 23, disc loss: 0.06649089383906098, policy loss: 3.4234581117577827
+Experience 11, Iter 24, disc loss: 0.06273531962534773, policy loss: 3.5589118380155176
+Experience 11, Iter 25, disc loss: 0.06403628188749089, policy loss: 3.498135470428335
+Experience 11, Iter 26, disc loss: 0.06119937637852975, policy loss: 3.6299919008533457
+Experience 11, Iter 27, disc loss: 0.058838834162666304, policy loss: 3.719365028182053
+Experience 11, Iter 28, disc loss: 0.06363685667811164, policy loss: 3.5534953924166732
+Experience 11, Iter 29, disc loss: 0.060888454333799885, policy loss: 3.610804617539428
+Experience 11, Iter 30, disc loss: 0.05959230656694817, policy loss: 3.6439537926856067
+Experience 11, Iter 31, disc loss: 0.05807124393532874, policy loss: 3.799565065918953
+Experience 11, Iter 32, disc loss: 0.05671360343050554, policy loss: 3.825026584349427
+Experience 11, Iter 33, disc loss: 0.05893987905235039, policy loss: 3.849407359106547
+Experience 11, Iter 34, disc loss: 0.05847409185564552, policy loss: 3.589991215745016
+Experience 11, Iter 35, disc loss: 0.05711704767939413, policy loss: 3.597241554276153
+Experience 11, Iter 36, disc loss: 0.05581442636162981, policy loss: 3.742312053538688
+Experience 11, Iter 37, disc loss: 0.055854835426242755, policy loss: 3.648262254329241
+Experience 11, Iter 38, disc loss: 0.054127084660707356, policy loss: 3.8184524261707216
+Experience 11, Iter 39, disc loss: 0.05494951130085981, policy loss: 3.7030566592759566
+Experience 11, Iter 40, disc loss: 0.053967307713143724, policy loss: 3.695654847643416
+Experience 11, Iter 41, disc loss: 0.053370677732830184, policy loss: 3.7434492802658466
+Experience 11, Iter 42, disc loss: 0.05313446587086321, policy loss: 3.84898406338443
+Experience 11, Iter 43, disc loss: 0.05292480697313547, policy loss: 3.822600748895616
+Experience 11, Iter 44, disc loss: 0.055208861241439366, policy loss: 3.58692768343107
+Experience 11, Iter 45, disc loss: 0.05411693285459824, policy loss: 3.6428129305007406
+Experience 11, Iter 46, disc loss: 0.05520994535620603, policy loss: 3.581138076624617
+Experience 11, Iter 47, disc loss: 0.050761905356529705, policy loss: 3.857837669815857
+Experience 11, Iter 48, disc loss: 0.053549513057421685, policy loss: 3.7265870666949454
+Experience 11, Iter 49, disc loss: 0.052610690440927185, policy loss: 3.728526872128818
+Experience: 12
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0068],
+        [0.2457],
+        [1.8581],
+        [0.0418]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0275, 0.2755, 1.8581, 0.0286, 0.0328, 6.0713]],
+
+        [[0.0275, 0.2755, 1.8581, 0.0286, 0.0328, 6.0713]],
+
+        [[0.0275, 0.2755, 1.8581, 0.0286, 0.0328, 6.0713]],
+
+        [[0.0275, 0.2755, 1.8581, 0.0286, 0.0328, 6.0713]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0273, 0.9827, 7.4326, 0.1672], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0273, 0.9827, 7.4326, 0.1672])
+N: 120
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([481.0000, 481.0000, 481.0000, 481.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.947
+Iter 2/2000 - Loss: 3.710
+Iter 3/2000 - Loss: 3.609
+Iter 4/2000 - Loss: 3.454
+Iter 5/2000 - Loss: 3.315
+Iter 6/2000 - Loss: 3.211
+Iter 7/2000 - Loss: 3.085
+Iter 8/2000 - Loss: 2.910
+Iter 9/2000 - Loss: 2.708
+Iter 10/2000 - Loss: 2.501
+Iter 11/2000 - Loss: 2.296
+Iter 12/2000 - Loss: 2.087
+Iter 13/2000 - Loss: 1.867
+Iter 14/2000 - Loss: 1.636
+Iter 15/2000 - Loss: 1.394
+Iter 16/2000 - Loss: 1.145
+Iter 17/2000 - Loss: 0.888
+Iter 18/2000 - Loss: 0.624
+Iter 19/2000 - Loss: 0.353
+Iter 20/2000 - Loss: 0.079
+Iter 1981/2000 - Loss: -6.867
+Iter 1982/2000 - Loss: -6.867
+Iter 1983/2000 - Loss: -6.867
+Iter 1984/2000 - Loss: -6.867
+Iter 1985/2000 - Loss: -6.867
+Iter 1986/2000 - Loss: -6.867
+Iter 1987/2000 - Loss: -6.867
+Iter 1988/2000 - Loss: -6.867
+Iter 1989/2000 - Loss: -6.867
+Iter 1990/2000 - Loss: -6.867
+Iter 1991/2000 - Loss: -6.867
+Iter 1992/2000 - Loss: -6.867
+Iter 1993/2000 - Loss: -6.867
+Iter 1994/2000 - Loss: -6.868
+Iter 1995/2000 - Loss: -6.868
+Iter 1996/2000 - Loss: -6.868
+Iter 1997/2000 - Loss: -6.868
+Iter 1998/2000 - Loss: -6.868
+Iter 1999/2000 - Loss: -6.868
+Iter 2000/2000 - Loss: -6.868
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0023],
+        [0.0003]])
+Lengthscale: tensor([[[15.0290,  9.3667, 38.0782,  4.4616, 23.6728, 67.9868]],
+
+        [[19.3640, 38.0387,  8.2848,  1.0973,  1.9957, 30.4854]],
+
+        [[20.7077, 32.7928,  8.6292,  0.9197,  1.0297, 20.8560]],
+
+        [[18.2028, 35.4502, 19.4508,  2.7406,  1.7123, 49.1992]]])
+Signal Variance: tensor([ 0.1874,  2.7003, 17.2457,  0.7768])
+Estimated target variance: tensor([0.0273, 0.9827, 7.4326, 0.1672])
+N: 120
+Signal to noise ratio: tensor([25.9609, 85.3009, 86.5717, 55.0253])
+Bound on condition number: tensor([ 80876.9759, 873149.2967, 899359.3533, 363334.9711])
+Policy Optimizer learning rate:
+0.009884772446450592
+Experience 12, Iter 0, disc loss: 0.05594771402247398, policy loss: 3.5778390932375017
+Experience 12, Iter 1, disc loss: 0.05054143565479895, policy loss: 3.9590445569047867
+Experience 12, Iter 2, disc loss: 0.05164555782905578, policy loss: 3.799239458484399
+Experience 12, Iter 3, disc loss: 0.051497896789761, policy loss: 3.8696866682508197
+Experience 12, Iter 4, disc loss: 0.05160424624644453, policy loss: 3.8697566370840857
+Experience 12, Iter 5, disc loss: 0.04987900954354915, policy loss: 3.856172617605706
+Experience 12, Iter 6, disc loss: 0.05166903245123223, policy loss: 3.691830514980343
+Experience 12, Iter 7, disc loss: 0.05018865376664294, policy loss: 3.852870306247076
+Experience 12, Iter 8, disc loss: 0.05093374235573024, policy loss: 3.7989027144423035
+Experience 12, Iter 9, disc loss: 0.051960105175389695, policy loss: 3.7467400090317717
+Experience 12, Iter 10, disc loss: 0.049601788664910385, policy loss: 3.8502000541353874
+Experience 12, Iter 11, disc loss: 0.05257360103544507, policy loss: 3.6270778803503787
+Experience 12, Iter 12, disc loss: 0.04693356890360398, policy loss: 3.927093274398402
+Experience 12, Iter 13, disc loss: 0.04346001739704458, policy loss: 4.06430671592099
+Experience 12, Iter 14, disc loss: 0.04757396591462115, policy loss: 3.836640452557014
+Experience 12, Iter 15, disc loss: 0.04383465465398172, policy loss: 4.170055441656944
+Experience 12, Iter 16, disc loss: 0.049745528975251835, policy loss: 3.961483115866085
+Experience 12, Iter 17, disc loss: 0.04578152126405635, policy loss: 4.154978459792878
+Experience 12, Iter 18, disc loss: 0.04574024225837198, policy loss: 4.1726673586859135
+Experience 12, Iter 19, disc loss: 0.04810577898751087, policy loss: 3.757219950406621
+Experience 12, Iter 20, disc loss: 0.046656982416138595, policy loss: 3.9265811780161486
+Experience 12, Iter 21, disc loss: 0.04777759678887117, policy loss: 3.8773014184437145
+Experience 12, Iter 22, disc loss: 0.04580981148570974, policy loss: 3.8442301419798737
+Experience 12, Iter 23, disc loss: 0.04302218217505811, policy loss: 4.00090056720639
+Experience 12, Iter 24, disc loss: 0.04618083558396081, policy loss: 3.8421871947337087
+Experience 12, Iter 25, disc loss: 0.043606739494208444, policy loss: 3.8993196915200636
+Experience 12, Iter 26, disc loss: 0.04668838257887467, policy loss: 3.811893643374854
+Experience 12, Iter 27, disc loss: 0.04253458308205697, policy loss: 4.025476603349609
+Experience 12, Iter 28, disc loss: 0.046044744499204454, policy loss: 3.8849410109291944
+Experience 12, Iter 29, disc loss: 0.04632461600367391, policy loss: 3.8122022405961418
+Experience 12, Iter 30, disc loss: 0.045141418170540556, policy loss: 3.815830110613483
+Experience 12, Iter 31, disc loss: 0.043067343943055496, policy loss: 3.9935040135787876
+Experience 12, Iter 32, disc loss: 0.04484557006680747, policy loss: 3.848919569645733
+Experience 12, Iter 33, disc loss: 0.042669361549030185, policy loss: 3.9586978675950992
+Experience 12, Iter 34, disc loss: 0.044133539506935354, policy loss: 3.9479230050221634
+Experience 12, Iter 35, disc loss: 0.04590208984643393, policy loss: 3.8201704829852194
+Experience 12, Iter 36, disc loss: 0.042643442994487656, policy loss: 4.125399777582311
+Experience 12, Iter 37, disc loss: 0.04454925452896546, policy loss: 3.932911512718263
+Experience 12, Iter 38, disc loss: 0.043742112457739304, policy loss: 3.865529912116522
+Experience 12, Iter 39, disc loss: 0.043563615097842776, policy loss: 3.8880589757394475
+Experience 12, Iter 40, disc loss: 0.044429245090136724, policy loss: 3.9802426874030994
+Experience 12, Iter 41, disc loss: 0.04403703570229732, policy loss: 4.084173959335207
+Experience 12, Iter 42, disc loss: 0.04201729646388638, policy loss: 4.229141393111362
+Experience 12, Iter 43, disc loss: 0.043142857805200815, policy loss: 4.288645029474251
+Experience 12, Iter 44, disc loss: 0.04271459858497216, policy loss: 4.100504911679451
+Experience 12, Iter 45, disc loss: 0.0428925755609693, policy loss: 4.032869461705544
+Experience 12, Iter 46, disc loss: 0.041713530016208734, policy loss: 4.067529684394029
+Experience 12, Iter 47, disc loss: 0.03881147011125714, policy loss: 4.172790305743711
+Experience 12, Iter 48, disc loss: 0.03907183192310775, policy loss: 4.098576225686308
+Experience 12, Iter 49, disc loss: 0.04015383830355908, policy loss: 4.1477815601496175
+Experience: 13
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0068],
+        [0.2530],
+        [1.8942],
+        [0.0419]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0258, 0.2708, 1.8578, 0.0289, 0.0355, 6.3144]],
+
+        [[0.0258, 0.2708, 1.8578, 0.0289, 0.0355, 6.3144]],
+
+        [[0.0258, 0.2708, 1.8578, 0.0289, 0.0355, 6.3144]],
+
+        [[0.0258, 0.2708, 1.8578, 0.0289, 0.0355, 6.3144]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0270, 1.0119, 7.5767, 0.1674], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0270, 1.0119, 7.5767, 0.1674])
+N: 130
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([521.0000, 521.0000, 521.0000, 521.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.982
+Iter 2/2000 - Loss: 3.756
+Iter 3/2000 - Loss: 3.638
+Iter 4/2000 - Loss: 3.474
+Iter 5/2000 - Loss: 3.340
+Iter 6/2000 - Loss: 3.236
+Iter 7/2000 - Loss: 3.100
+Iter 8/2000 - Loss: 2.918
+Iter 9/2000 - Loss: 2.717
+Iter 10/2000 - Loss: 2.513
+Iter 11/2000 - Loss: 2.303
+Iter 12/2000 - Loss: 2.083
+Iter 13/2000 - Loss: 1.854
+Iter 14/2000 - Loss: 1.618
+Iter 15/2000 - Loss: 1.375
+Iter 16/2000 - Loss: 1.124
+Iter 17/2000 - Loss: 0.863
+Iter 18/2000 - Loss: 0.591
+Iter 19/2000 - Loss: 0.312
+Iter 20/2000 - Loss: 0.030
+Iter 1981/2000 - Loss: -6.999
+Iter 1982/2000 - Loss: -6.999
+Iter 1983/2000 - Loss: -6.999
+Iter 1984/2000 - Loss: -6.999
+Iter 1985/2000 - Loss: -6.999
+Iter 1986/2000 - Loss: -7.000
+Iter 1987/2000 - Loss: -7.000
+Iter 1988/2000 - Loss: -7.000
+Iter 1989/2000 - Loss: -7.000
+Iter 1990/2000 - Loss: -7.000
+Iter 1991/2000 - Loss: -7.000
+Iter 1992/2000 - Loss: -7.000
+Iter 1993/2000 - Loss: -7.000
+Iter 1994/2000 - Loss: -7.000
+Iter 1995/2000 - Loss: -7.000
+Iter 1996/2000 - Loss: -7.000
+Iter 1997/2000 - Loss: -7.000
+Iter 1998/2000 - Loss: -7.000
+Iter 1999/2000 - Loss: -7.000
+Iter 2000/2000 - Loss: -7.000
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0022],
+        [0.0003]])
+Lengthscale: tensor([[[14.7690, 10.2208, 41.4071,  3.9280, 24.5024, 66.5200]],
+
+        [[18.1208, 36.9898,  7.7149,  1.1435,  2.0926, 29.8936]],
+
+        [[20.3115, 34.6851,  7.8506,  0.9556,  1.1207, 19.2185]],
+
+        [[17.9656, 33.9478, 20.0221,  3.1551,  1.6585, 51.7881]]])
+Signal Variance: tensor([ 0.2055,  2.5880, 15.6110,  0.8066])
+Estimated target variance: tensor([0.0270, 1.0119, 7.5767, 0.1674])
+N: 130
+Signal to noise ratio: tensor([26.8870, 85.7039, 84.6767, 55.3997])
+Bound on condition number: tensor([ 93979.3782, 954872.1833, 932120.7415, 398987.0359])
+Policy Optimizer learning rate:
+0.009874363283766069
+Experience 13, Iter 0, disc loss: 0.03672637990432241, policy loss: 4.271582570076443
+Experience 13, Iter 1, disc loss: 0.03644539207945392, policy loss: 4.342653454695716
+Experience 13, Iter 2, disc loss: 0.03975714208665383, policy loss: 4.04893419308754
+Experience 13, Iter 3, disc loss: 0.0379420019364288, policy loss: 4.126182334276576
+Experience 13, Iter 4, disc loss: 0.03801699181313084, policy loss: 4.1759763325264885
+Experience 13, Iter 5, disc loss: 0.029596835946329295, policy loss: 5.389927702097095
+Experience 13, Iter 6, disc loss: 0.03640906459161086, policy loss: 4.145855536618532
+Experience 13, Iter 7, disc loss: 0.02794108285839298, policy loss: 4.637065189066522
+Experience 13, Iter 8, disc loss: 0.02435411591566013, policy loss: 5.036468751634694
+Experience 13, Iter 9, disc loss: 0.023209426175412353, policy loss: 5.013482078532867
+Experience 13, Iter 10, disc loss: 0.02152532409026303, policy loss: 5.497819137019861
+Experience 13, Iter 11, disc loss: 0.019972097171386843, policy loss: 5.405283673172377
+Experience 13, Iter 12, disc loss: 0.020402381959848444, policy loss: 5.455121958854309
+Experience 13, Iter 13, disc loss: 0.019507924118638532, policy loss: 5.431702895875638
+Experience 13, Iter 14, disc loss: 0.017745001522375344, policy loss: 5.680336851176947
+Experience 13, Iter 15, disc loss: 0.016344422554607704, policy loss: 6.26075122332356
+Experience 13, Iter 16, disc loss: 0.018154620949748103, policy loss: 5.442289106862775
+Experience 13, Iter 17, disc loss: 0.019239188920785463, policy loss: 5.167281562660737
+Experience 13, Iter 18, disc loss: 0.01698818333868737, policy loss: 6.642361719681622
+Experience 13, Iter 19, disc loss: 0.018847706949237045, policy loss: 5.03569547086373
+Experience 13, Iter 20, disc loss: 0.015873376163397103, policy loss: 5.595492345063528
+Experience 13, Iter 21, disc loss: 0.01544919066961995, policy loss: 7.434363587910514
+Experience 13, Iter 22, disc loss: 0.011374201202768126, policy loss: 10.393087285846768
+Experience 13, Iter 23, disc loss: 0.01008324266474906, policy loss: 10.795530300506691
+Experience 13, Iter 24, disc loss: 0.009820418399187607, policy loss: 10.465260815625882
+Experience 13, Iter 25, disc loss: 0.00975916558711327, policy loss: 9.593561454850757
+Experience 13, Iter 26, disc loss: 0.011599396545177425, policy loss: 8.343928018059945
+Experience 13, Iter 27, disc loss: 0.01020067054756079, policy loss: 11.800943179891345
+Experience 13, Iter 28, disc loss: 0.009597904803385505, policy loss: 11.441157182567377
+Experience 13, Iter 29, disc loss: 0.010073959051954861, policy loss: 8.991962405470762
+Experience 13, Iter 30, disc loss: 0.0083557920107385, policy loss: 8.541528426905025
+Experience 13, Iter 31, disc loss: 0.007509139043952214, policy loss: 9.072861814286721
+Experience 13, Iter 32, disc loss: 0.007936831629024694, policy loss: 8.938372891085216
+Experience 13, Iter 33, disc loss: 0.010243411207100248, policy loss: 10.581814857461165
+Experience 13, Iter 34, disc loss: 0.010123417627070964, policy loss: 10.42757510998367
+Experience 13, Iter 35, disc loss: 0.00833561359472013, policy loss: 10.933004764352873
+Experience 13, Iter 36, disc loss: 0.006828687447877577, policy loss: 12.499458191778304
+Experience 13, Iter 37, disc loss: 0.005937480578924993, policy loss: 16.909962019506835
+Experience 13, Iter 38, disc loss: 0.005935867109643976, policy loss: 13.937327988759279
+Experience 13, Iter 39, disc loss: 0.005650020262371658, policy loss: 18.895015290081133
+Experience 13, Iter 40, disc loss: 0.005494425895575804, policy loss: 22.55093291724703
+Experience 13, Iter 41, disc loss: 0.005389850934423289, policy loss: 21.580471862438202
+Experience 13, Iter 42, disc loss: 0.005286166576088189, policy loss: 21.71801351637912
+Experience 13, Iter 43, disc loss: 0.005181950584777038, policy loss: 22.916451858284944
+Experience 13, Iter 44, disc loss: 0.005086516618904303, policy loss: 22.137787880429826
+Experience 13, Iter 45, disc loss: 0.004994476126678564, policy loss: 21.93210223986295
+Experience 13, Iter 46, disc loss: 0.004906800410748893, policy loss: 20.514590006426285
+Experience 13, Iter 47, disc loss: 0.004822368911860761, policy loss: 21.11358362242205
+Experience 13, Iter 48, disc loss: 0.0047411582721869055, policy loss: 21.739604170235758
+Experience 13, Iter 49, disc loss: 0.0046630860844337286, policy loss: 21.605852580731543
+Experience: 14
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0069],
+        [0.2599],
+        [2.0594],
+        [0.0443]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0253, 0.2789, 1.9742, 0.0300, 0.0341, 6.3791]],
+
+        [[0.0253, 0.2789, 1.9742, 0.0300, 0.0341, 6.3791]],
+
+        [[0.0253, 0.2789, 1.9742, 0.0300, 0.0341, 6.3791]],
+
+        [[0.0253, 0.2789, 1.9742, 0.0300, 0.0341, 6.3791]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0276, 1.0396, 8.2377, 0.1772], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0276, 1.0396, 8.2377, 0.1772])
+N: 140
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([561.0000, 561.0000, 561.0000, 561.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.036
+Iter 2/2000 - Loss: 3.858
+Iter 3/2000 - Loss: 3.728
+Iter 4/2000 - Loss: 3.593
+Iter 5/2000 - Loss: 3.508
+Iter 6/2000 - Loss: 3.410
+Iter 7/2000 - Loss: 3.257
+Iter 8/2000 - Loss: 3.084
+Iter 9/2000 - Loss: 2.911
+Iter 10/2000 - Loss: 2.733
+Iter 11/2000 - Loss: 2.541
+Iter 12/2000 - Loss: 2.336
+Iter 13/2000 - Loss: 2.125
+Iter 14/2000 - Loss: 1.906
+Iter 15/2000 - Loss: 1.676
+Iter 16/2000 - Loss: 1.431
+Iter 17/2000 - Loss: 1.174
+Iter 18/2000 - Loss: 0.908
+Iter 19/2000 - Loss: 0.637
+Iter 20/2000 - Loss: 0.364
+Iter 1981/2000 - Loss: -6.840
+Iter 1982/2000 - Loss: -6.840
+Iter 1983/2000 - Loss: -6.840
+Iter 1984/2000 - Loss: -6.840
+Iter 1985/2000 - Loss: -6.840
+Iter 1986/2000 - Loss: -6.840
+Iter 1987/2000 - Loss: -6.840
+Iter 1988/2000 - Loss: -6.840
+Iter 1989/2000 - Loss: -6.840
+Iter 1990/2000 - Loss: -6.840
+Iter 1991/2000 - Loss: -6.840
+Iter 1992/2000 - Loss: -6.840
+Iter 1993/2000 - Loss: -6.841
+Iter 1994/2000 - Loss: -6.841
+Iter 1995/2000 - Loss: -6.841
+Iter 1996/2000 - Loss: -6.841
+Iter 1997/2000 - Loss: -6.841
+Iter 1998/2000 - Loss: -6.841
+Iter 1999/2000 - Loss: -6.841
+Iter 2000/2000 - Loss: -6.841
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0021],
+        [0.0003]])
+Lengthscale: tensor([[[14.2172,  9.7300, 39.6430,  3.9619, 22.0248, 61.9733]],
+
+        [[19.3732, 37.0963,  7.4718,  1.2170,  2.1196, 31.0580]],
+
+        [[20.3042, 34.9585,  7.2133,  0.9719,  1.1298, 19.0601]],
+
+        [[17.1858, 34.5999, 19.5539,  1.3772,  1.7741, 50.6746]]])
+Signal Variance: tensor([ 0.1737,  2.4842, 14.1718,  0.6157])
+Estimated target variance: tensor([0.0276, 1.0396, 8.2377, 0.1772])
+N: 140
+Signal to noise ratio: tensor([24.4991, 79.8313, 81.8336, 49.5767])
+Bound on condition number: tensor([ 84029.6156, 892225.7455, 937545.0182, 344100.4881])
+Policy Optimizer learning rate:
+0.009863965082453532
+Experience 14, Iter 0, disc loss: 0.0045880013206530046, policy loss: 22.05613841346891
+Experience 14, Iter 1, disc loss: 0.0045162323422065975, policy loss: 20.05290595597755
+Experience 14, Iter 2, disc loss: 0.004447114211170828, policy loss: 21.436048527344326
+Experience 14, Iter 3, disc loss: 0.004380604397734969, policy loss: 21.530014971491887
+Experience 14, Iter 4, disc loss: 0.004316415760567806, policy loss: 20.746143421256647
+Experience 14, Iter 5, disc loss: 0.004254415849793276, policy loss: 20.905014053022953
+Experience 14, Iter 6, disc loss: 0.004194870089978833, policy loss: 21.854110368545633
+Experience 14, Iter 7, disc loss: 0.004138386781347335, policy loss: 20.583682337034862
+Experience 14, Iter 8, disc loss: 0.004081994937099421, policy loss: 22.01618120885226
+Experience 14, Iter 9, disc loss: 0.00402824019024212, policy loss: 21.86230998627122
+Experience 14, Iter 10, disc loss: 0.003975980675500974, policy loss: 21.979140749734505
+Experience 14, Iter 11, disc loss: 0.003925310283699106, policy loss: 20.644686150053325
+Experience 14, Iter 12, disc loss: 0.003876183621009855, policy loss: 20.684311448299706
+Experience 14, Iter 13, disc loss: 0.0038284781565515544, policy loss: 21.899539648804407
+Experience 14, Iter 14, disc loss: 0.00378206340704145, policy loss: 20.750507753477805
+Experience 14, Iter 15, disc loss: 0.003736930888229418, policy loss: 20.8334957139636
+Experience 14, Iter 16, disc loss: 0.0036929367927104164, policy loss: 21.68267131874339
+Experience 14, Iter 17, disc loss: 0.003650063333190221, policy loss: 21.48154291305929
+Experience 14, Iter 18, disc loss: 0.00360824012737278, policy loss: 21.654682758223423
+Experience 14, Iter 19, disc loss: 0.0035674377368479482, policy loss: 21.56056347043741
+Experience 14, Iter 20, disc loss: 0.0035276286280896546, policy loss: 21.86594912124847
+Experience 14, Iter 21, disc loss: 0.0034887860509001467, policy loss: 20.525276121243643
+Experience 14, Iter 22, disc loss: 0.0034508743002763438, policy loss: 20.635217647186153
+Experience 14, Iter 23, disc loss: 0.0034137562594856374, policy loss: 20.79991808687172
+Experience 14, Iter 24, disc loss: 0.0033775404245485205, policy loss: 21.396448165806394
+Experience 14, Iter 25, disc loss: 0.0033420088998143776, policy loss: 22.05319771819068
+Experience 14, Iter 26, disc loss: 0.0033073185242098366, policy loss: 23.6719275207106
+Experience 14, Iter 27, disc loss: 0.0032733496701110496, policy loss: 21.255255274193857
+Experience 14, Iter 28, disc loss: 0.003240140049438899, policy loss: 21.358364237369685
+Experience 14, Iter 29, disc loss: 0.0032076098132361877, policy loss: 21.015016709653437
+Experience 14, Iter 30, disc loss: 0.0031757984670202307, policy loss: 21.645151337900955
+Experience 14, Iter 31, disc loss: 0.00314480334038238, policy loss: 21.768895469198647
+Experience 14, Iter 32, disc loss: 0.00311427903626241, policy loss: 21.039310412386683
+Experience 14, Iter 33, disc loss: 0.003084434358932717, policy loss: 20.73874773156941
+Experience 14, Iter 34, disc loss: 0.0030552701136070206, policy loss: 20.731912523957913
+Experience 14, Iter 35, disc loss: 0.0030267889685659886, policy loss: 21.075899043614733
+Experience 14, Iter 36, disc loss: 0.002998552018797103, policy loss: 20.94804089496278
+Experience 14, Iter 37, disc loss: 0.0029710519766070246, policy loss: 21.338092261720057
+Experience 14, Iter 38, disc loss: 0.002944063642335385, policy loss: 20.811166275738273
+Experience 14, Iter 39, disc loss: 0.002917546436437226, policy loss: 21.52357065175491
+Experience 14, Iter 40, disc loss: 0.002891455001182985, policy loss: 21.17147183270678
+Experience 14, Iter 41, disc loss: 0.0028659481812969866, policy loss: 21.622916592039143
+Experience 14, Iter 42, disc loss: 0.0028407366604725026, policy loss: 22.341017966008433
+Experience 14, Iter 43, disc loss: 0.0028161503793098946, policy loss: 21.45662208857854
+Experience 14, Iter 44, disc loss: 0.0027919437461532966, policy loss: 20.972051389181804
+Experience 14, Iter 45, disc loss: 0.0027682049635081563, policy loss: 20.666250283046907
+Experience 14, Iter 46, disc loss: 0.002744828605060019, policy loss: 20.941147352339968
+Experience 14, Iter 47, disc loss: 0.0027218395340379777, policy loss: 21.186384188437202
+Experience 14, Iter 48, disc loss: 0.002699257129851319, policy loss: 21.47791392681263
+Experience 14, Iter 49, disc loss: 0.002677088559789977, policy loss: 20.996799646780616
+Experience: 15
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0070],
+        [0.2634],
+        [2.1466],
+        [0.0442]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0288, 0.2847, 1.9751, 0.0314, 0.0322, 6.4293]],
+
+        [[0.0288, 0.2847, 1.9751, 0.0314, 0.0322, 6.4293]],
+
+        [[0.0288, 0.2847, 1.9751, 0.0314, 0.0322, 6.4293]],
+
+        [[0.0288, 0.2847, 1.9751, 0.0314, 0.0322, 6.4293]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0279, 1.0534, 8.5864, 0.1767], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0279, 1.0534, 8.5864, 0.1767])
+N: 150
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([601.0000, 601.0000, 601.0000, 601.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.027
+Iter 2/2000 - Loss: 3.887
+Iter 3/2000 - Loss: 3.727
+Iter 4/2000 - Loss: 3.611
+Iter 5/2000 - Loss: 3.540
+Iter 6/2000 - Loss: 3.421
+Iter 7/2000 - Loss: 3.265
+Iter 8/2000 - Loss: 3.106
+Iter 9/2000 - Loss: 2.943
+Iter 10/2000 - Loss: 2.764
+Iter 11/2000 - Loss: 2.576
+Iter 12/2000 - Loss: 2.382
+Iter 13/2000 - Loss: 2.183
+Iter 14/2000 - Loss: 1.972
+Iter 15/2000 - Loss: 1.744
+Iter 16/2000 - Loss: 1.501
+Iter 17/2000 - Loss: 1.249
+Iter 18/2000 - Loss: 0.992
+Iter 19/2000 - Loss: 0.732
+Iter 20/2000 - Loss: 0.470
+Iter 1981/2000 - Loss: -6.770
+Iter 1982/2000 - Loss: -6.771
+Iter 1983/2000 - Loss: -6.771
+Iter 1984/2000 - Loss: -6.771
+Iter 1985/2000 - Loss: -6.771
+Iter 1986/2000 - Loss: -6.771
+Iter 1987/2000 - Loss: -6.771
+Iter 1988/2000 - Loss: -6.771
+Iter 1989/2000 - Loss: -6.771
+Iter 1990/2000 - Loss: -6.771
+Iter 1991/2000 - Loss: -6.771
+Iter 1992/2000 - Loss: -6.771
+Iter 1993/2000 - Loss: -6.771
+Iter 1994/2000 - Loss: -6.771
+Iter 1995/2000 - Loss: -6.771
+Iter 1996/2000 - Loss: -6.771
+Iter 1997/2000 - Loss: -6.771
+Iter 1998/2000 - Loss: -6.771
+Iter 1999/2000 - Loss: -6.771
+Iter 2000/2000 - Loss: -6.771
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0023],
+        [0.0002]])
+Lengthscale: tensor([[[14.6079,  4.6772, 36.8153,  5.8177, 17.9063, 63.2633]],
+
+        [[20.3360, 38.2786,  7.8281,  1.1258,  2.0900, 29.7563]],
+
+        [[19.6474, 40.2063,  6.9641,  0.9741,  1.1404, 18.2678]],
+
+        [[18.6826, 36.0372, 19.2519,  1.3957,  1.8159, 51.3521]]])
+Signal Variance: tensor([ 0.1053,  2.3332, 12.2771,  0.5814])
+Estimated target variance: tensor([0.0279, 1.0534, 8.5864, 0.1767])
+N: 150
+Signal to noise ratio: tensor([18.6925, 75.0652, 73.3402, 48.2768])
+Bound on condition number: tensor([ 52412.5909, 845219.4889, 806819.6441, 349598.5801])
+Policy Optimizer learning rate:
+0.009853577830970107
+Experience 15, Iter 0, disc loss: 0.002655238773317671, policy loss: 20.60587800841374
+Experience 15, Iter 1, disc loss: 0.0026336446448458057, policy loss: 21.672531470275974
+Experience 15, Iter 2, disc loss: 0.0026125333966282947, policy loss: 22.391916798692616
+Experience 15, Iter 3, disc loss: 0.0025917357365425582, policy loss: 22.171202579149636
+Experience 15, Iter 4, disc loss: 0.00257128590845735, policy loss: 20.494151515471646
+Experience 15, Iter 5, disc loss: 0.002551095934925405, policy loss: 21.266472501631974
+Experience 15, Iter 6, disc loss: 0.0025312135269982545, policy loss: 21.02101149231671
+Experience 15, Iter 7, disc loss: 0.002511655609230387, policy loss: 21.448022299697374
+Experience 15, Iter 8, disc loss: 0.0024924041266107394, policy loss: 20.78399157547578
+Experience 15, Iter 9, disc loss: 0.002473345787398782, policy loss: 20.79724374446767
+Experience 15, Iter 10, disc loss: 0.002454584241109511, policy loss: 20.576155336063685
+Experience 15, Iter 11, disc loss: 0.0024361366547336733, policy loss: 20.792098902985764
+Experience 15, Iter 12, disc loss: 0.002417902958987986, policy loss: 20.4212420800408
+Experience 15, Iter 13, disc loss: 0.0024000303043947443, policy loss: 20.77878150917622
+Experience 15, Iter 14, disc loss: 0.0023824059561677775, policy loss: 20.044064063358807
+Experience 15, Iter 15, disc loss: 0.0023647941165161083, policy loss: 21.259171197280413
+Experience 15, Iter 16, disc loss: 0.0023475921671061344, policy loss: 20.209925051944943
+Experience 15, Iter 17, disc loss: 0.002330590412695517, policy loss: 20.698049343145904
+Experience 15, Iter 18, disc loss: 0.002313831877091401, policy loss: 20.604431666118657
+Experience 15, Iter 19, disc loss: 0.002297298273472467, policy loss: 19.85470127712424
+Experience 15, Iter 20, disc loss: 0.0022809715943148917, policy loss: 20.463954511065573
+Experience 15, Iter 21, disc loss: 0.0022648802462240727, policy loss: 20.60952807290176
+Experience 15, Iter 22, disc loss: 0.002249042740817362, policy loss: 20.916158323425876
+Experience 15, Iter 23, disc loss: 0.00223330685816245, policy loss: 20.51082011004601
+Experience 15, Iter 24, disc loss: 0.002217802172025902, policy loss: 20.301558164368448
+Experience 15, Iter 25, disc loss: 0.002202630696966723, policy loss: 20.11865580280415
+Experience 15, Iter 26, disc loss: 0.002187393689711819, policy loss: 20.08256997521093
+Experience 15, Iter 27, disc loss: 0.0021724785610545776, policy loss: 20.474199032611104
+Experience 15, Iter 28, disc loss: 0.0021579877979554605, policy loss: 20.699083916808934
+Experience 15, Iter 29, disc loss: 0.0021432265626499117, policy loss: 20.71107974937192
+Experience 15, Iter 30, disc loss: 0.0021288599061704007, policy loss: 19.77772231623183
+Experience 15, Iter 31, disc loss: 0.0021146493274088606, policy loss: 20.726396707137354
+Experience 15, Iter 32, disc loss: 0.0021006322623673807, policy loss: 21.856839672668094
+Experience 15, Iter 33, disc loss: 0.0020868064123762456, policy loss: 20.749423655023712
+Experience 15, Iter 34, disc loss: 0.002073096605881304, policy loss: 20.594804224821832
+Experience 15, Iter 35, disc loss: 0.0020595685024114023, policy loss: 20.534720827853405
+Experience 15, Iter 36, disc loss: 0.00204624004679094, policy loss: 20.72337724419551
+Experience 15, Iter 37, disc loss: 0.002033013871098837, policy loss: 21.057319068443448
+Experience 15, Iter 38, disc loss: 0.002019977779967132, policy loss: 20.41139768822865
+Experience 15, Iter 39, disc loss: 0.0020070512271235176, policy loss: 20.638842842269874
+Experience 15, Iter 40, disc loss: 0.0019943223083176997, policy loss: 20.679216526322747
+Experience 15, Iter 41, disc loss: 0.0019816965688517086, policy loss: 20.140809281976416
+Experience 15, Iter 42, disc loss: 0.001970918438791441, policy loss: 20.16981936713855
+Experience 15, Iter 43, disc loss: 0.001956929998158624, policy loss: 20.840632025220412
+Experience 15, Iter 44, disc loss: 0.0019447342469643793, policy loss: 20.423316108615936
+Experience 15, Iter 45, disc loss: 0.0019327231161298064, policy loss: 20.078631536029224
+Experience 15, Iter 46, disc loss: 0.001920839118842192, policy loss: 20.75385691323332
+Experience 15, Iter 47, disc loss: 0.0019092854441360193, policy loss: 20.553666572418802
+Experience 15, Iter 48, disc loss: 0.00189751351788117, policy loss: 20.338318337676917
+Experience 15, Iter 49, disc loss: 0.0018859541780238162, policy loss: 20.225795181692686
+Experience: 16
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0082],
+        [0.2620],
+        [2.1581],
+        [0.0449]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0424, 0.3396, 2.0100, 0.0337, 0.0308, 6.5277]],
+
+        [[0.0424, 0.3396, 2.0100, 0.0337, 0.0308, 6.5277]],
+
+        [[0.0424, 0.3396, 2.0100, 0.0337, 0.0308, 6.5277]],
+
+        [[0.0424, 0.3396, 2.0100, 0.0337, 0.0308, 6.5277]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0329, 1.0480, 8.6324, 0.1795], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0329, 1.0480, 8.6324, 0.1795])
+N: 160
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([641.0000, 641.0000, 641.0000, 641.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.984
+Iter 2/2000 - Loss: 3.878
+Iter 3/2000 - Loss: 3.670
+Iter 4/2000 - Loss: 3.562
+Iter 5/2000 - Loss: 3.475
+Iter 6/2000 - Loss: 3.330
+Iter 7/2000 - Loss: 3.159
+Iter 8/2000 - Loss: 2.992
+Iter 9/2000 - Loss: 2.827
+Iter 10/2000 - Loss: 2.650
+Iter 11/2000 - Loss: 2.461
+Iter 12/2000 - Loss: 2.263
+Iter 13/2000 - Loss: 2.059
+Iter 14/2000 - Loss: 1.848
+Iter 15/2000 - Loss: 1.626
+Iter 16/2000 - Loss: 1.395
+Iter 17/2000 - Loss: 1.155
+Iter 18/2000 - Loss: 0.910
+Iter 19/2000 - Loss: 0.664
+Iter 20/2000 - Loss: 0.416
+Iter 1981/2000 - Loss: -6.609
+Iter 1982/2000 - Loss: -6.609
+Iter 1983/2000 - Loss: -6.609
+Iter 1984/2000 - Loss: -6.609
+Iter 1985/2000 - Loss: -6.609
+Iter 1986/2000 - Loss: -6.609
+Iter 1987/2000 - Loss: -6.609
+Iter 1988/2000 - Loss: -6.609
+Iter 1989/2000 - Loss: -6.609
+Iter 1990/2000 - Loss: -6.609
+Iter 1991/2000 - Loss: -6.609
+Iter 1992/2000 - Loss: -6.609
+Iter 1993/2000 - Loss: -6.609
+Iter 1994/2000 - Loss: -6.610
+Iter 1995/2000 - Loss: -6.610
+Iter 1996/2000 - Loss: -6.610
+Iter 1997/2000 - Loss: -6.610
+Iter 1998/2000 - Loss: -6.610
+Iter 1999/2000 - Loss: -6.610
+Iter 2000/2000 - Loss: -6.610
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0027],
+        [0.0003]])
+Lengthscale: tensor([[[17.3765, 10.7517, 36.5715,  3.8835, 15.8578, 47.1282]],
+
+        [[21.7182, 40.7645,  8.0986,  1.0330,  1.8958, 20.8056]],
+
+        [[21.4440, 42.7574,  7.4241,  0.9386,  1.2145, 16.0782]],
+
+        [[20.5849, 37.0224, 16.6937,  1.3231,  1.8853, 48.8209]]])
+Signal Variance: tensor([ 0.1703,  1.6002, 10.8337,  0.5271])
+Estimated target variance: tensor([0.0329, 1.0480, 8.6324, 0.1795])
+N: 160
+Signal to noise ratio: tensor([23.1687, 63.0774, 63.2739, 44.7958])
+Bound on condition number: tensor([ 85887.4775, 636603.0193, 640574.1250, 321067.8049])
+Policy Optimizer learning rate:
+0.009843201517785073
+Experience 16, Iter 0, disc loss: 0.0018745881720904703, policy loss: 21.191457007157332
+Experience 16, Iter 1, disc loss: 0.001863328335169316, policy loss: 21.581562888428742
+Experience 16, Iter 2, disc loss: 0.001852250316999949, policy loss: 22.64612356112708
+Experience 16, Iter 3, disc loss: 0.0018412300895423062, policy loss: 22.263332892880598
+Experience 16, Iter 4, disc loss: 0.0018305267921347294, policy loss: 22.04545363288092
+Experience 16, Iter 5, disc loss: 0.0018196111282582702, policy loss: 22.116538385389752
+Experience 16, Iter 6, disc loss: 0.0018089216298167526, policy loss: 22.790500097857844
+Experience 16, Iter 7, disc loss: 0.0017984727393781058, policy loss: 22.527195597938395
+Experience 16, Iter 8, disc loss: 0.0017878835850049987, policy loss: 23.075052173794003
+Experience 16, Iter 9, disc loss: 0.001777578758179597, policy loss: 22.071703462354996
+Experience 16, Iter 10, disc loss: 0.001767319063660562, policy loss: 22.68584675028947
+Experience 16, Iter 11, disc loss: 0.0017573010086812065, policy loss: 22.03181619681194
+Experience 16, Iter 12, disc loss: 0.001747622056747667, policy loss: 22.380397477900864
+Experience 16, Iter 13, disc loss: 0.001737276381952693, policy loss: 22.40730073997883
+Experience 16, Iter 14, disc loss: 0.0017275033253717296, policy loss: 21.728676412508925
+Experience 16, Iter 15, disc loss: 0.0017178787919917714, policy loss: 22.227716842212992
+Experience 16, Iter 16, disc loss: 0.0017082789258914457, policy loss: 21.828240853538727
+Experience 16, Iter 17, disc loss: 0.001698666214848767, policy loss: 22.092269573172985
+Experience 16, Iter 18, disc loss: 0.0016894120113772205, policy loss: 21.777873452646343
+Experience 16, Iter 19, disc loss: 0.0016800787114474543, policy loss: 22.006722218360274
+Experience 16, Iter 20, disc loss: 0.001670751806343683, policy loss: 22.478130676648973
+Experience 16, Iter 21, disc loss: 0.0016616223899258485, policy loss: 22.007274460408624
+Experience 16, Iter 22, disc loss: 0.001652523169867355, policy loss: 22.88081431931793
+Experience 16, Iter 23, disc loss: 0.001643800457739945, policy loss: 21.40024725255249
+Experience 16, Iter 24, disc loss: 0.0016347546346996745, policy loss: 22.489741677409874
+Experience 16, Iter 25, disc loss: 0.001626018978689306, policy loss: 22.00616628067202
+Experience 16, Iter 26, disc loss: 0.001617317684241719, policy loss: 21.430115578186648
+Experience 16, Iter 27, disc loss: 0.0016089647349129541, policy loss: 21.359940726671134
+Experience 16, Iter 28, disc loss: 0.0016003883586618443, policy loss: 21.415399309272125
+Experience 16, Iter 29, disc loss: 0.0015917263682797625, policy loss: 22.03917712950537
+Experience 16, Iter 30, disc loss: 0.0015835489300088863, policy loss: 20.707179817289084
+Experience 16, Iter 31, disc loss: 0.0015752880880069778, policy loss: 21.295000520122414
+Experience 16, Iter 32, disc loss: 0.001566993634128907, policy loss: 21.703205697248173
+Experience 16, Iter 33, disc loss: 0.0015589604404510674, policy loss: 20.217246110808595
+Experience 16, Iter 34, disc loss: 0.0015507319307467037, policy loss: 21.643931562493833
+Experience 16, Iter 35, disc loss: 0.0015428060246304603, policy loss: 21.27691314468186
+Experience 16, Iter 36, disc loss: 0.001534924701059194, policy loss: 20.460338920771896
+Experience 16, Iter 37, disc loss: 0.0015271495011647334, policy loss: 21.681466503864247
+Experience 16, Iter 38, disc loss: 0.0015193831712084667, policy loss: 21.038526678702347
+Experience 16, Iter 39, disc loss: 0.0015119216019584985, policy loss: 21.19596021697607
+Experience 16, Iter 40, disc loss: 0.001504337974223466, policy loss: 21.015588124441972
+Experience 16, Iter 41, disc loss: 0.0014963647088041402, policy loss: 21.133177476021274
+Experience 16, Iter 42, disc loss: 0.0014890804671645204, policy loss: 20.155393764668396
+Experience 16, Iter 43, disc loss: 0.001482584607533269, policy loss: 20.717257767535457
+Experience 16, Iter 44, disc loss: 0.001474169712000595, policy loss: 21.15577583893083
+Experience 16, Iter 45, disc loss: 0.0014669617613310803, policy loss: 20.40521429879096
+Experience 16, Iter 46, disc loss: 0.0014596260396756654, policy loss: 20.79517301963681
+Experience 16, Iter 47, disc loss: 0.0014526759483052738, policy loss: 19.749580437290426
+Experience 16, Iter 48, disc loss: 0.0014456098412524896, policy loss: 20.556952891867354
+Experience 16, Iter 49, disc loss: 0.0014382707691114214, policy loss: 20.403013585215465
+Experience: 17
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0095],
+        [0.2628],
+        [2.1490],
+        [0.0435]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0488, 0.3865, 1.9492, 0.0343, 0.0293, 6.6343]],
+
+        [[0.0488, 0.3865, 1.9492, 0.0343, 0.0293, 6.6343]],
+
+        [[0.0488, 0.3865, 1.9492, 0.0343, 0.0293, 6.6343]],
+
+        [[0.0488, 0.3865, 1.9492, 0.0343, 0.0293, 6.6343]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0380, 1.0514, 8.5959, 0.1738], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0380, 1.0514, 8.5959, 0.1738])
+N: 170
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([681.0000, 681.0000, 681.0000, 681.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.982
+Iter 2/2000 - Loss: 3.886
+Iter 3/2000 - Loss: 3.674
+Iter 4/2000 - Loss: 3.573
+Iter 5/2000 - Loss: 3.486
+Iter 6/2000 - Loss: 3.339
+Iter 7/2000 - Loss: 3.162
+Iter 8/2000 - Loss: 2.989
+Iter 9/2000 - Loss: 2.825
+Iter 10/2000 - Loss: 2.657
+Iter 11/2000 - Loss: 2.476
+Iter 12/2000 - Loss: 2.281
+Iter 13/2000 - Loss: 2.074
+Iter 14/2000 - Loss: 1.860
+Iter 15/2000 - Loss: 1.640
+Iter 16/2000 - Loss: 1.415
+Iter 17/2000 - Loss: 1.183
+Iter 18/2000 - Loss: 0.945
+Iter 19/2000 - Loss: 0.701
+Iter 20/2000 - Loss: 0.453
+Iter 1981/2000 - Loss: -6.691
+Iter 1982/2000 - Loss: -6.691
+Iter 1983/2000 - Loss: -6.691
+Iter 1984/2000 - Loss: -6.691
+Iter 1985/2000 - Loss: -6.691
+Iter 1986/2000 - Loss: -6.691
+Iter 1987/2000 - Loss: -6.691
+Iter 1988/2000 - Loss: -6.691
+Iter 1989/2000 - Loss: -6.691
+Iter 1990/2000 - Loss: -6.691
+Iter 1991/2000 - Loss: -6.691
+Iter 1992/2000 - Loss: -6.691
+Iter 1993/2000 - Loss: -6.691
+Iter 1994/2000 - Loss: -6.691
+Iter 1995/2000 - Loss: -6.691
+Iter 1996/2000 - Loss: -6.691
+Iter 1997/2000 - Loss: -6.691
+Iter 1998/2000 - Loss: -6.692
+Iter 1999/2000 - Loss: -6.692
+Iter 2000/2000 - Loss: -6.692
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0027],
+        [0.0003]])
+Lengthscale: tensor([[[18.0121, 11.9522, 34.7908,  3.2877, 17.6969, 44.3922]],
+
+        [[24.1001, 44.0599,  8.0235,  1.0284,  1.8740, 19.0314]],
+
+        [[22.9941, 45.6656,  7.5321,  0.9478,  1.2151, 16.3285]],
+
+        [[20.5248, 38.7616, 14.3422,  1.3219,  1.8908, 47.4313]]])
+Signal Variance: tensor([ 0.1838,  1.4085, 10.9086,  0.4455])
+Estimated target variance: tensor([0.0380, 1.0514, 8.5959, 0.1738])
+N: 170
+Signal to noise ratio: tensor([24.3459, 58.6375, 63.4408, 41.9451])
+Bound on condition number: tensor([100764.0393, 584521.4313, 684206.2078, 299097.5695])
+Policy Optimizer learning rate:
+0.009832836131379849
+Experience 17, Iter 0, disc loss: 0.0014313464664801677, policy loss: 20.699746133523014
+Experience 17, Iter 1, disc loss: 0.0014245520579774064, policy loss: 20.136116363180804
+Experience 17, Iter 2, disc loss: 0.0014175925046064316, policy loss: 20.716770439140106
+Experience 17, Iter 3, disc loss: 0.0014107905369820449, policy loss: 20.68650298075175
+Experience 17, Iter 4, disc loss: 0.001404271864140581, policy loss: 20.830633412924467
+Experience 17, Iter 5, disc loss: 0.001397425647140308, policy loss: 20.420854949649577
+Experience 17, Iter 6, disc loss: 0.0013906308201975764, policy loss: 20.345919920481048
+Experience 17, Iter 7, disc loss: 0.0013840968976214897, policy loss: 20.287332066588913
+Experience 17, Iter 8, disc loss: 0.0013776374057692872, policy loss: 21.202681229897124
+Experience 17, Iter 9, disc loss: 0.0013711157542189037, policy loss: 21.453558967256722
+Experience 17, Iter 10, disc loss: 0.0013646516314489564, policy loss: 21.805283923400957
+Experience 17, Iter 11, disc loss: 0.001358431325568865, policy loss: 22.33769963167773
+Experience 17, Iter 12, disc loss: 0.0013520051147250945, policy loss: 23.20323790144353
+Experience 17, Iter 13, disc loss: 0.001345749654686531, policy loss: 22.15030735076096
+Experience 17, Iter 14, disc loss: 0.0013406964812749, policy loss: 21.039865713735967
+Experience 17, Iter 15, disc loss: 0.0013334004680522187, policy loss: 23.0286707129097
+Experience 17, Iter 16, disc loss: 0.0013273969714308977, policy loss: 21.102039635267452
+Experience 17, Iter 17, disc loss: 0.0013212642216812772, policy loss: 21.561655441357818
+Experience 17, Iter 18, disc loss: 0.00131526342858171, policy loss: 22.014118652952995
+Experience 17, Iter 19, disc loss: 0.00130936238993657, policy loss: 21.479834449294138
+Experience 17, Iter 20, disc loss: 0.001303389585435176, policy loss: 21.51461666957125
+Experience 17, Iter 21, disc loss: 0.001297529054947257, policy loss: 20.845174245044912
+Experience 17, Iter 22, disc loss: 0.001291733597628881, policy loss: 20.49453070620008
+Experience 17, Iter 23, disc loss: 0.0012859834501648183, policy loss: 21.175355168431214
+Experience 17, Iter 24, disc loss: 0.0012802850564612367, policy loss: 21.23449581250224
+Experience 17, Iter 25, disc loss: 0.001274562352332488, policy loss: 20.93110386422337
+Experience 17, Iter 26, disc loss: 0.0012689621620902963, policy loss: 20.506951081305736
+Experience 17, Iter 27, disc loss: 0.0012632794901818747, policy loss: 21.013506761354584
+Experience 17, Iter 28, disc loss: 0.0012577993896142254, policy loss: 20.81722349758541
+Experience 17, Iter 29, disc loss: 0.0012522402527520194, policy loss: 20.746798788411123
+Experience 17, Iter 30, disc loss: 0.0012467782308315716, policy loss: 21.218743986042856
+Experience 17, Iter 31, disc loss: 0.001241393363530176, policy loss: 20.787278138233802
+Experience 17, Iter 32, disc loss: 0.001235960687019561, policy loss: 21.15687150551389
+Experience 17, Iter 33, disc loss: 0.0012308093604137685, policy loss: 20.288570969108754
+Experience 17, Iter 34, disc loss: 0.00122529243579339, policy loss: 20.489446113852935
+Experience 17, Iter 35, disc loss: 0.0012200001958807525, policy loss: 20.686152072918688
+Experience 17, Iter 36, disc loss: 0.001214769857502826, policy loss: 20.812570360768813
+Experience 17, Iter 37, disc loss: 0.0012095961101770498, policy loss: 20.886847127438653
+Experience 17, Iter 38, disc loss: 0.0012044519705476356, policy loss: 20.44913510478123
+Experience 17, Iter 39, disc loss: 0.0011993909201020554, policy loss: 20.007042655738125
+Experience 17, Iter 40, disc loss: 0.0011942365162706842, policy loss: 19.9199071654019
+Experience 17, Iter 41, disc loss: 0.0011892325376715869, policy loss: 20.67562045399837
+Experience 17, Iter 42, disc loss: 0.0011841844811836424, policy loss: 20.77968450289479
+Experience 17, Iter 43, disc loss: 0.0011793849816567636, policy loss: 20.711132587977644
+Experience 17, Iter 44, disc loss: 0.0011743377102448162, policy loss: 20.739601911267364
+Experience 17, Iter 45, disc loss: 0.0011693918888913309, policy loss: 20.667341599221235
+Experience 17, Iter 46, disc loss: 0.0011645580490406017, policy loss: 20.371703625839796
+Experience 17, Iter 47, disc loss: 0.001159722602236369, policy loss: 20.291367053487956
+Experience 17, Iter 48, disc loss: 0.0011549191318514522, policy loss: 20.3196130630199
+Experience 17, Iter 49, disc loss: 0.0011501238291227631, policy loss: 20.378465319905455
+Experience: 18
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0091],
+        [0.2655],
+        [2.2315],
+        [0.0440]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0475, 0.3743, 1.9827, 0.0357, 0.0285, 6.6311]],
+
+        [[0.0475, 0.3743, 1.9827, 0.0357, 0.0285, 6.6311]],
+
+        [[0.0475, 0.3743, 1.9827, 0.0357, 0.0285, 6.6311]],
+
+        [[0.0475, 0.3743, 1.9827, 0.0357, 0.0285, 6.6311]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0366, 1.0620, 8.9261, 0.1761], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0366, 1.0620, 8.9261, 0.1761])
+N: 180
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([721.0000, 721.0000, 721.0000, 721.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.001
+Iter 2/2000 - Loss: 3.905
+Iter 3/2000 - Loss: 3.694
+Iter 4/2000 - Loss: 3.594
+Iter 5/2000 - Loss: 3.510
+Iter 6/2000 - Loss: 3.366
+Iter 7/2000 - Loss: 3.194
+Iter 8/2000 - Loss: 3.026
+Iter 9/2000 - Loss: 2.866
+Iter 10/2000 - Loss: 2.702
+Iter 11/2000 - Loss: 2.524
+Iter 12/2000 - Loss: 2.332
+Iter 13/2000 - Loss: 2.131
+Iter 14/2000 - Loss: 1.921
+Iter 15/2000 - Loss: 1.706
+Iter 16/2000 - Loss: 1.483
+Iter 17/2000 - Loss: 1.252
+Iter 18/2000 - Loss: 1.013
+Iter 19/2000 - Loss: 0.768
+Iter 20/2000 - Loss: 0.518
+Iter 1981/2000 - Loss: -6.716
+Iter 1982/2000 - Loss: -6.716
+Iter 1983/2000 - Loss: -6.716
+Iter 1984/2000 - Loss: -6.716
+Iter 1985/2000 - Loss: -6.716
+Iter 1986/2000 - Loss: -6.716
+Iter 1987/2000 - Loss: -6.716
+Iter 1988/2000 - Loss: -6.716
+Iter 1989/2000 - Loss: -6.716
+Iter 1990/2000 - Loss: -6.716
+Iter 1991/2000 - Loss: -6.716
+Iter 1992/2000 - Loss: -6.716
+Iter 1993/2000 - Loss: -6.716
+Iter 1994/2000 - Loss: -6.716
+Iter 1995/2000 - Loss: -6.716
+Iter 1996/2000 - Loss: -6.716
+Iter 1997/2000 - Loss: -6.716
+Iter 1998/2000 - Loss: -6.716
+Iter 1999/2000 - Loss: -6.717
+Iter 2000/2000 - Loss: -6.717
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0027],
+        [0.0002]])
+Lengthscale: tensor([[[17.9896, 12.1785, 34.3260,  3.0082, 16.5996, 49.7451]],
+
+        [[23.3457, 42.8789,  8.0961,  1.1046,  1.6420, 22.1485]],
+
+        [[23.0255, 43.9971,  7.1075,  0.9295,  1.0129, 19.2652]],
+
+        [[20.9524, 38.9864, 12.6217,  1.3557,  1.7139, 47.1719]]])
+Signal Variance: tensor([ 0.1800,  1.7792, 11.2269,  0.3742])
+Estimated target variance: tensor([0.0366, 1.0620, 8.9261, 0.1761])
+N: 180
+Signal to noise ratio: tensor([24.5218, 64.7687, 64.2946, 38.9819])
+Bound on condition number: tensor([108238.6972, 755098.3699, 744085.0969, 273526.3882])
+Policy Optimizer learning rate:
+0.009822481660247987
+Experience 18, Iter 0, disc loss: 0.0011454045514715913, policy loss: 21.291191650127438
+Experience 18, Iter 1, disc loss: 0.0011406765317591645, policy loss: 21.312160305175652
+Experience 18, Iter 2, disc loss: 0.0011361638209219055, policy loss: 20.63947103298948
+Experience 18, Iter 3, disc loss: 0.001131445788670806, policy loss: 20.768877284773055
+Experience 18, Iter 4, disc loss: 0.0011269500708267614, policy loss: 20.966107165502045
+Experience 18, Iter 5, disc loss: 0.0011222436397505973, policy loss: 20.60417082800201
+Experience 18, Iter 6, disc loss: 0.0011176970853987347, policy loss: 20.61556864704584
+Experience 18, Iter 7, disc loss: 0.0011132491548254753, policy loss: 20.842192746557384
+Experience 18, Iter 8, disc loss: 0.0011087046595452052, policy loss: 20.200085204466465
+Experience 18, Iter 9, disc loss: 0.0011043721027061083, policy loss: 20.42258583788172
+Experience 18, Iter 10, disc loss: 0.0010998625604860918, policy loss: 20.625710685370326
+Experience 18, Iter 11, disc loss: 0.0010954971309866195, policy loss: 20.58535265402847
+Experience 18, Iter 12, disc loss: 0.0010911173598530206, policy loss: 21.065672142044473
+Experience 18, Iter 13, disc loss: 0.0010868670255375517, policy loss: 20.691458961485928
+Experience 18, Iter 14, disc loss: 0.001082541713815129, policy loss: 20.466971402018117
+Experience 18, Iter 15, disc loss: 0.001078401252474309, policy loss: 20.468368621633537
+Experience 18, Iter 16, disc loss: 0.0010741150715838118, policy loss: 20.475391448221334
+Experience 18, Iter 17, disc loss: 0.0010702597715756652, policy loss: 20.462951925595583
+Experience 18, Iter 18, disc loss: 0.0010659868171342954, policy loss: 20.221171660061465
+Experience 18, Iter 19, disc loss: 0.001061587239668402, policy loss: 20.244462860957533
+Experience 18, Iter 20, disc loss: 0.0010574704906144356, policy loss: 20.66837371882975
+Experience 18, Iter 21, disc loss: 0.0010534086732935924, policy loss: 20.42579333952368
+Experience 18, Iter 22, disc loss: 0.0010496121769243102, policy loss: 20.659453195379463
+Experience 18, Iter 23, disc loss: 0.001045310350175167, policy loss: 20.494292634416123
+Experience 18, Iter 24, disc loss: 0.0010413016477252561, policy loss: 20.444517893459896
+Experience 18, Iter 25, disc loss: 0.0010377290052140757, policy loss: 20.324981634338798
+Experience 18, Iter 26, disc loss: 0.0010335648908895896, policy loss: 20.569726572214787
+Experience 18, Iter 27, disc loss: 0.0010295183953555615, policy loss: 20.529964688609653
+Experience 18, Iter 28, disc loss: 0.0010256880918622572, policy loss: 20.13981518242494
+Experience 18, Iter 29, disc loss: 0.0010217006094789417, policy loss: 20.399294858378177
+Experience 18, Iter 30, disc loss: 0.001017862854425163, policy loss: 21.08005879897551
+Experience 18, Iter 31, disc loss: 0.001014019820737893, policy loss: 20.37140520127713
+Experience 18, Iter 32, disc loss: 0.0010102748081074638, policy loss: 20.350861210893875
+Experience 18, Iter 33, disc loss: 0.0010066164704726512, policy loss: 20.966948126781915
+Experience 18, Iter 34, disc loss: 0.0010027151980606687, policy loss: 20.512605287885936
+Experience 18, Iter 35, disc loss: 0.000999036333146438, policy loss: 20.35500003618133
+Experience 18, Iter 36, disc loss: 0.000995288244555832, policy loss: 19.88636478953768
+Experience 18, Iter 37, disc loss: 0.000991596790111338, policy loss: 20.284471638437633
+Experience 18, Iter 38, disc loss: 0.0009879485172399592, policy loss: 20.49190980235848
+Experience 18, Iter 39, disc loss: 0.0009843302043185005, policy loss: 20.495596796635695
+Experience 18, Iter 40, disc loss: 0.0009806928646248437, policy loss: 20.59062869066924
+Experience 18, Iter 41, disc loss: 0.0009771099683067133, policy loss: 20.483192861164788
+Experience 18, Iter 42, disc loss: 0.0009735663878016807, policy loss: 20.55577805154872
+Experience 18, Iter 43, disc loss: 0.0009700650506627172, policy loss: 20.209488481455715
+Experience 18, Iter 44, disc loss: 0.0009665216556153947, policy loss: 20.655341414896853
+Experience 18, Iter 45, disc loss: 0.0009629688015827364, policy loss: 20.8137227565323
+Experience 18, Iter 46, disc loss: 0.0009595798136523233, policy loss: 20.449861581310337
+Experience 18, Iter 47, disc loss: 0.0009560111081199287, policy loss: 20.652361342731936
+Experience 18, Iter 48, disc loss: 0.0009528401904720484, policy loss: 20.580501261921576
+Experience 18, Iter 49, disc loss: 0.0009492017337667671, policy loss: 20.767962072483556
+Experience: 19
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0090],
+        [0.2662],
+        [2.2574],
+        [0.0450]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0454, 0.3712, 2.0313, 0.0366, 0.0292, 6.6856]],
+
+        [[0.0454, 0.3712, 2.0313, 0.0366, 0.0292, 6.6856]],
+
+        [[0.0454, 0.3712, 2.0313, 0.0366, 0.0292, 6.6856]],
+
+        [[0.0454, 0.3712, 2.0313, 0.0366, 0.0292, 6.6856]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0360, 1.0647, 9.0297, 0.1801], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0360, 1.0647, 9.0297, 0.1801])
+N: 190
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([761.0000, 761.0000, 761.0000, 761.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.026
+Iter 2/2000 - Loss: 3.942
+Iter 3/2000 - Loss: 3.720
+Iter 4/2000 - Loss: 3.618
+Iter 5/2000 - Loss: 3.542
+Iter 6/2000 - Loss: 3.404
+Iter 7/2000 - Loss: 3.231
+Iter 8/2000 - Loss: 3.060
+Iter 9/2000 - Loss: 2.899
+Iter 10/2000 - Loss: 2.737
+Iter 11/2000 - Loss: 2.560
+Iter 12/2000 - Loss: 2.368
+Iter 13/2000 - Loss: 2.163
+Iter 14/2000 - Loss: 1.951
+Iter 15/2000 - Loss: 1.732
+Iter 16/2000 - Loss: 1.506
+Iter 17/2000 - Loss: 1.273
+Iter 18/2000 - Loss: 1.031
+Iter 19/2000 - Loss: 0.782
+Iter 20/2000 - Loss: 0.529
+Iter 1981/2000 - Loss: -6.741
+Iter 1982/2000 - Loss: -6.741
+Iter 1983/2000 - Loss: -6.741
+Iter 1984/2000 - Loss: -6.741
+Iter 1985/2000 - Loss: -6.741
+Iter 1986/2000 - Loss: -6.741
+Iter 1987/2000 - Loss: -6.741
+Iter 1988/2000 - Loss: -6.741
+Iter 1989/2000 - Loss: -6.741
+Iter 1990/2000 - Loss: -6.741
+Iter 1991/2000 - Loss: -6.741
+Iter 1992/2000 - Loss: -6.741
+Iter 1993/2000 - Loss: -6.741
+Iter 1994/2000 - Loss: -6.742
+Iter 1995/2000 - Loss: -6.742
+Iter 1996/2000 - Loss: -6.742
+Iter 1997/2000 - Loss: -6.742
+Iter 1998/2000 - Loss: -6.742
+Iter 1999/2000 - Loss: -6.742
+Iter 2000/2000 - Loss: -6.742
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0027],
+        [0.0003]])
+Lengthscale: tensor([[[17.9131, 12.1247, 34.1920,  2.4073, 15.6984, 56.1972]],
+
+        [[24.0485, 43.7751,  7.9204,  1.1085,  1.5603, 21.7203]],
+
+        [[24.1150, 46.4917,  7.0562,  0.9331,  1.0022, 20.0929]],
+
+        [[20.2476, 37.7623, 11.3656,  1.6017,  1.6152, 45.8210]]])
+Signal Variance: tensor([ 0.1660,  1.6674, 11.2243,  0.3550])
+Estimated target variance: tensor([0.0360, 1.0647, 9.0297, 0.1801])
+N: 190
+Signal to noise ratio: tensor([22.5795, 64.1222, 64.5697, 37.0860])
+Bound on condition number: tensor([ 96869.6381, 781215.0144, 792158.1327, 261321.0272])
+Policy Optimizer learning rate:
+0.009812138092895157
+Experience 19, Iter 0, disc loss: 0.0009458814042711145, policy loss: 21.095066092738065
+Experience 19, Iter 1, disc loss: 0.0009423809447956026, policy loss: 20.53576501745741
+Experience 19, Iter 2, disc loss: 0.0009390178251593655, policy loss: 20.949043200031642
+Experience 19, Iter 3, disc loss: 0.0009356957136872424, policy loss: 20.55765321835441
+Experience 19, Iter 4, disc loss: 0.0009324238928609281, policy loss: 20.608708806171002
+Experience 19, Iter 5, disc loss: 0.0009291229026137235, policy loss: 21.212683246452364
+Experience 19, Iter 6, disc loss: 0.0009257672242317917, policy loss: 20.77222453445308
+Experience 19, Iter 7, disc loss: 0.0009224962029957069, policy loss: 21.004051755621145
+Experience 19, Iter 8, disc loss: 0.0009193352573441015, policy loss: 21.163803910197277
+Experience 19, Iter 9, disc loss: 0.0009160727299858982, policy loss: 21.174538306576586
+Experience 19, Iter 10, disc loss: 0.0009128524145015406, policy loss: 20.69425132113256
+Experience 19, Iter 11, disc loss: 0.0009097287509244408, policy loss: 21.681021736928457
+Experience 19, Iter 12, disc loss: 0.0009065469223528549, policy loss: 20.894974012096124
+Experience 19, Iter 13, disc loss: 0.0009033715446066277, policy loss: 20.483702993817467
+Experience 19, Iter 14, disc loss: 0.0009003446554489962, policy loss: 20.578290768856768
+Experience 19, Iter 15, disc loss: 0.0008972631522657575, policy loss: 20.4514012770666
+Experience 19, Iter 16, disc loss: 0.0008940310650366871, policy loss: 20.611691609091856
+Experience 19, Iter 17, disc loss: 0.0008909611430254375, policy loss: 20.632545478276363
+Experience 19, Iter 18, disc loss: 0.000887950571433114, policy loss: 21.397980105630236
+Experience 19, Iter 19, disc loss: 0.0008850968960430824, policy loss: 20.59966361820527
+Experience 19, Iter 20, disc loss: 0.0008818086880364471, policy loss: 21.257777541271356
+Experience 19, Iter 21, disc loss: 0.0008787860127682586, policy loss: 21.494926585696223
+Experience 19, Iter 22, disc loss: 0.0008758567971836349, policy loss: 20.788786176011204
+Experience 19, Iter 23, disc loss: 0.0008728450282903264, policy loss: 20.734658155065844
+Experience 19, Iter 24, disc loss: 0.0008699120677136429, policy loss: 20.72404316858939
+Experience 19, Iter 25, disc loss: 0.0008670755665210983, policy loss: 20.04601324163354
+Experience 19, Iter 26, disc loss: 0.0008640167986332945, policy loss: 20.7010112481821
+Experience 19, Iter 27, disc loss: 0.0008610796441430747, policy loss: 21.112358448879206
+Experience 19, Iter 28, disc loss: 0.0008582008532484, policy loss: 20.84916384654778
+Experience 19, Iter 29, disc loss: 0.0008553256629202612, policy loss: 21.28655474099384
+Experience 19, Iter 30, disc loss: 0.0008524874901497816, policy loss: 21.32503478707247
+Experience 19, Iter 31, disc loss: 0.0008496860643740715, policy loss: 21.60298304758247
+Experience 19, Iter 32, disc loss: 0.0008471498375726224, policy loss: 20.578738757351985
+Experience 19, Iter 33, disc loss: 0.0008440953553015581, policy loss: 21.25182218355289
+Experience 19, Iter 34, disc loss: 0.0008411555344341126, policy loss: 22.02681048515679
+Experience 19, Iter 35, disc loss: 0.0008384258843834665, policy loss: 21.446395111445852
+Experience 19, Iter 36, disc loss: 0.0008356812242462043, policy loss: 21.30432035538943
+Experience 19, Iter 37, disc loss: 0.0008328804223029451, policy loss: 21.500655629329323
+Experience 19, Iter 38, disc loss: 0.0008301541530607916, policy loss: 20.744955076773152
+Experience 19, Iter 39, disc loss: 0.0008275049146049707, policy loss: 20.46765979361732
+Experience 19, Iter 40, disc loss: 0.0008251455237246893, policy loss: 21.271354476234645
+Experience 19, Iter 41, disc loss: 0.0008223851048942245, policy loss: 21.08174111433368
+Experience 19, Iter 42, disc loss: 0.0008193327166724718, policy loss: 21.512472224271463
+Experience 19, Iter 43, disc loss: 0.0008168912002520249, policy loss: 21.221800702070517
+Experience 19, Iter 44, disc loss: 0.000814077497056072, policy loss: 20.823342013563
+Experience 19, Iter 45, disc loss: 0.0008115448862794205, policy loss: 20.883318815988197
+Experience 19, Iter 46, disc loss: 0.0008090399737375208, policy loss: 21.281639226291375
+Experience 19, Iter 47, disc loss: 0.000806459400864342, policy loss: 21.1418569130721
+Experience 19, Iter 48, disc loss: 0.0008036259731691988, policy loss: 20.457885601156768
+Experience 19, Iter 49, disc loss: 0.0008010061184572946, policy loss: 21.796166178681997
+Experience: 20
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0087],
+        [0.2647],
+        [2.2644],
+        [0.0441]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0437, 0.3605, 1.9999, 0.0367, 0.0289, 6.7043]],
+
+        [[0.0437, 0.3605, 1.9999, 0.0367, 0.0289, 6.7043]],
+
+        [[0.0437, 0.3605, 1.9999, 0.0367, 0.0289, 6.7043]],
+
+        [[0.0437, 0.3605, 1.9999, 0.0367, 0.0289, 6.7043]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0348, 1.0587, 9.0575, 0.1766], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0348, 1.0587, 9.0575, 0.1766])
+N: 200
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([801.0000, 801.0000, 801.0000, 801.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.015
+Iter 2/2000 - Loss: 3.938
+Iter 3/2000 - Loss: 3.711
+Iter 4/2000 - Loss: 3.611
+Iter 5/2000 - Loss: 3.542
+Iter 6/2000 - Loss: 3.408
+Iter 7/2000 - Loss: 3.238
+Iter 8/2000 - Loss: 3.071
+Iter 9/2000 - Loss: 2.915
+Iter 10/2000 - Loss: 2.757
+Iter 11/2000 - Loss: 2.584
+Iter 12/2000 - Loss: 2.395
+Iter 13/2000 - Loss: 2.192
+Iter 14/2000 - Loss: 1.981
+Iter 15/2000 - Loss: 1.762
+Iter 16/2000 - Loss: 1.535
+Iter 17/2000 - Loss: 1.301
+Iter 18/2000 - Loss: 1.057
+Iter 19/2000 - Loss: 0.805
+Iter 20/2000 - Loss: 0.548
+Iter 1981/2000 - Loss: -6.820
+Iter 1982/2000 - Loss: -6.820
+Iter 1983/2000 - Loss: -6.820
+Iter 1984/2000 - Loss: -6.820
+Iter 1985/2000 - Loss: -6.820
+Iter 1986/2000 - Loss: -6.820
+Iter 1987/2000 - Loss: -6.820
+Iter 1988/2000 - Loss: -6.820
+Iter 1989/2000 - Loss: -6.820
+Iter 1990/2000 - Loss: -6.820
+Iter 1991/2000 - Loss: -6.820
+Iter 1992/2000 - Loss: -6.820
+Iter 1993/2000 - Loss: -6.820
+Iter 1994/2000 - Loss: -6.820
+Iter 1995/2000 - Loss: -6.820
+Iter 1996/2000 - Loss: -6.821
+Iter 1997/2000 - Loss: -6.821
+Iter 1998/2000 - Loss: -6.821
+Iter 1999/2000 - Loss: -6.821
+Iter 2000/2000 - Loss: -6.821
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0026],
+        [0.0003]])
+Lengthscale: tensor([[[17.4664, 11.8790, 34.6329,  2.2946, 14.5982, 61.8779]],
+
+        [[23.5355, 43.1369,  8.0709,  1.0592,  1.6196, 22.8705]],
+
+        [[23.1462, 46.0875,  6.9612,  0.9125,  1.0324, 19.9655]],
+
+        [[20.0241, 35.1369, 10.9773,  1.6971,  1.6164, 45.0269]]])
+Signal Variance: tensor([ 0.1595,  1.7568, 10.9586,  0.3506])
+Estimated target variance: tensor([0.0348, 1.0587, 9.0575, 0.1766])
+N: 200
+Signal to noise ratio: tensor([22.0376, 66.3541, 64.5986, 36.4151])
+Bound on condition number: tensor([ 97132.0723, 880573.9264, 834597.9447, 265212.4791])
+Policy Optimizer learning rate:
+0.00980180541783913
+Experience 20, Iter 0, disc loss: 0.0007984712429587619, policy loss: 20.63840150803138
+Experience 20, Iter 1, disc loss: 0.0007961033592112458, policy loss: 20.809306464744175
+Experience 20, Iter 2, disc loss: 0.0007933537557191003, policy loss: 21.97734858168914
+Experience 20, Iter 3, disc loss: 0.0007909740425536543, policy loss: 20.407841065315704
+Experience 20, Iter 4, disc loss: 0.0007883855040914387, policy loss: 21.04694691737493
+Experience 20, Iter 5, disc loss: 0.0007858279244947538, policy loss: 20.55874479275166
+Experience 20, Iter 6, disc loss: 0.0007835062435005127, policy loss: 19.195416441884927
+Experience 20, Iter 7, disc loss: 0.0007809889588994832, policy loss: 20.582157614018467
+Experience 20, Iter 8, disc loss: 0.0007785064569799532, policy loss: 20.71261617267466
+Experience 20, Iter 9, disc loss: 0.0007761376979852311, policy loss: 21.08654905940861
+Experience 20, Iter 10, disc loss: 0.0007736087374559807, policy loss: 21.69015891420355
+Experience 20, Iter 11, disc loss: 0.0007713896255631229, policy loss: 21.292874640444133
+Experience 20, Iter 12, disc loss: 0.0007688812711618828, policy loss: 20.637266059359554
+Experience 20, Iter 13, disc loss: 0.0007663723318773964, policy loss: 20.989555060167262
+Experience 20, Iter 14, disc loss: 0.0007640126380736819, policy loss: 21.088185461317515
+Experience 20, Iter 15, disc loss: 0.000761634394040691, policy loss: 20.22718773728486
+Experience 20, Iter 16, disc loss: 0.0007592241129548743, policy loss: 21.07259453971098
+Experience 20, Iter 17, disc loss: 0.0007568611490318041, policy loss: 20.511109805715062
+Experience 20, Iter 18, disc loss: 0.0007546637796958551, policy loss: 20.312998599082317
+Experience 20, Iter 19, disc loss: 0.0007523626791664057, policy loss: 20.56963737388026
+Experience 20, Iter 20, disc loss: 0.000749941250059066, policy loss: 20.675893580407454
+Experience 20, Iter 21, disc loss: 0.000747603820193202, policy loss: 20.478524270759973
+Experience 20, Iter 22, disc loss: 0.0007452231367299828, policy loss: 21.050781776299946
+Experience 20, Iter 23, disc loss: 0.0007429568938481691, policy loss: 21.54133947065648
+Experience 20, Iter 24, disc loss: 0.0007407035491316656, policy loss: 20.732210295568876
+Experience 20, Iter 25, disc loss: 0.0007384395384289547, policy loss: 21.043766816791916
+Experience 20, Iter 26, disc loss: 0.000736180543359375, policy loss: 21.736191728974863
+Experience 20, Iter 27, disc loss: 0.0007339490519025881, policy loss: 21.148416550297583
+Experience 20, Iter 28, disc loss: 0.0007317353697064677, policy loss: 21.307657073476133
+Experience 20, Iter 29, disc loss: 0.0007295247648885175, policy loss: 20.395858851338787
+Experience 20, Iter 30, disc loss: 0.0007273141345678943, policy loss: 20.612454023105315
+Experience 20, Iter 31, disc loss: 0.0007251295446581577, policy loss: 20.73302548230091
+Experience 20, Iter 32, disc loss: 0.0007229436787234594, policy loss: 20.409532788333188
+Experience 20, Iter 33, disc loss: 0.000720777911580751, policy loss: 20.918921899290712
+Experience 20, Iter 34, disc loss: 0.000718623720708781, policy loss: 21.81188341659968
+Experience 20, Iter 35, disc loss: 0.0007164734053139324, policy loss: 21.62216163902712
+Experience 20, Iter 36, disc loss: 0.0007143454330217143, policy loss: 21.43819769132519
+Experience 20, Iter 37, disc loss: 0.0007122141794323973, policy loss: 20.535124762942807
+Experience 20, Iter 38, disc loss: 0.0007101011429527012, policy loss: 20.602138862968246
+Experience 20, Iter 39, disc loss: 0.0007079903035872968, policy loss: 20.322023417182958
+Experience 20, Iter 40, disc loss: 0.0007058971030283025, policy loss: 20.332454968364342
+Experience 20, Iter 41, disc loss: 0.0007038086149587165, policy loss: 20.4308216856589
+Experience 20, Iter 42, disc loss: 0.0007017477878723979, policy loss: 20.328932462756136
+Experience 20, Iter 43, disc loss: 0.0006997866447226016, policy loss: 19.993914927746935
+Experience 20, Iter 44, disc loss: 0.0006976551721350959, policy loss: 20.272951381539055
+Experience 20, Iter 45, disc loss: 0.0006955753359968502, policy loss: 20.299443986386002
+Experience 20, Iter 46, disc loss: 0.0006935401783858207, policy loss: 20.840125701212223
+Experience 20, Iter 47, disc loss: 0.0006915288880722858, policy loss: 20.34246445084397
+Experience 20, Iter 48, disc loss: 0.0006895009482409744, policy loss: 19.824498774699308
+Experience 20, Iter 49, disc loss: 0.0006875045048410839, policy loss: 20.048839589953126
+Experience: 21
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0085],
+        [0.2675],
+        [2.3251],
+        [0.0447]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0422, 0.3540, 2.0391, 0.0377, 0.0283, 6.7454]],
+
+        [[0.0422, 0.3540, 2.0391, 0.0377, 0.0283, 6.7454]],
+
+        [[0.0422, 0.3540, 2.0391, 0.0377, 0.0283, 6.7454]],
+
+        [[0.0422, 0.3540, 2.0391, 0.0377, 0.0283, 6.7454]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0340, 1.0699, 9.3002, 0.1787], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0340, 1.0699, 9.3002, 0.1787])
+N: 210
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([841.0000, 841.0000, 841.0000, 841.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.045
+Iter 2/2000 - Loss: 3.973
+Iter 3/2000 - Loss: 3.745
+Iter 4/2000 - Loss: 3.648
+Iter 5/2000 - Loss: 3.583
+Iter 6/2000 - Loss: 3.452
+Iter 7/2000 - Loss: 3.285
+Iter 8/2000 - Loss: 3.121
+Iter 9/2000 - Loss: 2.968
+Iter 10/2000 - Loss: 2.813
+Iter 11/2000 - Loss: 2.641
+Iter 12/2000 - Loss: 2.451
+Iter 13/2000 - Loss: 2.248
+Iter 14/2000 - Loss: 2.035
+Iter 15/2000 - Loss: 1.814
+Iter 16/2000 - Loss: 1.585
+Iter 17/2000 - Loss: 1.345
+Iter 18/2000 - Loss: 1.095
+Iter 19/2000 - Loss: 0.835
+Iter 20/2000 - Loss: 0.568
+Iter 1981/2000 - Loss: -6.878
+Iter 1982/2000 - Loss: -6.878
+Iter 1983/2000 - Loss: -6.878
+Iter 1984/2000 - Loss: -6.878
+Iter 1985/2000 - Loss: -6.878
+Iter 1986/2000 - Loss: -6.878
+Iter 1987/2000 - Loss: -6.878
+Iter 1988/2000 - Loss: -6.878
+Iter 1989/2000 - Loss: -6.878
+Iter 1990/2000 - Loss: -6.879
+Iter 1991/2000 - Loss: -6.879
+Iter 1992/2000 - Loss: -6.879
+Iter 1993/2000 - Loss: -6.879
+Iter 1994/2000 - Loss: -6.879
+Iter 1995/2000 - Loss: -6.879
+Iter 1996/2000 - Loss: -6.879
+Iter 1997/2000 - Loss: -6.879
+Iter 1998/2000 - Loss: -6.879
+Iter 1999/2000 - Loss: -6.879
+Iter 2000/2000 - Loss: -6.879
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0027],
+        [0.0003]])
+Lengthscale: tensor([[[17.3338, 11.8898, 32.9645,  2.2231, 14.9116, 63.7421]],
+
+        [[23.9990, 44.1251,  8.1225,  1.0395,  1.4633, 26.3056]],
+
+        [[23.8780, 47.0079,  6.8621,  0.9027,  0.9961, 21.5106]],
+
+        [[19.6520, 34.3913, 12.8079,  1.5245,  1.8337, 45.7852]]])
+Signal Variance: tensor([ 0.1585,  2.0259, 11.6816,  0.3858])
+Estimated target variance: tensor([0.0340, 1.0699, 9.3002, 0.1787])
+N: 210
+Signal to noise ratio: tensor([22.3149, 71.9193, 66.2954, 37.4172])
+Bound on condition number: tensor([ 104571.7488, 1086202.2822,  922966.4265,  294011.3769])
+Policy Optimizer learning rate:
+0.009791483623609768
+Experience 21, Iter 0, disc loss: 0.0006855099450367797, policy loss: 20.563535448458534
+Experience 21, Iter 1, disc loss: 0.0006835278837531976, policy loss: 20.688457637643232
+Experience 21, Iter 2, disc loss: 0.0006815500599798178, policy loss: 20.77183052778375
+Experience 21, Iter 3, disc loss: 0.0006795916999151686, policy loss: 19.585730207180536
+Experience 21, Iter 4, disc loss: 0.000677644464732531, policy loss: 20.172180292794287
+Experience 21, Iter 5, disc loss: 0.0006756843870270972, policy loss: 20.103571031565902
+Experience 21, Iter 6, disc loss: 0.0006737550690047799, policy loss: 20.529730049397045
+Experience 21, Iter 7, disc loss: 0.0006718208931099427, policy loss: 19.829939879394534
+Experience 21, Iter 8, disc loss: 0.0006699462745703037, policy loss: 20.616680389207076
+Experience 21, Iter 9, disc loss: 0.0006679928737616655, policy loss: 20.451449473606964
+Experience 21, Iter 10, disc loss: 0.0006660962022608721, policy loss: 19.58050106401833
+Experience 21, Iter 11, disc loss: 0.0006642075061290187, policy loss: 20.117659721061862
+Experience 21, Iter 12, disc loss: 0.0006623227834614368, policy loss: 20.117508746401068
+Experience 21, Iter 13, disc loss: 0.0006604477106020611, policy loss: 20.91659390302427
+Experience 21, Iter 14, disc loss: 0.000658579956245109, policy loss: 19.83476761306024
+Experience 21, Iter 15, disc loss: 0.0006567321664011843, policy loss: 19.5976315304769
+Experience 21, Iter 16, disc loss: 0.0006548797715635211, policy loss: 20.201249030099884
+Experience 21, Iter 17, disc loss: 0.0006530306885274798, policy loss: 20.431433364365454
+Experience 21, Iter 18, disc loss: 0.0006512112388701991, policy loss: 19.714968777440397
+Experience 21, Iter 19, disc loss: 0.0006493782849506935, policy loss: 20.06002563426949
+Experience 21, Iter 20, disc loss: 0.000647570682817032, policy loss: 19.855804767902292
+Experience 21, Iter 21, disc loss: 0.0006457646650848751, policy loss: 20.323844750810824
+Experience 21, Iter 22, disc loss: 0.0006439694491937477, policy loss: 19.80416388370275
+Experience 21, Iter 23, disc loss: 0.0006421791679411113, policy loss: 19.908083985782568
+Experience 21, Iter 24, disc loss: 0.0006404142418570057, policy loss: 19.462456057811085
+Experience 21, Iter 25, disc loss: 0.0006386450817720854, policy loss: 19.444794129945915
+Experience 21, Iter 26, disc loss: 0.0006368793756907016, policy loss: 20.025229272070163
+Experience 21, Iter 27, disc loss: 0.0006351150559443109, policy loss: 20.941040403204504
+Experience 21, Iter 28, disc loss: 0.0006333699468227942, policy loss: 19.547547406305625
+Experience 21, Iter 29, disc loss: 0.0006316360223845959, policy loss: 19.66620012500448
+Experience 21, Iter 30, disc loss: 0.0006299064355567921, policy loss: 19.50486364610202
+Experience 21, Iter 31, disc loss: 0.0006281771996089898, policy loss: 20.12072631541413
+Experience 21, Iter 32, disc loss: 0.00062645429587267, policy loss: 20.087556689573365
+Experience 21, Iter 33, disc loss: 0.0006247496466444384, policy loss: 20.198989764538062
+Experience 21, Iter 34, disc loss: 0.0006230542930525493, policy loss: 20.28124089646684
+Experience 21, Iter 35, disc loss: 0.0006213556393261699, policy loss: 19.817371021650544
+Experience 21, Iter 36, disc loss: 0.0006196710269097172, policy loss: 20.895642369217555
+Experience 21, Iter 37, disc loss: 0.000618002556249585, policy loss: 19.93697358192554
+Experience 21, Iter 38, disc loss: 0.0006163241770961299, policy loss: 20.23724674363291
+Experience 21, Iter 39, disc loss: 0.0006146615093392854, policy loss: 19.858692506882917
+Experience 21, Iter 40, disc loss: 0.0006130092860662324, policy loss: 20.460604976039612
+Experience 21, Iter 41, disc loss: 0.000611347356940519, policy loss: 20.406404484094328
+Experience 21, Iter 42, disc loss: 0.0006097081900645835, policy loss: 19.71799323579917
+Experience 21, Iter 43, disc loss: 0.0006095849272701963, policy loss: 20.215744206186084
+Experience 21, Iter 44, disc loss: 0.0006064432489496804, policy loss: 20.531832935790817
+Experience 21, Iter 45, disc loss: 0.0006048320355610562, policy loss: 20.402377226522297
+Experience 21, Iter 46, disc loss: 0.0006032177946240068, policy loss: 20.186436762682384
+Experience 21, Iter 47, disc loss: 0.00060161857826663, policy loss: 19.13024043313975
+Experience 21, Iter 48, disc loss: 0.0006000038526622075, policy loss: 20.27360103492913
+Experience 21, Iter 49, disc loss: 0.0005984148028918836, policy loss: 19.67331174756564
+Experience: 22
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0083],
+        [0.2672],
+        [2.3620],
+        [0.0453]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0411, 0.3465, 2.0753, 0.0386, 0.0278, 6.7200]],
+
+        [[0.0411, 0.3465, 2.0753, 0.0386, 0.0278, 6.7200]],
+
+        [[0.0411, 0.3465, 2.0753, 0.0386, 0.0278, 6.7200]],
+
+        [[0.0411, 0.3465, 2.0753, 0.0386, 0.0278, 6.7200]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0332, 1.0687, 9.4481, 0.1812], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0332, 1.0687, 9.4481, 0.1812])
+N: 220
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([881.0000, 881.0000, 881.0000, 881.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.049
+Iter 2/2000 - Loss: 3.978
+Iter 3/2000 - Loss: 3.747
+Iter 4/2000 - Loss: 3.648
+Iter 5/2000 - Loss: 3.580
+Iter 6/2000 - Loss: 3.447
+Iter 7/2000 - Loss: 3.279
+Iter 8/2000 - Loss: 3.114
+Iter 9/2000 - Loss: 2.960
+Iter 10/2000 - Loss: 2.801
+Iter 11/2000 - Loss: 2.626
+Iter 12/2000 - Loss: 2.434
+Iter 13/2000 - Loss: 2.229
+Iter 14/2000 - Loss: 2.016
+Iter 15/2000 - Loss: 1.794
+Iter 16/2000 - Loss: 1.563
+Iter 17/2000 - Loss: 1.320
+Iter 18/2000 - Loss: 1.066
+Iter 19/2000 - Loss: 0.803
+Iter 20/2000 - Loss: 0.534
+Iter 1981/2000 - Loss: -7.014
+Iter 1982/2000 - Loss: -7.014
+Iter 1983/2000 - Loss: -7.014
+Iter 1984/2000 - Loss: -7.014
+Iter 1985/2000 - Loss: -7.014
+Iter 1986/2000 - Loss: -7.014
+Iter 1987/2000 - Loss: -7.014
+Iter 1988/2000 - Loss: -7.014
+Iter 1989/2000 - Loss: -7.014
+Iter 1990/2000 - Loss: -7.015
+Iter 1991/2000 - Loss: -7.015
+Iter 1992/2000 - Loss: -7.015
+Iter 1993/2000 - Loss: -7.015
+Iter 1994/2000 - Loss: -7.015
+Iter 1995/2000 - Loss: -7.015
+Iter 1996/2000 - Loss: -7.015
+Iter 1997/2000 - Loss: -7.015
+Iter 1998/2000 - Loss: -7.015
+Iter 1999/2000 - Loss: -7.015
+Iter 2000/2000 - Loss: -7.015
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0025],
+        [0.0003]])
+Lengthscale: tensor([[[16.7745, 11.6579, 33.7422,  2.1503, 14.0732, 63.6829]],
+
+        [[24.0336, 42.6357,  8.0928,  1.0242,  1.4642, 26.0220]],
+
+        [[23.7458, 45.3810,  6.7552,  0.9159,  0.9964, 21.5488]],
+
+        [[19.2052, 33.0977, 12.8864,  1.5598,  1.8610, 45.3152]]])
+Signal Variance: tensor([ 0.1563,  2.0052, 11.9761,  0.3924])
+Estimated target variance: tensor([0.0332, 1.0687, 9.4481, 0.1812])
+N: 220
+Signal to noise ratio: tensor([22.5879, 73.0900, 69.8606, 38.4004])
+Bound on condition number: tensor([ 112247.7903, 1175274.7299, 1073712.0729,  324411.8015])
+Policy Optimizer learning rate:
+0.009781172698749015
+Experience 22, Iter 0, disc loss: 0.000596825782651407, policy loss: 20.627555924522646
+Experience 22, Iter 1, disc loss: 0.0005952477432639533, policy loss: 20.65713194772372
+Experience 22, Iter 2, disc loss: 0.0005936757765996353, policy loss: 20.16567487856182
+Experience 22, Iter 3, disc loss: 0.0005921098057662631, policy loss: 20.829994580234448
+Experience 22, Iter 4, disc loss: 0.0005905592066824259, policy loss: 20.11073280526367
+Experience 22, Iter 5, disc loss: 0.0005890045826949516, policy loss: 20.33011009443692
+Experience 22, Iter 6, disc loss: 0.0005874662904996232, policy loss: 20.15598069210359
+Experience 22, Iter 7, disc loss: 0.000585924121290524, policy loss: 19.545161568123483
+Experience 22, Iter 8, disc loss: 0.0005843901180998221, policy loss: 20.24165330380778
+Experience 22, Iter 9, disc loss: 0.0005828661861648087, policy loss: 19.719435259930158
+Experience 22, Iter 10, disc loss: 0.0005813483281559443, policy loss: 20.955862725264392
+Experience 22, Iter 11, disc loss: 0.0005799679314279208, policy loss: 20.10565525183867
+Experience 22, Iter 12, disc loss: 0.0005783402858118803, policy loss: 19.662723130241517
+Experience 22, Iter 13, disc loss: 0.0005768313221820538, policy loss: 20.22888114654649
+Experience 22, Iter 14, disc loss: 0.000575343258258417, policy loss: 20.447686273775822
+Experience 22, Iter 15, disc loss: 0.0005738536073330705, policy loss: 19.293767482856115
+Experience 22, Iter 16, disc loss: 0.0005723750741148872, policy loss: 19.994643653530368
+Experience 22, Iter 17, disc loss: 0.0005708963472035054, policy loss: 20.53234755918915
+Experience 22, Iter 18, disc loss: 0.0005694338046927167, policy loss: 20.1537805049096
+Experience 22, Iter 19, disc loss: 0.0005679633583196851, policy loss: 21.073273801966963
+Experience 22, Iter 20, disc loss: 0.0005665121833371785, policy loss: 20.189451115511986
+Experience 22, Iter 21, disc loss: 0.0005650630548398984, policy loss: 19.982135860923208
+Experience 22, Iter 22, disc loss: 0.0005636146254722644, policy loss: 20.3192646847441
+Experience 22, Iter 23, disc loss: 0.0005621729710803558, policy loss: 20.273277220554572
+Experience 22, Iter 24, disc loss: 0.0005607437735884584, policy loss: 20.990157590437647
+Experience 22, Iter 25, disc loss: 0.0005593161666368273, policy loss: 20.349670118479395
+Experience 22, Iter 26, disc loss: 0.0005578996948621821, policy loss: 19.837569731479505
+Experience 22, Iter 27, disc loss: 0.0005565112131041154, policy loss: 19.590764248746133
+Experience 22, Iter 28, disc loss: 0.000555068010231373, policy loss: 20.179477529357484
+Experience 22, Iter 29, disc loss: 0.0005536646849691268, policy loss: 20.064753723461994
+Experience 22, Iter 30, disc loss: 0.000552272131759567, policy loss: 20.522203662511178
+Experience 22, Iter 31, disc loss: 0.0005509143132713676, policy loss: 19.915880606644535
+Experience 22, Iter 32, disc loss: 0.0005494919826964822, policy loss: 20.13044314192929
+Experience 22, Iter 33, disc loss: 0.0005481048795886489, policy loss: 20.66304184377083
+Experience 22, Iter 34, disc loss: 0.0005467437934480786, policy loss: 20.41753190215476
+Experience 22, Iter 35, disc loss: 0.0005453605211441094, policy loss: 20.749562430063243
+Experience 22, Iter 36, disc loss: 0.0005440034684545015, policy loss: 19.771692796370026
+Experience 22, Iter 37, disc loss: 0.0005426488103705724, policy loss: 20.335718176932332
+Experience 22, Iter 38, disc loss: 0.0005412927011428465, policy loss: 20.01093744004484
+Experience 22, Iter 39, disc loss: 0.0005399473870267711, policy loss: 19.79080820443805
+Experience 22, Iter 40, disc loss: 0.0005385931362926145, policy loss: 19.94406744868548
+Experience 22, Iter 41, disc loss: 0.0005372517457723978, policy loss: 20.45453701577209
+Experience 22, Iter 42, disc loss: 0.0005359188179137992, policy loss: 20.659928906152402
+Experience 22, Iter 43, disc loss: 0.0005345892562361615, policy loss: 20.836209716800642
+Experience 22, Iter 44, disc loss: 0.0005332733703519782, policy loss: 20.01822464384167
+Experience 22, Iter 45, disc loss: 0.0005319538748425782, policy loss: 20.11345118465851
+Experience 22, Iter 46, disc loss: 0.0005306455106330084, policy loss: 20.259834809062554
+Experience 22, Iter 47, disc loss: 0.0005293452316673656, policy loss: 19.91339492652113
+Experience 22, Iter 48, disc loss: 0.0005280325374945097, policy loss: 20.353547359761013
+Experience 22, Iter 49, disc loss: 0.0005267333515295403, policy loss: 20.924997264081544
+Experience: 23
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0081],
+        [0.2699],
+        [2.4023],
+        [0.0458]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0397, 0.3399, 2.1080, 0.0394, 0.0278, 6.7500]],
+
+        [[0.0397, 0.3399, 2.1080, 0.0394, 0.0278, 6.7500]],
+
+        [[0.0397, 0.3399, 2.1080, 0.0394, 0.0278, 6.7500]],
+
+        [[0.0397, 0.3399, 2.1080, 0.0394, 0.0278, 6.7500]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0323, 1.0796, 9.6090, 0.1830], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0323, 1.0796, 9.6090, 0.1830])
+N: 230
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([921.0000, 921.0000, 921.0000, 921.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.061
+Iter 2/2000 - Loss: 3.994
+Iter 3/2000 - Loss: 3.759
+Iter 4/2000 - Loss: 3.657
+Iter 5/2000 - Loss: 3.591
+Iter 6/2000 - Loss: 3.461
+Iter 7/2000 - Loss: 3.293
+Iter 8/2000 - Loss: 3.128
+Iter 9/2000 - Loss: 2.973
+Iter 10/2000 - Loss: 2.813
+Iter 11/2000 - Loss: 2.635
+Iter 12/2000 - Loss: 2.439
+Iter 13/2000 - Loss: 2.229
+Iter 14/2000 - Loss: 2.011
+Iter 15/2000 - Loss: 1.784
+Iter 16/2000 - Loss: 1.546
+Iter 17/2000 - Loss: 1.297
+Iter 18/2000 - Loss: 1.037
+Iter 19/2000 - Loss: 0.768
+Iter 20/2000 - Loss: 0.492
+Iter 1981/2000 - Loss: -7.080
+Iter 1982/2000 - Loss: -7.080
+Iter 1983/2000 - Loss: -7.080
+Iter 1984/2000 - Loss: -7.080
+Iter 1985/2000 - Loss: -7.080
+Iter 1986/2000 - Loss: -7.080
+Iter 1987/2000 - Loss: -7.080
+Iter 1988/2000 - Loss: -7.080
+Iter 1989/2000 - Loss: -7.080
+Iter 1990/2000 - Loss: -7.081
+Iter 1991/2000 - Loss: -7.081
+Iter 1992/2000 - Loss: -7.081
+Iter 1993/2000 - Loss: -7.081
+Iter 1994/2000 - Loss: -7.081
+Iter 1995/2000 - Loss: -7.081
+Iter 1996/2000 - Loss: -7.081
+Iter 1997/2000 - Loss: -7.081
+Iter 1998/2000 - Loss: -7.081
+Iter 1999/2000 - Loss: -7.081
+Iter 2000/2000 - Loss: -7.081
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0026],
+        [0.0003]])
+Lengthscale: tensor([[[16.2830, 11.7165, 31.0662,  2.1474, 14.4400, 65.8634]],
+
+        [[23.8428, 42.0835,  8.1404,  0.9859,  1.4465, 26.5460]],
+
+        [[23.6736, 44.9849,  6.8136,  0.9150,  0.9655, 21.7182]],
+
+        [[18.9942, 33.4427, 12.9016,  1.5585,  1.7875, 46.0868]]])
+Signal Variance: tensor([ 0.1551,  2.0784, 11.8640,  0.3923])
+Estimated target variance: tensor([0.0323, 1.0796, 9.6090, 0.1830])
+N: 230
+Signal to noise ratio: tensor([22.4705, 75.8794, 68.0722, 38.7950])
+Bound on condition number: tensor([ 116133.6685, 1324268.3341, 1065780.9917,  346162.7131])
+Policy Optimizer learning rate:
+0.009770872631810878
+Experience 23, Iter 0, disc loss: 0.0005254373261535441, policy loss: 20.569713240566525
+Experience 23, Iter 1, disc loss: 0.0005242185306753881, policy loss: 20.085281367010378
+Experience 23, Iter 2, disc loss: 0.0005228954137764562, policy loss: 19.857353907672543
+Experience 23, Iter 3, disc loss: 0.0005215970491452256, policy loss: 20.49000015617011
+Experience 23, Iter 4, disc loss: 0.0005203246730825098, policy loss: 19.52093596477419
+Experience 23, Iter 5, disc loss: 0.0005190513312741345, policy loss: 20.13999070024113
+Experience 23, Iter 6, disc loss: 0.0005177900018625061, policy loss: 19.852547200093618
+Experience 23, Iter 7, disc loss: 0.0005165287603768347, policy loss: 20.9680463129006
+Experience 23, Iter 8, disc loss: 0.0005166503852890222, policy loss: 19.738233350881828
+Experience 23, Iter 9, disc loss: 0.0005140286946612086, policy loss: 20.094368783768346
+Experience 23, Iter 10, disc loss: 0.0005128191642488399, policy loss: 20.140171743949146
+Experience 23, Iter 11, disc loss: 0.0005115496732615248, policy loss: 20.80122782375541
+Experience 23, Iter 12, disc loss: 0.0005103152251299318, policy loss: 20.066423461041445
+Experience 23, Iter 13, disc loss: 0.0005090903594791544, policy loss: 20.319314541667787
+Experience 23, Iter 14, disc loss: 0.0005078621015494969, policy loss: 20.05580298914566
+Experience 23, Iter 15, disc loss: 0.0005066413989859188, policy loss: 20.264510163554927
+Experience 23, Iter 16, disc loss: 0.0005054315039177016, policy loss: 20.048521653082787
+Experience 23, Iter 17, disc loss: 0.0005042169599013069, policy loss: 19.88954147149557
+Experience 23, Iter 18, disc loss: 0.0005030148324092587, policy loss: 20.45219891941208
+Experience 23, Iter 19, disc loss: 0.0005018065434661573, policy loss: 20.775148331572133
+Experience 23, Iter 20, disc loss: 0.0005006148315905375, policy loss: 19.943536520348864
+Experience 23, Iter 21, disc loss: 0.0004994222018358943, policy loss: 20.092005779952448
+Experience 23, Iter 22, disc loss: 0.0004982312040528637, policy loss: 20.42080529974012
+Experience 23, Iter 23, disc loss: 0.0004970476936095253, policy loss: 20.113167973016946
+Experience 23, Iter 24, disc loss: 0.0004958712753103888, policy loss: 20.290971311653177
+Experience 23, Iter 25, disc loss: 0.0004946922511382675, policy loss: 20.357160349835127
+Experience 23, Iter 26, disc loss: 0.0004935225754842227, policy loss: 20.589648992403994
+Experience 23, Iter 27, disc loss: 0.0004924278237900361, policy loss: 19.667186450295727
+Experience 23, Iter 28, disc loss: 0.0004911977193392614, policy loss: 20.522117769653992
+Experience 23, Iter 29, disc loss: 0.0004900400922745007, policy loss: 19.972553623558095
+Experience 23, Iter 30, disc loss: 0.00048888813508071, policy loss: 20.009482389308868
+Experience 23, Iter 31, disc loss: 0.0004877393609533906, policy loss: 19.931123015195304
+Experience 23, Iter 32, disc loss: 0.0004865939764835501, policy loss: 20.441661626762404
+Experience 23, Iter 33, disc loss: 0.0004854636259615853, policy loss: 20.430444768265986
+Experience 23, Iter 34, disc loss: 0.00048433276173148293, policy loss: 20.195181830345835
+Experience 23, Iter 35, disc loss: 0.00048318796656585854, policy loss: 20.349835196851114
+Experience 23, Iter 36, disc loss: 0.00048206419920410464, policy loss: 20.652801875955447
+Experience 23, Iter 37, disc loss: 0.000480950643548392, policy loss: 19.776745408081908
+Experience 23, Iter 38, disc loss: 0.0004798157732085652, policy loss: 20.019011059717045
+Experience 23, Iter 39, disc loss: 0.00047870873463998366, policy loss: 21.10006645728717
+Experience 23, Iter 40, disc loss: 0.0004775924668740778, policy loss: 20.633793499386535
+Experience 23, Iter 41, disc loss: 0.0004764879690846486, policy loss: 20.580158322878198
+Experience 23, Iter 42, disc loss: 0.0004753813601742836, policy loss: 20.344442439515547
+Experience 23, Iter 43, disc loss: 0.00047428980264849164, policy loss: 20.87111915740512
+Experience 23, Iter 44, disc loss: 0.0004732461941867446, policy loss: 20.70162147581361
+Experience 23, Iter 45, disc loss: 0.0004721021430104793, policy loss: 19.974617374260085
+Experience 23, Iter 46, disc loss: 0.00047101125522273793, policy loss: 20.338146501480065
+Experience 23, Iter 47, disc loss: 0.0004699422127132332, policy loss: 19.539684556003976
+Experience 23, Iter 48, disc loss: 0.0004688606997475952, policy loss: 20.351989830583936
+Experience 23, Iter 49, disc loss: 0.00046777612003290136, policy loss: 20.8209137199372
+Experience: 24
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0081],
+        [0.2659],
+        [2.3784],
+        [0.0464]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0424, 0.3441, 2.1342, 0.0404, 0.0271, 6.7930]],
+
+        [[0.0424, 0.3441, 2.1342, 0.0404, 0.0271, 6.7930]],
+
+        [[0.0424, 0.3441, 2.1342, 0.0404, 0.0271, 6.7930]],
+
+        [[0.0424, 0.3441, 2.1342, 0.0404, 0.0271, 6.7930]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0324, 1.0635, 9.5137, 0.1855], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0324, 1.0635, 9.5137, 0.1855])
+N: 240
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([961.0000, 961.0000, 961.0000, 961.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.040
+Iter 2/2000 - Loss: 3.953
+Iter 3/2000 - Loss: 3.730
+Iter 4/2000 - Loss: 3.624
+Iter 5/2000 - Loss: 3.547
+Iter 6/2000 - Loss: 3.412
+Iter 7/2000 - Loss: 3.250
+Iter 8/2000 - Loss: 3.093
+Iter 9/2000 - Loss: 2.938
+Iter 10/2000 - Loss: 2.771
+Iter 11/2000 - Loss: 2.587
+Iter 12/2000 - Loss: 2.390
+Iter 13/2000 - Loss: 2.186
+Iter 14/2000 - Loss: 1.973
+Iter 15/2000 - Loss: 1.749
+Iter 16/2000 - Loss: 1.512
+Iter 17/2000 - Loss: 1.261
+Iter 18/2000 - Loss: 1.000
+Iter 19/2000 - Loss: 0.732
+Iter 20/2000 - Loss: 0.461
+Iter 1981/2000 - Loss: -7.106
+Iter 1982/2000 - Loss: -7.106
+Iter 1983/2000 - Loss: -7.106
+Iter 1984/2000 - Loss: -7.106
+Iter 1985/2000 - Loss: -7.106
+Iter 1986/2000 - Loss: -7.106
+Iter 1987/2000 - Loss: -7.107
+Iter 1988/2000 - Loss: -7.107
+Iter 1989/2000 - Loss: -7.107
+Iter 1990/2000 - Loss: -7.107
+Iter 1991/2000 - Loss: -7.107
+Iter 1992/2000 - Loss: -7.107
+Iter 1993/2000 - Loss: -7.107
+Iter 1994/2000 - Loss: -7.107
+Iter 1995/2000 - Loss: -7.107
+Iter 1996/2000 - Loss: -7.107
+Iter 1997/2000 - Loss: -7.107
+Iter 1998/2000 - Loss: -7.107
+Iter 1999/2000 - Loss: -7.107
+Iter 2000/2000 - Loss: -7.107
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0025],
+        [0.0003]])
+Lengthscale: tensor([[[16.1215, 11.9169, 28.8182,  2.1816, 15.2105, 64.6571]],
+
+        [[24.4717, 41.9270,  8.3672,  0.8738,  1.6233, 27.5813]],
+
+        [[25.2406, 45.2152,  6.8252,  0.8788,  0.9845, 21.8792]],
+
+        [[18.7021, 33.6527, 13.7148,  1.4907,  1.8193, 47.6945]]])
+Signal Variance: tensor([ 0.1542,  2.0682, 11.4394,  0.4118])
+Estimated target variance: tensor([0.0324, 1.0635, 9.5137, 0.1855])
+N: 240
+Signal to noise ratio: tensor([22.4898, 75.8010, 67.7704, 39.1669])
+Bound on condition number: tensor([ 121390.5161, 1378991.8827, 1102279.9036,  368172.1106])
+Policy Optimizer learning rate:
+0.009760583411361419
+Experience 24, Iter 0, disc loss: 0.0004667845342663212, policy loss: 20.461007723277852
+Experience 24, Iter 1, disc loss: 0.00046564815509256594, policy loss: 20.554445463449667
+Experience 24, Iter 2, disc loss: 0.00046458251467309446, policy loss: 19.977612601446626
+Experience 24, Iter 3, disc loss: 0.00046352225611944993, policy loss: 20.378083906989467
+Experience 24, Iter 4, disc loss: 0.00046247075797802045, policy loss: 19.823070702765374
+Experience 24, Iter 5, disc loss: 0.0004614093299047789, policy loss: 20.342410261614162
+Experience 24, Iter 6, disc loss: 0.00046036320621685114, policy loss: 19.65153617475616
+Experience 24, Iter 7, disc loss: 0.00045932066925878916, policy loss: 20.171629417826022
+Experience 24, Iter 8, disc loss: 0.00045831537015419976, policy loss: 20.128794794136375
+Experience 24, Iter 9, disc loss: 0.0004572406450402684, policy loss: 20.050056640920765
+Experience 24, Iter 10, disc loss: 0.0004562085388314911, policy loss: 20.463895094091267
+Experience 24, Iter 11, disc loss: 0.0004551867895898855, policy loss: 19.639906106657925
+Experience 24, Iter 12, disc loss: 0.000454155666244137, policy loss: 19.990517771450193
+Experience 24, Iter 13, disc loss: 0.0004531325231812582, policy loss: 19.83931279615101
+Experience 24, Iter 14, disc loss: 0.00045210746224287493, policy loss: 20.188735861515195
+Experience 24, Iter 15, disc loss: 0.00045109956876091575, policy loss: 20.276688849035132
+Experience 24, Iter 16, disc loss: 0.00045010380354943943, policy loss: 20.48865100972734
+Experience 24, Iter 17, disc loss: 0.0004490758377459315, policy loss: 20.389732231187157
+Experience 24, Iter 18, disc loss: 0.00044807890909447844, policy loss: 20.85472905196916
+Experience 24, Iter 19, disc loss: 0.0004470710826463845, policy loss: 20.771607609657405
+Experience 24, Iter 20, disc loss: 0.0004460864077339485, policy loss: 20.72739507663954
+Experience 24, Iter 21, disc loss: 0.0004450857775041231, policy loss: 20.990247311500735
+Experience 24, Iter 22, disc loss: 0.0004446876001935714, policy loss: 20.630117347180228
+Experience 24, Iter 23, disc loss: 0.00044310171420390413, policy loss: 21.148389508509872
+Experience 24, Iter 24, disc loss: 0.0004422150534222312, policy loss: 20.526197003601983
+Experience 24, Iter 25, disc loss: 0.0004411407559406432, policy loss: 20.974251653228308
+Experience 24, Iter 26, disc loss: 0.00044016818497784284, policy loss: 20.59702736735815
+Experience 24, Iter 27, disc loss: 0.00044178604121161973, policy loss: 20.366918288840665
+Experience 24, Iter 28, disc loss: 0.00043822464394273884, policy loss: 21.120289670936693
+Experience 24, Iter 29, disc loss: 0.00043725414345498225, policy loss: 21.28826102688535
+Experience 24, Iter 30, disc loss: 0.0004364236692234459, policy loss: 21.035936390664602
+Experience 24, Iter 31, disc loss: 0.0004353382713938836, policy loss: 20.655010555964132
+Experience 24, Iter 32, disc loss: 0.0004346983507600323, policy loss: 20.682355141260572
+Experience 24, Iter 33, disc loss: 0.0004334327763578737, policy loss: 20.851125569115922
+Experience 24, Iter 34, disc loss: 0.00043365494762343453, policy loss: 20.81575834043382
+Experience 24, Iter 35, disc loss: 0.00043153422603588464, policy loss: 20.958148621310748
+Experience 24, Iter 36, disc loss: 0.00043076142728182764, policy loss: 20.896191887329238
+Experience 24, Iter 37, disc loss: 0.0004296379053565938, policy loss: 21.384243525590676
+Experience 24, Iter 38, disc loss: 0.00042871595121632113, policy loss: 21.148457862016848
+Experience 24, Iter 39, disc loss: 0.00042783822646181723, policy loss: 20.50680332314345
+Experience 24, Iter 40, disc loss: 0.00042686647380297957, policy loss: 21.447045263970935
+Experience 24, Iter 41, disc loss: 0.00042592936419902084, policy loss: 20.69503785571809
+Experience 24, Iter 42, disc loss: 0.0004255242787059741, policy loss: 20.72471946806291
+Experience 24, Iter 43, disc loss: 0.0004240855555750939, policy loss: 21.068993790146067
+Experience 24, Iter 44, disc loss: 0.000423162169638726, policy loss: 21.066914519103896
+Experience 24, Iter 45, disc loss: 0.0004223771517329603, policy loss: 20.5036060968122
+Experience 24, Iter 46, disc loss: 0.00042171932742540095, policy loss: 20.66935628088057
+Experience 24, Iter 47, disc loss: 0.00042050938783763425, policy loss: 20.35535465381885
+Experience 24, Iter 48, disc loss: 0.00041951334971434835, policy loss: 20.275248605163362
+Experience 24, Iter 49, disc loss: 0.00041871207595049216, policy loss: 20.60204407390231
+Experience: 25
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0081],
+        [0.2629],
+        [2.3649],
+        [0.0471]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0442, 0.3447, 2.1645, 0.0413, 0.0266, 6.8390]],
+
+        [[0.0442, 0.3447, 2.1645, 0.0413, 0.0266, 6.8390]],
+
+        [[0.0442, 0.3447, 2.1645, 0.0413, 0.0266, 6.8390]],
+
+        [[0.0442, 0.3447, 2.1645, 0.0413, 0.0266, 6.8390]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0323, 1.0516, 9.4597, 0.1883], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0323, 1.0516, 9.4597, 0.1883])
+N: 250
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([1001.0000, 1001.0000, 1001.0000, 1001.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.010
+Iter 2/2000 - Loss: 3.907
+Iter 3/2000 - Loss: 3.684
+Iter 4/2000 - Loss: 3.566
+Iter 5/2000 - Loss: 3.477
+Iter 6/2000 - Loss: 3.338
+Iter 7/2000 - Loss: 3.176
+Iter 8/2000 - Loss: 3.016
+Iter 9/2000 - Loss: 2.855
+Iter 10/2000 - Loss: 2.677
+Iter 11/2000 - Loss: 2.483
+Iter 12/2000 - Loss: 2.282
+Iter 13/2000 - Loss: 2.076
+Iter 14/2000 - Loss: 1.862
+Iter 15/2000 - Loss: 1.636
+Iter 16/2000 - Loss: 1.395
+Iter 17/2000 - Loss: 1.142
+Iter 18/2000 - Loss: 0.880
+Iter 19/2000 - Loss: 0.613
+Iter 20/2000 - Loss: 0.344
+Iter 1981/2000 - Loss: -7.160
+Iter 1982/2000 - Loss: -7.160
+Iter 1983/2000 - Loss: -7.161
+Iter 1984/2000 - Loss: -7.161
+Iter 1985/2000 - Loss: -7.161
+Iter 1986/2000 - Loss: -7.161
+Iter 1987/2000 - Loss: -7.161
+Iter 1988/2000 - Loss: -7.161
+Iter 1989/2000 - Loss: -7.161
+Iter 1990/2000 - Loss: -7.161
+Iter 1991/2000 - Loss: -7.161
+Iter 1992/2000 - Loss: -7.161
+Iter 1993/2000 - Loss: -7.161
+Iter 1994/2000 - Loss: -7.161
+Iter 1995/2000 - Loss: -7.161
+Iter 1996/2000 - Loss: -7.161
+Iter 1997/2000 - Loss: -7.161
+Iter 1998/2000 - Loss: -7.161
+Iter 1999/2000 - Loss: -7.161
+Iter 2000/2000 - Loss: -7.162
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0003],
+        [0.0026],
+        [0.0003]])
+Lengthscale: tensor([[[15.9425, 12.2953, 30.1614,  2.1161, 13.9503, 61.5964]],
+
+        [[24.3306, 41.2510,  8.5061,  0.8507,  1.6748, 28.5924]],
+
+        [[25.1973, 44.4965,  6.9369,  0.8949,  0.9932, 21.9990]],
+
+        [[18.7124, 33.8874, 13.4042,  1.5735,  1.8092, 46.5298]]])
+Signal Variance: tensor([ 0.1638,  2.1525, 11.5915,  0.3963])
+Estimated target variance: tensor([0.0323, 1.0516, 9.4597, 0.1883])
+N: 250
+Signal to noise ratio: tensor([22.8980, 78.4847, 66.8337, 38.3394])
+Bound on condition number: tensor([ 131080.2289, 1539961.6234, 1116686.5136,  367478.1278])
+Policy Optimizer learning rate:
+0.009750305025978739
+Experience 25, Iter 0, disc loss: 0.00041770628651645607, policy loss: 20.82480449093717
+Experience 25, Iter 1, disc loss: 0.000416850744187812, policy loss: 21.089295740072792
+Experience 25, Iter 2, disc loss: 0.00041591670184082955, policy loss: 20.581086566812395
+Experience 25, Iter 3, disc loss: 0.0004155482971604537, policy loss: 20.360963815533783
+Experience 25, Iter 4, disc loss: 0.00041414271214272396, policy loss: 20.9890478964026
+Experience 25, Iter 5, disc loss: 0.00041326794148372956, policy loss: 20.827318874501728
+Experience 25, Iter 6, disc loss: 0.000412376957240301, policy loss: 20.927085643590736
+Experience 25, Iter 7, disc loss: 0.00041149059681209007, policy loss: 21.189038484971764
+Experience 25, Iter 8, disc loss: 0.00041062068044426386, policy loss: 20.92771739317711
+Experience 25, Iter 9, disc loss: 0.0004099181069501055, policy loss: 20.92834980727354
+Experience 25, Iter 10, disc loss: 0.0004089076114810543, policy loss: 20.83751786471537
+Experience 25, Iter 11, disc loss: 0.00040801868388990804, policy loss: 20.167830721996154
+Experience 25, Iter 12, disc loss: 0.0004072764250600797, policy loss: 20.767710633788923
+Experience 25, Iter 13, disc loss: 0.0004063004048648866, policy loss: 20.69881404117568
+Experience 25, Iter 14, disc loss: 0.0004054807895430082, policy loss: 20.70909875995664
+Experience 25, Iter 15, disc loss: 0.0004047370288557049, policy loss: 20.2816092433557
+Experience 25, Iter 16, disc loss: 0.00040380816383608144, policy loss: 20.452671762133104
+Experience 25, Iter 17, disc loss: 0.00040288359346728154, policy loss: 20.395862776016006
+Experience 25, Iter 18, disc loss: 0.0004020129532176773, policy loss: 20.711360119885036
+Experience 25, Iter 19, disc loss: 0.0004012148090000042, policy loss: 20.7640554741225
+Experience 25, Iter 20, disc loss: 0.0004003354476310284, policy loss: 20.57370116711654
+Experience 25, Iter 21, disc loss: 0.0003994860975071823, policy loss: 21.759392774424967
+Experience 25, Iter 22, disc loss: 0.00039864789876759525, policy loss: 21.217730067240556
+Experience 25, Iter 23, disc loss: 0.0003979673361872825, policy loss: 20.389872277426807
+Experience 25, Iter 24, disc loss: 0.0003969913909917956, policy loss: 20.919098573585096
+Experience 25, Iter 25, disc loss: 0.00039619385935873915, policy loss: 20.647364186212783
+Experience 25, Iter 26, disc loss: 0.0003954419344912469, policy loss: 20.390498249256147
+Experience 25, Iter 27, disc loss: 0.0003945536305709411, policy loss: 21.21878246073637
+Experience 25, Iter 28, disc loss: 0.00039376027224969083, policy loss: 20.193038631392156
+Experience 25, Iter 29, disc loss: 0.000392871665177758, policy loss: 20.988826984984808
+Experience 25, Iter 30, disc loss: 0.00039207581713233703, policy loss: 20.211245887727053
+Experience 25, Iter 31, disc loss: 0.00039125948311539895, policy loss: 21.00062192618919
+Experience 25, Iter 32, disc loss: 0.0003906746386051771, policy loss: 20.741941608810126
+Experience 25, Iter 33, disc loss: 0.00038976936753926973, policy loss: 20.425511461219024
+Experience 25, Iter 34, disc loss: 0.00038905030305404046, policy loss: 20.797851668117524
+Experience 25, Iter 35, disc loss: 0.00038893774349140387, policy loss: 20.32259756156591
+Experience 25, Iter 36, disc loss: 0.00038722329319706457, policy loss: 21.396681351037408
+Experience 25, Iter 37, disc loss: 0.0003865061398727821, policy loss: 20.41463557508667
+Experience 25, Iter 38, disc loss: 0.0003859094244954727, policy loss: 20.530290856708902
+Experience 25, Iter 39, disc loss: 0.00038513310342791176, policy loss: 20.622534329479855
+Experience 25, Iter 40, disc loss: 0.0003841177980102496, policy loss: 19.91197139805373
+Experience 25, Iter 41, disc loss: 0.0003832697014289155, policy loss: 20.879872545921565
+Experience 25, Iter 42, disc loss: 0.00038257238276510116, policy loss: 20.46304574602622
+Experience 25, Iter 43, disc loss: 0.0003817768935547396, policy loss: 20.11979141179156
+Experience 25, Iter 44, disc loss: 0.00038094484510698095, policy loss: 20.28107855978386
+Experience 25, Iter 45, disc loss: 0.0003801402397485803, policy loss: 21.42177490729986
+Experience 25, Iter 46, disc loss: 0.000379378278723552, policy loss: 20.301485587392154
+Experience 25, Iter 47, disc loss: 0.0003785993214034084, policy loss: 20.312497231056867
+Experience 25, Iter 48, disc loss: 0.00037798000757744544, policy loss: 20.408469928192424
+Experience 25, Iter 49, disc loss: 0.00037908247744814513, policy loss: 20.456852270430396
+Experience: 26
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0081],
+        [0.2630],
+        [2.3752],
+        [0.0476]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0465, 0.3486, 2.1919, 0.0419, 0.0260, 6.9103]],
+
+        [[0.0465, 0.3486, 2.1919, 0.0419, 0.0260, 6.9103]],
+
+        [[0.0465, 0.3486, 2.1919, 0.0419, 0.0260, 6.9103]],
+
+        [[0.0465, 0.3486, 2.1919, 0.0419, 0.0260, 6.9103]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0325, 1.0520, 9.5009, 0.1903], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0325, 1.0520, 9.5009, 0.1903])
+N: 260
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([1041.0000, 1041.0000, 1041.0000, 1041.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 4.001
+Iter 2/2000 - Loss: 3.878
+Iter 3/2000 - Loss: 3.662
+Iter 4/2000 - Loss: 3.534
+Iter 5/2000 - Loss: 3.436
+Iter 6/2000 - Loss: 3.297
+Iter 7/2000 - Loss: 3.138
+Iter 8/2000 - Loss: 2.981
+Iter 9/2000 - Loss: 2.816
+Iter 10/2000 - Loss: 2.632
+Iter 11/2000 - Loss: 2.436
+Iter 12/2000 - Loss: 2.236
+Iter 13/2000 - Loss: 2.032
+Iter 14/2000 - Loss: 1.819
+Iter 15/2000 - Loss: 1.591
+Iter 16/2000 - Loss: 1.348
+Iter 17/2000 - Loss: 1.094
+Iter 18/2000 - Loss: 0.832
+Iter 19/2000 - Loss: 0.566
+Iter 20/2000 - Loss: 0.299
+Iter 1981/2000 - Loss: -7.217
+Iter 1982/2000 - Loss: -7.217
+Iter 1983/2000 - Loss: -7.217
+Iter 1984/2000 - Loss: -7.217
+Iter 1985/2000 - Loss: -7.217
+Iter 1986/2000 - Loss: -7.217
+Iter 1987/2000 - Loss: -7.217
+Iter 1988/2000 - Loss: -7.218
+Iter 1989/2000 - Loss: -7.218
+Iter 1990/2000 - Loss: -7.218
+Iter 1991/2000 - Loss: -7.218
+Iter 1992/2000 - Loss: -7.218
+Iter 1993/2000 - Loss: -7.218
+Iter 1994/2000 - Loss: -7.218
+Iter 1995/2000 - Loss: -7.218
+Iter 1996/2000 - Loss: -7.218
+Iter 1997/2000 - Loss: -7.218
+Iter 1998/2000 - Loss: -7.218
+Iter 1999/2000 - Loss: -7.218
+Iter 2000/2000 - Loss: -7.218
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0003],
+        [0.0026],
+        [0.0003]])
+Lengthscale: tensor([[[14.4670,  7.2202, 33.1475,  2.0137, 12.9081, 62.7501]],
+
+        [[24.5799, 41.7898,  8.4724,  0.8261,  1.6816, 28.6542]],
+
+        [[25.5517, 44.9495,  6.9857,  0.8668,  0.9860, 21.7433]],
+
+        [[19.2093, 34.7196, 13.5902,  1.5308,  1.7809, 49.6462]]])
+Signal Variance: tensor([ 0.1238,  2.0841, 10.8534,  0.4027])
+Estimated target variance: tensor([0.0325, 1.0520, 9.5009, 0.1903])
+N: 260
+Signal to noise ratio: tensor([19.9097, 78.3392, 64.6826, 38.7192])
+Bound on condition number: tensor([ 103063.9917, 1595630.5576, 1087800.6277,  389786.9338])
+Policy Optimizer learning rate:
+0.009740037464252968
+Experience 26, Iter 0, disc loss: 0.00037629803214592715, policy loss: 20.716835509243705
+Experience 26, Iter 1, disc loss: 0.0003755309608641638, policy loss: 21.213371301713764
+Experience 26, Iter 2, disc loss: 0.0003750029897866971, policy loss: 20.539900960454112
+Experience 26, Iter 3, disc loss: 0.00037401871697725767, policy loss: 20.437905514184084
+Experience 26, Iter 4, disc loss: 0.00037328027686917324, policy loss: 20.477268038480762
+Experience 26, Iter 5, disc loss: 0.0003726081321331175, policy loss: 20.775716589055317
+Experience 26, Iter 6, disc loss: 0.0003717561390586233, policy loss: 20.64904966016007
+Experience 26, Iter 7, disc loss: 0.000371009047131821, policy loss: 21.20683036817617
+Experience 26, Iter 8, disc loss: 0.0003703703013787614, policy loss: 20.840727935303924
+Experience 26, Iter 9, disc loss: 0.00036971524697914976, policy loss: 20.80478477547956
+Experience 26, Iter 10, disc loss: 0.00036892698477237324, policy loss: 20.56671150753931
+Experience 26, Iter 11, disc loss: 0.0003686803648129922, policy loss: 20.27995970040758
+Experience 26, Iter 12, disc loss: 0.0003675730310556416, policy loss: 20.40170838425426
+Experience 26, Iter 13, disc loss: 0.0003666050799423842, policy loss: 20.536981570479572
+Experience 26, Iter 14, disc loss: 0.00036584255046330803, policy loss: 20.671864282655307
+Experience 26, Iter 15, disc loss: 0.0003651234913298076, policy loss: 20.532707557290056
+Experience 26, Iter 16, disc loss: 0.0003643841506563029, policy loss: 20.740390141325996
+Experience 26, Iter 17, disc loss: 0.000363668276419251, policy loss: 20.563136464510144
+Experience 26, Iter 18, disc loss: 0.0003629290571619787, policy loss: 20.63090341761376
+Experience 26, Iter 19, disc loss: 0.0003622174134454354, policy loss: 20.649045401613517
+Experience 26, Iter 20, disc loss: 0.0003617220155712208, policy loss: 20.490802546225204
+Experience 26, Iter 21, disc loss: 0.0003610236228344594, policy loss: 21.056593198179556
+Experience 26, Iter 22, disc loss: 0.0003600590917868725, policy loss: 21.11349867764313
+Experience 26, Iter 23, disc loss: 0.00035944171646811216, policy loss: 20.584204347620194
+Experience 26, Iter 24, disc loss: 0.0003586424125255619, policy loss: 20.31179120166812
+Experience 26, Iter 25, disc loss: 0.00035793743266764196, policy loss: 20.422852367710117
+Experience 26, Iter 26, disc loss: 0.0003572688160020606, policy loss: 20.706814443127204
+Experience 26, Iter 27, disc loss: 0.00035652795137714605, policy loss: 20.489738204590765
+Experience 26, Iter 28, disc loss: 0.0003558191194854071, policy loss: 20.771577057837472
+Experience 26, Iter 29, disc loss: 0.00035597433198981525, policy loss: 20.482311285401835
+Experience 26, Iter 30, disc loss: 0.00035449336508328516, policy loss: 20.363490444534108
+Experience 26, Iter 31, disc loss: 0.0003537717845009974, policy loss: 20.305986591966786
+Experience 26, Iter 32, disc loss: 0.0003530542231356313, policy loss: 20.438819636665635
+Experience 26, Iter 33, disc loss: 0.00035242936304985935, policy loss: 20.663501586111515
+Experience 26, Iter 34, disc loss: 0.0003516752303855939, policy loss: 20.481552320891435
+Experience 26, Iter 35, disc loss: 0.0003509768872834519, policy loss: 20.22529834293053
+Experience 26, Iter 36, disc loss: 0.00035047338222989787, policy loss: 20.238805909618353
+Experience 26, Iter 37, disc loss: 0.00035000339479856416, policy loss: 20.517542280599578
+Experience 26, Iter 38, disc loss: 0.0003489256962192332, policy loss: 20.945008008135016
+Experience 26, Iter 39, disc loss: 0.0003482472164577405, policy loss: 20.655630137441246
+Experience 26, Iter 40, disc loss: 0.000347628992657823, policy loss: 20.07824459096729
+Experience 26, Iter 41, disc loss: 0.0003471586474623849, policy loss: 20.649993523717292
+Experience 26, Iter 42, disc loss: 0.00034622406930543597, policy loss: 21.12727554243073
+Experience 26, Iter 43, disc loss: 0.00034557680030095344, policy loss: 20.323061649570256
+Experience 26, Iter 44, disc loss: 0.0003449374303744487, policy loss: 20.942274113344155
+Experience 26, Iter 45, disc loss: 0.0003443107293391757, policy loss: 20.6532832599205
+Experience 26, Iter 46, disc loss: 0.0003435798113817391, policy loss: 20.92821646184324
+Experience 26, Iter 47, disc loss: 0.00034306842548586456, policy loss: 20.434787053030934
+Experience 26, Iter 48, disc loss: 0.0003422378691114725, policy loss: 21.043380768645537
+Experience 26, Iter 49, disc loss: 0.0003416375095747849, policy loss: 20.435070296738978
+Experience: 27
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0081],
+        [0.2592],
+        [2.3544],
+        [0.0485]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.0485, 0.3487, 2.2231, 0.0426, 0.0257, 6.9272]],
+
+        [[0.0485, 0.3487, 2.2231, 0.0426, 0.0257, 6.9272]],
+
+        [[0.0485, 0.3487, 2.2231, 0.0426, 0.0257, 6.9272]],
+
+        [[0.0485, 0.3487, 2.2231, 0.0426, 0.0257, 6.9272]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0324, 1.0370, 9.4177, 0.1939], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0324, 1.0370, 9.4177, 0.1939])
+N: 270
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([1081.0000, 1081.0000, 1081.0000, 1081.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.979
+Iter 2/2000 - Loss: 3.844
+Iter 3/2000 - Loss: 3.636
+Iter 4/2000 - Loss: 3.500
+Iter 5/2000 - Loss: 3.398
+Iter 6/2000 - Loss: 3.260
+Iter 7/2000 - Loss: 3.103
+Iter 8/2000 - Loss: 2.946
+Iter 9/2000 - Loss: 2.778
+Iter 10/2000 - Loss: 2.593
+Iter 11/2000 - Loss: 2.397
+Iter 12/2000 - Loss: 2.199
+Iter 13/2000 - Loss: 1.996
+Iter 14/2000 - Loss: 1.783
+Iter 15/2000 - Loss: 1.553
+Iter 16/2000 - Loss: 1.309
+Iter 17/2000 - Loss: 1.055
+Iter 18/2000 - Loss: 0.794
+Iter 19/2000 - Loss: 0.531
+Iter 20/2000 - Loss: 0.265
+Iter 1981/2000 - Loss: -7.208
+Iter 1982/2000 - Loss: -7.208
+Iter 1983/2000 - Loss: -7.208
+Iter 1984/2000 - Loss: -7.208
+Iter 1985/2000 - Loss: -7.208
+Iter 1986/2000 - Loss: -7.209
+Iter 1987/2000 - Loss: -7.209
+Iter 1988/2000 - Loss: -7.209
+Iter 1989/2000 - Loss: -7.209
+Iter 1990/2000 - Loss: -7.209
+Iter 1991/2000 - Loss: -7.209
+Iter 1992/2000 - Loss: -7.209
+Iter 1993/2000 - Loss: -7.209
+Iter 1994/2000 - Loss: -7.209
+Iter 1995/2000 - Loss: -7.209
+Iter 1996/2000 - Loss: -7.209
+Iter 1997/2000 - Loss: -7.209
+Iter 1998/2000 - Loss: -7.209
+Iter 1999/2000 - Loss: -7.209
+Iter 2000/2000 - Loss: -7.209
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0003],
+        [0.0004],
+        [0.0026],
+        [0.0003]])
+Lengthscale: tensor([[[14.0628,  7.4933, 34.0729,  1.9914, 13.2617, 61.1779]],
+
+        [[23.4399, 41.2272,  8.0480,  0.8619,  1.6879, 26.0581]],
+
+        [[25.2040, 44.3358,  6.9603,  0.8714,  0.9836, 21.8135]],
+
+        [[19.2965, 34.0616, 13.7146,  1.5770,  1.8903, 47.5781]]])
+Signal Variance: tensor([ 0.1293,  1.8141, 10.7823,  0.3976])
+Estimated target variance: tensor([0.0324, 1.0370, 9.4177, 0.1939])
+N: 270
+Signal to noise ratio: tensor([20.3148, 69.9094, 63.8784, 38.1688])
+Bound on condition number: tensor([ 111427.3189, 1319578.2562, 1101721.2141,  393352.3347])
+Policy Optimizer learning rate:
+0.00972978071478625
+Experience 27, Iter 0, disc loss: 0.0003409180965378242, policy loss: 20.793624278408892
+Experience 27, Iter 1, disc loss: 0.0003402686762471241, policy loss: 20.928231323318876
+Experience 27, Iter 2, disc loss: 0.00033960950621321576, policy loss: 21.377139504376146
+Experience 27, Iter 3, disc loss: 0.0003391344496206678, policy loss: 20.46015003982606
+Experience 27, Iter 4, disc loss: 0.00033831275229173987, policy loss: 20.758590619663753
+Experience 27, Iter 5, disc loss: 0.0003377422421588435, policy loss: 20.302828274184826
+Experience 27, Iter 6, disc loss: 0.0003373462444068913, policy loss: 20.309847915404145
+Experience 27, Iter 7, disc loss: 0.00033641801711901845, policy loss: 20.591138110223394
+Experience 27, Iter 8, disc loss: 0.0003357357182303025, policy loss: 21.055555955189725
+Experience 27, Iter 9, disc loss: 0.00033510971897768814, policy loss: 20.340208667284983
+Experience 27, Iter 10, disc loss: 0.0003346512292355018, policy loss: 19.943514121070294
+Experience 27, Iter 11, disc loss: 0.00033394352398296244, policy loss: 19.57133940883428
+Experience 27, Iter 12, disc loss: 0.00033318762311169026, policy loss: 21.05853912175109
+Experience 27, Iter 13, disc loss: 0.00033256132734214757, policy loss: 20.852132368276024
+Experience 27, Iter 14, disc loss: 0.000331924190112226, policy loss: 20.722552925710907
+Experience 27, Iter 15, disc loss: 0.0003313944065833864, policy loss: 20.407790340608916
+Experience 27, Iter 16, disc loss: 0.0003307622321215375, policy loss: 20.133893954642076
+Experience 27, Iter 17, disc loss: 0.000330054778331673, policy loss: 20.70743208136885
+Experience 27, Iter 18, disc loss: 0.0003294722007397017, policy loss: 20.672116471520454
+Experience 27, Iter 19, disc loss: 0.0003288229848265627, policy loss: 20.136128764324656
+Experience 27, Iter 20, disc loss: 0.00032819332477824966, policy loss: 20.663327581601386
+Experience 27, Iter 21, disc loss: 0.00032761394095293225, policy loss: 20.923242386099123
+Experience 27, Iter 22, disc loss: 0.0003269735526815876, policy loss: 20.283757468882417
+Experience 27, Iter 23, disc loss: 0.0003264606899872059, policy loss: 21.0712098626487
