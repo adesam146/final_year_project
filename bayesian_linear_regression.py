@@ -269,7 +269,7 @@ if __name__ == "__main__":
 
     import matplotlib.pyplot as plt
 
-    fig, axs = plt.subplots(1, 2)
+    fig, ax = plt.subplots(1)
 
     X = X_train.squeeze().numpy()
     order = np.argsort(X)
@@ -283,21 +283,18 @@ if __name__ == "__main__":
     std_pred_exact = torch.sqrt(torch.diag(torch.chain_matmul(Phi, SN, Phi.t()))).numpy()[order]
 
 
-    axs[0].set_ylim(bottom=-1000, top=1000, auto=True)
-    axs[1].set_ylim(bottom=-1000, top=1000, auto=True)
+    ax.set_ylim(bottom=-1000, top=1000, auto=True)
+    ax.set_ylim(bottom=-1000, top=1000, auto=True)
 
-    axs[0].scatter(X, Y, label='Observed Y', color='black', s=0.5)
-    axs[1].scatter(X, Y, label='Observed Y', color='black', s=0.5)
+    ax.scatter(X, Y, label='Observed Y', color='black', s=1)
     # ax.fill_between(X, Y - (X ** 3) * np.sqrt(SN.item()), Y + (X ** 3) * np.sqrt(SN.item()), alpha = 0.15)
 
-    axs[0].plot(X, mean_pred, label='Mean Prediction of LFVI')
-    axs[0].fill_between(X, mean_pred - 2 * std_pred, mean_pred + 2 * std_pred, alpha=0.15, label='2 standard deviation from the likelihood-free posterior mean')
+    ax.plot(X, mean_pred, label='Mean Prediction of LFVI')
+    ax.fill_between(X, mean_pred - 2 * std_pred, mean_pred + 2 * std_pred, alpha=0.15, label='2 standard deviation from the likelihood-free posterior mean')
 
-    axs[0].legend()
+    ax.plot(X, mean_pred_exact, label='Mean prediction of exact Bayesian Linear Regression')
+    ax.fill_between(X, mean_pred_exact - 2 * std_pred_exact, mean_pred_exact + 2 * std_pred_exact, alpha=0.15, label='2 standard deviation from the exact posterior mean')
 
-    axs[1].plot(X, mean_pred_exact, label='Mean prediction of exact Bayesian Linear Regression')
-    axs[1].fill_between(X, mean_pred_exact - 2 * std_pred_exact, mean_pred_exact + 2 * std_pred_exact, alpha=0.15, label='2 standard deviation from the exact posterior mean')
-
-    axs[1].legend()
+    ax.legend()
 
     plt.show()
