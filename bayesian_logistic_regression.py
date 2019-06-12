@@ -25,15 +25,19 @@ def load_data(N=50, jitter=0.7, offset=1.2):
     # x: N x 1
     y = np.vstack([np.zeros((N // 2, 1)), np.ones((N // 2, 1))])
     # y: N x 1
-    x_test = np.linspace(-2, offset + 2, num=N).reshape(-1, 1)
+    # x_test = np.linspace(-2, offset + 2, num=N).reshape(-1, 1)
     # x_test: N x 1
 
     # Make the augmented data matrix by adding a column of ones
     x_train = np.hstack([np.ones((N, 1)), x])
     # x_train: N x 2
+
+    x_test = np.vstack([np.random.normal(0, jitter, (N // 2, 1)),
+                   np.random.normal(offset, jitter, (N // 2, 1))])
     x_test = np.hstack([np.ones((N, 1)), x_test])
+    y_test = np.vstack([np.zeros((N // 2, 1)), np.ones((N // 2, 1))])
     # x_test: N x 2
-    return x_train, y, x_test
+    return x_train, y, x_test, y_test
 
 
 class BernoulliLikelihoodSimulator:
@@ -52,7 +56,7 @@ if __name__ == "__main__":
 
     # DATA
     N_train = 500
-    X_train, Y_train, X_test = load_data(N_train)
+    X_train, Y_train, X_test, Y_test = load_data(N_train)
     train_dataset = TensorDataset(torch.from_numpy(
         X_train).float(), torch.from_numpy(Y_train).float())
     data_loader_train = DataLoader(train_dataset, batch_size=N_train)
@@ -76,22 +80,30 @@ if __name__ == "__main__":
     print("Learnt mean", approx_posterior.mean)
     print("Leant cov", approx_posterior.cov())
 
-    beta_sample = approx_posterior.mean
-    print(beta_sample)
+    beta_mean = approx_posterior.mean
+    print(beta_mean)
 
     from sklearn import metrics
 
     # From Coursework
-    y_hat = model_simulator.simulate(beta_sample, torch.from_numpy(
-        X_train).float()).numpy()
-    print("Accuracy:", metrics.accuracy_score(Y_train, y_hat))
-    print("Confusion matrix", metrics.confusion_matrix(Y_train, y_hat))
+    N_m = 1000
+    y_hat = 0
+    for _ in range(N_m):
+        y_hat += model_simulator.simulate(approx_posterior.sample().view(D, 1), torch.from_numpy(
+            X_test).float()).numpy()
 
-    plt.scatter(X_train[y_hat < 0.5, 1], Y_train[y_hat < 0.5])
-    plt.scatter(X_train[y_hat > 0.5, 1], Y_train[y_hat > 0.5])
-    plt.legend(['Classified as 0', 'Classified as 1'])
+    y_hat *= 1.0/N_m  
+    y_hat = y_hat.squeeze() > 0.5
+    print("Accuracy:", metrics.accuracy_score(Y_test, y_hat))
+    print("Confusion matrix", metrics.confusion_matrix(Y_test, y_hat))
+
+    plt.scatter(X_test[y_hat < 0.5, 1], Y_test[y_hat < 0.5])
+    plt.scatter(X_test[y_hat > 0.5, 1], Y_test[y_hat > 0.5])
+    X = np.linspace(np.min(X_test[:, 1]), np.max(X_test[:, 1]))
+    plt.plot(X, 1/(1+np.exp(-X)), color='black')
+    plt.legend(['Sigmoid function', 'Classified as 0', 'Classified as 1'])
     # plt.plot(X_test[:, 1], model_simulator.simulate(
-    # beta_sample, torch.from_numpy(X_test).float()).numpy())
+    # beta_mean, torch.from_numpy(X_test).float()).numpy())
     plt.xlabel('x')
     plt.ylabel('y')
     plt.show()
