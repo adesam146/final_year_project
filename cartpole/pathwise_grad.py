@@ -16,7 +16,7 @@ def pathwise_grad(setup, expert_samples, policy, fm, disc,
     real_target = init_state_distn.mean.new_ones(setup.N, 1)
     fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
 
-    fm_samples, actions, x0s = sample_trajectories(
+    fm_samples, actions = sample_trajectories(
         setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
 
     # Train Discrimator
@@ -40,4 +40,4 @@ def pathwise_grad(setup, expert_samples, policy, fm, disc,
     policy_loss.backward()
     policy_optimizer.step()
 
-    return disc_loss.detach(), policy_loss.detach(), torch.cat((x0s.unsqueeze(1), fm_samples.detach()), dim=1), actions.detach()
+    return disc_loss.detach(), policy_loss.detach(), fm_samples.detach(), actions.detach()

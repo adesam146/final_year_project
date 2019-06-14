@@ -106,7 +106,7 @@ setup = CartPoleSetup(
 
 # Determine whether expert x0 is needed or not
 expert_sample_start = 0
-if use_score_func_grad or use_pathwise_grad:
+if use_score_func_grad:
     expert_sample_start = 1
 # Restrict samples to specfied horizon T
 expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
@@ -192,10 +192,8 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     real_target = init_state_distn.mean.new_ones(setup.N, 1)
                     fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
 
-                    samples, actions, x0s = sample_trajectories(
+                    samples, actions = sample_trajectories(
                         setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
-
-                    samples = torch.cat((x0s.unsqueeze(1), samples), dim=1)
 
                     # Train Discrimator
                     disc.enable_parameters_grad()

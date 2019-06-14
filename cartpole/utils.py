@@ -170,10 +170,9 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
 
     # Plotting prediction of GP under current policy
     with torch.no_grad():
-        samples, actions, x0s = sample_trajectories(
+        samples, actions = sample_trajectories(
             setup, fm, init_state_distn, policy, sample_N=20, sample_T=setup.T, with_rsample=False)
-    plot_gp_trajectories(torch.cat((x0s.unsqueeze(
-        1), samples), dim=1), actions, T=setup.T, plot_dir=plot_dir, title=f"Predicted state values of GP and corresponding actions after optimisation and Experience: {expr}", file_name=f'GP_trajectories_{expr}')
+    plot_gp_trajectories(samples, actions, T=setup.T, plot_dir=plot_dir, title=f"Predicted state values of GP and corresponding actions after optimisation and Experience: {expr}", file_name=f'GP_trajectories_{expr}')
 
 
 def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T, with_rsample):
@@ -205,7 +204,7 @@ def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T,
 
         fm.clear_fantasy_data()
 
-    return fm_samples, actions, x0s
+    return torch.cat((x0s.unsqueeze(1), fm_samples), dim=1), actions
 
 
 def save_current_state(expr, fm, disc, disc_optimizer, disc_dir, policy, policy_optimizer, policy_lr_sch, policy_dir):
