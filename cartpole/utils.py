@@ -2,6 +2,10 @@ import torch
 import pandas as pd
 import os
 import numpy as np
+import matplotlib
+font = {'weight' : 'bold'}
+
+matplotlib.rc('font', **font)
 import matplotlib.pyplot as plt
 
 
@@ -124,7 +128,7 @@ def plot_trajectories(samples, T, actions=None, color=None, alpha=0.15, with_x0=
 def plot_gp_trajectories(fm_samples, actions, T, plot_dir, title, file_name, with_x0=True):
     gp_fig, _ = plot_trajectories(
         fm_samples, actions=actions, T=T, color='green', with_x0=with_x0)
-    gp_fig.suptitle(title)
+    # gp_fig.suptitle(title)
 
     gp_fig.tight_layout()
 
@@ -132,7 +136,7 @@ def plot_gp_trajectories(fm_samples, actions, T, plot_dir, title, file_name, wit
     if not os.path.isdir(gp_plot_dir):
         os.makedirs(gp_plot_dir)
     gp_fig.savefig(
-        gp_plot_dir + f'{file_name}.png', format='png')
+        gp_plot_dir + f'{file_name}.pdf', format='pdf')
     plt.close(gp_fig)
 
 
@@ -155,13 +159,13 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
         # Plot action
         axs[-1].plot(np.arange(0, setup.T), s_a_pairs[:, -
                                                       1].cpu().numpy(), color='red', alpha=0.2)
-    fig.suptitle(
-        f"State values of expert vs learner with {expr} number of experience")
+    # fig.suptitle(
+        # f"State values of expert vs learner with {expr} number of experience")
 
-    fig.tight_layout()
+    fig.tight_layout(rect=[0, 0.03, 1, 0.95])
 
     fig.savefig(
-        plot_dir + f'expert_vs_learner_{expr}.png', format='png')
+        plot_dir + f'expert_vs_learner_{expr}.pdf', format='pdf')
     plt.close(fig)
 
     # Plotting prediction of GP under current policy

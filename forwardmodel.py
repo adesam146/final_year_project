@@ -81,7 +81,7 @@ class ForwardModel:
             self.likelihood.cpu()
 
         self.likelihood = gpytorch.likelihoods.GaussianLikelihood(
-            batch_size=self.D, noise_constraint=gpytorch.constraints.GreaterThan(1e-5)).to(self.device)
+            batch_size=self.D).to(self.device)
         self.model = GPModel(self.train_x, self.train_y,
                              self.likelihood).to(self.device)
 
