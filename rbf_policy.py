@@ -42,18 +42,25 @@ class RBFPolicy(nn.Module):
         Signal variance is implictly set to 1 and
         Signal noise variance to 0.01**2
         """
-        self.K = torch.zeros(self.nbasis, self.nbasis, device=self.device)
-        for i in range(self.nbasis):
-            for j in range(self.nbasis):
-                self.K[i, j] = self.kernel(self.X[i], self.X[j])
-                if i == j:
-                    self.K[i, j] += 0.01**2
+        self.K = torch.diag(self.__k(self.X.unsqueeze(1) - self.X)).view(self.nbasis, self.nbasis) + 0.01**2 * torch.eye(self.nbasis)
+
+        # self.K2 = torch.zeros(self.nbasis, self.nbasis, device=self.device)
+        # for i in range(self.nbasis):
+        #     for j in range(self.nbasis):
+        #         self.K2[i, j] = self.kernel(self.X[i], self.X[j])
+        #         if i == j:
+        #             self.K2[i, j] += 0.01**2
 
     def kernel(self, x1, x2):
+        return self.__k(x1-x2)
+
+    def __k(self, diff):
         """
-        x1, x2: input_dim
+        diff: (N x) input_dim
+        output: N X N
         """
-        return torch.exp(-0.5 * torch.chain_matmul((x1-x2).view(1, self.input_dim), torch.diag(torch.exp(-2 * self.log_l)), (x1-x2).view(self.input_dim, 1)))
+        diff = diff.view(-1, self.input_dim)
+        return torch.exp(-0.5 * torch.chain_matmul(diff, torch.diag(torch.exp(-2 * self.log_l)), diff.t()))
 
     def squash(self, x):
         """
