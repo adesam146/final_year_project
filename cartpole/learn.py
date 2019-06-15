@@ -50,6 +50,7 @@ parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
 parser.add_argument(
     "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
+parser.add_argument("--use_rbf_policy", help="Use rbf_policy", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -114,9 +115,10 @@ expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
 # *** POLICY SETUP ***
 policy_dir = os.path.join(result_dir, 'policy/')
 os.makedirs(policy_dir)
-# policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
-#    nbasis=10, device=device)
-policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
+if args.use_rbf_policy:
+    policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim, nbasis=50, device=device)
+else:
+    policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 # policy = OptimalPolicy(u_max=10, device=device)
 policy_lr = args.policy_lr or 1e-2
 
