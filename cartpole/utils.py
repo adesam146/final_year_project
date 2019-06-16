@@ -3,21 +3,25 @@ import pandas as pd
 import os
 import numpy as np
 import matplotlib
-font = {'weight' : 'bold'}
+font = {'size': 14}
 
 matplotlib.rc('font', **font)
 import matplotlib.pyplot as plt
 
 
-def get_expert_data(N=64):
+def get_expert_data(N=64, clockwise=True):
     """
     output: N X T+1 x 4
     """
     result = torch.empty(N, 41, 4)
 
+    orientation_folder = 'clockwise'
+    if not clockwise:
+        orientation_folder = 'anti-clockwise'
+
     for i in range(N):
         df = pd.read_csv(
-            f'{os.path.dirname(__file__)}/expert_data/clockwise/data{i+1}.tsv', delimiter='\t')
+            f'{os.path.dirname(__file__)}/expert_data/{orientation_folder}/data{i+1}.tsv', delimiter='\t')
 
         result[i, :, :] = torch.from_numpy(
             df.loc[:, ['x', 'v', 'dtheta', 'theta']].to_numpy())
@@ -162,7 +166,7 @@ def plot_progress(setup, expr, agent, plot_dir, policy, init_state_distn, fm, ex
     # fig.suptitle(
         # f"State values of expert vs learner with {expr} number of experience")
 
-    fig.tight_layout(rect=[0, 0.03, 1, 0.95])
+    fig.tight_layout()
 
     fig.savefig(
         plot_dir + f'expert_vs_learner_{expr}.pdf', format='pdf')
@@ -227,10 +231,39 @@ def save_current_state(expr, fm, disc, disc_optimizer, disc_dir, policy, policy_
 
 
 if __name__ == "__main__":
-    # Plot the optimal GP's training data
-    inputs = get_optimal_gp_inputs(with_theta=True).view(15, 40, 7)
-    samples = inputs[:, :, :4]
-    actions = inputs[:, :, -1].unsqueeze(-1)
+    # # Plot the optimal GP's training data
+    # inputs = get_optimal_gp_inputs(with_theta=True).view(15, 40, 7)
+    # samples = inputs[:, :, :4]
+    # actions = inputs[:, :, -1].unsqueeze(-1)
 
-    plot_gp_trajectories(samples, actions[:, :39, :], T=39, plot_dir=os.path.dirname(
-        __file__), title="Optimal GP training data", file_name='optimal_gp_data')
+    # plot_gp_trajectories(samples, actions[:, :39, :], T=39, plot_dir=os.path.dirname(
+    #     __file__), title="Optimal GP training data", file_name='optimal_gp_data')
+
+
+    # Plot clockwise expert trajectories
+    samples = get_expert_data(clockwise=False)
+    T = 40
+
+    fig = plt.figure(figsize=(16, 10))
+    axs = []
+    state_action_names = [r'$x$', r'$v$',
+                          r'$\dot{\theta}$', r'$\theta$']
+    nrows = 2
+    ncols = 2
+
+    # Plot states
+    for i in range(samples.shape[2]):
+        ax = fig.add_subplot(nrows, ncols, i+1)
+        ax.plot(np.arange(0, T+1), torch.t(samples[:, :, i]).cpu(
+        ).numpy(), color='blue', alpha=0.15)
+        axs.append(ax)
+
+    for i, ax in enumerate(axs):
+        ax.set_xlabel("Time steps")
+        ax.set_ylabel(state_action_names[i])
+
+    fig.tight_layout()
+
+    fig.savefig('cartpole/expert_data/anti-clockwise_expert_data.pdf', format='pdf')
+
+    plt.close(fig)
