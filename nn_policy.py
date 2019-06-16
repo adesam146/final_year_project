@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class NNPolicy(nn.Module):
     def __init__(self, u_max, input_dim):
         super().__init__()
@@ -9,8 +10,9 @@ class NNPolicy(nn.Module):
         self.u_max = u_max
         self.input_dim = input_dim
         self.linear1 = nn.Linear(in_features=self.input_dim,
-                                 out_features=16, bias=True)
-        self.linear2 = nn.Linear(in_features=16, out_features=1, bias=True)
+                                 out_features=32, bias=True)
+        self.linear2 = nn.Linear(in_features=32, out_features=16, bias=True)
+        self.linear3 = nn.Linear(in_features=16, out_features=1, bias=True)
 
     def __call__(self, x):
         """
@@ -20,9 +22,8 @@ class NNPolicy(nn.Module):
         assert x.shape[-1] == self.input_dim
 
         h = self.linear1(x.view(-1, self.input_dim))
-        return self.u_max * self.squash(self.linear2(F.relu(h))).view(1)
+        return self.u_max * self.squash(self.linear3(F.relu(self.linear2(F.relu(h))))).view(1)
 
-        
     def squash(self, x):
         """
         Squashing the values in x to be between -1 and 1
