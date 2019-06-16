@@ -5,12 +5,12 @@ from datetime import datetime
 
 import gpytorch
 import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.distributions as trd
 import torch.nn.functional as F
+from torch.utils.data import DataLoader, TensorDataset
 
 from cartpole.agent import CartPoleAgent
 from cartpole.cartpole_setup import CartPoleSetup
@@ -22,11 +22,16 @@ from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
                             plot_progress, sample_trajectories,
                             save_current_state)
-from discrimator import Discrimator, ConvDiscrimator
+from discrimator import ConvDiscrimator, Discrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
 from rbf_policy import RBFPolicy
 from ss_discrimator import SSDiscriminator
+
+font = {'size': 14}
+matplotlib.rc('font', **font)
+matplotlib.use('Agg')
+
 
 # *** ARGUMENT SET UP ***
 parser = argparse.ArgumentParser()
@@ -50,6 +55,10 @@ parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
 parser.add_argument(
     "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
+parser.add_argument("--use_rbf_policy",
+                    help="Use rbf_policy", action="store_true")
+parser.add_argument("--batch_size", type=int,
+                    help="Batch size for policy optimisation (default = Number of training data)")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -98,7 +107,7 @@ use_max_log_prob = args.use_max_log_prob
 use_state_to_state = args.use_state_to_state
 
 # *** GET EXPERT SAMPLES ***
-expert_samples = get_expert_data().to(device)
+expert_samples = get_expert_data()
 
 # N is the number of samples from each source (expert/predicted) to be compared against each other
 setup = CartPoleSetup(
@@ -109,14 +118,17 @@ expert_sample_start = 0
 if use_score_func_grad:
     expert_sample_start = 1
 # Restrict samples to specfied horizon T
-expert_samples = expert_samples[:, expert_sample_start:setup.T+1, :]
+expert_dl = DataLoader(TensorDataset(
+    expert_samples[:, expert_sample_start:setup.T+1, :]), batch_size=args.batch_size or setup.N)
 
 # *** POLICY SETUP ***
 policy_dir = os.path.join(result_dir, 'policy/')
 os.makedirs(policy_dir)
-# policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
-#    nbasis=10, device=device)
-policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
+if args.use_rbf_policy:
+    policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
+                       nbasis=50, device=device)
+else:
+    policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 # policy = OptimalPolicy(u_max=10, device=device)
 policy_lr = args.policy_lr or 1e-2
 
@@ -155,7 +167,8 @@ os.makedirs(disc_dir)
 if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
 elif use_conv_disc:
-    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim, with_x0=expert_sample_start==0).to(device)
+    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim,
+                           with_x0=expert_sample_start == 0).to(device)
 else:
     disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
 disc_optimizer = torch.optim.Adam(disc.parameters())
@@ -180,17 +193,30 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
             print(param_group['lr'])
 
         for i in range(policy_iter):
-            if not use_max_log_prob:
+            avg_policy_loss = 0
+            avg_disc_loss = 0
+            for batch, (expert_samples,) in enumerate(expert_dl):
+                expert_samples = expert_samples.to(device)
                 if use_score_func_grad:
                     disc_loss, policy_loss, samples, actions = score_function_training(
                         setup, N_x0, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
-                elif use_pathwise_grad:
+
+                    avg_policy_loss += policy_loss.detach()
+                    avg_disc_loss += disc_loss.detach()
+
+                if use_pathwise_grad:
                     disc_loss, policy_loss, samples, actions = pathwise_grad(
                         setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
-                else:
+
+                    avg_policy_loss += policy_loss.detach()
+                    avg_disc_loss += disc_loss.detach()
+
+                if use_state_to_state:
                     bce_logit_loss = torch.nn.BCEWithLogitsLoss()
-                    real_target = init_state_distn.mean.new_ones(setup.N, 1)
-                    fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
+                    real_target = init_state_distn.mean.new_ones(
+                        setup.N, 1)
+                    fake_target = init_state_distn.mean.new_zeros(
+                        setup.N, 1)
 
                     samples, actions = sample_trajectories(
                         setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
@@ -223,6 +249,36 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     policy_loss.backward()
                     policy_optimizer.step()
 
+                    avg_policy_loss += policy_loss.detach()
+                    avg_disc_loss += disc_loss.detach()
+
+                if use_max_log_prob:
+                    policy_optimizer.zero_grad()
+                    policy_loss = 0
+                    for n in range(setup.N):
+                        for t in range(setup.T):
+                            # TODO: Do we need to include the likelihood how that we
+                            # are looking at the observed difference
+                            # This can perhaps also be done in a batch form
+                            aux_x = convert_to_aux_state(
+                                expert_samples[n, t], setup.state_dim)
+                            dyn_model = fm.predictive_distn(
+                                torch.cat((aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1))
+                            policy_loss += -dyn_model.log_prob(
+                                (expert_samples[n, t+1] - expert_samples[n, t]).view(setup.state_dim, -1)).sum()
+
+                            del dyn_model
+
+                    policy_loss *= 1.0/setup.N
+                    policy_loss.backward()
+                    policy_optimizer.step()
+
+                    avg_policy_loss += policy_loss.detach()
+
+            # Plot and print out progress
+            avg_policy_loss *= 1/len(expert_dl)
+            avg_disc_loss *= 1/len(expert_dl)
+            if not use_max_log_prob:
                 if i % 10 == 0:
                     plot_gp_trajectories(
                         samples.detach(), actions.detach(), T=setup.T, plot_dir=plot_dir, title=f'Predicted trajectories with {expr} interactions and at {i} policy iterations (before the {i+1}th parameter update).', file_name=f'training_trajs_expr-{expr}-policy_iter-{i}')
@@ -230,30 +286,10 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                 del samples, actions
 
                 print(
-                    f"Experience {expr}, Iter {i}, disc loss: {disc_loss.detach().item()}, policy loss: {policy_loss.detach()}")
-
-            if use_max_log_prob:
-                policy_optimizer.zero_grad()
-                loss = 0
-                for n in range(setup.N):
-                    for t in range(setup.T):
-                        # TODO: Do we need to include the likelihood how that we
-                        # are looking at the observed difference
-                        # This can perhaps also be done in a batch form
-                        aux_x = convert_to_aux_state(
-                            expert_samples[n, t], setup.state_dim)
-                        dyn_model = fm.predictive_distn(
-                            torch.cat((aux_x, policy(aux_x).view(-1, setup.action_dim)), dim=1))
-                        loss += -dyn_model.log_prob(
-                            (expert_samples[n, t+1] - expert_samples[n, t]).view(setup.state_dim, -1)).sum()
-
-                        del dyn_model
-
-                loss *= 1.0/setup.N
-                loss.backward()
-                policy_optimizer.step()
+                    f"Experience {expr}, Iter {i}, disc loss: {avg_disc_loss.detach().item()}, policy loss: {avg_policy_loss.detach()}")
+            else:
                 print(
-                    f"Experience {expr}, Iter {i}, policy loss: {loss.detach().item()}")
+                    f"Experience {expr}, Iter {i}, policy loss: {avg_policy_loss.detach().item()}")
 
         policy_lr_sch.step()
 

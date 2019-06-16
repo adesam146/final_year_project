@@ -8,16 +8,16 @@ def pathwise_grad(setup, expert_samples, policy, fm, disc,
     output:
         discrimator loss (grad detached),
         policy loss (grad detached),
-        samples: setup.N, setup.T+1, setup.state_dim
-        actions: setup.N, setup.T, setup.action_dim
+        samples: N, setup.T+1, setup.state_dim
+        actions: N, setup.T, setup.action_dim
     """
-
+    N = expert_samples.shape[0]
     bce_logit_loss = torch.nn.BCEWithLogitsLoss()
-    real_target = init_state_distn.mean.new_ones(setup.N, 1)
-    fake_target = init_state_distn.mean.new_zeros(setup.N, 1)
+    real_target = init_state_distn.mean.new_ones(N, 1)
+    fake_target = init_state_distn.mean.new_zeros(N, 1)
 
     fm_samples, actions = sample_trajectories(
-        setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
+        setup, fm, init_state_distn, policy, sample_N=N, sample_T=setup.T, with_rsample=True)
 
     # Train Discrimator
     disc.enable_parameters_grad()
