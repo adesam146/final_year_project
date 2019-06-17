@@ -21,10 +21,10 @@ from cartpole.score_function import score_function_training
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
                             plot_progress, sample_trajectories,
-                            save_current_state)
+                            save_current_state, plot_trajectories)
 from discrimator import ConvDiscrimator, Discrimator
 from forwardmodel import ForwardModel
-from nn_policy import NNPolicy
+from nn_policy import NNPolicy, DeepNNPolicy
 from rbf_policy import RBFPolicy
 from ss_discrimator import SSDiscriminator
 
@@ -41,6 +41,8 @@ parser.add_argument("--result_dir_name",
                     help="Name of directory to place results")
 parser.add_argument("--policy_lr", type=float,
                     help="Learning rate for the policy, default is 1e-2")
+parser.add_argument("--disc_lr", type=float,
+                    help="Learning rate for the discriminator, default is 1e-2")
 parser.add_argument("--policy_iter", type=int,
                     help="Number of iterations to optimise policy (default is 50)")
 parser.add_argument("--description", help="Description the experiment")
@@ -55,10 +57,10 @@ parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
 parser.add_argument(
     "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
-parser.add_argument("--use_rbf_policy",
-                    help="Use rbf_policy", action="store_true")
+parser.add_argument("--policy", help="nn | deepnn | rbf | optimal. Default = deepnn")
 parser.add_argument("--batch_size", type=int,
                     help="Batch size for policy optimisation (default = Number of training data)")
+parser.add_argument("--with_x0", help="If x0 should also be considered when matching the trajectories (default = false)", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -115,7 +117,7 @@ setup = CartPoleSetup(
 
 # Determine whether expert x0 is needed or not
 expert_sample_start = 0
-if use_score_func_grad:
+if use_score_func_grad or args.with_x0:
     expert_sample_start = 1
 # Restrict samples to specfied horizon T
 expert_dl = DataLoader(TensorDataset(
@@ -124,12 +126,15 @@ expert_dl = DataLoader(TensorDataset(
 # *** POLICY SETUP ***
 policy_dir = os.path.join(result_dir, 'policy/')
 os.makedirs(policy_dir)
-if args.use_rbf_policy:
+if args.policy == 'rbf':
     policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
                        nbasis=50, device=device)
-else:
+elif args.policy == 'nn':
     policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
-# policy = OptimalPolicy(u_max=10, device=device)
+elif args.policy == 'optimal':
+    policy = OptimalPolicy(u_max=10, device=device)
+else:
+    policy = DeepNNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 policy_lr = args.policy_lr or 1e-2
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
@@ -144,6 +149,10 @@ agent = CartPoleAgent(dt=setup.dt, T=setup.T, policy=policy,
 # *** FIRST RANDOM ROLLOUT ***
 with torch.no_grad():
     s_a_pairs, traj = agent.act()
+    fig, axs = plot_trajectories(samples=traj.unsqueeze(0), actions=s_a_pairs[:, -setup.action_dim:].unsqueeze(0), T=setup.T)
+    fig.tight_layout()
+    fig.savefig(plot_dir + 'initial_rollout.pdf', format='pdf')
+    plt.close(fig)
     init_x, init_y = get_training_data(s_a_pairs, traj)
 
 # *** FORWARD MODEL SETUP ***
@@ -171,6 +180,8 @@ elif use_conv_disc:
                            with_x0=expert_sample_start == 0).to(device)
 else:
     disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
+
+disc_lr = args.disc_lr or 1e-2
 disc_optimizer = torch.optim.Adam(disc.parameters())
 # disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 #     disc_optimizer, gamma=(0.9)**(1/100))

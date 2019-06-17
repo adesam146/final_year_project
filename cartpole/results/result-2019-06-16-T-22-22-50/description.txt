@@ -1,1 +1,1 @@
-"without-gpu"
+T = 40 with batch size of 16 and without-gpu
