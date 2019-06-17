@@ -24,7 +24,7 @@ from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             save_current_state, plot_trajectories)
 from discrimator import ConvDiscrimator, Discrimator
 from forwardmodel import ForwardModel
-from nn_policy import NNPolicy
+from nn_policy import NNPolicy, DeepNNPolicy
 from rbf_policy import RBFPolicy
 from ss_discrimator import SSDiscriminator
 
@@ -55,8 +55,7 @@ parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
 parser.add_argument(
     "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
-parser.add_argument("--use_rbf_policy",
-                    help="Use rbf_policy", action="store_true")
+parser.add_argument("--policy", help="nn | deepnn | rbf | optimal (default = deepnn)")
 parser.add_argument("--batch_size", type=int,
                     help="Batch size for policy optimisation (default = Number of training data)")
 args = parser.parse_args()
@@ -85,10 +84,10 @@ with open(description_file, 'w') as fp:
 # `https://gpytorch.readthedocs.io/en/latest/settings.html?highlight=fantasy`
 
 # Set random seed to ensure that results are reproducible.
-np.random.seed(312)
+np.random.seed(0)
 if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
-torch.manual_seed(34)
+torch.manual_seed(0)
 
 torch.set_default_dtype(torch.float64)
 
@@ -124,12 +123,15 @@ expert_dl = DataLoader(TensorDataset(
 # *** POLICY SETUP ***
 policy_dir = os.path.join(result_dir, 'policy/')
 os.makedirs(policy_dir)
-if args.use_rbf_policy:
+if args.policy == 'rbf':
     policy = RBFPolicy(u_max=10, input_dim=setup.aux_state_dim,
                        nbasis=50, device=device)
-else:
+elif args.policy == 'nn':
     policy = NNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
-# policy = OptimalPolicy(u_max=10, device=device)
+elif args.policy == 'optimal':
+    policy = OptimalPolicy(u_max=10, device=device)
+else:
+    policy = DeepNNPolicy(u_max=10, input_dim=setup.aux_state_dim).to(device)
 policy_lr = args.policy_lr or 1e-2
 
 policy_optimizer = torch.optim.Adam(policy.parameters(), lr=policy_lr)
