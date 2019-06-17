@@ -85,10 +85,10 @@ with open(description_file, 'w') as fp:
 # `https://gpytorch.readthedocs.io/en/latest/settings.html?highlight=fantasy`
 
 # Set random seed to ensure that results are reproducible.
-np.random.seed(0)
+np.random.seed(312)
 if torch.cuda.is_available():
     torch.backends.cudnn.deterministic = True
-torch.manual_seed(0)
+torch.manual_seed(34)
 
 torch.set_default_dtype(torch.float64)
 
