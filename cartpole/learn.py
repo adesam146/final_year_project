@@ -61,6 +61,8 @@ parser.add_argument("--policy", help="nn | deepnn | rbf | optimal. Default = dee
 parser.add_argument("--batch_size", type=int,
                     help="Batch size for policy optimisation (default = Number of training data)")
 parser.add_argument("--with_x0", help="If x0 should also be considered when matching the trajectories (default = false)", action="store_true")
+parser.add_argument("--fix_seed", help="Fix seed should be set to a default", action="store_true")
+parser.add_argument("--num_expr", help="Number of experience/interaction of agent with environment (default == 50)", type=int)
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -87,10 +89,12 @@ with open(description_file, 'w') as fp:
 # `https://gpytorch.readthedocs.io/en/latest/settings.html?highlight=fantasy`
 
 # Set random seed to ensure that results are reproducible.
-np.random.seed(0)
-if torch.cuda.is_available():
-    torch.backends.cudnn.deterministic = True
-torch.manual_seed(0)
+fix_seed = args.fix_seed or False
+if fix_seed:
+    np.random.seed(0)
+    if torch.cuda.is_available():
+        torch.backends.cudnn.deterministic = True
+    torch.manual_seed(0)
 
 torch.set_default_dtype(torch.float64)
 
@@ -186,7 +190,7 @@ disc_optimizer = torch.optim.Adam(disc.parameters())
 # disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 #     disc_optimizer, gamma=(0.9)**(1/100))
 
-num_of_experience = 50
+num_of_experience = args.num_expr or 50
 policy_iter = args.policy_iter or 50
 
 # Write to a json file all defined variables before training starts
