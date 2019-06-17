@@ -10106,3 +10106,945 @@ Experience 27, Iter 190, disc loss: 0.0014623875247667824, policy loss: 18.63958
 Experience 27, Iter 191, disc loss: 0.0011583595377009305, policy loss: 18.49559834192972
 Experience 27, Iter 192, disc loss: 0.0008927138746131978, policy loss: 17.25235954708142
 Experience 27, Iter 193, disc loss: 0.0006945131938671308, policy loss: 17.69265277391448
+Experience 27, Iter 194, disc loss: 0.0005504372314874987, policy loss: 17.468897013638998
+Experience 27, Iter 195, disc loss: 0.000454330028558552, policy loss: 17.5056575812293
+Experience 27, Iter 196, disc loss: 0.000346988715332704, policy loss: 17.03720207716957
+Experience 27, Iter 197, disc loss: 0.0002917616945120576, policy loss: 17.417497766560672
+Experience 27, Iter 198, disc loss: 0.00022657511427915587, policy loss: 17.139818190669985
+Experience 27, Iter 199, disc loss: 0.00018746726301363027, policy loss: 17.94258305133212
+Experience 27, Iter 200, disc loss: 0.00019413484315340776, policy loss: 16.285684041812633
+Experience 27, Iter 201, disc loss: 0.00017946545869430088, policy loss: 16.31445174705528
+Experience 27, Iter 202, disc loss: 0.0001224861551701525, policy loss: 17.335904510656075
+Experience 27, Iter 203, disc loss: 0.00016846602487247204, policy loss: 17.202267781089997
+Experience 27, Iter 204, disc loss: 0.00019732661911248738, policy loss: 14.95068006610682
+Experience 27, Iter 205, disc loss: 0.00017901677821654694, policy loss: 16.5553126604499
+Experience 27, Iter 206, disc loss: 0.00030623504007708377, policy loss: 15.440023182320285
+Experience 27, Iter 207, disc loss: 0.0002583367666443358, policy loss: 15.162411521781639
+Experience 27, Iter 208, disc loss: 0.0004590091011747007, policy loss: 16.443856099096084
+Experience 27, Iter 209, disc loss: 0.00020478200871153616, policy loss: 16.6463992812841
+Experience 27, Iter 210, disc loss: 0.0002124396370203581, policy loss: 16.055171713998526
+Experience 27, Iter 211, disc loss: 0.0005507710508615839, policy loss: 15.686917479214243
+Experience 27, Iter 212, disc loss: 0.0002532699972476553, policy loss: 15.328182623334614
+Experience 27, Iter 213, disc loss: 0.0001804128812861327, policy loss: 15.44574242592592
+Experience 27, Iter 214, disc loss: 0.0003776224514538624, policy loss: 15.080570418772126
+Experience 27, Iter 215, disc loss: 0.0018785826229672977, policy loss: 14.35633814585289
+Experience 27, Iter 216, disc loss: 0.00036459367403274127, policy loss: 14.926800318560952
+Experience 27, Iter 217, disc loss: 0.0006045449906922177, policy loss: 15.696396407268214
+Experience 27, Iter 218, disc loss: 0.0003884862477712258, policy loss: 16.39857449648936
+Experience 27, Iter 219, disc loss: 0.00039379317506915137, policy loss: 15.609971763081878
+Experience 27, Iter 220, disc loss: 0.0001976784388533793, policy loss: 15.80209269189871
+Experience 27, Iter 221, disc loss: 0.0011775081930309613, policy loss: 15.719725389884688
+Experience 27, Iter 222, disc loss: 0.00012598842910501034, policy loss: 16.604847300986428
+Experience 27, Iter 223, disc loss: 0.00015335817189974306, policy loss: 16.39164264395047
+Experience 27, Iter 224, disc loss: 0.00033856904607779993, policy loss: 17.083465511686903
+Experience 27, Iter 225, disc loss: 0.000176385141065443, policy loss: 16.89680571403321
+Experience 27, Iter 226, disc loss: 0.00035643893494298213, policy loss: 16.688238465871187
+Experience 27, Iter 227, disc loss: 0.0001380735109863767, policy loss: 17.6354868334505
+Experience 27, Iter 228, disc loss: 0.0002836407088374958, policy loss: 17.799985354470635
+Experience 27, Iter 229, disc loss: 0.0002156092718042781, policy loss: 17.414448791752054
+Experience 27, Iter 230, disc loss: 0.0003575153112990435, policy loss: 17.38744265660433
+Experience 27, Iter 231, disc loss: 0.0002878587821987461, policy loss: 16.938867526854075
+Experience 27, Iter 232, disc loss: 0.00014602543881441762, policy loss: 17.28108050883924
+Experience 27, Iter 233, disc loss: 0.0003993063342441828, policy loss: 18.34204764641905
+Experience 27, Iter 234, disc loss: 0.00016290643783116964, policy loss: 17.783281285299317
+Experience 27, Iter 235, disc loss: 0.00014405558790180873, policy loss: 18.67512071053003
+Experience 27, Iter 236, disc loss: 0.0011207071074367566, policy loss: 17.494708917084683
+Experience 27, Iter 237, disc loss: 0.0004334936481043424, policy loss: 16.038626801697653
+Experience 27, Iter 238, disc loss: 0.00023056593646984314, policy loss: 17.155729460866723
+Experience 27, Iter 239, disc loss: 0.0005115612728867372, policy loss: 17.20093117395925
+Experience 27, Iter 240, disc loss: 0.0003305459569467351, policy loss: 16.998686975173896
+Experience 27, Iter 241, disc loss: 0.0002048531631167456, policy loss: 18.12602234717524
+Experience 27, Iter 242, disc loss: 0.00020376030829356948, policy loss: 18.322441002747993
+Experience 27, Iter 243, disc loss: 0.000700573556690803, policy loss: 16.7754906588137
+Experience 27, Iter 244, disc loss: 0.00021599165156087837, policy loss: 18.37384377175477
+Experience 27, Iter 245, disc loss: 0.00020745053935964915, policy loss: 17.357630620760776
+Experience 27, Iter 246, disc loss: 0.001288004221696556, policy loss: 16.80690432953646
+Experience 27, Iter 247, disc loss: 0.0006058235315379354, policy loss: 17.36217737857844
+Experience 27, Iter 248, disc loss: 0.000698950758538925, policy loss: 16.76881977669896
+Experience 27, Iter 249, disc loss: 0.00020898235624275914, policy loss: 18.30520391866976
+Experience 27, Iter 250, disc loss: 0.00029265450802594254, policy loss: 18.6496658177222
+Experience 27, Iter 251, disc loss: 0.00030350531510765094, policy loss: 18.011148672127927
+Experience 27, Iter 252, disc loss: 0.0004461125266730754, policy loss: 18.423159662085503
+Experience 27, Iter 253, disc loss: 0.00025146722302090725, policy loss: 19.071131705669057
+Experience 27, Iter 254, disc loss: 0.0003618416460529697, policy loss: 17.938728004973235
+Experience 27, Iter 255, disc loss: 0.0002770320341920942, policy loss: 15.945751877477782
+Experience 27, Iter 256, disc loss: 0.0006520676245198718, policy loss: 15.523890922598067
+Experience 27, Iter 257, disc loss: 0.00033039744228202856, policy loss: 17.90976951233359
+Experience 27, Iter 258, disc loss: 0.0003118594475613691, policy loss: 17.671745309960983
+Experience 27, Iter 259, disc loss: 0.00026987066113164397, policy loss: 17.27340428165931
+Experience 27, Iter 260, disc loss: 0.00029587604189671606, policy loss: 16.065596769657617
+Experience 27, Iter 261, disc loss: 0.00023363833780960428, policy loss: 17.384223377600648
+Experience 27, Iter 262, disc loss: 0.0005256772858096607, policy loss: 16.048698866155988
+Experience 27, Iter 263, disc loss: 0.00048037980323375085, policy loss: 16.843018520588437
+Experience 27, Iter 264, disc loss: 0.0003905437989285882, policy loss: 17.008382414861263
+Experience 27, Iter 265, disc loss: 0.0026708097169285284, policy loss: 15.822074701625354
+Experience 27, Iter 266, disc loss: 0.00033023073889757403, policy loss: 17.11712008157772
+Experience 27, Iter 267, disc loss: 0.0005718181782451484, policy loss: 17.5233412010845
+Experience 27, Iter 268, disc loss: 0.0005517618743225341, policy loss: 17.29528684010155
+Experience 27, Iter 269, disc loss: 0.00030114601795414926, policy loss: 18.123998280246337
+Experience 27, Iter 270, disc loss: 0.00046088926568379216, policy loss: 17.001266344522104
+Experience 27, Iter 271, disc loss: 0.0005368717989029923, policy loss: 15.675506892087721
+Experience 27, Iter 272, disc loss: 0.0005122222964400649, policy loss: 17.395756085908218
+Experience 27, Iter 273, disc loss: 0.0006555968788135244, policy loss: 15.902388258938265
+Experience 27, Iter 274, disc loss: 0.0005262266076723129, policy loss: 18.021595646987393
+Experience 27, Iter 275, disc loss: 0.0007336360811741892, policy loss: 18.28287361762039
+Experience 27, Iter 276, disc loss: 0.0006353425992659135, policy loss: 15.195559614174476
+Experience 27, Iter 277, disc loss: 0.0006287833539155324, policy loss: 17.25158399322769
+Experience 27, Iter 278, disc loss: 0.0010367773105888873, policy loss: 15.234599289098517
+Experience 27, Iter 279, disc loss: 0.0019284928859796837, policy loss: 16.18858929589341
+Experience 27, Iter 280, disc loss: 0.0006448714687297516, policy loss: 16.7142013502881
+Experience 27, Iter 281, disc loss: 0.0008920768142763966, policy loss: 15.322464403271649
+Experience 27, Iter 282, disc loss: 0.0006056385881745304, policy loss: 16.792013409507547
+Experience 27, Iter 283, disc loss: 0.0005869666753459292, policy loss: 16.630952699021982
+Experience 27, Iter 284, disc loss: 0.0006241716129419487, policy loss: 15.991887841940729
+Experience 27, Iter 285, disc loss: 0.000547762982823766, policy loss: 16.63743042497627
+Experience 27, Iter 286, disc loss: 0.0006585696260832946, policy loss: 15.103029984715521
+Experience 27, Iter 287, disc loss: 0.0008660020490847116, policy loss: 17.47768340737921
+Experience 27, Iter 288, disc loss: 0.0005383990168362523, policy loss: 18.349852759933412
+Experience 27, Iter 289, disc loss: 0.0005821924384214032, policy loss: 17.192708190543286
+Experience 27, Iter 290, disc loss: 0.0005877651371778523, policy loss: 16.711598965992547
+Experience 27, Iter 291, disc loss: 0.0006526035728493495, policy loss: 14.255291829139098
+Experience 27, Iter 292, disc loss: 0.0008115427564813961, policy loss: 16.021735330053716
+Experience 27, Iter 293, disc loss: 0.000649421996147013, policy loss: 16.909317763480406
+Experience 27, Iter 294, disc loss: 0.0009601859672718847, policy loss: 16.233392777166785
+Experience 27, Iter 295, disc loss: 0.000565795510299333, policy loss: 15.414378279478642
+Experience 27, Iter 296, disc loss: 0.0005571815414738272, policy loss: 16.421872713972864
+Experience 27, Iter 297, disc loss: 0.0005324980383742819, policy loss: 16.7928674360029
+Experience 27, Iter 298, disc loss: 0.0010637952386516837, policy loss: 16.541542582889733
+Experience 27, Iter 299, disc loss: 0.0006716309416191133, policy loss: 16.81903835452411
+Experience: 28
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0124],
+        [0.2174],
+        [2.0961],
+        [0.0409]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.1051, 0.5141, 1.8722, 0.0399, 0.0101, 5.8839]],
+
+        [[0.1051, 0.5141, 1.8722, 0.0399, 0.0101, 5.8839]],
+
+        [[0.1051, 0.5141, 1.8722, 0.0399, 0.0101, 5.8839]],
+
+        [[0.1051, 0.5141, 1.8722, 0.0399, 0.0101, 5.8839]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0495, 0.8696, 8.3844, 0.1636], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0495, 0.8696, 8.3844, 0.1636])
+N: 280
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([1121.0000, 1121.0000, 1121.0000, 1121.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.848
+Iter 2/2000 - Loss: 3.776
+Iter 3/2000 - Loss: 3.603
+Iter 4/2000 - Loss: 3.477
+Iter 5/2000 - Loss: 3.363
+Iter 6/2000 - Loss: 3.215
+Iter 7/2000 - Loss: 3.055
+Iter 8/2000 - Loss: 2.902
+Iter 9/2000 - Loss: 2.755
+Iter 10/2000 - Loss: 2.595
+Iter 11/2000 - Loss: 2.418
+Iter 12/2000 - Loss: 2.232
+Iter 13/2000 - Loss: 2.045
+Iter 14/2000 - Loss: 1.856
+Iter 15/2000 - Loss: 1.661
+Iter 16/2000 - Loss: 1.454
+Iter 17/2000 - Loss: 1.237
+Iter 18/2000 - Loss: 1.010
+Iter 19/2000 - Loss: 0.778
+Iter 20/2000 - Loss: 0.541
+Iter 1981/2000 - Loss: -7.526
+Iter 1982/2000 - Loss: -7.526
+Iter 1983/2000 - Loss: -7.526
+Iter 1984/2000 - Loss: -7.526
+Iter 1985/2000 - Loss: -7.526
+Iter 1986/2000 - Loss: -7.526
+Iter 1987/2000 - Loss: -7.526
+Iter 1988/2000 - Loss: -7.526
+Iter 1989/2000 - Loss: -7.526
+Iter 1990/2000 - Loss: -7.526
+Iter 1991/2000 - Loss: -7.526
+Iter 1992/2000 - Loss: -7.526
+Iter 1993/2000 - Loss: -7.526
+Iter 1994/2000 - Loss: -7.527
+Iter 1995/2000 - Loss: -7.527
+Iter 1996/2000 - Loss: -7.527
+Iter 1997/2000 - Loss: -7.527
+Iter 1998/2000 - Loss: -7.527
+Iter 1999/2000 - Loss: -7.527
+Iter 2000/2000 - Loss: -7.527
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0004],
+        [0.0004],
+        [0.0018],
+        [0.0003]])
+Lengthscale: tensor([[[16.0304, 11.5828, 26.3002,  2.2349,  7.8338, 60.5311]],
+
+        [[28.0972, 45.1299,  8.9342,  1.3148,  1.4565, 26.1702]],
+
+        [[31.0395, 48.2275,  8.3664,  0.9622,  0.8460, 23.6891]],
+
+        [[24.3064, 39.6733, 15.2162,  2.0617,  1.6249, 54.8804]]])
+Signal Variance: tensor([ 0.1839,  2.1582, 10.8006,  0.5634])
+Estimated target variance: tensor([0.0495, 0.8696, 8.3844, 0.1636])
+N: 280
+Signal to noise ratio: tensor([22.7518, 77.7203, 76.6403, 44.4730])
+Bound on condition number: tensor([ 144941.5057, 1691324.3870, 1644647.9224,  553797.2096])
+Policy Optimizer learning rate:
+0.009719534766192733
+Experience 28, Iter 0, disc loss: 0.00043391587162788076, policy loss: 17.796922572874692
+Experience 28, Iter 1, disc loss: 0.00043939732579466485, policy loss: 15.882412582076109
+Experience 28, Iter 2, disc loss: 0.0003976866484767608, policy loss: 18.321006005601546
+Experience 28, Iter 3, disc loss: 0.0003943033204584017, policy loss: 16.640923325222268
+Experience 28, Iter 4, disc loss: 0.00045910168513546454, policy loss: 16.629306290786175
+Experience 28, Iter 5, disc loss: 0.0010117382412392637, policy loss: 15.361652833573407
+Experience 28, Iter 6, disc loss: 0.00037051586360963636, policy loss: 15.13898806471905
+Experience 28, Iter 7, disc loss: 0.00036994699057219313, policy loss: 17.324931427246163
+Experience 28, Iter 8, disc loss: 0.00048753317176483115, policy loss: 14.80876212571797
+Experience 28, Iter 9, disc loss: 0.0003833076112958239, policy loss: 15.60345677337587
+Experience 28, Iter 10, disc loss: 0.00040425959182150697, policy loss: 15.060383467766187
+Experience 28, Iter 11, disc loss: 0.0003277688620554475, policy loss: 15.705710408400286
+Experience 28, Iter 12, disc loss: 0.00031148555628119647, policy loss: 16.3791568983532
+Experience 28, Iter 13, disc loss: 0.0002687546759061697, policy loss: 15.397488246362306
+Experience 28, Iter 14, disc loss: 0.0002532937568596933, policy loss: 15.484611873665653
+Experience 28, Iter 15, disc loss: 0.00024193603983067784, policy loss: 15.175536995846391
+Experience 28, Iter 16, disc loss: 0.00029196517174197496, policy loss: 14.632754806349858
+Experience 28, Iter 17, disc loss: 0.00023204421432908073, policy loss: 15.02180966937454
+Experience 28, Iter 18, disc loss: 0.0002243544609223737, policy loss: 16.669295482947632
+Experience 28, Iter 19, disc loss: 0.0021401593924054232, policy loss: 16.400824703841323
+Experience 28, Iter 20, disc loss: 0.0013716947794710239, policy loss: 14.828806835174994
+Experience 28, Iter 21, disc loss: 0.0019066908588035209, policy loss: 16.148372619038962
+Experience 28, Iter 22, disc loss: 0.000338438139906014, policy loss: 17.65638083837099
+Experience 28, Iter 23, disc loss: 0.00037760831413794437, policy loss: 16.033274266142815
+Experience 28, Iter 24, disc loss: 0.00022076947083884632, policy loss: 16.542823551815534
+Experience 28, Iter 25, disc loss: 0.0004414726633217381, policy loss: 16.528881316399467
+Experience 28, Iter 26, disc loss: 0.0009087225690957826, policy loss: 16.910024749091313
+Experience 28, Iter 27, disc loss: 0.00026713153892488604, policy loss: 17.45389018225099
+Experience 28, Iter 28, disc loss: 0.0002489144195925992, policy loss: 17.44933799340884
+Experience 28, Iter 29, disc loss: 0.0002911575553079794, policy loss: 17.724585159284604
+Experience 28, Iter 30, disc loss: 0.0002470681462187346, policy loss: 19.014593022421856
+Experience 28, Iter 31, disc loss: 0.006492165778664215, policy loss: 20.61303897702408
+Experience 28, Iter 32, disc loss: 0.00032192934928013085, policy loss: 19.037915820292252
+Experience 28, Iter 33, disc loss: 0.00031528377226792314, policy loss: 18.511497490800465
+Experience 28, Iter 34, disc loss: 0.000337776172828034, policy loss: 21.93515104935365
+Experience 28, Iter 35, disc loss: 0.0003825949076369383, policy loss: 20.442916711280446
+Experience 28, Iter 36, disc loss: 0.0003791339250959063, policy loss: 22.067045796674346
+Experience 28, Iter 37, disc loss: 0.00038954722943504026, policy loss: 21.995391856893725
+Experience 28, Iter 38, disc loss: 0.00039267378247474354, policy loss: 22.121492594653535
+Experience 28, Iter 39, disc loss: 0.00038948044063431055, policy loss: 22.18355038379224
+Experience 28, Iter 40, disc loss: 0.0003809541226882645, policy loss: 22.188536006503924
+Experience 28, Iter 41, disc loss: 0.0003675014066289342, policy loss: 22.6799943327676
+Experience 28, Iter 42, disc loss: 0.0003512722559591627, policy loss: 21.109908192762436
+Experience 28, Iter 43, disc loss: 0.00033175602745264487, policy loss: 22.65013780305303
+Experience 28, Iter 44, disc loss: 0.00031158126832751587, policy loss: 21.662404316591633
+Experience 28, Iter 45, disc loss: 0.0002906511704200466, policy loss: 21.50946715256374
+Experience 28, Iter 46, disc loss: 0.00027114091834928454, policy loss: 21.379075390629865
+Experience 28, Iter 47, disc loss: 0.0002498835500616116, policy loss: 22.724787498387915
+Experience 28, Iter 48, disc loss: 0.00023064947278022145, policy loss: 22.452332082184963
+Experience 28, Iter 49, disc loss: 0.00021332786315767316, policy loss: 21.677437917364575
+Experience 28, Iter 50, disc loss: 0.00019663846227370248, policy loss: 21.678949691955246
+Experience 28, Iter 51, disc loss: 0.00018108329873104897, policy loss: 22.341813937836275
+Experience 28, Iter 52, disc loss: 0.000169229623734851, policy loss: 22.576325711601044
+Experience 28, Iter 53, disc loss: 0.00015454677254212793, policy loss: 21.862805733892777
+Experience 28, Iter 54, disc loss: 0.000143527956837678, policy loss: 20.697282111381003
+Experience 28, Iter 55, disc loss: 0.00013306501372470432, policy loss: 22.13528511876148
+Experience 28, Iter 56, disc loss: 0.00012408852613240921, policy loss: 21.510700387545985
+Experience 28, Iter 57, disc loss: 0.00011624705306172647, policy loss: 20.552467855293074
+Experience 28, Iter 58, disc loss: 0.00010830720933322082, policy loss: 21.858385217836098
+Experience 28, Iter 59, disc loss: 0.00010175764716682667, policy loss: 20.875582647181893
+Experience 28, Iter 60, disc loss: 9.561092157594842e-05, policy loss: 20.29249234209283
+Experience 28, Iter 61, disc loss: 9.220919575845942e-05, policy loss: 21.054103512982852
+Experience 28, Iter 62, disc loss: 8.601757747656967e-05, policy loss: 20.487144371373407
+Experience 28, Iter 63, disc loss: 8.019797056504986e-05, policy loss: 22.097187458518484
+Experience 28, Iter 64, disc loss: 7.68628857383057e-05, policy loss: 20.98006647428121
+Experience 28, Iter 65, disc loss: 7.321003675876952e-05, policy loss: 21.491215174458155
+Experience 28, Iter 66, disc loss: 0.0005019676834732709, policy loss: 21.144483718059504
+Experience 28, Iter 67, disc loss: 6.859969314445233e-05, policy loss: 21.60408772796641
+Experience 28, Iter 68, disc loss: 6.653902322405292e-05, policy loss: 20.757835750481604
+Experience 28, Iter 69, disc loss: 6.505150827787327e-05, policy loss: 20.2684716020094
+Experience 28, Iter 70, disc loss: 6.149835672487983e-05, policy loss: 20.924577311682107
+Experience 28, Iter 71, disc loss: 5.913787757940984e-05, policy loss: 21.647571901626577
+Experience 28, Iter 72, disc loss: 6.077647281473668e-05, policy loss: 20.60001109721919
+Experience 28, Iter 73, disc loss: 5.601821621799325e-05, policy loss: 21.410878784358268
+Experience 28, Iter 74, disc loss: 5.5002850297701186e-05, policy loss: 20.559028120297608
+Experience 28, Iter 75, disc loss: 5.817916441377416e-05, policy loss: 21.394601528107138
+Experience 28, Iter 76, disc loss: 5.185763137602637e-05, policy loss: 21.455246414284254
+Experience 28, Iter 77, disc loss: 5.732146694824652e-05, policy loss: 21.058111468817255
+Experience 28, Iter 78, disc loss: 5.14508127798982e-05, policy loss: 19.21920258706775
+Experience 28, Iter 79, disc loss: 4.957114003036735e-05, policy loss: 20.579445555236475
+Experience 28, Iter 80, disc loss: 4.9608453276735214e-05, policy loss: 20.66429676748293
+Experience 28, Iter 81, disc loss: 4.738027870350352e-05, policy loss: 21.467652124022194
+Experience 28, Iter 82, disc loss: 4.7117569956561856e-05, policy loss: 19.957461106336567
+Experience 28, Iter 83, disc loss: 4.556388694448583e-05, policy loss: 20.10173701416054
+Experience 28, Iter 84, disc loss: 4.475286545004095e-05, policy loss: 20.67824694031211
+Experience 28, Iter 85, disc loss: 4.383765509794151e-05, policy loss: 20.38976126333411
+Experience 28, Iter 86, disc loss: 4.276866044983918e-05, policy loss: 20.659985276417526
+Experience 28, Iter 87, disc loss: 4.688921939830255e-05, policy loss: 20.408667665937458
+Experience 28, Iter 88, disc loss: 4.174947907388573e-05, policy loss: 20.764385566740412
+Experience 28, Iter 89, disc loss: 3.976397150236807e-05, policy loss: 21.205687635032028
+Experience 28, Iter 90, disc loss: 0.0001718573932968877, policy loss: 19.833713728375592
+Experience 28, Iter 91, disc loss: 0.0004864141191459108, policy loss: 18.874522252020064
+Experience 28, Iter 92, disc loss: 0.00020675788757412467, policy loss: 18.14325821784624
+Experience 28, Iter 93, disc loss: 0.00012645367151187495, policy loss: 17.449942654421967
+Experience 28, Iter 94, disc loss: 9.541465026330421e-05, policy loss: 18.903771348801097
+Experience 28, Iter 95, disc loss: 0.00021354186799557904, policy loss: 17.539801185255556
+Experience 28, Iter 96, disc loss: 0.0004010847636704096, policy loss: 16.350041493323154
+Experience 28, Iter 97, disc loss: 0.00015249791011362116, policy loss: 17.79295742748733
+Experience 28, Iter 98, disc loss: 8.748646077743629e-05, policy loss: 17.890479708317116
+Experience 28, Iter 99, disc loss: 0.00029701891879470906, policy loss: 17.588324426910432
+Experience 28, Iter 100, disc loss: 0.00019948681263247495, policy loss: 17.180714355758777
+Experience 28, Iter 101, disc loss: 0.00012487388533108536, policy loss: 16.86374406716191
+Experience 28, Iter 102, disc loss: 0.0007290786877657606, policy loss: 16.09012012064963
+Experience 28, Iter 103, disc loss: 0.00010416313282458439, policy loss: 19.723060092063175
+Experience 28, Iter 104, disc loss: 0.00012429301959856486, policy loss: 17.16004816958495
+Experience 28, Iter 105, disc loss: 0.00010156081120236991, policy loss: 16.3397462304802
+Experience 28, Iter 106, disc loss: 0.00019344185349805208, policy loss: 15.758087603152365
+Experience 28, Iter 107, disc loss: 0.00010714227134686703, policy loss: 16.22445845275217
+Experience 28, Iter 108, disc loss: 0.000287280300321901, policy loss: 16.690767938070383
+Experience 28, Iter 109, disc loss: 0.00047624790791163824, policy loss: 15.734887615996477
+Experience 28, Iter 110, disc loss: 0.0002385210754220683, policy loss: 17.27558038593991
+Experience 28, Iter 111, disc loss: 0.00024116963350413888, policy loss: 16.182160142014858
+Experience 28, Iter 112, disc loss: 0.004442135636360223, policy loss: 15.114791326868385
+Experience 28, Iter 113, disc loss: 8.876298474814335e-05, policy loss: 16.440564802123998
+Experience 28, Iter 114, disc loss: 0.00010759837253075536, policy loss: 17.235726200451186
+Experience 28, Iter 115, disc loss: 0.0001230905438938433, policy loss: 16.45976585287788
+Experience 28, Iter 116, disc loss: 0.00016342339923005645, policy loss: 14.192713876386357
+Experience 28, Iter 117, disc loss: 0.00013844639905674218, policy loss: 16.362697344471297
+Experience 28, Iter 118, disc loss: 0.0004041018848960434, policy loss: 16.338649825267986
+Experience 28, Iter 119, disc loss: 0.0001608189294914954, policy loss: 16.428533790228858
+Experience 28, Iter 120, disc loss: 0.00018755639081480355, policy loss: 17.871605439006125
+Experience 28, Iter 121, disc loss: 0.0001692800204324087, policy loss: 19.104665042581846
+Experience 28, Iter 122, disc loss: 0.0001821238333094256, policy loss: 19.33862172836106
+Experience 28, Iter 123, disc loss: 0.00018423062980138088, policy loss: 21.018993799641635
+Experience 28, Iter 124, disc loss: 0.00017613495222246396, policy loss: 20.338014443432662
+Experience 28, Iter 125, disc loss: 0.00017118996724419287, policy loss: 22.44225256135395
+Experience 28, Iter 126, disc loss: 0.00016545586570736672, policy loss: 21.78617988911848
+Experience 28, Iter 127, disc loss: 0.00016528484371192853, policy loss: 23.557383284102084
+Experience 28, Iter 128, disc loss: 0.0001654479553884341, policy loss: 22.896986960274678
+Experience 28, Iter 129, disc loss: 0.0001616046231036984, policy loss: 23.422865391500153
+Experience 28, Iter 130, disc loss: 0.00015820248264023393, policy loss: 23.80074897710632
+Experience 28, Iter 131, disc loss: 0.0001542702493800537, policy loss: 23.885334003661864
+Experience 28, Iter 132, disc loss: 0.00014996851783163974, policy loss: 24.019519038141954
+Experience 28, Iter 133, disc loss: 0.00014525154154397958, policy loss: 24.103819617213848
+Experience 28, Iter 134, disc loss: 0.00014031024105659525, policy loss: 24.011987622681367
+Experience 28, Iter 135, disc loss: 0.0001351798468780746, policy loss: 24.404842865440454
+Experience 28, Iter 136, disc loss: 0.0001300074517628093, policy loss: 24.2190031238349
+Experience 28, Iter 137, disc loss: 0.00012481609684252665, policy loss: 24.06462104548676
+Experience 28, Iter 138, disc loss: 0.00011970361021851808, policy loss: 24.470222672145752
+Experience 28, Iter 139, disc loss: 0.00011532442871960742, policy loss: 24.098840755874804
+Experience 28, Iter 140, disc loss: 0.0001243391050766561, policy loss: 23.37356482641227
+Experience 28, Iter 141, disc loss: 0.00010591431103036298, policy loss: 24.149544826466688
+Experience 28, Iter 142, disc loss: 0.000100790998226911, policy loss: 24.4495452596938
+Experience 28, Iter 143, disc loss: 9.654892543979978e-05, policy loss: 24.592186581525723
+Experience 28, Iter 144, disc loss: 9.257872007366504e-05, policy loss: 23.802100668561714
+Experience 28, Iter 145, disc loss: 8.867895209404105e-05, policy loss: 23.796433782510185
+Experience 28, Iter 146, disc loss: 8.50679173623264e-05, policy loss: 24.278241888780627
+Experience 28, Iter 147, disc loss: 8.161477291627903e-05, policy loss: 24.38034100785339
+Experience 28, Iter 148, disc loss: 7.836717973936988e-05, policy loss: 23.109844532251156
+Experience 28, Iter 149, disc loss: 7.53443680328467e-05, policy loss: 23.44071120966991
+Experience 28, Iter 150, disc loss: 7.250833513558398e-05, policy loss: 23.841053009113292
+Experience 28, Iter 151, disc loss: 6.972881103970787e-05, policy loss: 24.34588553771479
+Experience 28, Iter 152, disc loss: 6.719614546407587e-05, policy loss: 23.80092123495366
+Experience 28, Iter 153, disc loss: 6.488667872522807e-05, policy loss: 24.21171391900708
+Experience 28, Iter 154, disc loss: 6.253518097532637e-05, policy loss: 23.79982784405712
+Experience 28, Iter 155, disc loss: 6.042710409391396e-05, policy loss: 23.425349814506717
+Experience 28, Iter 156, disc loss: 5.841580727111181e-05, policy loss: 23.76694617194365
+Experience 28, Iter 157, disc loss: 5.653593200422345e-05, policy loss: 24.002587798555908
+Experience 28, Iter 158, disc loss: 5.477778613559814e-05, policy loss: 23.988973853913524
+Experience 28, Iter 159, disc loss: 5.3094774315800135e-05, policy loss: 24.054526724023386
+Experience 28, Iter 160, disc loss: 5.2574420485889084e-05, policy loss: 23.31300364646264
+Experience 28, Iter 161, disc loss: 5.003359042234747e-05, policy loss: 24.560737088744695
+Experience 28, Iter 162, disc loss: 4.863090171567741e-05, policy loss: 23.767728885750202
+Experience 28, Iter 163, disc loss: 4.730250600715625e-05, policy loss: 23.953789045418947
+Experience 28, Iter 164, disc loss: 4.604547314812796e-05, policy loss: 24.394494452720735
+Experience 28, Iter 165, disc loss: 4.495538658924286e-05, policy loss: 23.394392538080066
+Experience 28, Iter 166, disc loss: 4.390185661126022e-05, policy loss: 23.991862769703715
+Experience 28, Iter 167, disc loss: 4.266352279860799e-05, policy loss: 24.172381385121998
+Experience 28, Iter 168, disc loss: 4.164126491152717e-05, policy loss: 24.20973363695293
+Experience 28, Iter 169, disc loss: 4.079126618295782e-05, policy loss: 23.226964902822708
+Experience 28, Iter 170, disc loss: 3.975642645806786e-05, policy loss: 23.426007776725633
+Experience 28, Iter 171, disc loss: 3.933105493211467e-05, policy loss: 23.033342485551
+Experience 28, Iter 172, disc loss: 3.805664527011017e-05, policy loss: 23.745525665239683
+Experience 28, Iter 173, disc loss: 3.725146754687215e-05, policy loss: 24.102152510662346
+Experience 28, Iter 174, disc loss: 3.6496896798884134e-05, policy loss: 23.449296662522514
+Experience 28, Iter 175, disc loss: 3.577403935085314e-05, policy loss: 23.70493879448513
+Experience 28, Iter 176, disc loss: 3.5590445256315945e-05, policy loss: 22.71939703214319
+Experience 28, Iter 177, disc loss: 3.4447833502212823e-05, policy loss: 23.369303526771787
+Experience 28, Iter 178, disc loss: 3.3801194708311645e-05, policy loss: 23.277745874280335
+Experience 28, Iter 179, disc loss: 3.327285430458111e-05, policy loss: 23.563584332238186
+Experience 28, Iter 180, disc loss: 3.261885232246554e-05, policy loss: 23.93495634147181
+Experience 28, Iter 181, disc loss: 3.20032549163397e-05, policy loss: 23.49119422578846
+Experience 28, Iter 182, disc loss: 3.146265871085518e-05, policy loss: 23.72360591229334
+Experience 28, Iter 183, disc loss: 3.094214937050344e-05, policy loss: 23.12744799444745
+Experience 28, Iter 184, disc loss: 3.0434047937383176e-05, policy loss: 23.896687967239743
+Experience 28, Iter 185, disc loss: 2.994781248130505e-05, policy loss: 23.86521002030473
+Experience 28, Iter 186, disc loss: 2.9552759804666704e-05, policy loss: 23.522636855424025
+Experience 28, Iter 187, disc loss: 2.902815575374904e-05, policy loss: 23.706626504768067
+Experience 28, Iter 188, disc loss: 2.898251362387552e-05, policy loss: 23.378179632412422
+Experience 28, Iter 189, disc loss: 2.817171851393298e-05, policy loss: 23.36168039670093
+Experience 28, Iter 190, disc loss: 2.782617378720035e-05, policy loss: 23.370762273589783
+Experience 28, Iter 191, disc loss: 2.737272196675977e-05, policy loss: 23.91364905712515
+Experience 28, Iter 192, disc loss: 2.7044900219960798e-05, policy loss: 22.544074867834155
+Experience 28, Iter 193, disc loss: 2.6652697912295567e-05, policy loss: 23.18536604808793
+Experience 28, Iter 194, disc loss: 2.6415684850364224e-05, policy loss: 23.12170188232652
+Experience 28, Iter 195, disc loss: 2.5907405070396077e-05, policy loss: 23.527080039082634
+Experience 28, Iter 196, disc loss: 2.5567559124972258e-05, policy loss: 23.550187471406627
+Experience 28, Iter 197, disc loss: 2.5240880913044806e-05, policy loss: 23.37449120519368
+Experience 28, Iter 198, disc loss: 2.4923005489448585e-05, policy loss: 23.433704209543965
+Experience 28, Iter 199, disc loss: 2.462117504885483e-05, policy loss: 23.44072309527385
+Experience 28, Iter 200, disc loss: 2.430814951418061e-05, policy loss: 24.05231359876118
+Experience 28, Iter 201, disc loss: 2.4022429114799722e-05, policy loss: 23.27371417254431
+Experience 28, Iter 202, disc loss: 2.372720746616966e-05, policy loss: 23.480067173806585
+Experience 28, Iter 203, disc loss: 2.3506712916986663e-05, policy loss: 23.003948623463604
+Experience 28, Iter 204, disc loss: 2.317716434510743e-05, policy loss: 23.64421181257667
+Experience 28, Iter 205, disc loss: 2.295681044942887e-05, policy loss: 22.963688588703782
+Experience 28, Iter 206, disc loss: 2.2667058865776784e-05, policy loss: 23.51078300563348
+Experience 28, Iter 207, disc loss: 2.3240545404612902e-05, policy loss: 23.109995259408763
+Experience 28, Iter 208, disc loss: 2.2157755037982967e-05, policy loss: 24.020106444008334
+Experience 28, Iter 209, disc loss: 2.3137646975340342e-05, policy loss: 22.696434017898902
+Experience 28, Iter 210, disc loss: 2.1687281586064454e-05, policy loss: 23.056765799649106
+Experience 28, Iter 211, disc loss: 2.1466081790541683e-05, policy loss: 23.485705742557528
+Experience 28, Iter 212, disc loss: 2.224565644683529e-05, policy loss: 22.798171877778458
+Experience 28, Iter 213, disc loss: 2.10377588740357e-05, policy loss: 22.81819161926405
+Experience 28, Iter 214, disc loss: 2.0807798235005587e-05, policy loss: 23.31224756769374
+Experience 28, Iter 215, disc loss: 2.0605877029918612e-05, policy loss: 23.270443370553316
+Experience 28, Iter 216, disc loss: 2.0398822564390066e-05, policy loss: 23.4015419583845
+Experience 28, Iter 217, disc loss: 2.01983284601445e-05, policy loss: 23.33640056753436
+Experience 28, Iter 218, disc loss: 2.000043107409048e-05, policy loss: 23.457280536836024
+Experience 28, Iter 219, disc loss: 1.9825710340955162e-05, policy loss: 23.13382606479861
+Experience 28, Iter 220, disc loss: 1.9640805056367688e-05, policy loss: 23.676816678832783
+Experience 28, Iter 221, disc loss: 1.989568837176728e-05, policy loss: 22.530506563974203
+Experience 28, Iter 222, disc loss: 1.9253848894127478e-05, policy loss: 23.977609336226745
+Experience 28, Iter 223, disc loss: 1.913833166908966e-05, policy loss: 23.054793366093033
+Experience 28, Iter 224, disc loss: 1.889988145898304e-05, policy loss: 23.77015535971884
+Experience 28, Iter 225, disc loss: 1.8735859561511462e-05, policy loss: 23.053386218424123
+Experience 28, Iter 226, disc loss: 1.856820769215796e-05, policy loss: 23.13099215147858
+Experience 28, Iter 227, disc loss: 1.8400753782690593e-05, policy loss: 23.176837511026115
+Experience 28, Iter 228, disc loss: 1.8237881598468437e-05, policy loss: 22.93462647213137
+Experience 28, Iter 229, disc loss: 1.8080381033369532e-05, policy loss: 23.36692259495218
+Experience 28, Iter 230, disc loss: 1.7926018239579884e-05, policy loss: 23.762127007067367
+Experience 28, Iter 231, disc loss: 1.7772230407831166e-05, policy loss: 23.072565974637207
+Experience 28, Iter 232, disc loss: 1.7826442781676137e-05, policy loss: 22.563803696745786
+Experience 28, Iter 233, disc loss: 1.7485400265540303e-05, policy loss: 23.218020043426613
+Experience 28, Iter 234, disc loss: 1.7333860192799784e-05, policy loss: 22.50790284875073
+Experience 28, Iter 235, disc loss: 1.7191899221501018e-05, policy loss: 22.56519978515447
+Experience 28, Iter 236, disc loss: 1.7043274045086096e-05, policy loss: 23.771068431384265
+Experience 28, Iter 237, disc loss: 1.6904054946224938e-05, policy loss: 23.14635063789858
+Experience 28, Iter 238, disc loss: 1.697938779126801e-05, policy loss: 23.909153967423393
+Experience 28, Iter 239, disc loss: 1.674055454357344e-05, policy loss: 22.16831010056783
+Experience 28, Iter 240, disc loss: 1.650449466979312e-05, policy loss: 23.499880246341853
+Experience 28, Iter 241, disc loss: 1.638267238778494e-05, policy loss: 23.2002751467186
+Experience 28, Iter 242, disc loss: 1.6769936496651015e-05, policy loss: 22.770861788111443
+Experience 28, Iter 243, disc loss: 1.612542238860536e-05, policy loss: 23.017561543016512
+Experience 28, Iter 244, disc loss: 1.62939392609069e-05, policy loss: 22.644511669602462
+Experience 28, Iter 245, disc loss: 1.5878500680817016e-05, policy loss: 22.799841097255097
+Experience 28, Iter 246, disc loss: 1.5816254890075666e-05, policy loss: 22.996524645287128
+Experience 28, Iter 247, disc loss: 1.5840970248211876e-05, policy loss: 22.53604734671728
+Experience 28, Iter 248, disc loss: 1.5591180862790612e-05, policy loss: 22.77996379280794
+Experience 28, Iter 249, disc loss: 1.5430473441727194e-05, policy loss: 22.279168624230437
+Experience 28, Iter 250, disc loss: 1.530014898623644e-05, policy loss: 23.14272042802837
+Experience 28, Iter 251, disc loss: 1.5211485059511185e-05, policy loss: 22.904446059370304
+Experience 28, Iter 252, disc loss: 1.525922113871149e-05, policy loss: 22.229435790000466
+Experience 28, Iter 253, disc loss: 1.4977522682444004e-05, policy loss: 22.956297213288064
+Experience 28, Iter 254, disc loss: 1.486691907383396e-05, policy loss: 22.913353986466568
+Experience 28, Iter 255, disc loss: 1.4761279546576212e-05, policy loss: 22.862309698718303
+Experience 28, Iter 256, disc loss: 8.314639987548611e-05, policy loss: 23.159922653209215
+Experience 28, Iter 257, disc loss: 1.4717062045025576e-05, policy loss: 22.67228624524071
+Experience 28, Iter 258, disc loss: 1.4514040443161016e-05, policy loss: 23.13278416872906
+Experience 28, Iter 259, disc loss: 1.4438152999144608e-05, policy loss: 22.831821547892094
+Experience 28, Iter 260, disc loss: 1.4416985292725129e-05, policy loss: 23.28095711964589
+Experience 28, Iter 261, disc loss: 1.4305445112976387e-05, policy loss: 23.141125091098097
+Experience 28, Iter 262, disc loss: 1.5269580541894755e-05, policy loss: 22.083075691251583
+Experience 28, Iter 263, disc loss: 1.4131253130030875e-05, policy loss: 22.874638232333176
+Experience 28, Iter 264, disc loss: 1.4186011999496392e-05, policy loss: 23.567155679449797
+Experience 28, Iter 265, disc loss: 1.3999791147982505e-05, policy loss: 22.37328174584764
+Experience 28, Iter 266, disc loss: 1.3897328597376494e-05, policy loss: 22.836689310814474
+Experience 28, Iter 267, disc loss: 1.3813002447363446e-05, policy loss: 22.799114527589623
+Experience 28, Iter 268, disc loss: 1.376612074386308e-05, policy loss: 23.10772665842232
+Experience 28, Iter 269, disc loss: 1.3651657748866644e-05, policy loss: 22.97603399107971
+Experience 28, Iter 270, disc loss: 1.3569467513972253e-05, policy loss: 23.140815447985936
+Experience 28, Iter 271, disc loss: 1.3634499247468812e-05, policy loss: 23.12986805663416
+Experience 28, Iter 272, disc loss: 1.3411128541493595e-05, policy loss: 23.14317463633475
+Experience 28, Iter 273, disc loss: 1.3350600053188958e-05, policy loss: 22.518542451548125
+Experience 28, Iter 274, disc loss: 1.3264922970575187e-05, policy loss: 23.510928786771807
+Experience 28, Iter 275, disc loss: 1.3563222085129687e-05, policy loss: 22.874141097570018
+Experience 28, Iter 276, disc loss: 1.3096373933656942e-05, policy loss: 22.857419150406514
+Experience 28, Iter 277, disc loss: 1.3022147645350322e-05, policy loss: 22.824077304718703
+Experience 28, Iter 278, disc loss: 1.2942656950786894e-05, policy loss: 22.764436522647017
+Experience 28, Iter 279, disc loss: 1.2873548710192326e-05, policy loss: 22.830657463150878
+Experience 28, Iter 280, disc loss: 1.4449666761650495e-05, policy loss: 22.631560462435065
+Experience 28, Iter 281, disc loss: 1.2962197440596115e-05, policy loss: 22.701995595283528
+Experience 28, Iter 282, disc loss: 1.2645050097387662e-05, policy loss: 23.489912864439837
+Experience 28, Iter 283, disc loss: 1.2598407740542788e-05, policy loss: 23.35657890321245
+Experience 28, Iter 284, disc loss: 1.2500755540767076e-05, policy loss: 22.33149924559185
+Experience 28, Iter 285, disc loss: 1.257187291317665e-05, policy loss: 22.60334661261629
+Experience 28, Iter 286, disc loss: 1.2352340488381159e-05, policy loss: 23.019051547252264
+Experience 28, Iter 287, disc loss: 1.2281352358664664e-05, policy loss: 22.901942354141454
+Experience 28, Iter 288, disc loss: 1.2833513932924427e-05, policy loss: 22.36341103948648
+Experience 28, Iter 289, disc loss: 1.2147703556968145e-05, policy loss: 22.76388522706966
+Experience 28, Iter 290, disc loss: 1.219732211605156e-05, policy loss: 22.946898137002226
+Experience 28, Iter 291, disc loss: 1.2007811742001091e-05, policy loss: 23.04797508334805
+Experience 28, Iter 292, disc loss: 1.19377884717774e-05, policy loss: 22.618557376853992
+Experience 28, Iter 293, disc loss: 1.1874399855757422e-05, policy loss: 22.29767562796971
+Experience 28, Iter 294, disc loss: 1.1804989849560666e-05, policy loss: 22.912796732559567
+Experience 28, Iter 295, disc loss: 1.1746531012849942e-05, policy loss: 22.986055221642005
+Experience 28, Iter 296, disc loss: 1.1678588608470753e-05, policy loss: 22.816089448149377
+Experience 28, Iter 297, disc loss: 1.1613982770856328e-05, policy loss: 22.631800046212266
+Experience 28, Iter 298, disc loss: 1.155284531361421e-05, policy loss: 23.15640672775632
+Experience 28, Iter 299, disc loss: 1.1688595796591978e-05, policy loss: 22.47200968038963
+Experience: 29
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0125],
+        [0.2215],
+        [2.1524],
+        [0.0421]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.1074, 0.5193, 1.9324, 0.0406, 0.0105, 5.9309]],
+
+        [[0.1074, 0.5193, 1.9324, 0.0406, 0.0105, 5.9309]],
+
+        [[0.1074, 0.5193, 1.9324, 0.0406, 0.0105, 5.9309]],
+
+        [[0.1074, 0.5193, 1.9324, 0.0406, 0.0105, 5.9309]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0499, 0.8858, 8.6097, 0.1683], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0499, 0.8858, 8.6097, 0.1683])
+N: 290
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([1161.0000, 1161.0000, 1161.0000, 1161.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.868
+Iter 2/2000 - Loss: 3.779
+Iter 3/2000 - Loss: 3.615
+Iter 4/2000 - Loss: 3.486
+Iter 5/2000 - Loss: 3.363
+Iter 6/2000 - Loss: 3.215
+Iter 7/2000 - Loss: 3.059
+Iter 8/2000 - Loss: 2.910
+Iter 9/2000 - Loss: 2.759
+Iter 10/2000 - Loss: 2.594
+Iter 11/2000 - Loss: 2.417
+Iter 12/2000 - Loss: 2.235
+Iter 13/2000 - Loss: 2.050
+Iter 14/2000 - Loss: 1.860
+Iter 15/2000 - Loss: 1.662
+Iter 16/2000 - Loss: 1.453
+Iter 17/2000 - Loss: 1.235
+Iter 18/2000 - Loss: 1.010
+Iter 19/2000 - Loss: 0.780
+Iter 20/2000 - Loss: 0.544
+Iter 1981/2000 - Loss: -7.487
+Iter 1982/2000 - Loss: -7.487
+Iter 1983/2000 - Loss: -7.487
+Iter 1984/2000 - Loss: -7.487
+Iter 1985/2000 - Loss: -7.487
+Iter 1986/2000 - Loss: -7.487
+Iter 1987/2000 - Loss: -7.487
+Iter 1988/2000 - Loss: -7.487
+Iter 1989/2000 - Loss: -7.487
+Iter 1990/2000 - Loss: -7.487
+Iter 1991/2000 - Loss: -7.488
+Iter 1992/2000 - Loss: -7.488
+Iter 1993/2000 - Loss: -7.488
+Iter 1994/2000 - Loss: -7.488
+Iter 1995/2000 - Loss: -7.488
+Iter 1996/2000 - Loss: -7.488
+Iter 1997/2000 - Loss: -7.488
+Iter 1998/2000 - Loss: -7.488
+Iter 1999/2000 - Loss: -7.488
+Iter 2000/2000 - Loss: -7.488
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0004],
+        [0.0004],
+        [0.0019],
+        [0.0003]])
+Lengthscale: tensor([[[16.1365, 11.2885, 26.1504,  2.1606,  7.9371, 60.7183]],
+
+        [[28.3564, 45.7364,  9.1572,  1.5770,  1.0731, 24.6374]],
+
+        [[31.7347, 49.0650,  8.9325,  0.9500,  0.7329, 23.8573]],
+
+        [[24.1302, 39.5066, 14.2534,  2.1155,  1.6146, 55.2253]]])
+Signal Variance: tensor([ 0.1765,  2.1745, 10.9839,  0.5270])
+Estimated target variance: tensor([0.0499, 0.8858, 8.6097, 0.1683])
+N: 290
+Signal to noise ratio: tensor([22.3586, 77.4134, 76.1354, 42.0349])
+Bound on condition number: tensor([ 144974.6559, 1737923.9397, 1681014.5304,  512411.6595])
+Policy Optimizer learning rate:
+0.009709299607098555
+Experience 29, Iter 0, disc loss: 1.1493222186825365e-05, policy loss: 21.62649137718765
+Experience 29, Iter 1, disc loss: 1.136458184995591e-05, policy loss: 22.6268006976769
+Experience 29, Iter 2, disc loss: 1.137123941225555e-05, policy loss: 22.894670515350054
+Experience 29, Iter 3, disc loss: 1.2692842350304231e-05, policy loss: 22.500077495309313
+Experience 29, Iter 4, disc loss: 1.1187373051618229e-05, policy loss: 22.248212153992664
+Experience 29, Iter 5, disc loss: 1.1127028797986252e-05, policy loss: 22.659850049755388
+Experience 29, Iter 6, disc loss: 1.1066311662809373e-05, policy loss: 22.932945625644415
+Experience 29, Iter 7, disc loss: 1.1006631212835738e-05, policy loss: 22.51682278923883
+Experience 29, Iter 8, disc loss: 1.1390435116249525e-05, policy loss: 22.731672111228434
+Experience 29, Iter 9, disc loss: 1.0996292181801243e-05, policy loss: 22.439377218448122
+Experience 29, Iter 10, disc loss: 1.087529451089229e-05, policy loss: 21.965290717602084
+Experience 29, Iter 11, disc loss: 1.0890912499054778e-05, policy loss: 22.03724886423889
+Experience 29, Iter 12, disc loss: 1.0720451015327677e-05, policy loss: 22.699067263454133
+Experience 29, Iter 13, disc loss: 1.1901191412218473e-05, policy loss: 22.786509233727067
+Experience 29, Iter 14, disc loss: 1.0677392844556345e-05, policy loss: 22.221502466406662
+Experience 29, Iter 15, disc loss: 1.0573077692174692e-05, policy loss: 22.367104249223324
+Experience 29, Iter 16, disc loss: 1.0509883658835121e-05, policy loss: 22.892257904769167
+Experience 29, Iter 17, disc loss: 1.0460358720997854e-05, policy loss: 22.90055528692384
+Experience 29, Iter 18, disc loss: 1.0442350797507375e-05, policy loss: 22.46955502037421
+Experience 29, Iter 19, disc loss: 1.0363560191996405e-05, policy loss: 22.21148399343245
+Experience 29, Iter 20, disc loss: 1.0298645199941856e-05, policy loss: 22.98694360292244
+Experience 29, Iter 21, disc loss: 1.0254887498013963e-05, policy loss: 22.75446770046372
+Experience 29, Iter 22, disc loss: 1.0204785120919073e-05, policy loss: 23.01427710570846
+Experience 29, Iter 23, disc loss: 1.0163126169465413e-05, policy loss: 22.786795602215314
+Experience 29, Iter 24, disc loss: 1.0160887071839403e-05, policy loss: 22.50834595873343
+Experience 29, Iter 25, disc loss: 1.0114787397246187e-05, policy loss: 22.0325393173322
+Experience 29, Iter 26, disc loss: 1.0409078499496997e-05, policy loss: 21.958805458311915
+Experience 29, Iter 27, disc loss: 9.959973500998102e-06, policy loss: 22.939575518999415
+Experience 29, Iter 28, disc loss: 9.974026185635396e-06, policy loss: 22.41903468530282
+Experience 29, Iter 29, disc loss: 9.879415353193721e-06, policy loss: 22.38303508766446
+Experience 29, Iter 30, disc loss: 9.832173355056941e-06, policy loss: 22.6198548031175
+Experience 29, Iter 31, disc loss: 9.7937644997525e-06, policy loss: 22.465706012668917
+Experience 29, Iter 32, disc loss: 9.881003145903526e-06, policy loss: 22.49691047981795
+Experience 29, Iter 33, disc loss: 9.76074489914973e-06, policy loss: 22.301418732033586
+Experience 29, Iter 34, disc loss: 9.635310722500311e-06, policy loss: 22.614297364504072
+Experience 29, Iter 35, disc loss: 9.618949148803198e-06, policy loss: 22.606767016303515
+Experience 29, Iter 36, disc loss: 9.550757651871048e-06, policy loss: 22.992174983175182
+Experience 29, Iter 37, disc loss: 9.49868402852993e-06, policy loss: 22.93484993538371
+Experience 29, Iter 38, disc loss: 9.459601808673787e-06, policy loss: 22.372576409772165
+Experience 29, Iter 39, disc loss: 9.412004886190183e-06, policy loss: 23.336935432280754
+Experience 29, Iter 40, disc loss: 9.371423896907788e-06, policy loss: 22.816780698303937
+Experience 29, Iter 41, disc loss: 9.3358263413167e-06, policy loss: 22.754792349277054
+Experience 29, Iter 42, disc loss: 9.29390871637077e-06, policy loss: 23.225965869008334
+Experience 29, Iter 43, disc loss: 9.242986410571953e-06, policy loss: 22.53826988793633
+Experience 29, Iter 44, disc loss: 9.209249161276958e-06, policy loss: 22.432873257732464
+Experience 29, Iter 45, disc loss: 9.21935356622585e-06, policy loss: 22.93854232492652
+Experience 29, Iter 46, disc loss: 9.119721969369956e-06, policy loss: 22.38233996695327
+Experience 29, Iter 47, disc loss: 9.092439560055907e-06, policy loss: 22.835973952123375
+Experience 29, Iter 48, disc loss: 9.167841094417603e-06, policy loss: 22.3895076536077
+Experience 29, Iter 49, disc loss: 9.071200690695636e-06, policy loss: 22.88513295685737
+Experience 29, Iter 50, disc loss: 8.965004842582506e-06, policy loss: 23.0500128666408
+Experience 29, Iter 51, disc loss: 8.928665330698934e-06, policy loss: 22.691030361915423
+Experience 29, Iter 52, disc loss: 8.88158256362173e-06, policy loss: 23.168152149318452
+Experience 29, Iter 53, disc loss: 8.86982476739342e-06, policy loss: 22.415616133473293
+Experience 29, Iter 54, disc loss: 8.830732835707335e-06, policy loss: 22.791235185675777
+Experience 29, Iter 55, disc loss: 8.801164318373643e-06, policy loss: 22.028824915635923
+Experience 29, Iter 56, disc loss: 8.735245841700338e-06, policy loss: 22.807857502914594
+Experience 29, Iter 57, disc loss: 9.510591601775512e-06, policy loss: 22.243810041632912
+Experience 29, Iter 58, disc loss: 8.709378582807079e-06, policy loss: 21.996232922884538
+Experience 29, Iter 59, disc loss: 8.719731915983628e-06, policy loss: 22.365473912211357
+Experience 29, Iter 60, disc loss: 9.728655635937664e-06, policy loss: 22.014749911791977
+Experience 29, Iter 61, disc loss: 8.585573017769827e-06, policy loss: 22.777172685884253
+Experience 29, Iter 62, disc loss: 8.623656807794556e-06, policy loss: 22.99818133270824
+Experience 29, Iter 63, disc loss: 8.481834605903764e-06, policy loss: 22.729134326229815
+Experience 29, Iter 64, disc loss: 8.444635383889331e-06, policy loss: 23.11285857184977
+Experience 29, Iter 65, disc loss: 8.481256651226129e-06, policy loss: 22.101617233518013
+Experience 29, Iter 66, disc loss: 8.395850520541113e-06, policy loss: 22.868204732049236
+Experience 29, Iter 67, disc loss: 8.344743901513738e-06, policy loss: 22.361142785012483
+Experience 29, Iter 68, disc loss: 8.307932613165753e-06, policy loss: 22.911029286382806
+Experience 29, Iter 69, disc loss: 8.276639160975186e-06, policy loss: 23.069383946108147
+Experience 29, Iter 70, disc loss: 8.280838419285084e-06, policy loss: 22.46958387617564
+Experience 29, Iter 71, disc loss: 8.239230618570429e-06, policy loss: 22.617617816175965
+Experience 29, Iter 72, disc loss: 8.238330359217014e-06, policy loss: 22.19393642357698
+Experience 29, Iter 73, disc loss: 8.143786632564982e-06, policy loss: 22.870337907495898
+Experience 29, Iter 74, disc loss: 8.12811989631317e-06, policy loss: 22.961686377656154
+Experience 29, Iter 75, disc loss: 8.07772744199002e-06, policy loss: 22.509675219654866
+Experience 29, Iter 76, disc loss: 8.077365634943398e-06, policy loss: 22.115736608133393
+Experience 29, Iter 77, disc loss: 8.014895746953763e-06, policy loss: 22.779694031611314
+Experience 29, Iter 78, disc loss: 7.998753638075557e-06, policy loss: 22.425686569128068
+Experience 29, Iter 79, disc loss: 7.961013583226145e-06, policy loss: 22.188588082114677
+Experience 29, Iter 80, disc loss: 7.937956477936638e-06, policy loss: 22.54696655447075
+Experience 29, Iter 81, disc loss: 7.920366413107447e-06, policy loss: 22.38270457127736
+Experience 29, Iter 82, disc loss: 8.11670224153205e-06, policy loss: 22.701351689884604
+Experience 29, Iter 83, disc loss: 7.829559519626524e-06, policy loss: 22.18824997639966
+Experience 29, Iter 84, disc loss: 7.79933553704962e-06, policy loss: 22.48605189112257
+Experience 29, Iter 85, disc loss: 7.7741518988874e-06, policy loss: 22.478784365904133
+Experience 29, Iter 86, disc loss: 7.751628650024707e-06, policy loss: 22.27969915736798
+Experience 29, Iter 87, disc loss: 7.726267771838677e-06, policy loss: 22.1476219412652
+Experience 29, Iter 88, disc loss: 7.70341248506921e-06, policy loss: 22.10438983783016
+Experience 29, Iter 89, disc loss: 7.663603264528124e-06, policy loss: 22.09626235077264
+Experience 29, Iter 90, disc loss: 7.62287689763699e-06, policy loss: 22.658775053773986
+Experience 29, Iter 91, disc loss: 7.681895891299558e-06, policy loss: 21.60828604457781
+Experience 29, Iter 92, disc loss: 7.574289551992293e-06, policy loss: 22.266224396600332
+Experience 29, Iter 93, disc loss: 7.5540031746161e-06, policy loss: 21.94731413221009
+Experience 29, Iter 94, disc loss: 7.9518947540295e-06, policy loss: 21.22281404774949
+Experience 29, Iter 95, disc loss: 7.680500317784167e-06, policy loss: 22.276541669221302
+Experience 29, Iter 96, disc loss: 7.459101891773818e-06, policy loss: 21.843852975795002
+Experience 29, Iter 97, disc loss: 7.478747478032111e-06, policy loss: 21.989084161774617
+Experience 29, Iter 98, disc loss: 7.453910967485394e-06, policy loss: 22.124800174348298
+Experience 29, Iter 99, disc loss: 7.372176117637236e-06, policy loss: 22.556020847374747
+Experience 29, Iter 100, disc loss: 7.350783645147357e-06, policy loss: 22.45394719294925
+Experience 29, Iter 101, disc loss: 7.549204118553419e-06, policy loss: 22.512446197036148
+Experience 29, Iter 102, disc loss: 7.296296471324868e-06, policy loss: 22.74509798957223
+Experience 29, Iter 103, disc loss: 7.275763219882578e-06, policy loss: 22.01023770358796
+Experience 29, Iter 104, disc loss: 7.292961272000275e-06, policy loss: 22.02145726791779
+Experience 29, Iter 105, disc loss: 7.2460452009983454e-06, policy loss: 22.189400096938428
+Experience 29, Iter 106, disc loss: 7.1965825783167115e-06, policy loss: 22.458237057077177
+Experience 29, Iter 107, disc loss: 7.177802341697769e-06, policy loss: 22.32708809627241
+Experience 29, Iter 108, disc loss: 7.146894032183419e-06, policy loss: 22.464851228821495
+Experience 29, Iter 109, disc loss: 7.115742520105029e-06, policy loss: 21.903476570090415
+Experience 29, Iter 110, disc loss: 7.1016653491556e-06, policy loss: 21.86244759425674
+Experience 29, Iter 111, disc loss: 7.0877204571695225e-06, policy loss: 21.925336924378783
+Experience 29, Iter 112, disc loss: 7.117341977902996e-06, policy loss: 22.515690870069896
+Experience 29, Iter 113, disc loss: 7.040322923294955e-06, policy loss: 22.33213634297853
+Experience 29, Iter 114, disc loss: 7.308433796200073e-06, policy loss: 21.415819322010307
+Experience 29, Iter 115, disc loss: 7.884358018389187e-06, policy loss: 22.320279970577552
+Experience 29, Iter 116, disc loss: 7.147080123209417e-06, policy loss: 22.30500639079783
+Experience 29, Iter 117, disc loss: 6.942778305213144e-06, policy loss: 21.851598029079355
+Experience 29, Iter 118, disc loss: 6.932072885581623e-06, policy loss: 22.910525169922042
+Experience 29, Iter 119, disc loss: 6.8746274738530005e-06, policy loss: 22.408298831795424
+Experience 29, Iter 120, disc loss: 6.867536821950464e-06, policy loss: 22.22078503114102
+Experience 29, Iter 121, disc loss: 6.844852356120826e-06, policy loss: 21.765075990510418
+Experience 29, Iter 122, disc loss: 6.805170768565611e-06, policy loss: 22.20053696749524
+Experience 29, Iter 123, disc loss: 6.910246325269793e-06, policy loss: 22.37246046171011
+Experience 29, Iter 124, disc loss: 6.757274200838055e-06, policy loss: 22.76121994665367
+Experience 29, Iter 125, disc loss: 6.733938696953188e-06, policy loss: 22.10304980615826
+Experience 29, Iter 126, disc loss: 7.124256274730592e-06, policy loss: 22.003925093277225
+Experience 29, Iter 127, disc loss: 6.696186665402292e-06, policy loss: 22.542177688725538
+Experience 29, Iter 128, disc loss: 6.670772967131153e-06, policy loss: 22.09818717393385
+Experience 29, Iter 129, disc loss: 6.645036866291644e-06, policy loss: 21.903164752405445
+Experience 29, Iter 130, disc loss: 6.683785187116109e-06, policy loss: 21.561293251450003
+Experience 29, Iter 131, disc loss: 6.603705250359603e-06, policy loss: 22.311487847159995
+Experience 29, Iter 132, disc loss: 6.974245763790608e-06, policy loss: 21.618969248059884
+Experience 29, Iter 133, disc loss: 6.573529865679057e-06, policy loss: 22.074166230632578
+Experience 29, Iter 134, disc loss: 6.536369785247638e-06, policy loss: 22.35316455152221
+Experience 29, Iter 135, disc loss: 6.516656885285244e-06, policy loss: 22.164099378738616
+Experience 29, Iter 136, disc loss: 6.517370902774872e-06, policy loss: 21.645819748778802
+Experience 29, Iter 137, disc loss: 6.994954431221444e-06, policy loss: 22.02738543266825
+Experience 29, Iter 138, disc loss: 6.527995197323639e-06, policy loss: 21.499995973827502
+Experience 29, Iter 139, disc loss: 6.442571640487797e-06, policy loss: 22.34059011141072
+Experience 29, Iter 140, disc loss: 6.471490963722847e-06, policy loss: 22.540030989697016
+Experience 29, Iter 141, disc loss: 6.882616075590153e-06, policy loss: 22.045725894066074
+Experience 29, Iter 142, disc loss: 6.415069724723527e-06, policy loss: 22.035589310325577
+Experience 29, Iter 143, disc loss: 6.634286428925323e-06, policy loss: 21.96129564319353
+Experience 29, Iter 144, disc loss: 6.3539141035382245e-06, policy loss: 22.134028546477545
+Experience 29, Iter 145, disc loss: 6.6703312069032906e-06, policy loss: 21.5910963007817
+Experience 29, Iter 146, disc loss: 7.5696292476911e-06, policy loss: 21.929889462883384
+Experience 29, Iter 147, disc loss: 1.0187637486435919e-05, policy loss: 21.613684540816323
+Experience 29, Iter 148, disc loss: 6.2711590489964384e-06, policy loss: 21.586380819460754
+Experience 29, Iter 149, disc loss: 6.845232916089744e-06, policy loss: 21.87772282807549
+Experience 29, Iter 150, disc loss: 7.3651143889443385e-06, policy loss: 22.02814047494198
+Experience 29, Iter 151, disc loss: 6.91219084831258e-06, policy loss: 22.067900616393775
+Experience 29, Iter 152, disc loss: 7.611369728250888e-06, policy loss: 21.838727606526465
+Experience 29, Iter 153, disc loss: 6.174658195942264e-06, policy loss: 21.627904988071318
+Experience 29, Iter 154, disc loss: 6.978491431833888e-06, policy loss: 22.34156597900793
+Experience 29, Iter 155, disc loss: 6.145435236519102e-06, policy loss: 22.080276391328763
+Experience 29, Iter 156, disc loss: 6.109917081482175e-06, policy loss: 22.242383692929085
+Experience 29, Iter 157, disc loss: 6.091369110627811e-06, policy loss: 21.937625662145177
+Experience 29, Iter 158, disc loss: 6.0798352668231e-06, policy loss: 21.614379962163817
+Experience 29, Iter 159, disc loss: 6.1232627419810706e-06, policy loss: 21.529383119787678
+Experience 29, Iter 160, disc loss: 6.035186374900074e-06, policy loss: 21.924369365236462
+Experience 29, Iter 161, disc loss: 6.028540944283672e-06, policy loss: 21.836153035193718
+Experience 29, Iter 162, disc loss: 6.0179139880093546e-06, policy loss: 22.764231784485524
+Experience 29, Iter 163, disc loss: 5.993643291802752e-06, policy loss: 22.13285450748365
+Experience 29, Iter 164, disc loss: 5.965110087675075e-06, policy loss: 22.246884178767253
+Experience 29, Iter 165, disc loss: 6.070367983998328e-06, policy loss: 22.471309355003843
+Experience 29, Iter 166, disc loss: 5.941834326109436e-06, policy loss: 21.73324327754023
+Experience 29, Iter 167, disc loss: 5.927395267648824e-06, policy loss: 21.691215287089626
+Experience 29, Iter 168, disc loss: 5.9111603868029495e-06, policy loss: 21.75138252743961
+Experience 29, Iter 169, disc loss: 7.870886709717529e-06, policy loss: 22.06893875598185
+Experience 29, Iter 170, disc loss: 5.862257096818257e-06, policy loss: 21.86201276913225
+Experience 29, Iter 171, disc loss: 6.321739979454175e-06, policy loss: 21.599914035533693
+Experience 29, Iter 172, disc loss: 5.827756238631121e-06, policy loss: 21.99436966687104
+Experience 29, Iter 173, disc loss: 5.899779199376536e-06, policy loss: 21.542745025649296
+Experience 29, Iter 174, disc loss: 5.82479246302926e-06, policy loss: 21.00926026734027
+Experience 29, Iter 175, disc loss: 5.818599193013258e-06, policy loss: 22.282679515332795
+Experience 29, Iter 176, disc loss: 5.763641333859151e-06, policy loss: 22.40997647136482
+Experience 29, Iter 177, disc loss: 5.783425777681039e-06, policy loss: 21.63409247261081
+Experience 29, Iter 178, disc loss: 5.769411568417399e-06, policy loss: 20.992460494689066
+Experience 29, Iter 179, disc loss: 5.739389375132575e-06, policy loss: 21.804119250673097
+Experience 29, Iter 180, disc loss: 5.7259298510000005e-06, policy loss: 21.84125198471113
+Experience 29, Iter 181, disc loss: 5.9538511553363185e-06, policy loss: 21.18044772737962
+Experience 29, Iter 182, disc loss: 5.684024527258993e-06, policy loss: 21.84845755765345
+Experience 29, Iter 183, disc loss: 6.057899589841453e-06, policy loss: 21.37777513975943
+Experience 29, Iter 184, disc loss: 5.659697962118112e-06, policy loss: 21.267288198154702
+Experience 29, Iter 185, disc loss: 5.638707608449052e-06, policy loss: 21.444739643555828
+Experience 29, Iter 186, disc loss: 5.624658569396274e-06, policy loss: 22.002737356263395
+Experience 29, Iter 187, disc loss: 5.633135890495359e-06, policy loss: 21.520867290758584
+Experience 29, Iter 188, disc loss: 5.630217819346687e-06, policy loss: 22.09240305842926
+Experience 29, Iter 189, disc loss: 5.558442468150061e-06, policy loss: 22.040582912211246
+Experience 29, Iter 190, disc loss: 6.304974242135905e-06, policy loss: 21.264309628463554
+Experience 29, Iter 191, disc loss: 5.591519664984749e-06, policy loss: 21.04984838240796
+Experience 29, Iter 192, disc loss: 5.57204220659281e-06, policy loss: 21.46210228439125
+Experience 29, Iter 193, disc loss: 5.681407926553115e-06, policy loss: 21.83849597013132
+Experience 29, Iter 194, disc loss: 5.531834457676449e-06, policy loss: 21.5067119620471
+Experience 29, Iter 195, disc loss: 5.645156756851023e-06, policy loss: 21.400542097450817
+Experience 29, Iter 196, disc loss: 6.1934144754868e-06, policy loss: 21.176701207146216
+Experience 29, Iter 197, disc loss: 5.548360325643678e-06, policy loss: 21.174445813080787
+Experience 29, Iter 198, disc loss: 5.521457623231803e-06, policy loss: 20.791283539613346
+Experience 29, Iter 199, disc loss: 5.491900050931597e-06, policy loss: 21.56056236735698
+Experience 29, Iter 200, disc loss: 5.408703097772819e-06, policy loss: 21.987931289853478
+Experience 29, Iter 201, disc loss: 5.706754862867766e-06, policy loss: 21.497365185737884
+Experience 29, Iter 202, disc loss: 5.366824418593178e-06, policy loss: 22.185052494442402
+Experience 29, Iter 203, disc loss: 5.420740913199713e-06, policy loss: 21.398429256933873
+Experience 29, Iter 204, disc loss: 5.610313633065283e-06, policy loss: 21.444851238763924
+Experience 29, Iter 205, disc loss: 5.4581283616836294e-06, policy loss: 21.062055851339004
+Experience 29, Iter 206, disc loss: 5.476742966174323e-06, policy loss: 21.14882943187358
+Experience 29, Iter 207, disc loss: 5.322418604772277e-06, policy loss: 21.559215953444607
+Experience 29, Iter 208, disc loss: 6.105031937180553e-06, policy loss: 20.729582130492062
+Experience 29, Iter 209, disc loss: 5.375469217907631e-06, policy loss: 21.26483002025951
+Experience 29, Iter 210, disc loss: 5.460463956090754e-06, policy loss: 20.56991554867497
+Experience 29, Iter 211, disc loss: 5.283993985245546e-06, policy loss: 21.949835503078944
+Experience 29, Iter 212, disc loss: 5.373898241954908e-06, policy loss: 21.1516222446779
+Experience 29, Iter 213, disc loss: 5.330036792695313e-06, policy loss: 21.368141892135256
+Experience 29, Iter 214, disc loss: 5.225227771612126e-06, policy loss: 21.905226990326717
+Experience 29, Iter 215, disc loss: 5.1794777614259596e-06, policy loss: 22.39926554521417
+Experience 29, Iter 216, disc loss: 5.247404805377245e-06, policy loss: 21.148579086906466
+Experience 29, Iter 217, disc loss: 5.202178381775092e-06, policy loss: 21.25159374435671
+Experience 29, Iter 218, disc loss: 5.187237280213514e-06, policy loss: 21.363819378440127
+Experience 29, Iter 219, disc loss: 5.1574283739016245e-06, policy loss: 21.372814972515208
+Experience 29, Iter 220, disc loss: 8.770072937204518e-06, policy loss: 20.73993072275606
+Experience 29, Iter 221, disc loss: 5.4372670331972585e-06, policy loss: 21.636679166361734
+Experience 29, Iter 222, disc loss: 5.142037469307787e-06, policy loss: 20.948303966263957
+Experience 29, Iter 223, disc loss: 5.931619509133984e-06, policy loss: 21.1111337360503
+Experience 29, Iter 224, disc loss: 5.091798116223982e-06, policy loss: 21.22734284846453
+Experience 29, Iter 225, disc loss: 5.059508869846015e-06, policy loss: 21.74356171834882
+Experience 29, Iter 226, disc loss: 5.068098614435578e-06, policy loss: 21.23553713630362
+Experience 29, Iter 227, disc loss: 5.062551277176345e-06, policy loss: 21.78704087592057
+Experience 29, Iter 228, disc loss: 5.063622298734506e-06, policy loss: 21.522100723019
+Experience 29, Iter 229, disc loss: 5.065679597977846e-06, policy loss: 21.233871631841634
+Experience 29, Iter 230, disc loss: 5.0338693735531785e-06, policy loss: 21.60098252320999
+Experience 29, Iter 231, disc loss: 9.314496048745158e-06, policy loss: 21.48730763250053
+Experience 29, Iter 232, disc loss: 4.992556234801047e-06, policy loss: 21.143028321174462
+Experience 29, Iter 233, disc loss: 4.968597156896886e-06, policy loss: 21.898131620805223
+Experience 29, Iter 234, disc loss: 4.971048440921637e-06, policy loss: 21.8348370043962
+Experience 29, Iter 235, disc loss: 5.029801027980248e-06, policy loss: 21.773657565499
+Experience 29, Iter 236, disc loss: 7.322410852258226e-06, policy loss: 21.5884277246804
+Experience 29, Iter 237, disc loss: 4.914491648984434e-06, policy loss: 21.939802595910734
+Experience 29, Iter 238, disc loss: 5.224353549868601e-06, policy loss: 20.866604468727502
+Experience 29, Iter 239, disc loss: 5.043973684251546e-06, policy loss: 21.71782957373036
+Experience 29, Iter 240, disc loss: 5.4878873856286525e-06, policy loss: 21.52559538465662
+Experience 29, Iter 241, disc loss: 4.873504701744136e-06, policy loss: 21.459230865100654
+Experience 29, Iter 242, disc loss: 4.8434996893479445e-06, policy loss: 22.20184029217596
+Experience 29, Iter 243, disc loss: 5.234487957691172e-06, policy loss: 21.94686354375814
+Experience 29, Iter 244, disc loss: 4.8217375545861345e-06, policy loss: 21.57480552742958
+Experience 29, Iter 245, disc loss: 4.87721932202749e-06, policy loss: 21.058788984086107
+Experience 29, Iter 246, disc loss: 4.820424662697936e-06, policy loss: 21.88447583308325
+Experience 29, Iter 247, disc loss: 5.278810813352208e-06, policy loss: 21.426145860943105
+Experience 29, Iter 248, disc loss: 4.814656605846233e-06, policy loss: 21.641999556947756
+Experience 29, Iter 249, disc loss: 4.8197137997480745e-06, policy loss: 21.15676939791128
+Experience 29, Iter 250, disc loss: 4.764366304603906e-06, policy loss: 21.687923217965277
+Experience 29, Iter 251, disc loss: 4.773383761749638e-06, policy loss: 21.391278646970722
+Experience 29, Iter 252, disc loss: 5.014837661137363e-06, policy loss: 21.74569906878429
+Experience 29, Iter 253, disc loss: 4.847494442652509e-06, policy loss: 21.51128404365967
+Experience 29, Iter 254, disc loss: 4.921823734332876e-06, policy loss: 21.532996983536577
+Experience 29, Iter 255, disc loss: 4.8122906411618586e-06, policy loss: 20.5889927575977
+Experience 29, Iter 256, disc loss: 4.824928179347776e-06, policy loss: 21.29341764256583
+Experience 29, Iter 257, disc loss: 4.786346143925925e-06, policy loss: 21.67607199545105
+Experience 29, Iter 258, disc loss: 4.8102107538662475e-06, policy loss: 20.83260707241589
+Experience 29, Iter 259, disc loss: 4.717249168073038e-06, policy loss: 21.48368111133867
+Experience 29, Iter 260, disc loss: 1.1797929331247086e-05, policy loss: 20.995645137771824
+Experience 29, Iter 261, disc loss: 4.8030867854026825e-06, policy loss: 21.17088536890026
+Experience 29, Iter 262, disc loss: 4.769850154732571e-06, policy loss: 20.777222855359664
+Experience 29, Iter 263, disc loss: 6.398391674675337e-06, policy loss: 21.040541522362176
+Experience 29, Iter 264, disc loss: 4.819372349588841e-06, policy loss: 20.761328516285353
+Experience 29, Iter 265, disc loss: 4.6353225266994155e-06, policy loss: 21.51401972950829
+Experience 29, Iter 266, disc loss: 4.761831846514094e-06, policy loss: 20.977275320675968
+Experience 29, Iter 267, disc loss: 4.634828624745434e-06, policy loss: 20.87279979073491
+Experience 29, Iter 268, disc loss: 5.013081655709976e-06, policy loss: 21.559953512461963
+Experience 29, Iter 269, disc loss: 4.7741347445559784e-06, policy loss: 21.23836631759748
+Experience 29, Iter 270, disc loss: 4.622876898358561e-06, policy loss: 21.22395978888416
+Experience 29, Iter 271, disc loss: 4.646371467753794e-06, policy loss: 20.800220111045984
+Experience 29, Iter 272, disc loss: 6.565193266886274e-06, policy loss: 20.99857220261728
+Experience 29, Iter 273, disc loss: 4.533816813559521e-06, policy loss: 22.294027883350886
+Experience 29, Iter 274, disc loss: 4.540549952284131e-06, policy loss: 21.847112699243016
+Experience 29, Iter 275, disc loss: 4.656773633804098e-06, policy loss: 21.162853866542015
+Experience 29, Iter 276, disc loss: 4.532670079030142e-06, policy loss: 21.719213453932966
+Experience 29, Iter 277, disc loss: 4.639502130432353e-06, policy loss: 21.306879440679598
+Experience 29, Iter 278, disc loss: 4.714933857819398e-06, policy loss: 21.661083778765455
+Experience 29, Iter 279, disc loss: 4.540917749389151e-06, policy loss: 21.189891204512783
+Experience 29, Iter 280, disc loss: 4.5089713116220146e-06, policy loss: 21.062858509903897
+Experience 29, Iter 281, disc loss: 5.459525136627571e-06, policy loss: 20.971758463546507
+Experience 29, Iter 282, disc loss: 4.546076832950664e-06, policy loss: 20.56193398749342
+Experience 29, Iter 283, disc loss: 5.0014494743669836e-06, policy loss: 20.03015645881517
+Experience 29, Iter 284, disc loss: 4.6038976576123205e-06, policy loss: 20.560466219599128
+Experience 29, Iter 285, disc loss: 4.53029710526694e-06, policy loss: 20.513008721783578
+Experience 29, Iter 286, disc loss: 4.478361216154283e-06, policy loss: 21.41059839062346
+Experience 29, Iter 287, disc loss: 5.599301902467019e-06, policy loss: 21.040103681837174
+Experience 29, Iter 288, disc loss: 4.87807253518874e-06, policy loss: 20.193913124041046
+Experience 29, Iter 289, disc loss: 4.491136126605755e-06, policy loss: 21.074067834431553
+Experience 29, Iter 290, disc loss: 4.8937828854477206e-06, policy loss: 20.42127673443175
+Experience 29, Iter 291, disc loss: 6.44213776946464e-06, policy loss: 20.813487996129403
+Experience 29, Iter 292, disc loss: 4.674060483146778e-06, policy loss: 20.502953751321257
+Experience 29, Iter 293, disc loss: 4.3530957456759255e-06, policy loss: 21.614104598251057
+Experience 29, Iter 294, disc loss: 4.644730787624322e-06, policy loss: 20.638807433555634
+Experience 29, Iter 295, disc loss: 1.5759229624247814e-05, policy loss: 20.080540598425774
+Experience 29, Iter 296, disc loss: 4.6294601870464166e-06, policy loss: 20.14560056007312
+Experience 29, Iter 297, disc loss: 5.0088983990703014e-06, policy loss: 21.207488435807743
+Experience 29, Iter 298, disc loss: 4.675307591819672e-06, policy loss: 21.50885512314904
+Experience 29, Iter 299, disc loss: 4.533701001997262e-06, policy loss: 21.494523831513963
+Experience: 30
+***BEFORE OPTIMATION***
+Noise Variance: tensor([[0.0124],
+        [0.2224],
+        [2.1651],
+        [0.0428]], grad_fn=<AddBackward0>)
+Lengthscale: tensor([[[0.1075, 0.5175, 1.9683, 0.0411, 0.0106, 5.9754]],
+
+        [[0.1075, 0.5175, 1.9683, 0.0411, 0.0106, 5.9754]],
+
+        [[0.1075, 0.5175, 1.9683, 0.0411, 0.0106, 5.9754]],
+
+        [[0.1075, 0.5175, 1.9683, 0.0411, 0.0106, 5.9754]]],
+       grad_fn=<SoftplusBackward>)
+Signal Variance: tensor([0.0498, 0.8895, 8.6605, 0.1712], grad_fn=<SoftplusBackward>)
+Estimated target variance: tensor([0.0498, 0.8895, 8.6605, 0.1712])
+N: 300
+Signal to noise ratio: tensor([2.0000, 2.0000, 2.0000, 2.0000], grad_fn=<SqrtBackward>)
+Bound on condition number: tensor([1201.0000, 1201.0000, 1201.0000, 1201.0000], grad_fn=<AddBackward0>)
+Iter 1/2000 - Loss: 3.866
+Iter 2/2000 - Loss: 3.763
+Iter 3/2000 - Loss: 3.606
+Iter 4/2000 - Loss: 3.475
+Iter 5/2000 - Loss: 3.348
+Iter 6/2000 - Loss: 3.197
+Iter 7/2000 - Loss: 3.044
+Iter 8/2000 - Loss: 2.896
+Iter 9/2000 - Loss: 2.739
+Iter 10/2000 - Loss: 2.567
+Iter 11/2000 - Loss: 2.385
+Iter 12/2000 - Loss: 2.200
+Iter 13/2000 - Loss: 2.012
+Iter 14/2000 - Loss: 1.816
+Iter 15/2000 - Loss: 1.610
+Iter 16/2000 - Loss: 1.395
+Iter 17/2000 - Loss: 1.172
+Iter 18/2000 - Loss: 0.944
+Iter 19/2000 - Loss: 0.710
+Iter 20/2000 - Loss: 0.469
+Iter 1981/2000 - Loss: -7.544
+Iter 1982/2000 - Loss: -7.544
+Iter 1983/2000 - Loss: -7.544
+Iter 1984/2000 - Loss: -7.545
+Iter 1985/2000 - Loss: -7.545
+Iter 1986/2000 - Loss: -7.545
+Iter 1987/2000 - Loss: -7.545
+Iter 1988/2000 - Loss: -7.545
+Iter 1989/2000 - Loss: -7.545
+Iter 1990/2000 - Loss: -7.545
+Iter 1991/2000 - Loss: -7.545
+Iter 1992/2000 - Loss: -7.545
+Iter 1993/2000 - Loss: -7.545
+Iter 1994/2000 - Loss: -7.545
+Iter 1995/2000 - Loss: -7.545
+Iter 1996/2000 - Loss: -7.545
+Iter 1997/2000 - Loss: -7.545
+Iter 1998/2000 - Loss: -7.545
+Iter 1999/2000 - Loss: -7.545
+Iter 2000/2000 - Loss: -7.545
+***AFTER OPTIMATION***
+Noise Variance: tensor([[0.0004],
+        [0.0003],
+        [0.0018],
+        [0.0003]])
+Lengthscale: tensor([[[15.9657, 10.9402, 25.8943,  2.3231,  7.1468, 60.6615]],
+
+        [[27.9997, 45.2472,  9.1845,  1.5704,  1.0299, 23.7221]],
+
+        [[31.5963, 48.7168,  8.9279,  0.9417,  0.7316, 23.6437]],
+
+        [[23.8888, 39.4749, 14.3514,  2.0751,  1.6056, 55.2796]]])
+Signal Variance: tensor([ 0.1725,  2.0468, 10.6520,  0.5295])
+Estimated target variance: tensor([0.0498, 0.8895, 8.6605, 0.1712])
+N: 300
+Signal to noise ratio: tensor([21.9276, 76.4749, 75.9292, 41.8621])
+Bound on condition number: tensor([ 144247.0982, 1754524.2129, 1729573.0595,  525731.6228])
+Policy Optimizer learning rate:
+0.009699075226141829
+Experience 30, Iter 0, disc loss: 4.7667325790528525e-06, policy loss: 20.390788902510767
+Experience 30, Iter 1, disc loss: 4.420450689311149e-06, policy loss: 21.46809984313208
