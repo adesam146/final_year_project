@@ -21,7 +21,7 @@ from cartpole.score_function import score_function_training
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
                             plot_progress, sample_trajectories,
-                            save_current_state)
+                            save_current_state, plot_trajectories)
 from discrimator import ConvDiscrimator, Discrimator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy
@@ -144,6 +144,10 @@ agent = CartPoleAgent(dt=setup.dt, T=setup.T, policy=policy,
 # *** FIRST RANDOM ROLLOUT ***
 with torch.no_grad():
     s_a_pairs, traj = agent.act()
+    fig, axs = plot_trajectories(samples=traj.unsqueeze(0), actions=s_a_pairs[:, -setup.action_dim:].unsqueeze(0), T=setup.T)
+    fig.tight_layout()
+    fig.savefig(plot_dir + 'initial_rollout.pdf', format='pdf')
+    plt.close(fig)
     init_x, init_y = get_training_data(s_a_pairs, traj)
 
 # *** FORWARD MODEL SETUP ***
