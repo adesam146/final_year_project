@@ -41,6 +41,8 @@ parser.add_argument("--result_dir_name",
                     help="Name of directory to place results")
 parser.add_argument("--policy_lr", type=float,
                     help="Learning rate for the policy, default is 1e-2")
+parser.add_argument("--disc_lr", type=float,
+                    help="Learning rate for the discriminator, default is 1e-2")
 parser.add_argument("--policy_iter", type=int,
                     help="Number of iterations to optimise policy (default is 50)")
 parser.add_argument("--description", help="Description the experiment")
@@ -178,6 +180,8 @@ elif use_conv_disc:
                            with_x0=expert_sample_start == 0).to(device)
 else:
     disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
+
+disc_lr = args.disc_lr or 1e-2
 disc_optimizer = torch.optim.Adam(disc.parameters())
 # disc_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
 #     disc_optimizer, gamma=(0.9)**(1/100))
