@@ -55,9 +55,10 @@ parser.add_argument("--use_state_to_state",
                     help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
 parser.add_argument(
     "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
-parser.add_argument("--policy", help="nn | deepnn | rbf | optimal (default = deepnn)")
+parser.add_argument("--policy", help="nn | deepnn | rbf | optimal. Default = deepnn")
 parser.add_argument("--batch_size", type=int,
                     help="Batch size for policy optimisation (default = Number of training data)")
+parser.add_argument("--with_x0", help="If x0 should also be considered when matching the trajectories (default = false)", action="store_true")
 args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
@@ -114,7 +115,7 @@ setup = CartPoleSetup(
 
 # Determine whether expert x0 is needed or not
 expert_sample_start = 0
-if use_score_func_grad:
+if use_score_func_grad or args.with_x0:
     expert_sample_start = 1
 # Restrict samples to specfied horizon T
 expert_dl = DataLoader(TensorDataset(
