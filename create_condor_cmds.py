@@ -24,10 +24,10 @@ for policy_iter in policy_iters:
             with open(filename, 'w') as f:
                 f.write(f'universe = vanilla\n'
                         f'executable = /vol/bitbucket/aso115/anaconda3/envs/myvenv/bin/python\n'
-                        f'output = T_{T}.$(Process).out\n'
-                        f'error = T_{T}.$(Process).err\n'
+                        f'output = {filename}.$(Process).out\n'
+                        f'error = {filename}.$(Process).err\n'
                         'log = condor.log\n'
-                        f'arguments = -u -m cartpole.learn --T={T} --use_pathwise_grad --use_conv_disc --policy_iter={policy_iter} --policy_lr={policy_lr} --disc_lr={disc_lr} --description=\\"{filename}\\"\n'
+                        f'arguments = -u -m cartpole.learn --T={T} --use_pathwise_grad --use_conv_disc --policy_iter={policy_iter} --policy_lr={policy_lr} --disc_lr={disc_lr} --result_dir_name={filename} --description=\\"{filename}\\"\n'
                         'queue 1')
             filenames.append(filename)
 
