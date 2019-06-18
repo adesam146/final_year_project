@@ -203,7 +203,7 @@ def sample_trajectories(setup, fm, init_state_distn, policy, sample_N, sample_T,
             fm_samples[n, t] = x
             actions[n, t] = x_t_u_t[:, -setup.action_dim:].detach().squeeze()
 
-            if sample_T > 10 and t == setup.T//2:
+            if t > 0 and t % 10 == 0:
                 x = x.detach()
 
         fm.clear_fantasy_data()
