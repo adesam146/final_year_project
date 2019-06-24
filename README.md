@@ -1,6 +1,6 @@
 # How to
 
-## Adversarial Imitation Learning (with Gaussian Process Forward Model).
+## Adversarial Imitation Learning (with Gaussian Process Forward Model)
 
 To work with/run the code install the requirements in "requirements.txt"
 i.e.
