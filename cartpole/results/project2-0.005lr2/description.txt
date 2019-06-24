@@ -1,1 +1,0 @@
-Testing an RBFPolicy with a 0.005 lr and N_x0 = 10
