@@ -22,11 +22,11 @@ from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
                             plot_progress, sample_trajectories,
                             save_current_state, plot_trajectories)
-from discrimator import ConvDiscrimator, Discrimator
+from discriminator import ConvDiscriminator, Discriminator
 from forwardmodel import ForwardModel
 from nn_policy import NNPolicy, DeepNNPolicy
 from rbf_policy import RBFPolicy
-from ss_discrimator import SSDiscriminator
+from ss_discriminator import SSDiscriminator
 
 font = {'size': 14}
 matplotlib.rc('font', **font)
@@ -172,7 +172,7 @@ init_state_distn = trd.MultivariateNormal(loc=torch.zeros(
     setup.state_dim, device=device), covariance_matrix=torch.diag(0.1**2 * torch.ones(setup.state_dim, device=device)))
 N_x0 = 10
 
-# *** DISCRIMATOR SETUP ***
+# *** DISCRIMINATOR SETUP ***
 use_conv_disc = args.use_conv_disc
 disc_dir = os.path.join(result_dir, 'disc/')
 os.makedirs(disc_dir)
@@ -180,10 +180,10 @@ os.makedirs(disc_dir)
 if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
 elif use_conv_disc:
-    disc = ConvDiscrimator(T=setup.T, D=setup.state_dim,
+    disc = ConvDiscriminator(T=setup.T, D=setup.state_dim,
                            with_x0=expert_sample_start == 0).to(device)
 else:
-    disc = Discrimator(T=setup.T, D=setup.state_dim).to(device)
+    disc = Discriminator(T=setup.T, D=setup.state_dim).to(device)
 
 disc_lr = args.disc_lr or 1e-2
 disc_optimizer = torch.optim.Adam(disc.parameters())
@@ -236,7 +236,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     samples, actions = sample_trajectories(
                         setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
 
-                    # Train Discrimator
+                    # Train Discriminator
                     disc.enable_parameters_grad()
                     disc_optimizer.zero_grad()
 
@@ -253,7 +253,7 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     # Optimise policy
                     policy_optimizer.zero_grad()
 
-                    # To avoid having to calculate gradients of discrimator
+                    # To avoid having to calculate gradients of discriminator
                     disc.enable_parameters_grad(enable=False)
 
                     policy_loss = 0

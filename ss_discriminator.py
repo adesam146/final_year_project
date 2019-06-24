@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
+# A discriminator that compares states to states
 class SSDiscriminator(nn.Module):
     def __init__(self, D):
         super().__init__()

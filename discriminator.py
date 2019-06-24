@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class Discrimator(nn.Module):
+class Discriminator(nn.Module):
     def __init__(self, T, D=1):
         super().__init__()
 
@@ -29,7 +29,7 @@ class Discrimator(nn.Module):
             param.requires_grad = enable
 
 
-class ConvDiscrimator(nn.Module):
+class ConvDiscriminator(nn.Module):
     def __init__(self, T, D, with_x0=False):
         super().__init__()
 
