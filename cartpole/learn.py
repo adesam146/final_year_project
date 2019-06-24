@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 from datetime import datetime
@@ -13,57 +12,26 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, TensorDataset
 
 from cartpole.agent import CartPoleAgent
+from cartpole.args import args
 from cartpole.cartpole_setup import CartPoleSetup
 from cartpole.optimal_gp import OptimalGP
 from cartpole.optimal_policy import OptimalPolicy
 from cartpole.pathwise_grad import pathwise_grad
 from cartpole.score_function import score_function_training
+from cartpole.state_to_state import state_to_state
 from cartpole.utils import (convert_to_aux_state, get_expert_data,
                             get_training_data, plot_gp_trajectories,
-                            plot_progress, sample_trajectories,
-                            save_current_state, plot_trajectories)
+                            plot_progress, plot_trajectories,
+                            sample_trajectories, save_current_state)
 from discriminator import ConvDiscriminator, Discriminator
 from forwardmodel import ForwardModel
-from nn_policy import NNPolicy, DeepNNPolicy
+from nn_policy import DeepNNPolicy, NNPolicy
 from rbf_policy import RBFPolicy
 from ss_discriminator import SSDiscriminator
 
 font = {'size': 14}
 matplotlib.rc('font', **font)
 matplotlib.use('Agg')
-
-
-# *** ARGUMENT SET UP ***
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "--gpu", help="Train using a GPU if available", action="store_true")
-parser.add_argument("--result_dir_name",
-                    help="Name of directory to place results")
-parser.add_argument("--policy_lr", type=float,
-                    help="Learning rate for the policy, default is 1e-2")
-parser.add_argument("--disc_lr", type=float,
-                    help="Learning rate for the discriminator, default is 1e-2")
-parser.add_argument("--policy_iter", type=int,
-                    help="Number of iterations to optimise policy (default is 50)")
-parser.add_argument("--description", help="Description the experiment")
-parser.add_argument("--T", type=int, help="Number of predicted timesteps")
-parser.add_argument("--use_score_func_grad",
-                    help="Use score function gradient method for optimising policy", action="store_true")
-parser.add_argument("--use_pathwise_grad",
-                    help="Use pathwise gradient method for optimising policy", action="store_true")
-parser.add_argument("--use_max_log_prob",
-                    help="Use maxising the log prob of forward method for optimising policy", action="store_true")
-parser.add_argument("--use_state_to_state",
-                    help="The descrimator should only work on state to state pairs and not a whole trajectory", action="store_true")
-parser.add_argument(
-    "--use_conv_disc", help="Set whether to use a Discriminator with a starting convolutional layer", action="store_true")
-parser.add_argument("--policy", help="nn | deepnn | rbf | optimal. Default = deepnn")
-parser.add_argument("--batch_size", type=int,
-                    help="Batch size for policy optimisation (default = Number of training data)")
-parser.add_argument("--with_x0", help="If x0 should also be considered when matching the trajectories (default = false)", action="store_true")
-parser.add_argument("--fix_seed", help="Fix seed should be set to a default", action="store_true")
-parser.add_argument("--num_expr", help="Number of experience/interaction of agent with environment (default == 50)", type=int)
-args = parser.parse_args()
 
 # *** RESULTS LOGGING SETUP ***
 script_dir = os.path.dirname(__file__)
@@ -83,10 +51,6 @@ variables_file = os.path.join(result_dir, 'variables.json')
 description_file = os.path.join(result_dir, 'description.txt')
 with open(description_file, 'w') as fp:
     fp.write(f'{args.description}')
-
-# TODO: Consider
-# gpytorch.settings.detach_test_caches(state=True)
-# `https://gpytorch.readthedocs.io/en/latest/settings.html?highlight=fantasy`
 
 # Set random seed to ensure that results are reproducible.
 fix_seed = args.fix_seed or False
@@ -153,7 +117,8 @@ agent = CartPoleAgent(dt=setup.dt, T=setup.T, policy=policy,
 # *** FIRST RANDOM ROLLOUT ***
 with torch.no_grad():
     s_a_pairs, traj = agent.act()
-    fig, axs = plot_trajectories(samples=traj.unsqueeze(0), actions=s_a_pairs[:, -setup.action_dim:].unsqueeze(0), T=setup.T)
+    fig, axs = plot_trajectories(samples=traj.unsqueeze(
+        0), actions=s_a_pairs[:, -setup.action_dim:].unsqueeze(0), T=setup.T)
     fig.tight_layout()
     fig.savefig(plot_dir + 'initial_rollout.pdf', format='pdf')
     plt.close(fig)
@@ -181,7 +146,7 @@ if use_state_to_state:
     disc = SSDiscriminator(D=setup.state_dim)
 elif use_conv_disc:
     disc = ConvDiscriminator(T=setup.T, D=setup.state_dim,
-                           with_x0=expert_sample_start == 0).to(device)
+                             with_x0=expert_sample_start == 0).to(device)
 else:
     disc = Discriminator(T=setup.T, D=setup.state_dim).to(device)
 
@@ -227,42 +192,8 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     avg_disc_loss += disc_loss.detach()
 
                 if use_state_to_state:
-                    bce_logit_loss = torch.nn.BCEWithLogitsLoss()
-                    real_target = init_state_distn.mean.new_ones(
-                        setup.N, 1)
-                    fake_target = init_state_distn.mean.new_zeros(
-                        setup.N, 1)
-
-                    samples, actions = sample_trajectories(
-                        setup, fm, init_state_distn, policy, sample_N=setup.N, sample_T=setup.T, with_rsample=True)
-
-                    # Train Discriminator
-                    disc.enable_parameters_grad()
-                    disc_optimizer.zero_grad()
-
-                    disc_loss = 0
-                    for t in range(setup.T):
-                        disc_loss += bce_logit_loss(disc(expert_samples[:, t:t+2]), real_target) + bce_logit_loss(
-                            disc(samples[:, t:t+2].detach()), fake_target)
-
-                    disc_loss *= 1.0/setup.T
-
-                    disc_loss.backward()
-                    disc_optimizer.step()
-
-                    # Optimise policy
-                    policy_optimizer.zero_grad()
-
-                    # To avoid having to calculate gradients of discriminator
-                    disc.enable_parameters_grad(enable=False)
-
-                    policy_loss = 0
-                    for t in range(setup.T):
-                        policy_loss += bce_logit_loss(
-                            disc(samples[:, t:t+2]), real_target)
-
-                    policy_loss.backward()
-                    policy_optimizer.step()
+                    disc_loss, policy_loss, samples, actions = state_to_state(
+                        setup, expert_samples, policy, fm, disc, disc_optimizer, policy_optimizer, init_state_distn)
 
                     avg_policy_loss += policy_loss.detach()
                     avg_disc_loss += disc_loss.detach()
@@ -272,8 +203,6 @@ with gpytorch.settings.fast_computations(covar_root_decomposition=False, log_pro
                     policy_loss = 0
                     for n in range(setup.N):
                         for t in range(setup.T):
-                            # TODO: Do we need to include the likelihood how that we
-                            # are looking at the observed difference
                             # This can perhaps also be done in a batch form
                             aux_x = convert_to_aux_state(
                                 expert_samples[n, t], setup.state_dim)
