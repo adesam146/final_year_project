@@ -2,6 +2,8 @@ import argparse
 import subprocess
 import os
 
+# Created cmd files to be used by Condor
+
 if not os.path.isdir('experiments'):
     os.makedirs('experiments')
 
