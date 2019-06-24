@@ -1,3 +1,4 @@
+import argparse
 import math
 import numpy as np
 import torch
@@ -7,6 +8,13 @@ import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 import torch.distributions as trd
 from trainable import TrainableNormal, TrainableMultivariateNormal
+from mixture_likelihood_simulator import MixtureLikelihoodSimulator
+
+# *** ARGUMENT SET UP ***
+parser = argparse.ArgumentParser()
+parser.add_argument("--iter", type=int,
+                    help="Number of iteration/epoch for the posterior optimisation (default=2000)")
+args = parser.parse_args()
 
 
 def linear_dataset(beta_true, N, noise_std=0.1):
@@ -28,12 +36,24 @@ def pure_cubic_dataset(beta_true, N, noise_std=1):
     For now just assuming that beta_true is a scalar
     """
     # X = torch.linspace(-5, 5, steps=N).view(N, 1)
-    X = torch.randn(N, 1)
+    # X = torch.randn(N, 1)
+    X = 4 * torch.rand(N, 1) - 2
     noise = noise_std * torch.randn(N, 1)
 
     Y = beta_true * X ** 3 + noise
 
     return X, Y
+
+def pure_cubic_dataset_with_mixture_likelihood(beta_true, N, noise_std=1):
+    """
+    For now just assuming that beta_true is a scalar
+    output: N x 1
+    """
+    X = 2 * torch.rand(N, 1)
+
+    simulator = MixtureLikelihoodSimulator(noise_std=noise_std, convert_to_design_matrix=lambda X: X**3)
+
+    return X, simulator.simulate(beta=beta_true, X=X)
 
 def polynomial_basis_funcs(x, order):
     """
@@ -175,6 +195,8 @@ def inference(ratio_estimator, prior, approx_posterior, data_loader, model_simul
     posterior_lr_sch = torch.optim.lr_scheduler.ExponentialLR(
         posterior_optimizer, (0.9)**(1/100))
 
+    posterior_losses = []
+
     for epoch in range(epochs):
         ratio_lr_sch.step()
         posterior_lr_sch.step()
@@ -187,10 +209,13 @@ def inference(ratio_estimator, prior, approx_posterior, data_loader, model_simul
             posterior_loss = train_approx_posterior(
                 prior, approx_posterior, ratio_estimator, batch, posterior_optimizer)
 
+        posterior_losses.append(posterior_loss)
         print("Epoch: ", epoch, "ratio_loss:", ratio_loss,
               "post_loss:", posterior_loss)
         print("post mean", approx_posterior.mean, "post variance",
               approx_posterior.cov())
+
+    return np.array(posterior_losses)
 
 
 if __name__ == "__main__":
@@ -199,7 +224,8 @@ if __name__ == "__main__":
     torch.set_default_dtype(torch.float64)
 
     # DATA
-    N_train = 50
+    # N_train = 50
+    N_train = 1000
 
     # 2D linear regression (i.e. X is 2D)
     # D = 2
@@ -208,9 +234,14 @@ if __name__ == "__main__":
     # convert_to_design_matrix = lambda X: X
 
     # Polynomial of order 3 with no intersect or quadratic term
+    # D = 1
+    # beta_true = 1.0 * torch.ones(D)
+    # X_train, Y_train = pure_cubic_dataset(beta_true, N_train)
+    # convert_to_design_matrix = lambda X: torch.tensor(polynomial_design_matrix(X, order=2))[:, -1:]
+
     D = 1
-    beta_true = 5.0 * torch.ones(D)
-    X_train, Y_train = pure_cubic_dataset(beta_true, N_train)
+    beta_true = 1.0 * torch.ones(D)
+    X_train, Y_train = pure_cubic_dataset_with_mixture_likelihood(beta_true, N_train)
     convert_to_design_matrix = lambda X: torch.tensor(polynomial_design_matrix(X, order=3))[:, -1:]
 
     # Polynomial of order 3
@@ -241,17 +272,18 @@ if __name__ == "__main__":
     S0 = 36 * torch.eye(D)
     prior = trd.MultivariateNormal(loc=m0, covariance_matrix=S0)
     noise_std = 1
-    model_simulator = NormalLikelihoodSimulator(noise_std, convert_to_design_matrix=convert_to_design_matrix)
+    # model_simulator = NormalLikelihoodSimulator(noise_std, convert_to_design_matrix=convert_to_design_matrix)
+    model_simulator= MixtureLikelihoodSimulator(noise_std, convert_to_design_matrix=convert_to_design_matrix)
 
     # Approximation
-    approx_posterior = TrainableMultivariateNormal(mean=torch.ones(D), cov=torch.eye(D))
+    approx_posterior = TrainableMultivariateNormal(mean=torch.zeros(D) + 2, cov=torch.eye(D))
     approx_simulator = None
 
     # The input features are y, beta
     ratio_estimator = RatioEstimator(in_features=2)
 
-    inference(ratio_estimator, prior, approx_posterior, data_loader_train,
-              model_simulator, approx_simulator, epochs=2000)
+    posterior_losses = inference(ratio_estimator, prior, approx_posterior, data_loader_train,
+              model_simulator, approx_simulator, epochs=args.iter or 2000)
 
     # The learnt std_dev tends to be larger than the expected and this
     # is also the case for the implementation in Edward (original)
@@ -267,6 +299,8 @@ if __name__ == "__main__":
     print("Expected mean", mN)
     print("Expected variance", SN)
 
+    import matplotlib
+    matplotlib.rcParams.update({'font.size': 14})
     import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots(1)
@@ -283,18 +317,28 @@ if __name__ == "__main__":
     std_pred_exact = torch.sqrt(torch.diag(torch.chain_matmul(Phi, SN, Phi.t()))).numpy()[order]
 
 
-    ax.set_ylim(bottom=-1000, top=1000, auto=True)
-    ax.set_ylim(bottom=-1000, top=1000, auto=True)
+    ax.set_ylim(bottom=-10, top=10)
+    ax.set_ylim(bottom=-10, top=10)
 
-    ax.scatter(X, Y, label='Observed Y', color='black', s=1)
+    ax.scatter(X, Y, label='Observed Y', color='black', s=1, alpha=0.5)
     # ax.fill_between(X, Y - (X ** 3) * np.sqrt(SN.item()), Y + (X ** 3) * np.sqrt(SN.item()), alpha = 0.15)
 
     ax.plot(X, mean_pred, label='Mean Prediction of LFVI')
-    ax.fill_between(X, mean_pred - 2 * std_pred, mean_pred + 2 * std_pred, alpha=0.15, label='2 standard deviation from the likelihood-free posterior mean')
+    ax.fill_between(X, mean_pred - 2 * std_pred, mean_pred + 2 * std_pred, alpha=0.15)
 
-    ax.plot(X, mean_pred_exact, label='Mean prediction of exact Bayesian Linear Regression')
-    ax.fill_between(X, mean_pred_exact - 2 * std_pred_exact, mean_pred_exact + 2 * std_pred_exact, alpha=0.15, label='2 standard deviation from the exact posterior mean')
+    ax.plot(X, mean_pred_exact, label='Mean prediction of exact BLR')
+    ax.fill_between(X, mean_pred_exact - 2 * std_pred_exact, mean_pred_exact + 2 * std_pred_exact, alpha=0.15)
 
-    ax.legend()
+    ax.plot(X, X**3, label=r'True function $y = x^3$')
+
+    ax.legend(loc='upper left')
+
+    ax.set_xlabel(r'x')
+    ax.set_ylabel(r'y')
 
     plt.show()
+
+    # plt.plot(posterior_losses)
+    # plt.xlabel("Number of iterations")
+    # plt.ylabel("Posterior loss of LFVI")
+    # plt.show()
